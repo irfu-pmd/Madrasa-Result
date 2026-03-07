@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - ഫലം</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #eef2f3; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
-        h2 { color: #1a5f7a; }
-        label { display: block; text-align: left; margin: 15px 0 5px; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f4f8; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        h2 { color: #1a5f7a; font-size: 22px; margin-bottom: 5px; }
+        p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        label { display: block; text-align: left; margin: 15px 0 5px; font-weight: bold; color: #333; }
         select, input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 16px; margin-bottom: 10px; }
-        button { background-color: #1a5f7a; color: white; padding: 15px; border: none; border-radius: 10px; width: 100%; margin-top: 20px; cursor: pointer; font-size: 18px; font-weight: bold; }
-        #result { margin-top: 25px; padding: 20px; border-radius: 12px; display: none; }
+        button { background-color: #1a5f7a; color: white; padding: 15px; border: none; border-radius: 10px; width: 100%; margin-top: 15px; cursor: pointer; font-size: 18px; font-weight: bold; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 10px; display: none; line-height: 1.5; }
         .winner { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .not-found { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .whatsapp-btn { background-color: #25D366; color: white; padding: 10px; text-decoration: none; border-radius: 8px; display: inline-block; margin-top: 15px; font-weight: bold; }
+        .whatsapp-btn { background-color: #25D366; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; font-weight: bold; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -23,16 +24,16 @@
     <p>വാർഷിക പരീക്ഷാ വിജയികൾ 2025-26</p>
     <label>ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</label>
     <select id="class">
-        <option value="">--Select--</option>
-        <option value="1">ക്ലാസ്സ് 1</option>
-        <option value="2">ക്ലാസ്സ് 2</option>
-        <option value="3">ക്ലാസ്സ് 3</option>
-        <option value="4">ക്ലാസ്സ് 4</option>
-        <option value="6">ക്ലാസ്സ് 6</option>
-        <option value="8">ക്ലാസ്സ് 8</option>
+        <option value="">--തിരഞ്ഞെടുക്കുക--</option>
+        <option value="1">Class 1</option>
+        <option value="2">Class 2</option>
+        <option value="3">Class 3</option>
+        <option value="4">Class 4</option>
+        <option value="6">Class 6</option>
+        <option value="8">Class 8</option>
     </select>
-    <label>കുട്ടിയുടെ പേര് (ഇംഗ്ലീഷിൽ ടൈപ്പ് ചെയ്യുക)</label>
-    <input type="text" id="studentName" placeholder="ഉദാഹരണത്തിന്: Midha">
+    <label>കുട്ടിയുടെ പേര് (ഇംഗ്ലീഷിൽ)</label>
+    <input type="text" id="studentName" placeholder="eg: Faizan">
     <button onclick="checkResult()">Result നോക്കാം</button>
     <div id="result"></div>
 </div>
@@ -47,68 +48,21 @@
     };
     function checkResult() {
         const classVal = document.getElementById('class').value;
-        const nameVal = document.getElementById('studentName').value.trim().toLowerCase();
+        const nameInput = document.getElementById('studentName').value.trim().toLowerCase();
         const resultDiv = document.getElementById('result');
-        if (!classVal || !nameVal) { alert("ക്ലാസ്സും പേരും നൽകുക."); return; }
+        if (!classVal || !nameInput) { alert("ക്ലാസ്സും പേരും നൽകുക."); return; }
         const classWinners = winners[classVal] || [];
-        const matchedName = classWinners.find(name => name.toLowerCase().includes(nameVal));
+        const matchedName = classWinners.find(name => name.toLowerCase().includes(nameInput));
         resultDiv.style.display = 'block';
         if (matchedName) {
             resultDiv.className = 'winner';
             const shareText = encodeURIComponent(`അഭിനന്ദനങ്ങൾ! അൻവാറുൽ ഇസ്ലാം മദ്രസ വാർഷിക പരീക്ഷയിൽ ${matchedName} വിജയിച്ചിരിക്കുന്നു! 🎉`);
-            resultDiv.innerHTML = `<strong>അഭിനന്ദനങ്ങൾ!</strong><br>${matchedName} വിജയിച്ചിരിക്കുന്നു!<br><a class="whatsapp-btn" href="https://wa.me/?text=${shareText}" target="_blank">വാട്സാപ്പിൽ ഷെയർ ചെയ്യാം</a>`;
+            resultDiv.innerHTML = `<strong>അഭിനന്ദനങ്ങൾ!</strong><br>${matchedName} വിജയിച്ചിരിക്കുന്നു!<br><a class="whatsapp-btn" href="https://wa.me/?text=${shareText}" target="_blank">WhatsApp-ൽ ഷെയർ ചെയ്യാം</a>`;
         } else {
             resultDiv.className = 'not-found';
-            resultDiv.innerHTML = `ക്ഷമിക്കണം, ഈ പേര് ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് ശ്രദ്ധിക്കുക.`;
+            resultDiv.innerHTML = `ക്ഷമിക്കണം, ഈ പേര് ഈ ക്ലാസ്സിലെ വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് ശ്രദ്ധിക്കുക.`;
         }
     }
 </script>
-</body>
-</html>
-    </select>
-
-    <label>കുട്ടിയുടെ പേര് (In English)</label>
-    <input type="text" id="studentName" placeholder="പേര് ഇംഗ്ലീഷിൽ നൽകുക (eg: Midha)">
-
-    <button onclick="checkResult()">Result നോക്കാം</button>
-
-    <div id="result"></div>
-</div>
-
-<script>
-    const winners = {
-        "1": ["Muhammed Faizan PV", "Muhammed Rihan CK", "Muhammed Jalaludheen TT", "Fathima Issah P", "Fathima Hadiya TT"],
-        "2": ["Muhammed Saihan K", "Muhammed Ashmil PT", "Fathima Sumayya TT", "Khadija Liyana"],
-        "3": ["Haswa Fathima", "Ayisha Sabrin K"],
-        "4": ["Muhammed Hadi PV", "Muhammed Aman C", "Haya Fathima PM", "Ansila Mehrin V", "Midha Abdul Kalam P", "Ayisha Nuha K"],
-        "6": ["Haniya Fathima A", "Fathima Shahala VT", "Asiya Naila P", "Fathima Rafa TP"],
-        "8": ["Muhammed Anas PM", "Muhammed Swalih K", "Fathima Hilfa PT", "Fathima Rinsha TT"]
-    };
-
-    function checkResult() {
-        const classVal = document.getElementById('class').value;
-        const nameVal = document.getElementById('studentName').value.trim().toLowerCase();
-        const resultDiv = document.getElementById('result');
-
-        if (!classVal || !nameVal) {
-            alert("ദയവായി ക്ലാസ്സും പേരും നൽകുക.");
-            return;
-        }
-
-        const classWinners = winners[classVal] || [];
-        const matchedName = classWinners.find(name => name.toLowerCase().includes(nameVal));
-
-        resultDiv.style.display = 'block';
-        if (matchedName) {
-            resultDiv.className = 'winner';
-            const shareText = encodeURIComponent(`അഭിനന്ദനങ്ങൾ! അൻവാറുൽ ഇസ്ലാം മദ്രസ വാർഷിക പരീക്ഷയിൽ ${matchedName} വിജയിച്ചിരിക്കുന്നു! 🎉`);
-            resultDiv.innerHTML = `<strong>അഭിനന്ദനങ്ങൾ!</strong><br>${matchedName} വിജയിച്ചിരിക്കുന്നു!<br><a class="whatsapp-btn" href="https://wa.me/?text=${shareText}" target="_blank">വാട്സാപ്പിൽ ഷെയർ ചെയ്യാം</a>`;
-        } else {
-            resultDiv.className = 'not-found';
-            resultDiv.innerHTML = `ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് ഒന്ന് കൂടി പരിശോധിക്കുക.`;
-        }
-    }
-</script>
-
 </body>
 </html>
