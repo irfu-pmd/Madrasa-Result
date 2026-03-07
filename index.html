@@ -17,4 +17,93 @@
             background-size: cover;
         }
         .container {
-            background: rgba(25
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #2c3e50;
+            white-space: nowrap; /* പേര് ഒറ്റ വരിയിൽ വരാൻ */
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="Madrasa-Logo.png" alt="Logo" class="logo">
+    <h2>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h2>
+    
+    <div class="form-group">
+        <label for="class">ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക:</label>
+        <select id="class">
+            <option value="">തിരഞ്ഞെടുക്കുക</option>
+            <option value="1">ക്ലാസ്സ് 1</option>
+            <option value="2">ക്ലാസ്സ് 2</option>
+            <option value="3">ക്ലാസ്സ് 3</option>
+            <option value="4">ക്ലാസ്സ് 4</option>
+            <option value="5">ക്ലാസ്സ് 5</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="regNo">രജിസ്റ്റർ നമ്പർ:</label>
+        <input type="number" id="regNo" placeholder="നമ്പർ ടൈപ്പ് ചെയ്യുക">
+    </div>
+
+    <button onclick="checkResult()">Result കാണുക</button>
+</div>
+
+<script>
+    function checkResult() {
+        alert("Result പ്രസിദ്ധീകരിച്ചിട്ടില്ല!");
+    }
+</script>
+
+</body>
+</html>
+
