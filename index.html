@@ -28,16 +28,16 @@
     <label>ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</label>
     <select id="class">
         <option value="">--Select Class--</option>
-        <option value="1">Class 1</option>
-        <option value="2">Class 2</option>
-        <option value="3">Class 3</option>
-        <option value="4">Class 4</option>
-        <option value="6">Class 6</option>
-        <option value="8">Class 8</option>
+        <option value="1">ക്ലാസ്സ് 1</option>
+        <option value="2">ക്ലാസ്സ് 2</option>
+        <option value="3">ക്ലാസ്സ് 3</option>
+        <option value="4">ക്ലാസ്സ് 4</option>
+        <option value="6">ക്ലാസ്സ് 6</option>
+        <option value="8">ക്ലാസ്സ് 8</option>
     </select>
 
-    <label>കുട്ടിയുടെ പേര് നൽകുക</label>
-    <input type="text" id="studentName" placeholder="ഉദാഹരണത്തിന്: മിദ്ഹ">
+    <label>കുട്ടിയുടെ പേര് (In English)</label>
+    <input type="text" id="studentName" placeholder="പേര് ഇംഗ്ലീഷിൽ നൽകുക (eg: Midha)">
 
     <button onclick="checkResult()">Result നോക്കാം</button>
 
@@ -46,17 +46,17 @@
 
 <script>
     const winners = {
-        "1": ["മുഹമ്മദ് ഫൈസാൻ PV", "മുഹമ്മദ് റിഹാൻ CK", "മുഹമ്മദ് ജലാലുദ്ദീൻ TT", "ഫാത്തിമ ഇസ്സ P", "ഫാത്തിമ ഹാദിയ TT"],
-        "2": ["മുഹമ്മദ് സൈഹാൻ K", "മുഹമ്മദ് അഷ്മിൽ PT", "ഫാത്തിമ സുമയ്യ TT", "ഖദീജ ലിയാന"],
-        "3": ["ഹസ്‌വ ഫാത്തിമ", "ആയിഷ സബ്രിൻ K"],
-        "4": ["മുഹമ്മദ് ഹാദി PV", "മുഹമ്മദ് അമാൻ C", "ഹയ ഫാത്തിമ PM", "അൻസില മെഹ്റിൻ V", "മിദ്ഹ അബ്ദുൽ കലാം P", "ആയിഷ നുഹ K"],
-        "6": ["ഹനിയ ഫാത്തിമ A", "ഫാത്തിമ ഷഹല VT", "ആസിയ നൈല P", "ഫാത്തിമ റഫ TP"],
-        "8": ["മുഹമ്മദ് അനസ് PM", "മുഹമ്മദ് സ്വാലിഹ് K", "ഫാത്തിമ ഹിൽഫ PT", "ഫാത്തിമ റിൻഷ TT"]
+        "1": ["Muhammed Faizan PV", "Muhammed Rihan CK", "Muhammed Jalaludheen TT", "Fathima Issah P", "Fathima Hadiya TT"],
+        "2": ["Muhammed Saihan K", "Muhammed Ashmil PT", "Fathima Sumayya TT", "Khadija Liyana"],
+        "3": ["Haswa Fathima", "Ayisha Sabrin K"],
+        "4": ["Muhammed Hadi PV", "Muhammed Aman C", "Haya Fathima PM", "Ansila Mehrin V", "Midha Abdul Kalam P", "Ayisha Nuha K"],
+        "6": ["Haniya Fathima A", "Fathima Shahala VT", "Asiya Naila P", "Fathima Rafa TP"],
+        "8": ["Muhammed Anas PM", "Muhammed Swalih K", "Fathima Hilfa PT", "Fathima Rinsha TT"]
     };
 
     function checkResult() {
         const classVal = document.getElementById('class').value;
-        const nameVal = document.getElementById('studentName').value.trim();
+        const nameVal = document.getElementById('studentName').value.trim().toLowerCase();
         const resultDiv = document.getElementById('result');
 
         if (!classVal || !nameVal) {
@@ -65,16 +65,16 @@
         }
 
         const classWinners = winners[classVal] || [];
-        const matchedName = classWinners.find(name => name.toLowerCase().includes(nameVal.toLowerCase()));
+        const matchedName = classWinners.find(name => name.toLowerCase().includes(nameVal));
 
         resultDiv.style.display = 'block';
         if (matchedName) {
             resultDiv.className = 'winner';
-            const shareText = encodeURIComponent(`അഭിനന്ദനങ്ങൾ! അൻവാറുൽ ഇസ്ലാം മദ്രസ വാർഷിക പരീക്ഷയിൽ (2025-26) ${matchedName} വിജയിച്ചിരിക്കുന്നു! 🎉`);
-            resultDiv.innerHTML = `<strong>അഭിനന്ദനങ്ങൾ!</strong><br>${matchedName} വിജയിച്ചിരിക്കുന്നു!<br><a class="whatsapp-btn" href="https://wa.me/?text=${shareText}" target="_blank">Share on WhatsApp</a>`;
+            const shareText = encodeURIComponent(`അഭിനന്ദനങ്ങൾ! അൻവാറുൽ ഇസ്ലാം മദ്രസ വാർഷിക പരീക്ഷയിൽ ${matchedName} വിജയിച്ചിരിക്കുന്നു! 🎉`);
+            resultDiv.innerHTML = `<strong>അഭിനന്ദനങ്ങൾ!</strong><br>${matchedName} വിജയിച്ചിരിക്കുന്നു!<br><a class="whatsapp-btn" href="https://wa.me/?text=${shareText}" target="_blank">വാട്സാപ്പിൽ ഷെയർ ചെയ്യാം</a>`;
         } else {
             resultDiv.className = 'not-found';
-            resultDiv.innerHTML = `ക്ഷമിക്കണം, ഈ പേര് ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല.`;
+            resultDiv.innerHTML = `ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് ഒന്ന് കൂടി പരിശോധിക്കുക.`;
         }
     }
 </script>
