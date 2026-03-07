@@ -9,71 +9,80 @@
             --primary: #065279;
             --gold: #d4af37;
             --success: #27ae60;
-            --bg-gradient: linear-gradient(135deg, #74b9ff 0%, #a29bfe 100%);
         }
+        
+        /* കുട്ടികൾ പഠിക്കുന്ന ആനിമേഷൻ ബാക്ക്ഗ്രൗണ്ട് */
         body { 
             font-family: 'Segoe UI', sans-serif; 
-            background: var(--bg-gradient);
-            display: flex; justify-content: center; align-items: center; 
-            min-height: 100vh; margin: 0; padding: 20px;
-            animation: fadeInBody 1.5s ease-in-out;
-        }
-        @keyframes fadeInBody { from { opacity: 0; } to { opacity: 1; } }
-
-        .container { 
-            background: rgba(255, 255, 255, 0.98); 
-            padding: 40px; border-radius: 30px; 
-            box-shadow: 0 25px 70px rgba(0,0,0,0.25); 
-            width: 100%; max-width: 450px; text-align: center; 
-            border: 4px solid var(--gold);
+            margin: 0; padding: 20px;
+            min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            background: url('https://img.freepik.com/free-vector/muslim-family-concept-illustration_114360-1281.jpg') no-repeat center center fixed;
+            background-size: cover;
             position: relative;
-            overflow: hidden;
-            transform: translateY(0);
-            transition: transform 0.3s;
         }
-        .container:hover { transform: translateY(-5px); }
 
-        /* HD ലോഗോയ്ക്കുള്ള സ്ഥലം */
-        .logo-container { width: 120px; margin: 0 auto 15px auto; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        .logo-container img { width: 100%; height: auto; object-fit: contain; }
+        /* ബാക്ക്ഗ്രൗണ്ടിന് മുകളിൽ ഒരു നേർത്ത നീല നിറം (കൂടുതൽ ഭംഗിക്ക്) */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(6, 82, 121, 0.7); /* Blue overlay */
+            z-index: -1;
+        }
 
-        h2 { color: var(--primary); font-size: 26px; margin: 10px 0; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
-        .sub-txt { color: #d35400; font-weight: bold; margin-bottom: 30px; letter-spacing: 1px; }
+        /* ഗ്ലാസ് പോലെയുള്ള (Glassmorphism) കണ്ടെയ്നർ */
+        .container { 
+            background: rgba(255, 255, 255, 0.92); 
+            backdrop-filter: blur(10px);
+            padding: 40px; border-radius: 30px; 
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4); 
+            width: 100%; max-width: 450px; text-align: center; 
+            border: 3px solid var(--gold);
+            animation: fadeInBody 1.2s ease-in-out;
+        }
+        @keyframes fadeInBody { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .input-group { text-align: left; margin-bottom: 20px; animation: slideIn 0.8s ease-out; }
-        @keyframes slideIn { from { transform: translateX(-30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        
-        label { font-weight: bold; color: #444; display: block; margin-bottom: 8px; }
+        /* HD ലോഗോ സെറ്റിങ്സ് */
+        .logo-container { width: 110px; margin: 0 auto 15px auto; display: block; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .logo-container img { width: 100%; height: auto; object-fit: contain; drop-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        h2 { color: var(--primary); font-size: 28px; margin: 10px 0; font-weight: 900; }
+        .sub-txt { color: #d35400; font-weight: bold; margin-bottom: 25px; letter-spacing: 1px; font-size: 15px;}
+
+        .input-group { text-align: left; margin-bottom: 20px; }
+        label { font-weight: bold; color: #333; display: block; margin-bottom: 8px; font-size: 15px;}
         select, input { 
             width: 100%; padding: 15px; border: 2px solid #ddd; 
             border-radius: 12px; font-size: 16px; outline: none; transition: 0.3s;
+            background: rgba(255,255,255,0.9);
         }
-        select:focus, input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(6, 82, 121, 0.2); }
+        select:focus, input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(6, 82, 121, 0.3); }
 
         button { 
             background: linear-gradient(45deg, var(--primary), #1a7fb3); 
             color: white; padding: 18px; border: none; border-radius: 15px; 
-            width: 100%; margin-top: 15px; cursor: pointer; 
+            width: 100%; margin-top: 10px; cursor: pointer; 
             font-size: 18px; font-weight: bold; transition: 0.4s;
-            box-shadow: 0 8px 15px rgba(6, 82, 121, 0.2);
+            box-shadow: 0 8px 20px rgba(6, 82, 121, 0.3);
         }
-        button:hover { background: linear-gradient(45deg, #1a7fb3, var(--primary)); transform: translateY(-3px); box-shadow: 0 12px 25px rgba(6, 82, 121, 0.3); }
+        button:hover { background: linear-gradient(45deg, #1a7fb3, var(--primary)); transform: translateY(-3px); box-shadow: 0 12px 25px rgba(6, 82, 121, 0.4); }
 
-        #result { margin-top: 35px; display: none; }
+        #result { margin-top: 30px; display: none; }
         .result-card { 
             padding: 30px; border-radius: 20px; border: 3px solid var(--gold);
-            background: #fff; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+            background: white; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
         }
         @keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        .winner-name { font-size: 26px; color: var(--success); font-weight: 800; margin: 15px 0; }
+        .winner-name { font-size: 24px; color: var(--success); font-weight: 800; margin: 15px 0; }
         .whatsapp-btn { 
             background: #25D366; color: white; padding: 12px 25px; 
             text-decoration: none; border-radius: 50px; 
-            display: inline-block; margin-top: 25px; font-weight: bold;
-            font-size: 16px; transition: 0.3s;
+            display: inline-block; margin-top: 20px; font-weight: bold;
+            font-size: 15px; transition: 0.3s;
         }
         .whatsapp-btn:hover { background: #1ebe57; transform: scale(1.05); }
     </style>
@@ -82,7 +91,7 @@
 
 <div class="container">
     <div class="logo-container">
-        <img src="https://irfu-pmd.github.io/Madrasa-Result/Madrasa-Logo.png" alt="Anwarul Islam Madrasa Logo">
+        <img src="https://irfu-pmd.github.io/Madrasa-Result/Madrasa-Logo.png" alt="Madrasa Logo">
     </div>
     <h2>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h2>
     <div class="sub-txt">Annual Exam Results 2025-26</div>
@@ -102,7 +111,7 @@
 
     <div class="input-group">
         <label>പേര് നൽകുക (Malayalam or English)</label>
-        <input type="text" id="studentName" placeholder="Eg: Faizan / ഫൈസാൻ">
+        <input type="text" id="studentName" placeholder="ഉദാ: Faizan / ഫൈസാൻ">
     </div>
 
     <button onclick="checkResult()">RESULT കാണാം</button>
@@ -111,7 +120,6 @@
 </div>
 
 <script>
-    // രണ്ട് ഭാഷയിലുള്ള ലിസ്റ്റ്
     const winners = {
         "1": [
             {en: "Muhammed Faizan PV", ml: "മുഹമ്മദ് ഫൈസാൻ PV"},
@@ -173,15 +181,15 @@
                     <span style="font-size: 60px;">🏆</span>
                     <h3>അഭിനന്ദനങ്ങൾ!</h3>
                     <div class="winner-name">${student.ml}</div>
-                    <p style="color:#555; font-size:18px;">വാർഷിക പരീക്ഷയിൽ മികച്ച വിജയം കൈവരിച്ചിരിക്കുന്നു.</p>
+                    <p style="color:#555; font-size:16px;">വാർഷിക പരീക്ഷയിൽ മികച്ച വിജയം കൈവരിച്ചിരിക്കുന്നു.</p>
                     <a class="whatsapp-btn" href="https://wa.me/?text=${msg}" target="_blank">വാട്സാപ്പിൽ പങ്കുവെക്കാം</a>
                 </div>
             `;
         } else {
             resultDiv.innerHTML = `
-                <div class="result-card" style="border-color:#e74c3c; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.15);">
+                <div class="result-card" style="border-color:#e74c3c; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.2);">
                     <span style="font-size: 45px;">🔍</span><br>
-                    <p style="color:#c0392b; font-weight:bold;">ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് ഒന്ന് കൂടി പരിശോധിക്കുമല്ലോ.</p>
+                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് പരിശോധിക്കുക.</p>
                 </div>`;
         }
     }
