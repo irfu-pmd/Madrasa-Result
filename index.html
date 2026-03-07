@@ -182,4 +182,17 @@
                     <h3>അഭിനന്ദനങ്ങൾ!</h3>
                     <div class="winner-name">${student.ml}</div>
                     <p style="color:#555; font-size:16px;">വാർഷിക പരീക്ഷയിൽ മികച്ച വിജയം കൈവരിച്ചിരിക്കുന്നു.</p>
-                    <a class="whatsapp-btn" href="https://
+                    <a class="whatsapp-btn" href="https://wa.me/?text=${msg}" target="_blank">വാട്സാപ്പിൽ പങ്കുവെക്കാം</a>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `
+                <div class="result-card" style="border-color:#e74c3c; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.2);">
+                    <span style="font-size: 45px;">🔍</span><br>
+                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് പരിശോധിക്കുക.</p>
+                </div>`;
+        }
+    }
+</script>
+</body>
+</html>
