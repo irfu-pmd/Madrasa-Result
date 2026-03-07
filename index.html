@@ -11,18 +11,18 @@
             --success: #27ae60;
         }
         
-        /* കുട്ടികൾ പഠിക്കുന്ന ആനിമേഷൻ ബാക്ക്ഗ്രൗണ്ട് */
+        /* കാർട്ടൂൺ ബാക്ക്ഗ്രൗണ്ട് */
         body { 
             font-family: 'Segoe UI', sans-serif; 
             margin: 0; padding: 20px;
             min-height: 100vh;
             display: flex; justify-content: center; align-items: center;
-            background: url('https://img.freepik.com/free-vector/muslim-family-concept-illustration_114360-1281.jpg') no-repeat center center fixed;
+            background: url('https://img.freepik.com/free-vector/islamic-concept-illustration_114360-1281.jpg') no-repeat center center fixed;
             background-size: cover;
             position: relative;
         }
 
-        /* ബാക്ക്ഗ്രൗണ്ടിന് മുകളിൽ ഒരു നേർത്ത നീല നിറം (കൂടുതൽ ഭംഗിക്ക്) */
+        /* ബാക്ക്ഗ്രൗണ്ടിന് മുകളിൽ നേർത്ത നീല overlay (കൂടുതൽ ഭംഗിക്ക്) */
         body::before {
             content: '';
             position: absolute;
@@ -33,7 +33,7 @@
 
         /* ഗ്ലാസ് പോലെയുള്ള (Glassmorphism) കണ്ടെയ്നർ */
         .container { 
-            background: rgba(255, 255, 255, 0.92); 
+            background: rgba(255, 255, 255, 0.9); 
             backdrop-filter: blur(10px);
             padding: 40px; border-radius: 30px; 
             box-shadow: 0 25px 70px rgba(0,0,0,0.4); 
@@ -182,17 +182,4 @@
                     <h3>അഭിനന്ദനങ്ങൾ!</h3>
                     <div class="winner-name">${student.ml}</div>
                     <p style="color:#555; font-size:16px;">വാർഷിക പരീക്ഷയിൽ മികച്ച വിജയം കൈവരിച്ചിരിക്കുന്നു.</p>
-                    <a class="whatsapp-btn" href="https://wa.me/?text=${msg}" target="_blank">വാട്സാപ്പിൽ പങ്കുവെക്കാം</a>
-                </div>
-            `;
-        } else {
-            resultDiv.innerHTML = `
-                <div class="result-card" style="border-color:#e74c3c; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.2);">
-                    <span style="font-size: 45px;">🔍</span><br>
-                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് പരിശോധിക്കുക.</p>
-                </div>`;
-        }
-    }
-</script>
-</body>
-</html>
+                    <a class="whatsapp-btn" href="https://
