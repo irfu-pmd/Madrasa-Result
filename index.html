@@ -9,69 +9,75 @@
             --primary: #065279;
             --gold: #d4af37;
             --success: #27ae60;
+            --accent: #f39c12;
         }
         body { 
             font-family: 'Segoe UI', sans-serif; 
             background: #f0f4f8 url('https://www.transparenttextures.com/patterns/islamic-art.png');
             display: flex; justify-content: center; align-items: center; 
             min-height: 100vh; margin: 0; padding: 20px;
-            animation: fadeInBody 1.5s ease;
+            animation: fadeInBody 1.2s ease-in-out;
         }
         @keyframes fadeInBody { from { opacity: 0; } to { opacity: 1; } }
 
         .container { 
             background: rgba(255, 255, 255, 0.98); 
             padding: 40px; border-radius: 30px; 
-            box-shadow: 0 25px 70px rgba(0,0,0,0.2); 
+            box-shadow: 0 25px 70px rgba(0,0,0,0.15); 
             width: 100%; max-width: 450px; text-align: center; 
             border: 3px solid var(--gold);
             position: relative;
-            transform: scale(1);
-            transition: transform 0.3s;
+            overflow: hidden;
         }
-        .container:hover { transform: scale(1.01); }
+        
+        /* Lens-ന് പകരം മനോഹരമായ ഒരു ബുക്ക്/വിദ്യാഭ്യാസ ഐക്കൺ */
+        .top-decoration { font-size: 50px; margin-bottom: 10px; display: block; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        .top-icon { width: 70px; margin-bottom: 10px; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        h2 { color: var(--primary); font-size: 26px; margin: 10px 0; font-weight: 800; }
+        .sub-txt { color: var(--accent); font-weight: bold; margin-bottom: 30px; letter-spacing: 1px; }
 
-        h2 { color: var(--primary); font-size: 24px; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
-        .sub-txt { color: #d35400; font-weight: bold; margin-bottom: 25px; }
-
-        .input-group { text-align: left; margin-bottom: 15px; }
-        label { font-weight: bold; color: #444; display: block; margin-bottom: 5px; }
+        .input-group { text-align: left; margin-bottom: 20px; animation: slideIn 0.8s ease-out; }
+        @keyframes slideIn { from { transform: translateX(-30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        
+        label { font-weight: bold; color: #444; display: block; margin-bottom: 8px; }
         select, input { 
             width: 100%; padding: 14px; border: 2px solid #ddd; 
             border-radius: 12px; font-size: 16px; outline: none; transition: 0.3s;
         }
-        select:focus, input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(6, 82, 121, 0.2); }
+        select:focus, input:focus { border-color: var(--primary); box-shadow: 0 0 12px rgba(6, 82, 121, 0.15); }
 
         button { 
-            background: linear-gradient(45deg, var(--primary), #0a7fb3); 
-            color: white; padding: 16px; border: none; border-radius: 12px; 
-            width: 100%; margin-top: 15px; cursor: pointer; 
+            background: linear-gradient(45deg, var(--primary), #1a7fb3); 
+            color: white; padding: 18px; border: none; border-radius: 15px; 
+            width: 100%; margin-top: 10px; cursor: pointer; 
             font-size: 18px; font-weight: bold; transition: 0.4s;
+            box-shadow: 0 8px 15px rgba(6, 82, 121, 0.2);
         }
-        button:hover { background: linear-gradient(45deg, #0a7fb3, var(--primary)); letter-spacing: 1px; }
+        button:hover { background: linear-gradient(45deg, #1a7fb3, var(--primary)); transform: translateY(-2px); box-shadow: 0 12px 20px rgba(6, 82, 121, 0.3); }
 
         #result { margin-top: 30px; display: none; }
         .result-card { 
-            padding: 25px; border-radius: 20px; border: 2px solid var(--gold);
-            background: #fff; animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 30px; border-radius: 20px; border: 2.5px solid var(--gold);
+            background: #fff; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
         }
-        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes popIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        .winner-name { font-size: 22px; color: var(--success); font-weight: bold; margin: 10px 0; }
+        .winner-name { font-size: 24px; color: var(--success); font-weight: 800; margin: 15px 0; }
         .whatsapp-btn { 
-            background: #25D366; color: white; padding: 12px 20px; 
+            background: #25D366; color: white; padding: 12px 25px; 
             text-decoration: none; border-radius: 50px; 
-            display: inline-block; margin-top: 15px; font-weight: bold;
+            display: inline-block; margin-top: 20px; font-weight: bold;
+            transition: 0.3s;
         }
+        .whatsapp-btn:hover { background: #1ebe57; transform: scale(1.05); }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <img src="https://cdn-icons-png.flaticon.com/512/3389/3389381.png" class="top-icon" alt="Icon">
+    <span class="top-decoration">📖</span>
     <h2>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h2>
     <div class="sub-txt">Annual Exam Results 2025-26</div>
     
@@ -89,17 +95,16 @@
     </div>
 
     <div class="input-group">
-        <label>പേര് നൽകുക (Malayalam or English)</label>
+        <label>പേര് നൽകുക (In English or മലയാളം)</label>
         <input type="text" id="studentName" placeholder="ഉദാ: Faizan / ഫൈസാൻ">
     </div>
 
-    <button onclick="checkResult()">RESULT കാണാം</button>
+    <button onclick="checkResult()">RESULT നോക്കാം</button>
 
     <div id="result"></div>
 </div>
 
 <script>
-    // രണ്ട് ഭാഷയിലുള്ള ലിസ്റ്റ്
     const winners = {
         "1": [
             {en: "Muhammed Faizan PV", ml: "മുഹമ്മദ് ഫൈസാൻ PV"},
@@ -120,4 +125,59 @@
         ],
         "4": [
             {en: "Muhammed Hadi PV", ml: "മുഹമ്മദ് ഹാദി PV"},
-            {en: "Muhammed Aman C", ml: "മുഹമ്മദ്
+            {en: "Muhammed Aman C", ml: "മുഹമ്മദ് അമാൻ C"},
+            {en: "Haya Fathima PM", ml: "ഹയ ഫാത്തിമ PM"},
+            {en: "Ansila Mehrin V", ml: "അൻസില മെഹ്റിൻ V"},
+            {en: "Midha Abdul Kalam P", ml: "മിദ്ഹ അബ്ദുൽ കലാം P"},
+            {en: "Ayisha Nuha K", ml: "ആയിഷ നുഹ K"}
+        ],
+        "6": [
+            {en: "Haniya Fathima A", ml: "ഹനിയ ഫാത്തിമ A"},
+            {en: "Fathima Shahala VT", ml: "ഫാത്തിമ ഷഹല VT"},
+            {en: "Asiya Naila P", ml: "ആസിയ നൈല P"},
+            {en: "Fathima Rafa TP", ml: "ഫാത്തിമ റഫ TP"}
+        ],
+        "8": [
+            {en: "Muhammed Anas PM", ml: "മുഹമ്മദ് അനസ് PM"},
+            {en: "Muhammed Swalih K", ml: "മുഹമ്മദ് സ്വാലിഹ് K"},
+            {en: "Fathima Hilfa PT", ml: "ഫാത്തിമ ഹിൽഫ PT"},
+            {en: "Fathima Rinsha TT", ml: "ഫാത്തിമ റിൻഷ TT"}
+        ]
+    };
+
+    function checkResult() {
+        const classVal = document.getElementById('class').value;
+        const input = document.getElementById('studentName').value.trim().toLowerCase();
+        const resultDiv = document.getElementById('result');
+
+        if (!classVal || !input) {
+            alert("ദയവായി ക്ലാസ്സും പേരും നൽകുക.");
+            return;
+        }
+
+        const classList = winners[classVal] || [];
+        const student = classList.find(s => s.en.toLowerCase().includes(input) || s.ml.includes(input));
+
+        resultDiv.style.display = 'block';
+        if (student) {
+            const msg = encodeURIComponent(`അഭിനന്ദനങ്ങൾ! അൻവാറുൽ ഇസ്ലാം മദ്രസ പരീക്ഷയിൽ ${student.ml} വിജയിച്ചിരിക്കുന്നു! 🎉🏆`);
+            resultDiv.innerHTML = `
+                <div class="result-card">
+                    <span style="font-size: 55px;">🎖️</span>
+                    <h3>അഭിനന്ദനങ്ങൾ!</h3>
+                    <div class="winner-name">${student.ml}</div>
+                    <p style="color:#555; font-size:18px;">വാർഷിക പരീക്ഷയിൽ മികച്ച വിജയം കൈവരിച്ചിരിക്കുന്നു.</p>
+                    <a class="whatsapp-btn" href="https://wa.me/?text=${msg}" target="_blank">വാട്സാപ്പിൽ പങ്കുവെക്കാം</a>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `
+                <div class="result-card" style="border-color:#e74c3c; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.15);">
+                    <span style="font-size: 45px;">🔍</span><br>
+                    <p style="color:#c0392b; font-weight:bold;">ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് ഒന്ന് കൂടി പരിശോധിക്കുമല്ലോ.</p>
+                </div>`;
+        }
+    }
+</script>
+</body>
+</html>
