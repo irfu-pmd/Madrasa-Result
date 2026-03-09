@@ -5,93 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ഓൺലൈൻ അഡ്മിഷൻ - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
     <style>
-        :root { --primary: #065279; --gold: #d4af37; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; padding: 20px; }
+        :root { --primary: #065279; --gold: #d4af37; --bg: #f0f4f8; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
         .form-container { 
-            background: white; max-width: 500px; margin: 0 auto; 
+            background: white; max-width: 600px; margin: 0 auto; 
             padding: 30px; border-radius: 20px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 8px solid var(--primary);
         }
-        h2 { color: var(--primary); text-align: center; margin-bottom: 20px; }
-        .input-group { margin-bottom: 15px; text-align: left; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; }
-        input, select { 
+        h2 { color: var(--primary); text-align: center; margin-bottom: 5px; }
+        .sub-text { text-align: center; font-size: 14px; color: #666; margin-bottom: 25px; }
+        
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; font-size: 14px; }
+        input, select, textarea { 
             width: 100%; padding: 12px; border: 2px solid #ddd; 
             border-radius: 10px; box-sizing: border-box; font-size: 16px;
         }
+        input[readonly] { background-color: #f9f9f9; cursor: not-allowed; color: #666; }
+        
+        .row { display: flex; gap: 10px; }
+        .row .input-group { flex: 1; }
+
         button { 
-            background: var(--primary); color: white; width: 100%; 
+            background: #2e7d32; color: white; width: 100%; 
             padding: 15px; border: none; border-radius: 10px; 
-            font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px;
+            font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
         }
-        .back-link { display: block; text-align: center; margin-top: 20px; color: var(--primary); text-decoration: none; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: var(--primary); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="form-container">
     <h2>ഓൺലൈൻ അഡ്മിഷൻ</h2>
-    <p style="text-align: center; font-size: 14px; color: #666;">അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന് (Reg No: 6948)</p>
+    <div class="sub-text">അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
     
     <div class="input-group">
-        <label>കുട്ടിയുടെ പേര്</label>
+        <label>മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും (Name & Recog. No.)</label>
+        <input type="text" id="madrasaInfo" value="അൻവാറുൽ ഇസ്ലാം മദ്രസ - 6948" readonly>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+    <div class="input-group">
+        <label>വിദ്യാർത്ഥിയുടെ പേരും ഇനിഷ്യലും (Name of Student with initials)</label>
         <input type="text" id="studentName" placeholder="പേര് ടൈപ്പ് ചെയ്യുക">
     </div>
 
     <div class="input-group">
-        <label>ലിംഗം</label>
-        <select id="gender">
-            <option value="ആൺകുട്ടി">ആൺകുട്ടി</option>
-            <option value="പെൺകുട്ടി">പെൺകുട്ടി</option>
-        </select>
+        <label>വീട്ടുപേരും വിലാസവും (House Name & Address)</label>
+        <textarea id="address" rows="2" placeholder="പൂർണ്ണമായ വിലാസം"></textarea>
     </div>
 
-    <div class="input-group">
-        <label>പിതാവിന്റെ പേര്</label>
-        <input type="text" id="parentName" placeholder="പിതാവിന്റെ പേര്">
+    <div class="row">
+        <div class="input-group">
+            <label>ആധാർ നമ്പർ (Aadhaar No)</label>
+            <input type="number" id="aadhaar" placeholder="Aadhaar Number">
+        </div>
+        <div class="input-group">
+            <label>ലിംഗം (Sex)</label>
+            <select id="sex">
+                <option value="ആൺകുട്ടി">ആൺകുട്ടി (Male)</option>
+                <option value="പെൺകുട്ടി">പെൺകുട്ടി (Female)</option>
+            </select>
+        </div>
     </div>
 
-    <div class="input-group">
-        <label>ഏത് ക്ലാസ്സിലേക്കാണ് അഡ്മിഷൻ?</label>
-        <select id="grade">
-            <option value="">ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</option>
-            <option value="ഒന്നാം ക്ലാസ്സ്">ഒന്നാം ക്ലാസ്സ്</option>
-            <option value="രണ്ടാം ക്ലാസ്സ്">രണ്ടാം ക്ലാസ്സ്</option>
-            <option value="മൂന്നാം ക്ലാസ്സ്">മൂന്നാം ക്ലാസ്സ്</option>
-            <option value="നാലാം ക്ലാസ്സ്">നാലാം ക്ലാസ്സ്</option>
-            <option value="അഞ്ചാം ക്ലാസ്സ്">അഞ്ചാം ക്ലാസ്സ്</option>
-            <option value="ആറാം ക്ലാസ്സ്">ആറാം ക്ലാസ്സ്</option>
-            <option value="ഏഴാം ക്ലാസ്സ്">ഏഴാം ക്ലാസ്സ്</option>
-            <option value="എട്ടാം ക്ലാസ്സ്">എട്ടാം ക്ലാസ്സ്</option>
-        </select>
+    <div class="row">
+        <div class="input-group">
+            <label>ജനന തീയതി (Date of Birth)</label>
+            <input type="date" id="dob">
+        </div>
+        <div class="input-group">
+            <label>പിതാവിന്റെ പേര് (Father's Name)</label>
+            <input type="text" id="fatherName" placeholder="പിതാവിന്റെ പേര്">
+        </div>
     </div>
 
-    <div class="input-group">
-        <label>ഫോൺ നമ്പർ</label>
-        <input type="tel" id="phone" placeholder="ഫോൺ നമ്പർ">
+    <div class="row">
+        <div class="input-group">
+            <label>രക്ഷാകർത്താവിന്റെ പേര് (Guardian Name)</label>
+            <input type="text" id="guardianName" placeholder="രക്ഷാകർത്താവ്">
+        </div>
+        <div class="input-group">
+            <label>ഫോൺ നമ്പർ (Phone No)</label>
+            <input type="tel" id="phone" placeholder="Phone Number">
+        </div>
     </div>
 
-    <button onclick="sendAdmission()">അപേക്ഷ സമർപ്പിക്കാം</button>
+    <div class="row">
+        <div class="input-group">
+            <label>ചേരുന്ന ക്ലാസ്സ് (Std to which admitted)</label>
+            <select id="std">
+                <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                <option value="7">7</option><option value="8">8</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>ടി.സി നമ്പർ (T.C. No - if any)</label>
+            <input type="text" id="tcNo" placeholder="ടി.സി നമ്പർ">
+        </div>
+    </div>
+
+    <button onclick="submitAdmission()">അപേക്ഷ സമർപ്പിക്കാം (Submit)</button>
     
     <a href="index.html" class="back-link">← തിരികെ ഹോം പേജിലേക്ക്</a>
 </div>
 
 <script>
-    function sendAdmission() {
-        const name = document.getElementById('studentName').value;
-        const gender = document.getElementById('gender').value;
-        const parent = document.getElementById('parentName').value;
-        const grade = document.getElementById('grade').value;
+    function submitAdmission() {
+        const mInfo = document.getElementById('madrasaInfo').value;
+        const sName = document.getElementById('studentName').value;
+        const addr = document.getElementById('address').value;
+        const aadh = document.getElementById('aadhaar').value;
+        const sex = document.getElementById('sex').value;
+        const dob = document.getElementById('dob').value;
+        const father = document.getElementById('fatherName').value;
+        const guardian = document.getElementById('guardianName').value;
         const phone = document.getElementById('phone').value;
+        const std = document.getElementById('std').value;
+        const tc = document.getElementById('tcNo').value || "Nil";
 
-        if(!name || !parent || !phone || !grade) {
-            alert("ദയവായി എല്ലാ വിവരങ്ങളും പൂരിപ്പിക്കുക");
+        if(!sName || !phone || !dob) {
+            alert("ദയവായി പേര്, ജനന തീയതി, ഫോൺ നമ്പർ എന്നിവ പൂരിപ്പിക്കുക.");
             return;
         }
 
-        const message = `*പുതിയ അഡ്മിഷൻ അപേക്ഷ*%0A-----------------------%0A*പേര്:* ${name}%0A*ലിംഗം:* ${gender}%0A*പിതാവ്:* ${parent}%0A*ക്ലാസ്സ്:* ${grade}%0A*ഫോൺ:* ${phone}`;
-        
-        window.open(`https://wa.me/919061969505?text=${message}`, '_blank');
+        const msg = `*പുതിയ മദ്രസ അഡ്മിഷൻ അപേക്ഷ*%0A%0A` +
+                    `*മദ്രസ:* ${mInfo}%0A` +
+                    `*വിദ്യാർത്ഥി:* ${sName}%0A` +
+                    `*ലിംഗം:* ${sex}%0A` +
+                    `*വിലാസം:* ${addr}%0A` +
+                    `*ആധാർ:* ${aadh}%0A` +
+                    `*ജനന തീയതി:* ${dob}%0A` +
+                    `*പിതാവ്:* ${father}%0A` +
+                    `*രക്ഷാകർത്താവ്:* ${guardian}%0A` +
+                    `*ഫോൺ:* ${phone}%0A` +
+                    `*ക്ലാസ്സ്:* ${std}%0A` +
+                    `*ടി.സി നമ്പർ:* ${tc}`;
+
+        window.open(`https://wa.me/919061969505?text=${msg}`, '_blank');
     }
 </script>
 
