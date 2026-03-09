@@ -3,176 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - ഹോം പേജ്</title>
+    <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - താഴെ പുല്ലുംകുന്ന്</title>
     <style>
         :root {
             --primary: #065279;
             --gold: #d4af37;
+            --green: #1b5e20;
             --white: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f7f6;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0; padding: 0;
+            background: #f0f4f8;
+            text-align: center;
         }
 
         /* Header Section */
         header {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--gold);
-        }
-
-        .logo-main {
-            width: 100px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        h1 { margin: 0; font-size: 28px; }
-        .location { font-size: 16px; opacity: 0.9; margin-top: 5px; }
-
-        /* Hero / Banner Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .hero h2 { font-size: 32px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-
-        /* Buttons Section */
-        .nav-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            padding: 30px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            background: var(--white);
-            color: var(--primary);
-            padding: 20px;
-            text-decoration: none;
-            border-radius: 15px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 2px solid var(--primary);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .btn:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-5px);
+            padding: 30px 20px;
+            border-bottom: 5px solid var(--gold);
         }
 
-        .btn i { font-size: 30px; margin-bottom: 10px; }
+        .logo { width: 100px; margin-bottom: 10px; }
+        h1 { margin: 5px 0; font-size: 26px; font-weight: 900; }
+        .reg-no { font-size: 14px; background: var(--gold); color: #000; display: inline-block; padding: 2px 10px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; }
+        .board-name { font-size: 15px; opacity: 0.9; font-weight: 500; }
 
-        /* Notice Board */
-        .notice-container {
-            background: #fff;
-            margin: 20px;
-            padding: 20px;
+        /* Welcome Card */
+        .welcome-card {
+            padding: 40px 20px;
+            background: white;
+            margin: -30px 20px 20px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-card h2 { color: var(--green); margin-bottom: 5px; }
+        .welcome-card p { color: #555; line-height: 1.6; }
+
+        /* Buttons Area */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 320px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .main-btn {
+            background: var(--primary);
+            color: white;
+            padding: 18px;
+            text-decoration: none;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid #e74c3c;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(6, 82, 121, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
-        .notice-title { color: #e74c3c; font-weight: bold; margin-bottom: 10px; display: block; }
+        .main-btn:hover {
+            background: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .secondary-btn {
+            background: #fff;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
 
         /* Footer */
         footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
             margin-top: 50px;
-        }
-
-        .contact-info { margin-bottom: 15px; }
-        .contact-info a { color: var(--gold); text-decoration: none; font-weight: bold; }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
+            padding: 40px 20px;
+            background: #1a1a1a;
             color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-decoration: none;
         }
+
+        .footer-info { margin-bottom: 20px; font-size: 14px; line-height: 1.8; }
+        .contact-link { color: var(--gold); text-decoration: none; font-weight: bold; }
+        
+        hr { opacity: 0.1; margin: 20px 0; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="Madrasa-Logo.png" alt="Logo" class="logo-main">
+    <img src="Madrasa-Logo.png" alt="Madrasa Logo" class="logo">
+    <div class="reg-no">Reg No: 6948</div>
     <h1>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h1>
-    <div class="location">താഴെ പുല്ലുംകുന്ന്</div>
+    <div class="board-name">Under Samastha Kerala Islam Matha Vidyabhyasa Board (SKIMVB)</div>
+    <p style="margin-top: 10px; opacity: 0.8;">താഴെ പുല്ലുംകുന്ന്</p>
 </header>
 
-<section class="hero">
-    <h2>വിജ്ഞാനത്തിന്റെ തണലിലേക്ക്...</h2>
-    <p>അറിവും അച്ചടക്കവുമുള്ള ഒരു പുതിയ തലമുറയെ വളർത്തിയെടുക്കുന്നു.</p>
-</section>
+<div class="welcome-card">
+    <h2>സ്വാഗതം!</h2>
+    <p>വിജ്ഞാനവും ധാർമ്മികതയും പകർന്നുനൽകുന്ന സ്നേഹതീരം. മദ്രസയുമായി ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും ഇവിടെ ലഭ്യമാണ്.</p>
 
-<div class="notice-container">
-    <span class="notice-title">📢 പ്രധാന അറിയിപ്പുകൾ:</span>
-    <marquee>വാർഷിക പരീക്ഷാ ഫലങ്ങൾ ഇപ്പോൾ വെബ്‌സൈറ്റിൽ ലഭ്യമാണ്. താഴെയുള്ള Result ബട്ടൺ ക്ലിക്ക് ചെയ്ത് പരിശോധിക്കാവുന്നതാണ്.</marquee>
-</div>
-
-<div class="nav-buttons">
-    <a href="result.html" class="btn">
-        <span>📊 പരീക്ഷാ ഫലം</span>
-    </a>
-    <a href="#" class="btn">
-        <span>📸 ഗാലറി</span>
-    </a>
-    <a href="#" class="btn">
-        <span>📝 അഡ്മിഷൻ</span>
-    </a>
-    <a href="#" class="btn">
-        <span>📖 പാഠപുസ്തകങ്ങൾ</span>
-    </a>
+    <div class="btn-container">
+        <a href="result.html" class="main-btn">📊 പരീക്ഷാ ഫലം പരിശോധിക്കാം</a>
+        <a href="#" class="main-btn secondary-btn">📸 ഗാലറി (ഉടൻ വരുന്നു)</a>
+        <a href="https://wa.me/919061969505" class="main-btn" style="background: #25D366;">💬 വാട്സാപ്പ് വഴി ബന്ധപ്പെടാം</a>
+    </div>
 </div>
 
 <footer>
-    <div class="contact-info">
-        <p>📍 സ്ഥലം: താഴെ പുല്ലുംകുന്ന്</p>
-        <p>📞 ഫോൺ: <a href="tel:+919061969505">9061969505</a></p>
+    <div class="footer-info">
+        <p><b>അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</b></p>
+        <p>സമസ്ത കേരള ഇസ്ലാം മത വിദ്യാഭ്യാസ ബോർഡ് (രജി: 6948)</p>
+        <p>📞 ഫോൺ: <a href="tel:+919061969505" class="contact-link">9061969505</a></p>
     </div>
-    <p>&copy; 2026 Anwarul Islam Madrasa. All Rights Reserved.</p>
+    <hr>
+    <p style="font-size: 12px; opacity: 0.5;">&copy; 2026 Anwarul Islam Madrasa. All Rights Reserved.</p>
 </footer>
-
-<a href="https://wa.me/919061969505" class="whatsapp-float" target="_blank">
-    💬
-</a>
 
 </body>
 </html>
