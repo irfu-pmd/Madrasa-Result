@@ -3,200 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - പരീക്ഷാ ഫലം</title>
+    <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - ഹോം പേജ്</title>
     <style>
         :root {
             --primary: #065279;
             --gold: #d4af37;
-            --success: #27ae60;
+            --white: #ffffff;
         }
-        
-        body { 
-            font-family: 'Segoe UI', sans-serif; 
-            margin: 0; padding: 20px;
-            min-height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-            background: url('bg.jpg') no-repeat center center fixed;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7f6;
+        }
+
+        /* Header Section */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .logo-main {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        h1 { margin: 0; font-size: 28px; }
+        .location { font-size: 16px; opacity: 0.9; margin-top: 5px; }
+
+        /* Hero / Banner Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg.jpg');
             background-size: cover;
-            position: relative;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(6, 82, 121, 0.4); /* ബാക്ക്ഗ്രൗണ്ട് തെളിഞ്ഞു കാണാൻ ഒപ്പാസിറ്റി കുറച്ചു */
-            z-index: -1;
+        .hero h2 { font-size: 32px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+        /* Buttons Section */
+        .nav-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 30px 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .container { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(8px);
-            padding: 30px; border-radius: 30px; 
-            box-shadow: 0 25px 70px rgba(0,0,0,0.4); 
-            width: 100%; max-width: 450px; text-align: center; 
-            border: 3px solid var(--gold);
-            animation: fadeInBody 1.2s ease-in-out;
+        .btn {
+            background: var(--white);
+            color: var(--primary);
+            padding: 20px;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid var(--primary);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        @keyframes fadeInBody { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .logo-container { width: 100px; margin: 0 auto 10px auto; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .logo-container img { width: 100%; height: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)); }
-
-        h2 { 
-            color: var(--primary); 
-            font-size: 26px; 
-            margin: 10px 0; 
-            font-weight: 900; 
-            white-space: nowrap; /* പേര് ഒറ്റ വരിയിൽ വരാൻ */
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
         }
-        .sub-txt { color: #d35400; font-weight: bold; margin-bottom: 25px; letter-spacing: 1px; font-size: 15px;}
 
-        .input-group { text-align: left; margin-bottom: 20px; }
-        label { font-weight: bold; color: #333; display: block; margin-bottom: 8px; font-size: 15px;}
-        select, input { 
-            width: 100%; padding: 15px; border: 2px solid #ddd; 
-            border-radius: 12px; font-size: 16px; outline: none; transition: 0.3s;
-            background: rgba(255,255,255,0.9);
-            box-sizing: border-box;
+        .btn i { font-size: 30px; margin-bottom: 10px; }
+
+        /* Notice Board */
+        .notice-container {
+            background: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #e74c3c;
         }
-        select:focus, input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(6, 82, 121, 0.3); }
 
-        button { 
-            background: linear-gradient(45deg, var(--primary), #1a7fb3); 
-            color: white; padding: 18px; border: none; border-radius: 15px; 
-            width: 100%; margin-top: 10px; cursor: pointer; 
-            font-size: 18px; font-weight: bold; transition: 0.4s;
-            box-shadow: 0 8px 20px rgba(6, 82, 121, 0.3);
+        .notice-title { color: #e74c3c; font-weight: bold; margin-bottom: 10px; display: block; }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
         }
-        button:hover { background: linear-gradient(45deg, #1a7fb3, var(--primary)); transform: translateY(-3px); }
 
-        #result { margin-top: 30px; display: none; }
-        .result-card { 
-            padding: 30px; border-radius: 20px; border: 3px solid var(--gold);
-            background: white; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
-        }
-        @keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .contact-info { margin-bottom: 15px; }
+        .contact-info a { color: var(--gold); text-decoration: none; font-weight: bold; }
 
-        .winner-name { font-size: 24px; color: var(--success); font-weight: 800; margin: 15px 0; }
-        .whatsapp-btn { 
-            background: #25D366; color: white; padding: 12px 25px; 
-            text-decoration: none; border-radius: 50px; 
-            display: inline-block; margin-top: 20px; font-weight: bold;
-            font-size: 15px;
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="logo-container">
-        <img src="Madrasa-Logo.png" alt="Madrasa Logo">
-    </div>
-    <h2>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h2>
-    <div class="sub-txt">Annual Exam Results 2025-26</div>
-    
-    <div class="input-group">
-        <label>ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</label>
-        <select id="class">
-            <option value="">-- തിരഞ്ഞെടുക്കുക --</option>
-            <option value="1">Class 1</option>
-            <option value="2">Class 2</option>
-            <option value="3">Class 3</option>
-            <option value="4">Class 4</option>
-            <option value="6">Class 6</option>
-            <option value="8">Class 8</option>
-        </select>
-    </div>
+<header>
+    <img src="Madrasa-Logo.png" alt="Logo" class="logo-main">
+    <h1>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h1>
+    <div class="location">താഴെ പുല്ലുംകുന്ന്</div>
+</header>
 
-    <div class="input-group">
-        <label>പേര് നൽകുക</label>
-        <input type="text" id="studentName" placeholder="ഉദാ: Faizan / ഫൈസാൻ">
-    </div>
+<section class="hero">
+    <h2>വിജ്ഞാനത്തിന്റെ തണലിലേക്ക്...</h2>
+    <p>അറിവും അച്ചടക്കവുമുള്ള ഒരു പുതിയ തലമുറയെ വളർത്തിയെടുക്കുന്നു.</p>
+</section>
 
-    <button onclick="checkResult()">RESULT കാണാം</button>
-
-    <div id="result"></div>
+<div class="notice-container">
+    <span class="notice-title">📢 പ്രധാന അറിയിപ്പുകൾ:</span>
+    <marquee>വാർഷിക പരീക്ഷാ ഫലങ്ങൾ ഇപ്പോൾ വെബ്‌സൈറ്റിൽ ലഭ്യമാണ്. താഴെയുള്ള Result ബട്ടൺ ക്ലിക്ക് ചെയ്ത് പരിശോധിക്കാവുന്നതാണ്.</marquee>
 </div>
 
-<script>
-    const winners = {
-        "1": [
-            {en: "Muhammed Faizan PV", ml: "മുഹമ്മദ് ഫൈസാൻ PV"},
-            {en: "Muhammed Rihan CK", ml: "മുഹമ്മദ് റിഹാൻ CK"},
-            {en: "Muhammed Jalaludheen TT", ml: "മുഹമ്മദ് ജലാലുദ്ദീൻ TT"},
-            {en: "Fathima Izza P", ml: "ഫാത്തിമ ഇസ്സ P"},
-            {en: "Fathima Hadiya TT", ml: "ഫാത്തിമ ഹാദിയ TT"}
-        ],
-        "2": [
-            {en: "Muhammed Saihan K", ml: "മുഹമ്മദ് സൈഹാൻ K"},
-            {en: "Muhammed Ashmil PT", ml: "മുഹമ്മദ് അഷ്മിൽ PT"},
-            {en: "Fathima Sumayya TT", ml: "ഫാത്തിമ സുമയ്യ TT"},
-            {en: "Khadeeja Liyana", ml: "ഖദീജ ലിയാന"}
-        ],
-        "3": [
-            {en: "Hazwa Fathima", ml: "ഹസ്‌വ ഫാത്തിമ"},
-            {en: "Ayisha Sabrin K", ml: "ആയിഷ സബ്രിൻ K"}
-        ],
-        "4": [
-            {en: "Muhammed Hadi PV", ml: "മുഹമ്മദ് ഹാദി PV"},
-            {en: "Muhammed Aman C", ml: "മുഹമ്മദ് അമാൻ C"},
-            {en: "Haya Fathima PM", ml: "ഹയ ഫാത്തിമ PM"},
-            {en: "Ansila Mehrin V", ml: "അൻസില മെഹ്റിൻ V"},
-            {en: "Midha Abdul Kalam P", ml: "മിദ്ഹ അബ്ദുൽ കലാം P"},
-            {en: "Ayisha Nuha K", ml: "ആയിഷ നുഹ K"}
-        ],
-        "6": [
-            {en: "Haniya Fathima A", ml: "ഹനിയ ഫാത്തിമ A"},
-            {en: "Fathima Shahala VT", ml: "ഫാത്തിമ ഷഹല VT"},
-            {en: "Asiya Naila P", ml: "ആസിയ നൈല P"},
-            {en: "Fathima Rafa TP", ml: "ഫാത്തിമ റഫ TP"}
-        ],
-        "8": [
-            {en: "Muhammed Anas PM", ml: "മുഹമ്മദ് അനസ് PM"},
-            {en: "Muhammed Swalih K", ml: "മുഹമ്മദ് സ്വാലിഹ് K"},
-            {en: "Fathima Hilfa PT", ml: "ഫാത്തിമ ഹിൽഫ PT"},
-            {en: "Fathima Rinsha TT", ml: "ഫാത്തിമ റിൻഷ TT"}
-        ]
-    };
+<div class="nav-buttons">
+    <a href="result.html" class="btn">
+        <span>📊 പരീക്ഷാ ഫലം</span>
+    </a>
+    <a href="#" class="btn">
+        <span>📸 ഗാലറി</span>
+    </a>
+    <a href="#" class="btn">
+        <span>📝 അഡ്മിഷൻ</span>
+    </a>
+    <a href="#" class="btn">
+        <span>📖 പാഠപുസ്തകങ്ങൾ</span>
+    </a>
+</div>
 
-    function checkResult() {
-        const classVal = document.getElementById('class').value;
-        const input = document.getElementById('studentName').value.trim().toLowerCase();
-        const resultDiv = document.getElementById('result');
+<footer>
+    <div class="contact-info">
+        <p>📍 സ്ഥലം: താഴെ പുല്ലുംകുന്ന്</p>
+        <p>📞 ഫോൺ: <a href="tel:+919061969505">9061969505</a></p>
+    </div>
+    <p>&copy; 2026 Anwarul Islam Madrasa. All Rights Reserved.</p>
+</footer>
 
-        if (!classVal || !input) {
-            alert("ദയവായി ക്ലാസ്സും പേരും നൽകുക.");
-            return;
-        }
+<a href="https://wa.me/919061969505" class="whatsapp-float" target="_blank">
+    💬
+</a>
 
-        const classList = winners[classVal] || [];
-        const student = classList.find(s => s.en.toLowerCase().includes(input) || s.ml.includes(input));
-
-        resultDiv.style.display = 'block';
-        if (student) {
-            const msg = encodeURIComponent(`അഭിനന്ദനങ്ങൾ! അൻവാറുൽ ഇസ്ലാം മദ്രസ പരീക്ഷയിൽ ${student.ml} വിജയിച്ചിരിക്കുന്നു! 🎉🏆`);
-            resultDiv.innerHTML = `
-                <div class="result-card">
-                    <span style="font-size: 60px;">🏆</span>
-                    <h3>അഭിനന്ദനങ്ങൾ!</h3>
-                    <div class="winner-name">${student.ml}</div>
-                    <p style="color:#555; font-size:16px;">വാർഷിക പരീക്ഷയിൽ മികച്ച വിജയം കൈവരിച്ചിരിക്കുന്നു.</p>
-                    <a class="whatsapp-btn" href="https://wa.me/?text=${msg}" target="_blank">വാട്സാപ്പിൽ പങ്കുവെക്കാം</a>
-                </div>
-            `;
-        } else {
-            resultDiv.innerHTML = `
-                <div class="result-card" style="border-color:#e74c3c; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.2);">
-                    <span style="font-size: 45px;">🔍</span><br>
-                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് പരിശോധിക്കുക.</p>
-                </div>`;
-        }
-    }
-</script>
 </body>
 </html>
