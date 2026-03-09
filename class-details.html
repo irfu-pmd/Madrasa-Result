@@ -6,40 +6,29 @@
     <title>വിദ്യാർത്ഥി രേഖകൾ - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
     <style>
         :root { --primary: #065279; --gold: #d4af37; --bg: #f0f4f8; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-top: 10px solid var(--primary); }
-        h2 { color: var(--primary); text-align: center; margin-bottom: 25px; }
-        select { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #ddd; font-size: 17px; cursor: pointer; background: #fff; margin-bottom: 30px; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 10px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 8px solid var(--primary); }
+        h2 { color: var(--primary); text-align: center; font-size: 22px; }
+        select { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #ddd; font-size: 16px; margin-bottom: 25px; }
         
-        .info-card { display: none; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .info-card { display: none; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Updated Teacher Badge Styling */
-        .teacher-badge { 
-            background: #e3f2fd; 
-            padding: 15px; 
-            border-radius: 12px; 
-            border-left: 6px solid #2196f3; 
-            margin-bottom: 20px; 
-            text-align: left;
-            font-size: 18px;
-            color: #333;
-        }
-        .teacher-badge b { color: var(--primary); }
-
-        .table-container { overflow-x: auto; margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; background: #fff; min-width: 600px; }
-        th { background: var(--primary); color: white; padding: 12px; text-align: left; font-size: 14px; }
-        td { padding: 12px; border-bottom: 1px solid #eee; font-size: 14px; text-align: left; vertical-align: top; }
+        .teacher-badge { background: #e3f2fd; padding: 12px; border-radius: 10px; border-left: 5px solid #2196f3; margin-bottom: 20px; font-size: 16px; }
+        
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        th { background: var(--primary); color: white; padding: 12px; text-align: left; font-size: 13px; white-space: nowrap; }
+        td { padding: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
         tr:nth-child(even) { background: #fafafa; }
         
-        .back-btn { display: inline-block; margin-top: 30px; padding: 12px 25px; background: var(--primary); color: white; text-decoration: none; border-radius: 30px; font-weight: bold; width: 100%; text-align: center; box-sizing: border-box; }
+        .back-btn { display: block; margin-top: 25px; padding: 15px; background: var(--primary); color: white; text-decoration: none; border-radius: 15px; text-align: center; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>വിദ്യാർത്ഥികളുടെ വിശദവിവരങ്ങൾ</h2>
+    <h2>വിദ്യാർത്ഥി വിശദവിവരങ്ങൾ</h2>
     
     <select id="classSelector" onchange="updateView()">
         <option value="">-- ക്ലാസ് തിരഞ്ഞെടുക്കുക --</option>
@@ -55,12 +44,12 @@
         <div class="teacher-badge"><b>അധ്യാപകൻ:</b> ഇർഷാദ് മാഹിരി P</div>
         <div class="table-container">
             <table>
-                <tr><th>പേര്</th><th>പിതാവ്</th><th>വിലാസം</th><th>ഫോൺ</th></tr>
-                <tr><td>MUHAMMED FAIZAN PV</td><td>Thajudheen PV</td><td>PALLIVEETTIL, PULLUMKUNNU</td><td>9048332883</td></tr>
-                <tr><td>MUHAMMED RIHAN CK</td><td>HARSHAD CK</td><td>KUTTIKKAD, PULLUMKUNNU</td><td>9947303660</td></tr>
-                <tr><td>MUHAMMED JALALUDHEEN TT</td><td>MOHAMMED SHAFI</td><td>THADATHIL THODI, PULLUMKUNNU</td><td>9048286783</td></tr>
-                <tr><td>FATHIMA IZZA P</td><td>ANAS P</td><td>THADATHIL, PULLUMKUNNU</td><td>9562171749</td></tr>
-                <tr><td>FATHIMA HADIYA TT</td><td>SHAHUL HAMEED TT</td><td>THADATHIL THODI, PULLUMKUNNU</td><td>8089077764</td></tr>
+                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
+                <tr><td>F06948002</td><td>123</td><td>MUHAMMED FAIZAN PV</td><td>Thajudheen PV</td><td>9048332883</td></tr>
+                <tr><td>F06948003</td><td>124</td><td>MUHAMMED RIHAN CK</td><td>HARSHAD CK</td><td>9947303660</td></tr>
+                <tr><td>F06948004</td><td>125</td><td>MUHAMMED JALALUDHEEN TT</td><td>MOHAMMED SHAFI</td><td>9048286783</td></tr>
+                <tr><td>F06948006</td><td>127</td><td>FATHIMA IZZA P</td><td>ANAS P</td><td>9562171749</td></tr>
+                <tr><td>F06948007</td><td>130</td><td>FATHIMA HADIYA TT</td><td>SHAHUL HAMEED TT</td><td>8089077764</td></tr>
             </table>
         </div>
     </div>
@@ -69,10 +58,11 @@
         <div class="teacher-badge"><b>അധ്യാപകൻ:</b> ഹംസ ഫൈസി കുന്നത്തേരി</div>
         <div class="table-container">
             <table>
-                <tr><th>പേര്</th><th>പിതാവ്</th><th>വിലാസം</th><th>ഫോൺ</th></tr>
-                <tr><td>MUHAMMAD SAIHAN KK</td><td>Abdul Samad KK</td><td>Maimoona Manzil, Vaidyarangadi</td><td>9526331671</td></tr>
-                <tr><td>MUHAMMAD ASHMIL PT</td><td>Jamshad PT</td><td>Kayakkad, Pullumkunnu</td><td>8129566099</td></tr>
-                <tr><td>FATHIMA SUMAYYA TT</td><td>Ahmed Kabeer TT</td><td>Thadathi Thodi, Pullumkunnu</td><td>9947112533</td></tr>
+                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
+                <tr><td>D06948004</td><td>97</td><td>MUHAMMAD SALIH TT</td><td>Abdul Salam TT</td><td>919744455338</td></tr>
+                <tr><td>E06948001</td><td>105</td><td>MUHAMMAD SAIHAN KK</td><td>Abdul Samad KK</td><td>9526331671</td></tr>
+                <tr><td>E06948002</td><td>106</td><td>MUHAMMAD ASHMIL PT</td><td>Jamshad PT</td><td>8129566099</td></tr>
+                <tr><td>E06948005</td><td>109</td><td>FATHIMA SUMAYYA TT</td><td>Ahmed Kabeer TT</td><td>9947112533</td></tr>
             </table>
         </div>
     </div>
@@ -81,8 +71,8 @@
         <div class="teacher-badge"><b>അധ്യാപകൻ:</b> ഇർഷാദ് മാഹിരി P</div>
         <div class="table-container">
             <table>
-                <tr><th>പേര്</th><th>പിതാവ്</th><th>വിലാസം</th><th>ഫോൺ</th></tr>
-                <tr><td>AYISHA ZABRIN K</td><td>Shahul Hameed</td><td>Kaithakkal, Thazhe Pullumkunnu</td><td>9387117648</td></tr>
+                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
+                <tr><td>D06948001</td><td>96</td><td>AYISHA ZABRIN K</td><td>Shahul Hameed</td><td>9387117648</td></tr>
             </table>
         </div>
     </div>
@@ -91,13 +81,13 @@
         <div class="teacher-badge"><b>അധ്യാപകൻ:</b> TK മുഹമ്മദ് ഇർഫാൻ വാഫി</div>
         <div class="table-container">
             <table>
-                <tr><th>പേര്</th><th>പിതാവ്</th><th>വിലാസം</th><th>ഫോൺ</th></tr>
-                <tr><td>MUHAMMAD HADHI PV</td><td>Thajudheen</td><td>Shamsu mahal, Thazhe Pullumkunnu</td><td>8714125834</td></tr>
-                <tr><td>MUHAMMAD AMAN</td><td>Mujeeb Rahman</td><td>Baithuswalih, Thazhe Pullumkunnu</td><td>9544480251</td></tr>
-                <tr><td>HAYA FATHIMA PM</td><td>Noushad Pm</td><td>Karathodi Parambu, Vaidyarangadi</td><td>8089966415</td></tr>
-                <tr><td>ANSILA MEHARIN V</td><td>Abdul latheef V</td><td>Alif Manzil, Vaidyarangadi</td><td>97467001405</td></tr>
-                <tr><td>MIDHA ABDUL KALAM P</td><td>Abdul kalam p</td><td>Alnoor, Pullumkunnu</td><td>7306283813</td></tr>
-                <tr><td>AYISHA NUHA. K</td><td>Faisal. K</td><td>Pottammal, Vaidyrangadi</td><td>9995632942</td></tr>
+                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
+                <tr><td>B06948002</td><td>86</td><td>MUHAMMAD HADHI PV</td><td>Thajudheen</td><td>8714125834</td></tr>
+                <tr><td>C06948001</td><td>93</td><td>MUHAMMAD AMAN</td><td>Mujeeb Rahman</td><td>9544480251</td></tr>
+                <tr><td>C06948003</td><td>90</td><td>HAYA FATHIMA PM</td><td>Noushad Pm</td><td>8089966415</td></tr>
+                <tr><td>C06948004</td><td>91</td><td>ANSILA MEHARIN V</td><td>Abdul latheef V</td><td>97467001405</td></tr>
+                <tr><td>C06948005</td><td>95</td><td>MIDHA ABDUL KALAM P</td><td>Abdul kalam p</td><td>7306283813</td></tr>
+                <tr><td>C06948006</td><td>98</td><td>AYISHA NUHA. K</td><td>Faisal. K</td><td>9995632942</td></tr>
             </table>
         </div>
     </div>
@@ -106,12 +96,12 @@
         <div class="teacher-badge"><b>അധ്യാപകൻ:</b> ഹംസ ഫൈസി കുന്നത്തേരി</div>
         <div class="table-container">
             <table>
-                <tr><th>പേര്</th><th>പിതാവ്</th><th>വിലാസം</th><th>ഫോൺ</th></tr>
-                <tr><td>LIYANA MEHARIN. M</td><td>Abdurahiman m</td><td>Alakkalparambu, Pullumkunnu</td><td>--</td></tr>
-                <tr><td>FATHIMA NIYA KT</td><td>Naseer KT</td><td>Kattayattuthazhathu, Pullumkunnu</td><td>919847767132</td></tr>
-                <tr><td>FATHIMA ZABBA. K</td><td>Shahal Hameed K</td><td>Kaithakkal, Thazhe Pullumkunnu</td><td>919387117648</td></tr>
-                <tr><td>FILZA PE</td><td>Abdul Shukoor PE</td><td>Anugraha Manzil, Pullumkunnu</td><td>919605405100</td></tr>
-                <tr><td>AYISHA AYANA P.T</td><td>Shafeeque</td><td>Cheriyagam (H), Thazhe Pullumkunnu</td><td>7907496007</td></tr>
+                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
+                <tr><td>A06948005</td><td>79</td><td>LIYANA MEHARIN. M</td><td>Abdurahiman m</td><td>--</td></tr>
+                <tr><td>A06948006</td><td>80</td><td>FATHIMA NIYA KT</td><td>Naseer KT</td><td>919847767132</td></tr>
+                <tr><td>A06948011</td><td>68</td><td>FATHIMA ZABBA. K</td><td>Shahal Hameed K</td><td>919387117648</td></tr>
+                <tr><td>B06948004</td><td>112</td><td>FILZA PE</td><td>Abdul Shukoor PE</td><td>919605405100</td></tr>
+                <tr><td>B06948006</td><td>131</td><td>AYISHA AYANA P.T</td><td>Shafeeque</td><td>7907496007</td></tr>
             </table>
         </div>
     </div>
@@ -120,11 +110,11 @@
         <div class="teacher-badge"><b>അധ്യാപകൻ:</b> ഹംസ ഫൈസി കുന്നത്തേരി</div>
         <div class="table-container">
             <table>
-                <tr><th>പേര്</th><th>പിതാവ്</th><th>വിലാസം</th><th>ഫോൺ</th></tr>
-                <tr><td>HANIYYA FATHIMA A</td><td>Jafar A</td><td>Illathupadi, Thazhe Pullumkunnu</td><td>9947368085</td></tr>
-                <tr><td>FATHIMA SHAHALA</td><td>Noushad. VT</td><td>Basith manzil, Thazhe Pullumkunnu</td><td>9847972084</td></tr>
-                <tr><td>ASYA NAILA P</td><td>Liyakhath. K</td><td>Pandikashala, Thazhe Pullumkunnu</td><td>9847125987</td></tr>
-                <tr><td>FATHIMA RAFA TP</td><td>Abdul Hameed TP</td><td>Sanu Manzil, Moozhikkal rode</td><td>7034903011</td></tr>
+                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
+                <tr><td>A06948009</td><td>75</td><td>HANIYYA FATHIMA A</td><td>Jafar A</td><td>9947368085</td></tr>
+                <tr><td>A06948010</td><td>67</td><td>FATHIMA SHAHALA</td><td>Noushad. VT</td><td>9847972084</td></tr>
+                <tr><td>A06948012</td><td>51</td><td>ASYA NAILA P</td><td>Liyakhath. K</td><td>9847125987</td></tr>
+                <tr><td>A06948013</td><td>92</td><td>FATHIMA RAFA TP</td><td>Abdul Hameed TP</td><td>7034903011</td></tr>
             </table>
         </div>
     </div>
