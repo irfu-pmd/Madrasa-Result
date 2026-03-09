@@ -15,7 +15,6 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0; padding: 0;
             color: #333;
-            /* പുതിയ വാട്ടർമാർക്ക് പശ്ചാത്തല ചിത്രം (Fixed Background) */
             background: linear-gradient(rgba(244, 247, 246, 0.88), rgba(244, 247, 246, 0.92)), 
                         url('https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1000&q=80') center center fixed;
             background-size: cover;
@@ -131,8 +130,11 @@
             border-top: 4px solid var(--gold);
         }
         .social-links { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
-        .social-btn { width: 45px; height: 45px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-size: 20px; }
+        .social-btn { width: 45px; height: 45px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-size: 18px; font-weight: bold; }
+        
+        /* Social Colors */
         .social-btn.wa { background: #25D366; }
+        .social-btn.ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
     </style>
 </head>
 <body>
@@ -189,7 +191,7 @@
     
     <div class="social-links">
         <a href="#" class="social-btn">f</a>
-        <a href="#" class="social-btn">Y</a>
+        <a href="https://www.instagram.com/anwarul__islam__madrassa?utm_source=qr&igsh=N29xa3U0cXdkZ3Jv" target="_blank" class="social-btn ig">Ig</a>
         <a href="https://wa.me/919061969505" class="social-btn wa">W</a>
     </div>
     
