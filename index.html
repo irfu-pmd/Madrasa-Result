@@ -3,138 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - താഴെ പുല്ലുംകുന്ന്</title>
+    <title>ഓൺലൈൻ അഡ്മിഷൻ - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
     <style>
-        :root {
-            --primary: #065279;
-            --gold: #d4af37;
-            --green: #1b5e20;
-            --white: #ffffff;
+        :root { --primary: #065279; --gold: #d4af37; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; padding: 20px; }
+        .form-container { 
+            background: white; max-width: 500px; margin: 0 auto; 
+            padding: 30px; border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 8px solid var(--primary);
         }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0; padding: 0;
-            background: #f0f4f8;
-            text-align: center;
+        h2 { color: var(--primary); text-align: center; margin-bottom: 20px; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; }
+        input, select { 
+            width: 100%; padding: 12px; border: 2px solid #ddd; 
+            border-radius: 10px; box-sizing: border-box; font-size: 16px;
         }
-
-        /* Header Section */
-        header {
-            background: var(--primary);
-            color: white;
-            padding: 30px 20px;
-            border-bottom: 5px solid var(--gold);
+        button { 
+            background: var(--primary); color: white; width: 100%; 
+            padding: 15px; border: none; border-radius: 10px; 
+            font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px;
         }
-
-        .logo { width: 100px; margin-bottom: 10px; }
-        h1 { margin: 5px 0; font-size: 26px; font-weight: 900; }
-        .reg-no { font-size: 14px; background: var(--gold); color: #000; display: inline-block; padding: 2px 10px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; }
-        .board-name { font-size: 15px; opacity: 0.9; font-weight: 500; }
-
-        /* Welcome Card */
-        .welcome-card {
-            padding: 40px 20px;
-            background: white;
-            margin: -30px 20px 20px 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        .welcome-card h2 { color: var(--green); margin-bottom: 5px; }
-        .welcome-card p { color: #555; line-height: 1.6; }
-
-        /* Buttons Area */
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 320px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .main-btn {
-            background: var(--primary);
-            color: white;
-            padding: 18px;
-            text-decoration: none;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(6, 82, 121, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-
-        .main-btn:hover {
-            background: var(--green);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .secondary-btn {
-            background: #fff;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .admission-btn {
-            background: #d35400; /* വ്യത്യസ്തമായ ഒരു നിറം */
-            color: white;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 50px;
-            padding: 40px 20px;
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .footer-info { margin-bottom: 20px; font-size: 14px; line-height: 1.8; }
-        .contact-link { color: var(--gold); text-decoration: none; font-weight: bold; }
-        
-        hr { opacity: 0.1; margin: 20px 0; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: var(--primary); text-decoration: none; }
     </style>
 </head>
 <body>
 
-<header>
-    <img src="Madrasa-Logo.png" alt="Madrasa Logo" class="logo">
-    <div class="reg-no">Reg No: 6948</div>
-    <h1>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h1>
-    <div class="board-name">Under Samastha Kerala Islam Matha Vidyabhyasa Board (SKIMVB)</div>
-    <p style="margin-top: 10px; opacity: 0.8;">താഴെ പുല്ലുംകുന്ന്</p>
-</header>
-
-<div class="welcome-card">
-    <h2>സ്വാഗതം!</h2>
-    <p>വിജ്ഞാനവും ധാർമ്മികതയും പകർന്നുനൽകുന്ന സ്നേഹതീരം. മദ്രസയുമായി ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും ഇവിടെ ലഭ്യമാണ്.</p>
-
-    <div class="btn-container">
-        <a href="admission.html" class="main-btn admission-btn">📝 ഓൺലൈൻ അഡ്മിഷൻ</a>
-        
-        <a href="result.html" class="main-btn">📊 പരീക്ഷാ ഫലം പരിശോധിക്കാം</a>
-        
-        <a href="gallery.html" class="main-btn secondary-btn">📸 ഗാലറി</a>
-        
-        <a href="https://wa.me/919061969505" class="main-btn" style="background: #25D366;">💬 വാട്സാപ്പ് വഴി ബന്ധപ്പെടാം</a>
+<div class="form-container">
+    <h2>ഓൺലൈൻ അഡ്മിഷൻ</h2>
+    <p style="text-align: center; font-size: 14px; color: #666;">അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന് (Reg No: 6948)</p>
+    
+    <div class="input-group">
+        <label>കുട്ടിയുടെ പേര്</label>
+        <input type="text" id="studentName" placeholder="പേര് ടൈപ്പ് ചെയ്യുക">
     </div>
+
+    <div class="input-group">
+        <label>ലിംഗം</label>
+        <select id="gender">
+            <option value="ആൺകുട്ടി">ആൺകുട്ടി</option>
+            <option value="പെൺകുട്ടി">പെൺകുട്ടി</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>പിതാവിന്റെ പേര്</label>
+        <input type="text" id="parentName" placeholder="പിതാവിന്റെ പേര്">
+    </div>
+
+    <div class="input-group">
+        <label>ഏത് ക്ലാസ്സിലേക്കാണ് അഡ്മിഷൻ?</label>
+        <select id="grade">
+            <option value="">ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</option>
+            <option value="ഒന്നാം ക്ലാസ്സ്">ഒന്നാം ക്ലാസ്സ്</option>
+            <option value="രണ്ടാം ക്ലാസ്സ്">രണ്ടാം ക്ലാസ്സ്</option>
+            <option value="മൂന്നാം ക്ലാസ്സ്">മൂന്നാം ക്ലാസ്സ്</option>
+            <option value="നാലാം ക്ലാസ്സ്">നാലാം ക്ലാസ്സ്</option>
+            <option value="അഞ്ചാം ക്ലാസ്സ്">അഞ്ചാം ക്ലാസ്സ്</option>
+            <option value="ആറാം ക്ലാസ്സ്">ആറാം ക്ലാസ്സ്</option>
+            <option value="ഏഴാം ക്ലാസ്സ്">ഏഴാം ക്ലാസ്സ്</option>
+            <option value="എട്ടാം ക്ലാസ്സ്">എട്ടാം ക്ലാസ്സ്</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>ഫോൺ നമ്പർ</label>
+        <input type="tel" id="phone" placeholder="ഫോൺ നമ്പർ">
+    </div>
+
+    <button onclick="sendAdmission()">അപേക്ഷ സമർപ്പിക്കാം</button>
+    
+    <a href="index.html" class="back-link">← തിരികെ ഹോം പേജിലേക്ക്</a>
 </div>
 
-<footer>
-    <div class="footer-info">
-        <p><b>അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</b></p>
-        <p>സമസ്ത കേരള ഇസ്ലാം മത വിദ്യാഭ്യാസ ബോർഡ് (രജി: 6948)</p>
-        <p>📞 ഫോൺ: <a href="tel:+919061969505" class="contact-link">9061969505</a></p>
-    </div>
-    <hr>
-    <p style="font-size: 12px; opacity: 0.5;">&copy; 2026 Anwarul Islam Madrasa. All Rights Reserved.</p>
-</footer>
+<script>
+    function sendAdmission() {
+        const name = document.getElementById('studentName').value;
+        const gender = document.getElementById('gender').value;
+        const parent = document.getElementById('parentName').value;
+        const grade = document.getElementById('grade').value;
+        const phone = document.getElementById('phone').value;
+
+        if(!name || !parent || !phone || !grade) {
+            alert("ദയവായി എല്ലാ വിവരങ്ങളും പൂരിപ്പിക്കുക");
+            return;
+        }
+
+        const message = `*പുതിയ അഡ്മിഷൻ അപേക്ഷ*%0A-----------------------%0A*പേര്:* ${name}%0A*ലിംഗം:* ${gender}%0A*പിതാവ്:* ${parent}%0A*ക്ലാസ്സ്:* ${grade}%0A*ഫോൺ:* ${phone}`;
+        
+        window.open(`https://wa.me/919061969505?text=${message}`, '_blank');
+    }
+</script>
 
 </body>
 </html>
