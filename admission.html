@@ -54,8 +54,15 @@
     <div class="input-group">
         <label>ഏത് ക്ലാസ്സിലേക്കാണ് അഡ്മിഷൻ?</label>
         <select id="grade">
+            <option value="">ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</option>
             <option value="ഒന്നാം ക്ലാസ്സ്">ഒന്നാം ക്ലാസ്സ്</option>
-            <option value="മറ്റ് ക്ലാസ്സുകൾ">മറ്റ് ക്ലാസ്സുകൾ</option>
+            <option value="രണ്ടാം ക്ലാസ്സ്">രണ്ടാം ക്ലാസ്സ്</option>
+            <option value="മൂന്നാം ക്ലാസ്സ്">മൂന്നാം ക്ലാസ്സ്</option>
+            <option value="നാലാം ക്ലാസ്സ്">നാലാം ക്ലാസ്സ്</option>
+            <option value="അഞ്ചാം ക്ലാസ്സ്">അഞ്ചാം ക്ലാസ്സ്</option>
+            <option value="ആറാം ക്ലാസ്സ്">ആറാം ക്ലാസ്സ്</option>
+            <option value="ഏഴാം ക്ലാസ്സ്">ഏഴാം ക്ലാസ്സ്</option>
+            <option value="എട്ടാം ക്ലാസ്സ്">എട്ടാം ക്ലാസ്സ്</option>
         </select>
     </div>
 
@@ -77,14 +84,13 @@
         const grade = document.getElementById('grade').value;
         const phone = document.getElementById('phone').value;
 
-        if(!name || !parent || !phone) {
+        if(!name || !parent || !phone || !grade) {
             alert("ദയവായി എല്ലാ വിവരങ്ങളും പൂരിപ്പിക്കുക");
             return;
         }
 
         const message = `*പുതിയ അഡ്മിഷൻ അപേക്ഷ*%0A-----------------------%0A*പേര്:* ${name}%0A*ലിംഗം:* ${gender}%0A*പിതാവ്:* ${parent}%0A*ക്ലാസ്സ്:* ${grade}%0A*ഫോൺ:* ${phone}`;
         
-        // നിങ്ങളുടെ നമ്പറായ 9061969505 ലേക്ക് മെസേജ് പോകും
         window.open(`https://wa.me/919061969505?text=${message}`, '_blank');
     }
 </script>
