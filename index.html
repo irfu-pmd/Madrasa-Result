@@ -10,6 +10,10 @@
             --gold: #d4af37;
             --green: #1b5e20;
             --white: #ffffff;
+            --btn-admission: #2e7d32; /* പച്ച നിറം */
+            --btn-result: #01579b; /* നീല നിറം */
+            --btn-gallery: #f5f5f5; /* വെളുത്ത നിറം */
+            --btn-whatsapp: #25D366; /* വാട്സാപ്പ് പച്ച നിറം */
         }
 
         body {
@@ -57,7 +61,6 @@
         }
 
         .main-btn {
-            background: var(--primary);
             color: white;
             padding: 18px;
             text-decoration: none;
@@ -68,24 +71,22 @@
             box-shadow: 0 5px 15px rgba(6, 82, 121, 0.3);
             border: none;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .main-btn:hover {
-            background: var(--green);
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
-        .secondary-btn {
-            background: #fff;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
+        .btn-admission { background-color: var(--btn-admission); }
+        .btn-result { background-color: var(--btn-result); }
+        .btn-gallery { background-color: var(--btn-gallery); color: #333; border: 2px solid var(--primary); }
+        .btn-whatsapp { background-color: var(--btn-whatsapp); }
 
-        .admission-btn {
-            background: #d35400; /* വ്യത്യസ്തമായ ഒരു നിറം */
-            color: white;
-        }
+        .btn-icon { margin-right: 10px; }
 
         /* Footer */
         footer {
@@ -116,13 +117,13 @@
     <p>വിജ്ഞാനവും ധാർമ്മികതയും പകർന്നുനൽകുന്ന സ്നേഹതീരം. മദ്രസയുമായി ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും ഇവിടെ ലഭ്യമാണ്.</p>
 
     <div class="btn-container">
-        <a href="admission.html" class="main-btn admission-btn">📝 ഓൺലൈൻ അഡ്മിഷൻ</a>
+        <a href="admission.html" class="main-btn btn-admission"><span class="btn-icon">📝</span> ഓൺലൈൻ അഡ്മിഷൻ</a>
         
-        <a href="result.html" class="main-btn">📊 പരീക്ഷാ ഫലം പരിശോധിക്കാം</a>
+        <a href="result.html" class="main-btn btn-result"><span class="btn-icon">📊</span> പരീക്ഷാ ഫലം പരിശോധിക്കാം</a>
         
-        <a href="gallery.html" class="main-btn secondary-btn">📸 ഗാലറി</a>
+        <a href="gallery.html" class="main-btn btn-gallery"><span class="btn-icon">📸</span> ഗാലറി</a>
         
-        <a href="https://wa.me/919061969505" class="main-btn" style="background: #25D366;">💬 വാട്സാപ്പ് വഴി ബന്ധപ്പെടാം</a>
+        <a href="https://wa.me/919061969505" class="main-btn btn-whatsapp"><span class="btn-icon">💬</span> വാട്സാപ്പ് വഴി ബന്ധപ്പെടാം</a>
     </div>
 </div>
 
