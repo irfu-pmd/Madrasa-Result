@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ഓൺലൈൻ അഡ്മിഷൻ - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
+    <style>
+        :root { --primary: #065279; --gold: #d4af37; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; padding: 20px; }
+        .form-container { 
+            background: white; max-width: 500px; margin: 0 auto; 
+            padding: 30px; border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 8px solid var(--primary);
+        }
+        h2 { color: var(--primary); text-align: center; margin-bottom: 20px; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; }
+        input, select { 
+            width: 100%; padding: 12px; border: 2px solid #ddd; 
+            border-radius: 10px; box-sizing: border-box; font-size: 16px;
+        }
+        button { 
+            background: var(--primary); color: white; width: 100%; 
+            padding: 15px; border: none; border-radius: 10px; 
+            font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px;
+        }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: var(--primary); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>ഓൺലൈൻ അഡ്മിഷൻ</h2>
+    <p style="text-align: center; font-size: 14px; color: #666;">അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന് (Reg No: 6948)</p>
+    
+    <div class="input-group">
+        <label>കുട്ടിയുടെ പേര്</label>
+        <input type="text" id="studentName" placeholder="പേര് ടൈപ്പ് ചെയ്യുക">
+    </div>
+
+    <div class="input-group">
+        <label>ലിംഗം</label>
+        <select id="gender">
+            <option value="ആൺകുട്ടി">ആൺകുട്ടി</option>
+            <option value="പെൺകുട്ടി">പെൺകുട്ടി</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>പിതാവിന്റെ പേര്</label>
+        <input type="text" id="parentName" placeholder="പിതാവിന്റെ പേര്">
+    </div>
+
+    <div class="input-group">
+        <label>ഏത് ക്ലാസ്സിലേക്കാണ് അഡ്മിഷൻ?</label>
+        <select id="grade">
+            <option value="ഒന്നാം ക്ലാസ്സ്">ഒന്നാം ക്ലാസ്സ്</option>
+            <option value="മറ്റ് ക്ലാസ്സുകൾ">മറ്റ് ക്ലാസ്സുകൾ</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>ഫോൺ നമ്പർ</label>
+        <input type="tel" id="phone" placeholder="ഫോൺ നമ്പർ">
+    </div>
+
+    <button onclick="sendAdmission()">അപേക്ഷ സമർപ്പിക്കാം</button>
+    
+    <a href="index.html" class="back-link">← തിരികെ ഹോം പേജിലേക്ക്</a>
+</div>
+
+<script>
+    function sendAdmission() {
+        const name = document.getElementById('studentName').value;
+        const gender = document.getElementById('gender').value;
+        const parent = document.getElementById('parentName').value;
+        const grade = document.getElementById('grade').value;
+        const phone = document.getElementById('phone').value;
+
+        if(!name || !parent || !phone) {
+            alert("ദയവായി എല്ലാ വിവരങ്ങളും പൂരിപ്പിക്കുക");
+            return;
+        }
+
+        const message = `*പുതിയ അഡ്മിഷൻ അപേക്ഷ*%0A-----------------------%0A*പേര്:* ${name}%0A*ലിംഗം:* ${gender}%0A*പിതാവ്:* ${parent}%0A*ക്ലാസ്സ്:* ${grade}%0A*ഫോൺ:* ${phone}`;
+        
+        // നിങ്ങളുടെ നമ്പറായ 9061969505 ലേക്ക് മെസേജ് പോകും
+        window.open(`https://wa.me/919061969505?text=${message}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
