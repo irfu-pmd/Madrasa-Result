@@ -33,13 +33,30 @@
         .reg-no { font-size: 14px; background: var(--gold); color: #000; display: inline-block; padding: 2px 10px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; }
         .board-name { font-size: 15px; opacity: 0.9; font-weight: 500; }
 
+        /* Notice Board */
+        .notice-container {
+            background: #fff8e1;
+            border-bottom: 2px solid var(--gold);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .notice-label {
+            background: #d32f2f;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            white-space: nowrap;
+            z-index: 2;
+        }
+        marquee { padding: 10px; font-weight: bold; color: #333; }
+
         .welcome-card {
             padding: 40px 20px;
             background: white;
-            margin: -30px 20px 20px 20px;
+            margin: 20px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative; z-index: 1;
         }
 
         .btn-container {
@@ -55,15 +72,14 @@
             display: flex; align-items: center; justify-content: center;
             transition: 0.3s;
         }
-
-        .main-btn:hover { transform: translateY(-3px); }
+        .main-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
         .btn-admission { background-color: var(--btn-admission); }
         .btn-result { background-color: var(--btn-result); }
         .btn-gallery { background-color: #f5f5f5; color: #333; border: 2px solid var(--primary); }
         .btn-whatsapp { background-color: #25D366; }
+        .btn-class { background-color: #673ab7; }
 
-        /* Staff Section Styling */
         .staff-section {
             padding: 40px 20px;
             background: #fff;
@@ -97,12 +113,10 @@
             text-align: left;
             transition: 0.3s;
         }
-
-        .staff-card:hover { background: #f0f4f8; }
-
         .staff-name { font-weight: bold; color: #333; display: block; font-size: 18px; }
         .staff-desig { color: var(--green); font-size: 14px; margin-top: 5px; display: block; font-weight: 600; }
-        .staff-classes { color: #666; font-size: 14px; margin-top: 10px; display: block; }
+        .staff-classes { color: #666; font-size: 14px; margin-top: 8px; display: block; }
+        .staff-phone { display: block; margin-top: 10px; color: var(--primary); text-decoration: none; font-weight: bold; font-size: 15px; }
 
         footer { margin-top: 50px; padding: 40px 20px; background: #1a1a1a; color: white; }
         .contact-link { color: var(--gold); text-decoration: none; font-weight: bold; }
@@ -115,55 +129,4 @@
     <div class="reg-no">Reg No: 6948</div>
     <h1>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h1>
     <div class="board-name">Under Samastha Kerala Islam Matha Vidyabhyasa Board (SKIMVB)</div>
-    <p style="margin-top: 10px; opacity: 0.8;">താഴെ പുല്ലുംകുന്ന്</p>
-</header>
-
-<div class="welcome-card">
-    <h2>സ്വാഗതം!</h2>
-    <p>വിജ്ഞാനവും ധാർമ്മികതയും പകർന്നുനൽകുന്ന സ്നേഹതീരം.</p>
-    
-    <div class="btn-container">
-        <a href="admission.html" class="main-btn btn-admission">📝 ഓൺലൈൻ അഡ്മിഷൻ</a>
-        <a href="result.html" class="main-btn btn-result">📊 പരീക്ഷാ ഫലം പരിശോധിക്കാം</a>
-        <a href="gallery.html" class="main-btn btn-gallery">📸 ഗാലറി</a>
-        <a href="https://wa.me/919061969505" class="main-btn btn-whatsapp">💬 വാട്സാപ്പ് വഴി ബന്ധപ്പെടാം</a>
-    </div>
-</div>
-
-<div class="staff-section">
-    <h2 class="staff-title">അധ്യാപകർ</h2>
-    <div class="staff-grid">
-        
-        <div class="staff-card">
-            <span class="staff-name">TK മുഹമ്മദ് ഇർഫാൻ വാഫി</span>
-            <span class="staff-desig">Head Teacher (സദർ), പടിക്കൽ</span>
-            <span class="staff-classes">📚 ക്ലാസ്സുകൾ: 1, 5, 8</span>
-        </div>
-
-        <div class="staff-card">
-            <span class="staff-name">ഹംസ ഫൈസി ചെമ്മാട്</span>
-            <span class="staff-desig">ഉസ്താദ്</span>
-            <span class="staff-classes">📚 ക്ലാസ്സുകൾ: 3, 6, 7</span>
-        </div>
-
-        <div class="staff-card">
-            <span class="staff-name">ഇർഷാദ് മാഹിരി</span>
-            <span class="staff-desig">ഉസ്താദ്</span>
-            <span class="staff-classes">📚 ക്ലാസ്സുകൾ: 2, 4</span>
-        </div>
-
-    </div>
-</div>
-
-<footer>
-    <div class="footer-info">
-        <p><b>അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</b></p>
-        <p>സമസ്ത കേരള ഇസ്ലാം മത വിദ്യാഭ്യാസ ബോർഡ് (രജി: 6948)</p>
-        <p>📞 ഫോൺ: <a href="tel:+919061969505" class="contact-link">9061969505</a></p>
-    </div>
-    <hr style="opacity: 0.1; margin: 20px 0;">
-    <p style="font-size: 12px; opacity: 0.5;">&copy; 2026 Anwarul Islam Madrasa. All Rights Reserved.</p>
-</footer>
-
-</body>
-</html>
+    <p style="margin-top: 1
