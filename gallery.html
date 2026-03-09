@@ -5,27 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ഗാലറി - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
     <style>
+        :root {
+            --primary: #065279;
+            --gold: #d4af37;
+        }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; text-align: center; }
-        header { background: #065279; color: white; padding: 20px; border-bottom: 5px solid #d4af37; }
-        .gallery-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 20px; }
-        .gallery-item { background: white; padding: 10px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .gallery-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
-        .back-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #065279; color: white; text-decoration: none; border-radius: 5px; }
+        
+        header { 
+            background: var(--primary); 
+            color: white; 
+            padding: 30px 20px; 
+            border-bottom: 5px solid var(--gold); 
+        }
+
+        h1 { margin: 0; font-size: 24px; }
+
+        .gallery-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+            padding: 30px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto;
+        }
+
+        .gallery-item { 
+            background: white; 
+            padding: 10px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover { transform: translateY(-5px); }
+
+        .gallery-item img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 10px; 
+        }
+
+        .gallery-item p { 
+            margin-top: 10px; 
+            font-weight: bold; 
+            color: var(--primary); 
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            margin: 30px 0; 
+            padding: 15px 30px; 
+            background: var(--primary); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>മദ്രസ ഗാലറി</h1>
-        <p>ഞങ്ങളുടെ മനോഹരമായ നിമിഷങ്ങൾ</p>
-    </header>
 
-    <div class="gallery-container">
-        <div class="gallery-item">
-            <img src="bg.jpg" alt="Madrasa Photo 1">
-            <p>മദ്രസ കെട്ടിടം</p>
-        </div>
-    </div>
+<header>
+    <h1>വിജയികൾക്ക് സമ്മാനദാനം</h1>
+    <p>അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</p>
+</header>
 
-    <a href="index.html" class="back-btn">തിരികെ ഹോം പേജിലേക്ക്</a>
+<div class="gallery-container">
+    <div class="gallery-item"><img src="1.jpg" alt="Gift Distribution"><p>സമ്മാനദാനം - 1</p></div>
+    <div class="gallery-item"><img src="2.jpg" alt="Gift Distribution"><p>സമ്മാനദാനം - 2</p></div>
+    <div class="gallery-item"><img src="3.jpg" alt="Gift Distribution"><p>സമ്മാനദാനം - 3</p></div>
+    <div class="gallery-item"><img src="4.jpg" alt="Gift Distribution"><p>സമ്മാനദാനം - 4</p></div>
+    <div class="gallery-item"><img src="5.jpg" alt="Gift Distribution"><p>സമ്മാനദാനം - 5</p></div>
+    <div class="gallery-item"><img src="6.jpg" alt="Gift Distribution"><p>സമ്മാനദാനം - 6</p></div>
+    <div class="gallery-item"><img src="7.jpg" alt="Gift Distribution"><p>സമ്മാനദാനം - 7</p></div>
+    <div class="gallery-item"><img src="8.jpg" alt="Gift Distribution"><p>സമ്മാനദാനം - 8</p></div>
+</div>
+
+<a href="index.html" class="back-btn">← തിരികെ ഹോം പേജിലേക്ക്</a>
+
+<footer>
+    <p style="padding: 20px; color: #888; font-size: 12px;">&copy; 2026 Anwarul Islam Madrasa</p>
+</footer>
+
 </body>
 </html>
