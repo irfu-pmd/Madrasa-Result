@@ -8,16 +8,17 @@
         :root {
             --primary: #0a3d62;
             --gold: #f1c40f;
-            --dark-red: #c0392b; /* Dark Red color defined here */
+            --dark-red: #c0392b;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0; padding: 0;
             color: #333;
+            /* കുട്ടികളുടെ ഫോട്ടോ ഒഴിവാക്കി മദ്രസ കാർട്ടൂൺ ചിത്രം ചേർത്തു */
             background-color: #1a1a1a;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                              url('https://img.freepik.com/free-vector/happy-muslim-kids-back-school-illustration_1308-54201.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
+                              url('https://img.freepik.com/free-vector/mosque-building-cartoon-vector-icon-illustration-religion-architecture-icon-concept-isolated-premium-flat-vector-style_138676-3972.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -43,7 +44,6 @@
         .sub-header { font-size: 13px; margin: 0 auto 5px auto; font-weight: 600; }
         .loc-text { font-size: 15px; margin-top: 5px; font-weight: bold; }
 
-        /* അറിയിപ്പുകൾ - Dark Red Background for Label */
         .news-ticker {
             background: #ffffff;
             display: flex;
@@ -53,7 +53,7 @@
             overflow: hidden;
         }
         .ticker-label { 
-            background: var(--dark-red); /* Dark Red Background */
+            background: var(--dark-red); 
             color: white; 
             padding: 12px 18px; 
             font-weight: bold; 
