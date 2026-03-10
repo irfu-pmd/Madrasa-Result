@@ -61,9 +61,10 @@
         }
 
         .gallery-item:hover img { transform: scale(1.05); }
+        /* വലുതാക്കാനുള്ള ക്ലാസ് - പൊക്കം കുറച്ച് auto ആക്കി */
         .wide { grid-column: span 2; height: auto; min-height: 220px; }
 
-        /* Lightbox */
+        /* Lightbox - ഫോട്ടോ വലുതാക്കാൻ */
         #lightbox { 
             display: none; 
             position: fixed; 
@@ -85,7 +86,10 @@
             text-decoration: none; 
             border-radius: 30px; 
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(6, 82, 121, 0.3);
         }
+
+        footer { color: #888; font-size: 12px; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -115,15 +119,18 @@
         <div class="gallery-item" onclick="showImg('IMG-20260305-WA0267.jpg')"><img src="IMG-20260305-WA0267.jpg"></div>
         <div class="gallery-item wide" onclick="showImg('IMG-20260305-WA0260.jpg')"><img src="IMG-20260305-WA0260.jpg"></div>
         <div class="gallery-item" onclick="showImg('IMG-20260305-WA0125.jpg')"><img src="IMG-20260305-WA0125.jpg"></div>
+        <div class="gallery-item" onclick="showImg('IMG-20260305-WA0230.jpg')"><img src="IMG-20260305-WA0230.jpg"></div>
+        <div class="gallery-item wide" onclick="showImg('IMG-20260309-WA0278.jpg')"><img src="IMG-20260309-WA0278.jpg"></div>
+        <div class="gallery-item" onclick="showImg('IMG-20260309-WA0372.jpg')"><img src="IMG-20260309-WA0372.jpg"></div>
     </div>
 
     <div class="section-title">പോസ്റ്ററുകൾ</div>
     <div class="gallery-grid">
-        <div class="gallery-item" onclick="showImg('20260304_165853.jpg')"><img src="20260304_165853.jpg"></div>
+        <div class="gallery-item wide" onclick="showImg('1000041482.jpg')"><img src="1000041482.jpg"></div>
         
         <div class="gallery-item" onclick="showImg('1000023605.jpg')"><img src="1000023605.jpg"></div>
         <div class="gallery-item" onclick="showImg('1772779993662.png')"><img src="1772779993662.png"></div>
-        <div class="gallery-item wide" onclick="showImg('1772779876024.png')"><img src="1772779876024.png"></div>
+        <div class="gallery-item" onclick="showImg('1772779876024.png')"><img src="1772779876024.png"></div>
     </div>
 
 </div>
