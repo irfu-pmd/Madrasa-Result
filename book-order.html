@@ -17,7 +17,6 @@
         .filter-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
         select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; margin-bottom: 15px; }
 
-        /* പുതിയ പച്ച നിറത്തിലുള്ള വലിയ ബട്ടൺ */
         .select-all-btn { 
             background: var(--github-green); 
             color: white; 
@@ -55,6 +54,7 @@
         .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
         .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
         
+        /* GPay Warning Box Updated */
         .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 10px; font-size: 12px; margin-top: 15px; text-align: center; font-weight: 600; }
         .gpay-btn { background: #000; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 12px; text-decoration: none; margin-top: 10px; font-weight: bold; }
 
@@ -108,7 +108,7 @@
             <input type="tel" id="custPhone" class="form-input" placeholder="ഫോൺ നമ്പർ">
 
             <div class="payment-info-box">
-                ⚠️ ശ്രദ്ധിക്കുക: Google Pay ചെയ്യുന്നവർ പണമയച്ച ശേഷം അതിന്റെ Screen Shot 9061969505 എന്ന നമ്പറിലേക്ക് വാട്സാപ്പ് ചെയ്യേണ്ടതാണ്.
+                ⚠️ ശ്രദ്ധിക്കുക: Google Pay ചെയ്യുന്നവർ പണമയച്ച ശേഷം അതിന്റെ Screen Shot 7736480365 എന്ന നമ്പറിലേക്ക് വാട്സാപ്പ് ചെയ്യേണ്ടതാണ്.
             </div>
             <a href="#" id="gpayBtn" class="gpay-btn">
                 <i class="fa-brands fa-google-pay" style="font-size:24px;"></i> Google Pay വഴി അടക്കാം
@@ -182,8 +182,9 @@
         document.getElementById('footerTotal').innerText = '₹ ' + total;
         document.getElementById('stickyFooter').style.display = cart.length > 0 ? 'flex' : 'none';
 
-        const upiId = "9061969505@okbizaxis"; 
-        const gpayLink = `upi://pay?pa=${upiId}&pn=Anwarul%20Islam%20Madrasa&am=${total}&cu=INR`;
+        // Hamza's UPI ID Update
+        const upiId = "hamzachemmadhamzachemmad457@okicici"; 
+        const gpayLink = `upi://pay?pa=${upiId}&pn=Hamzachemmad%20Hamzachemmad&am=${total}&cu=INR`;
         document.getElementById('gpayBtn').href = gpayLink;
     }
 
@@ -207,8 +208,10 @@
         let total = cart.reduce((sum, item) => sum + item.price, 0);
         let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n*ക്ലാസ്:* ${cls}\n\n*പുസ്തകങ്ങൾ:*\n`;
         cart.forEach((item, i) => msg += `${i+1}. ${item.name}\n`);
-        msg += `\n*ആകെ തുക: ₹${total}*\n----------\n_GPay വഴിയാണ് പണമടച്ചതെങ്കിൽ ദയവായി സ്ക്രീൻഷോട്ട് അയക്കുക._`;
-        window.open(`https://wa.me/919061969505?text=${encodeURIComponent(msg)}`, '_blank');
+        msg += `\n*ആകെ തുക: ₹${total}*\n----------\n_GPay വഴിയാണ് പണമടച്ചതെങ്കിൽ ദയവായി സ്ക്രീൻഷോട്ട് 7736480365 എന്ന നമ്പറിലേക്ക് അയക്കുക._`;
+        
+        // Redirecting order to Hamza's number
+        window.open(`https://wa.me/917736480365?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     resetAndRender();
