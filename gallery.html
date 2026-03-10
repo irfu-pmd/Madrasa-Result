@@ -3,52 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ഗാലറി - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
+    <title>ഗാലറി - അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #065279;
             --gold: #d4af37;
+            --bg: #f4f7f6;
         }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; text-align: center; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); text-align: center; padding-bottom: 50px; }
         
         header { 
             background: var(--primary); 
             color: white; 
             padding: 30px 20px; 
             border-bottom: 5px solid var(--gold); 
+            position: relative;
         }
 
-        h1 { margin: 0; font-size: 24px; }
-        .sub-title { font-size: 14px; opacity: 0.8; margin-top: 5px; }
+        h1 { margin: 0; font-size: 22px; }
+        .sub-title { font-size: 13px; opacity: 0.8; margin-top: 5px; }
 
-        .gallery-container { 
+        .container { max-width: 1000px; margin: 0 auto; padding: 15px; }
+
+        .section-title { 
+            text-align: left; 
+            font-size: 18px; 
+            font-weight: bold; 
+            color: var(--primary); 
+            margin: 25px 0 15px 0; 
+            border-left: 5px solid var(--gold); 
+            padding-left: 10px; 
+        }
+
+        .gallery-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; 
-            padding: 30px 20px; 
-            max-width: 1200px; 
-            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
         }
 
         .gallery-item { 
             background: white; 
-            padding: 10px; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-            transition: 0.3s;
+            padding: 4px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            cursor: pointer;
+            overflow: hidden;
+            height: 180px;
         }
 
         .gallery-item img { 
             width: 100%; 
-            height: 250px; 
+            height: 100%; 
             object-fit: cover; 
-            border-radius: 10px; 
+            border-radius: 8px; 
+            transition: 0.3s;
         }
+
+        .gallery-item:hover img { transform: scale(1.05); }
+        .wide { grid-column: span 2; height: 220px; }
+
+        /* Lightbox */
+        #lightbox { 
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.9); 
+            z-index: 3000; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        #lightbox img { max-width: 95%; max-height: 80%; border-radius: 10px; }
+        .close-btn { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; cursor: pointer; }
 
         .back-btn { 
             display: inline-block; 
             margin: 30px 0; 
-            padding: 15px 30px; 
+            padding: 12px 30px; 
             background: var(--primary); 
             color: white; 
             text-decoration: none; 
@@ -60,23 +91,61 @@
 <body>
 
 <header>
-    <h1>മദ്രസ ചിത്രങ്ങൾ</h1>
-    <div class="sub-title">അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
+    <h1>മദ്രസ ഗാലറി</h1>
+    <div class="sub-title">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
 </header>
 
-<div class="gallery-container">
-    <div class="gallery-item"><img src="1.jpg" alt="Madrasa Photo 1"></div>
-    <div class="gallery-item"><img src="2.jpg" alt="Madrasa Photo 2"></div>
-    <div class="gallery-item"><img src="3.jpg" alt="Madrasa Photo 3"></div>
-    <div class="gallery-item"><img src="4.jpg" alt="Madrasa Photo 4"></div>
-    <div class="gallery-item"><img src="5.jpg" alt="Madrasa Photo 5"></div>
-    <div class="gallery-item"><img src="6.jpg" alt="Madrasa Photo 6"></div>
-    <div class="gallery-item"><img src="7.jpg" alt="Madrasa Photo 7"></div>
-    <div class="gallery-item"><img src="8.jpg" alt="Madrasa Photo 8"></div>
+<div class="container">
+
+    <div class="section-title">മദ്രസ വിശേഷങ്ങൾ</div>
+    <div class="gallery-grid">
+        <div class="gallery-item" onclick="showImg('1.jpg')"><img src="1.jpg"></div>
+        <div class="gallery-item" onclick="showImg('2.jpg')"><img src="2.jpg"></div>
+        <div class="gallery-item" onclick="showImg('3.jpg')"><img src="3.jpg"></div>
+        <div class="gallery-item" onclick="showImg('4.jpg')"><img src="4.jpg"></div>
+        <div class="gallery-item wide" onclick="showImg('6.jpg')"><img src="6.jpg"></div>
+        <div class="gallery-item" onclick="showImg('8.jpg')"><img src="8.jpg"></div>
+    </div>
+
+    <div class="section-title">ആദരവ് & വിജയങ്ങൾ</div>
+    <div class="gallery-grid">
+        <div class="gallery-item" onclick="showImg('5.jpg')"><img src="5.jpg"></div>
+        <div class="gallery-item" onclick="showImg('7.jpg')"><img src="7.jpg"></div>
+        <div class="gallery-item" onclick="showImg('IMG-20260305-WA0265.jpg')"><img src="IMG-20260305-WA0265.jpg"></div>
+        <div class="gallery-item" onclick="showImg('IMG-20260305-WA0267.jpg')"><img src="IMG-20260305-WA0267.jpg"></div>
+        <div class="gallery-item wide" onclick="showImg('IMG-20260305-WA0260.jpg')"><img src="IMG-20260305-WA0260.jpg"></div>
+        <div class="gallery-item" onclick="showImg('IMG-20260305-WA0125.jpg')"><img src="IMG-20260305-WA0125.jpg"></div>
+    </div>
+
+    <div class="section-title">പോസ്റ്ററുകൾ</div>
+    <div class="gallery-grid">
+        <div class="gallery-item" onclick="showImg('1000029184.png')"><img src="1000029184.png"></div>
+        <div class="gallery-item" onclick="showImg('1772779993662.png')"><img src="1772779993662.png"></div>
+        <div class="gallery-item wide" onclick="showImg('1772779876024.png')"><img src="1772779876024.png"></div>
+    </div>
+
 </div>
 
+<a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക്</a>
 
-<a href="index.html" class="back-btn">← തിരികെ ഹോം പേജിലേക്ക്</a>
+<div id="lightbox" onclick="closeImg()">
+    <span class="close-btn">&times;</span>
+    <img id="fullImg" src="">
+</div>
 
 <footer>
-    <p style="padding: 20px; color: #888; font-size: 12
+    <p>&copy; 2026 Anwarul Islam Madrasa</p>
+</footer>
+
+<script>
+    function showImg(src) {
+        document.getElementById('fullImg').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeImg() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
