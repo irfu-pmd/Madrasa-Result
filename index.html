@@ -8,16 +8,17 @@
         :root {
             --primary: #0a3d62;
             --gold: #f1c40f;
-            --deep-red: #8b0000; /* കൂടുതൽ ഇരുണ്ട ചുവപ്പ് (Dark Red) */
+            --dark-red: #c0392b;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0; padding: 0;
             color: #333;
+            /* പുതിയ 3D ഫോട്ടോ പശ്ചാത്തലമായി നൽകിയിരിക്കുന്നു */
             background-color: #1a1a1a;
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
-                              url('https://img.freepik.com/free-vector/mosque-building-cartoon-vector-icon-illustration-religion-architecture-icon-concept-isolated-premium-flat-vector-style_138676-3972.jpg');
+                              url('madrassa-bg.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -43,7 +44,6 @@
         .sub-header { font-size: 13px; margin: 0 auto 5px auto; font-weight: 600; }
         .loc-text { font-size: 15px; margin-top: 5px; font-weight: bold; }
 
-        /* അറിയിപ്പുകൾ - Updated to Deeper Red */
         .news-ticker {
             background: #ffffff;
             display: flex;
@@ -53,16 +53,16 @@
             overflow: hidden;
         }
         .ticker-label { 
-            background: var(--deep-red); /* Darker Red Background */
+            background: var(--dark-red); 
             color: white; 
-            padding: 12px 20px; 
+            padding: 12px 18px; 
             font-weight: bold; 
             font-size: 14px;
             white-space: nowrap;
         }
         marquee { 
             font-weight: 800; 
-            color: var(--deep-red); /* Darker Red Text */
+            color: var(--dark-red); 
             font-size: 16px; 
             padding: 8px 0; 
         }
