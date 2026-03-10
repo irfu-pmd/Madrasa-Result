@@ -6,23 +6,23 @@
     <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - താഴെ പുല്ലുംകുന്ന്</title>
     <style>
         :root {
-            --primary: #065279;
+            --primary: #0a3d62;
             --gold: #f1c40f;
-            --bg-light: #f4f7f6;
+            --dark-bg: #1e272e;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0; padding: 0;
-            color: #333;
-            background: linear-gradient(rgba(244, 247, 246, 0.88), rgba(244, 247, 246, 0.92)), 
-                        url('https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1000&q=80') center center fixed;
+            color: #ffffff;
+            /* Dark Background with Student Cartoon Illustration Overlay */
+            background: linear-gradient(rgba(30, 39, 46, 0.95), rgba(30, 39, 46, 0.97)), 
+                        url('https://img.freepik.com/free-vector/happy-muslim-kids-back-school_1308-54201.jpg?t=st=1716362706~exp=1716366306~hmac=56d0d210519f7a0c8b6b0c6f5a3e1b0c0d5e1f0a1b2c3d4e5f6a7b8c9d0e1f') center center fixed;
             background-size: cover;
         }
 
-        /* Hero Header */
         header {
-            background: linear-gradient(135deg, rgba(6, 82, 121, 0.88) 0%, rgba(10, 61, 98, 0.95) 100%),
+            background: linear-gradient(135deg, rgba(10, 61, 98, 0.9) 0%, rgba(7, 42, 68, 0.95) 100%),
                         url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1000&q=80') no-repeat center center;
             background-size: cover;
             color: white;
@@ -33,53 +33,36 @@
             justify-content: center;
             text-align: center;
             border-bottom: 5px solid var(--gold);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .logo { width: 95px; margin-bottom: 15px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); background: white; padding: 5px; border-radius: 5px; }
+        .reg-badge { background: var(--gold); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: 900; font-size: 13px; margin-bottom: 12px; }
         
-        .reg-badge { background: var(--gold); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: 900; font-size: 13px; margin-bottom: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        
-        h1 { 
-            margin: 0 0 2px 0; 
-            font-size: 26px; 
-            font-weight: 800; 
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.6); 
-        }
-        
-        .sub-header { 
-            font-size: 12.5px; 
-            opacity: 0.95; 
-            margin: 0 auto 5px auto; 
-            white-space: nowrap; 
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.6); 
-        }
+        h1 { margin: 0 0 2px 0; font-size: 26px; font-weight: 800; }
+        .sub-header { font-size: 12.5px; opacity: 0.95; margin: 0 auto 5px auto; white-space: nowrap; }
+        .loc-text { font-size: 14px; margin-top: 5px; font-weight: 500; opacity: 0.9; }
 
-        @media (max-width: 380px) {
-            .sub-header { font-size: 11px; }
-            h1 { font-size: 23px; }
-        }
-
-        .loc-text { font-size: 14px; margin-top: 5px; font-weight: 500; opacity: 0.9; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); }
-
-        /* News Ticker */
         .news-ticker {
-            background: #fff;
-            border-bottom: 1px solid #ddd;
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
         }
-        .ticker-label { background: #e74c3c; color: white; padding: 12px 15px; font-weight: bold; font-size: 14px; z-index: 10; white-space: nowrap; }
-        marquee { font-weight: 600; color: #444; font-size: 15px; padding: 5px 0; }
+        .ticker-label { background: #e74c3c; color: white; padding: 12px 15px; font-weight: bold; font-size: 14px; z-index: 10; }
+        marquee { font-weight: 600; color: #fff; font-size: 15px; padding: 5px 0; }
 
         .container { padding: 30px 20px; max-width: 500px; margin: auto; }
 
-        .welcome-text { text-align: center; margin-bottom: 30px; background: rgba(255, 255, 255, 0.7); padding: 15px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); backdrop-filter: blur(5px); }
-        .welcome-text h2 { color: var(--primary); margin: 0 0 5px 0; font-size: 24px; }
-        .welcome-text p { color: #555; font-size: 14px; margin: 0; font-weight: 500; }
+        .welcome-text { 
+            text-align: center; margin-bottom: 30px; 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 15px; border-radius: 15px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .welcome-text h2 { color: var(--gold); margin: 0 0 5px 0; font-size: 24px; }
+        .welcome-text p { color: #ddd; font-size: 14px; margin: 0; }
 
-        /* Primary Actions Grid */
         .action-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -95,18 +78,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.2s;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
-        .action-card:active { transform: scale(0.95); }
         .bg-admission { background: linear-gradient(135deg, #2ecc71, #27ae60); }
         .bg-result { background: linear-gradient(135deg, #3498db, #2980b9); }
 
-        /* Secondary List Buttons */
         .list-container { display: flex; flex-direction: column; gap: 15px; }
         .list-btn {
-            background: rgba(255, 255, 255, 0.95);
-            color: #333;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
             padding: 18px 20px;
             text-decoration: none;
             border-radius: 15px;
@@ -114,27 +94,23 @@
             align-items: center;
             font-weight: 700;
             font-size: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
         }
-        .icon-box { width: 35px; height: 35px; background: #f0f4f8; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px; }
+        .icon-box { width: 35px; height: 35px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px; }
 
-        /* Footer */
         footer {
             margin-top: 40px;
-            background: #111;
+            background: #000;
             color: white;
             padding: 30px 20px;
             text-align: center;
             border-top: 4px solid var(--gold);
         }
         .social-links { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
-        .social-btn { width: 45px; height: 45px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-size: 18px; font-weight: bold; }
-        
-        /* Social Colors */
+        .social-btn { width: 45px; height: 45px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-size: 18px; }
         .social-btn.wa { background: #25D366; }
-        .social-btn.ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .social-btn.ig { background: linear-gradient(45deg, #f09433, #bc1888); }
     </style>
 </head>
 <body>
@@ -191,7 +167,7 @@
     
     <div class="social-links">
         <a href="#" class="social-btn">f</a>
-        <a href="https://www.instagram.com/anwarul__islam__madrassa?utm_source=qr&igsh=N29xa3U0cXdkZ3Jv" target="_blank" class="social-btn ig">Ig</a>
+        <a href="https://www.instagram.com/anwarul__islam__madrassa" target="_blank" class="social-btn ig">Ig</a>
         <a href="https://wa.me/919061969505" class="social-btn wa">W</a>
     </div>
     
