@@ -25,13 +25,24 @@
         .mandatory-tag { font-size: 10px; color: #d35400; font-weight: bold; display: block; }
         .book-price { font-weight: 800; color: #444; font-size: 16px; }
 
+        /* Cart Modal */
         #cartModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto; }
         .cart-content { background: white; width: 90%; max-width: 500px; margin: 30px auto; border-radius: 20px; padding: 25px; position: relative; }
         .close-modal { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; }
         .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
-        .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 10px; font-size: 11px; margin-top: 15px; text-align: center; font-weight: 600; }
-        .gpay-btn { background: #000; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 12px; text-decoration: none; margin-top: 10px; font-weight: bold; }
-        .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        
+        .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 10px; font-size: 12px; margin-top: 15px; text-align: center; font-weight: bold; }
+        
+        /* QR Code Section */
+        .qr-section { background: white; border: 2px dashed var(--primary); border-radius: 12px; padding: 15px; text-align: center; margin-top: 15px; }
+        .qr-section img { width: 160px; height: 160px; border-radius: 10px; margin-bottom: 10px; }
+        .qr-instruction { font-size: 12px; color: #555; margin-bottom: 15px; font-weight: bold; line-height: 1.5; }
+
+        .copy-btn { background: #000; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 15px; border: none; cursor: pointer; width: 100%; }
+        .copy-btn:active { transform: scale(0.98); }
+        
+        .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        
         .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 2px solid #eee; display: none; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 100; }
         .footer-total { font-weight: 900; font-size: 22px; color: #222; }
     </style>
@@ -60,7 +71,6 @@
             <i class="fa-solid fa-circle-check"></i> സെറ്റ് മുഴുവനായി തിരഞ്ഞെടുക്കുക
         </button>
     </div>
-
     <div id="bookList" class="book-list"></div>
 </div>
 
@@ -75,21 +85,32 @@
 <div id="cartModal">
     <div class="cart-content">
         <span class="close-modal" onclick="closeCart()">&times;</span>
-        <h3 style="color:var(--primary);">ഓർഡർ സ്ഥിരീകരിക്കുക</h3>
-        <div id="summaryList" style="font-size: 14px; margin-bottom: 20px;"></div>
-        <div style="background:#f9f9f9; padding:15px; border-radius:12px;">
+        <h3 style="color:var(--primary); margin-top:0;">ഓർഡർ പൂർത്തിയാക്കുക</h3>
+        
+        <div style="background:#f9f9f9; padding:15px; border-radius:12px; margin-bottom: 15px;">
             <input type="text" id="custName" class="form-input" placeholder="വിദ്യാർത്ഥിയുടെ പേര്">
             <input type="tel" id="custPhone" class="form-input" placeholder="ഫോൺ നമ്പർ">
-            <div class="payment-info-box">
-                ⚠️ പണമടച്ചു കഴിഞ്ഞാൽ സ്ക്രീൻഷോട്ട് 7736480365 എന്ന നമ്പറിലേക്ക് അയക്കാൻ മറക്കരുത്.
+        </div>
+
+        <div class="qr-section">
+            <h4 style="margin-top:0; color:#333;">പണമടക്കാൻ QR സ്കാൻ ചെയ്യുക</h4>
+            <img src="1000041288.jpg" alt="QR Code">
+            <div class="qr-instruction">
+                മറ്റൊരു ഫോൺ ഉപയോഗിച്ച് സ്കാൻ ചെയ്യുക. അല്ലെങ്കിൽ താഴെയുള്ള ബട്ടൺ വഴി UPI ID കോപ്പി ചെയ്ത് നിങ്ങളുടെ GPay / PhonePe യിൽ പേസ്റ്റ് ചെയ്ത് പണമടക്കാം.
             </div>
-            <a href="#" id="gpayBtn" class="gpay-btn">
-                <i class="fa-brands fa-google-pay" style="font-size:24px;"></i> Google Pay വഴി അടക്കാം
-            </a>
-            <button class="order-btn" onclick="sendWhatsAppOrder()">
-                <i class="fa-brands fa-whatsapp"></i> വാട്സാപ്പിൽ ഓർഡർ നൽകാം
+            
+            <button class="copy-btn" onclick="copyUPI()">
+                <i class="fa-solid fa-copy"></i> UPI ID കോപ്പി ചെയ്യുക
             </button>
         </div>
+
+        <div class="payment-info-box">
+            ⚠️ പണമടച്ചു കഴിഞ്ഞാൽ സ്ക്രീൻഷോട്ട് 7736480365 എന്ന നമ്പറിലേക്ക് വാട്സാപ്പ് ചെയ്യാൻ മറക്കരുത്.
+        </div>
+
+        <button class="order-btn" onclick="sendWhatsAppOrder()">
+            <i class="fa-brands fa-whatsapp"></i> വാട്സാപ്പിൽ ഓർഡർ നൽകാം
+        </button>
     </div>
 </div>
 
@@ -131,26 +152,33 @@
 
     function handleCheck(cb) { cb.closest('.book-row').classList.toggle('selected', cb.checked); updateTotal(); }
     function selectAll() { document.querySelectorAll('.book-check').forEach(cb => { cb.checked = true; cb.closest('.book-row').classList.add('selected'); }); updateTotal(); }
+    
     function updateTotal() {
         let total = 0;
         document.querySelectorAll('.book-check:checked').forEach(cb => total += parseInt(cb.dataset.price));
         document.getElementById('footerTotal').innerText = '₹ ' + total;
-        document.getElementById('gpayBtn').href = `upi://pay?pa=${upiID}&pn=Hamzachemmad&cu=INR`;
     }
-    function openCart() {
-        const summary = document.getElementById('summaryList');
-        summary.innerHTML = "<strong>തിരഞ്ഞെടുത്തവ:</strong><br>";
-        document.querySelectorAll('.book-check:checked').forEach(cb => summary.innerHTML += `• ${cb.dataset.name} (₹${cb.dataset.price})<br>`);
-        document.getElementById('cartModal').style.display = 'block';
+
+    function copyUPI() {
+        navigator.clipboard.writeText(upiID);
+        alert("UPI ID കോപ്പി ചെയ്തു! ഇനി നിങ്ങളുടെ Google Pay അല്ലെങ്കിൽ PhonePe ഓപ്പൺ ചെയ്ത് 'Pay to UPI ID' എന്ന ഓപ്ഷനിൽ പേസ്റ്റ് ചെയ്ത് പണമടക്കുക.");
     }
+
+    function openCart() { document.getElementById('cartModal').style.display = 'block'; }
     function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
+    
     function sendWhatsAppOrder() {
         const name = document.getElementById('custName').value;
         const phone = document.getElementById('custPhone').value;
-        if (!name || !phone) { alert("പേരും നമ്പറും നൽകുക"); return; }
-        let total = 0, msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n\n*പുസ്തകങ്ങൾ:*\n`;
-        document.querySelectorAll('.book-check:checked').forEach((cb, i) => { msg += `${i+1}. ${cb.dataset.name}\n`; total += parseInt(cb.dataset.price); });
-        msg += `\n*ആകെ തുക: ₹${total}*\n----------\n_പണമടച്ച ശേഷം സ്ക്രീൻഷോട്ട് മറക്കാതെ അയക്കുക._`;
+        const cls = document.getElementById('classSelector').value;
+        if (!name || !phone) { alert("ദയവായി വിദ്യാർത്ഥിയുടെ പേരും ഫോൺ നമ്പറും നൽകുക"); return; }
+        
+        let total = 0, msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n*ക്ലാസ്:* ${cls}\n\n*തിരഞ്ഞെടുത്ത പുസ്തകങ്ങൾ:*\n`;
+        document.querySelectorAll('.book-check:checked').forEach((cb, i) => { 
+            msg += `${i+1}. ${cb.dataset.name} - ₹${cb.dataset.price}\n`; 
+            total += parseInt(cb.dataset.price); 
+        });
+        msg += `\n*ആകെ തുക: ₹${total}*\n----------\n_പണമടച്ച ശേഷം സ്ക്രീൻഷോട്ട് ഈ നമ്പറിലേക്ക് തന്നെ അയക്കുക._`;
         window.open(`https://wa.me/${hamzaNumber}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 </script>
