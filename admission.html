@@ -3,68 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ഓൺലൈൻ അഡ്മിഷൻ - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
+    <title>ഓൺലൈൻ അഡ്മിഷൻ - അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --primary: #065279; --gold: #d4af37; --bg: #f0f4f8; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
+        
         .form-container { 
             background: white; max-width: 600px; margin: 0 auto; 
             padding: 30px; border-radius: 20px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 8px solid var(--primary);
         }
-        h2 { color: var(--primary); text-align: center; margin-bottom: 5px; }
-        .sub-text { text-align: center; font-size: 14px; color: #666; margin-bottom: 25px; }
         
-        .input-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; font-size: 14px; }
+        .header-icon { text-align: center; color: var(--gold); font-size: 40px; margin-bottom: 10px; }
+        h2 { color: var(--primary); text-align: center; margin-bottom: 5px; font-size: 24px; }
+        .sub-text { text-align: center; font-size: 14px; color: #666; margin-bottom: 25px; font-weight: bold; }
+        
+        .input-group { margin-bottom: 18px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #333; font-size: 14px; }
+        .req { color: red; } /* Red star for required fields */
+        
         input, select, textarea { 
-            width: 100%; padding: 12px; border: 2px solid #ddd; 
-            border-radius: 10px; box-sizing: border-box; font-size: 16px;
+            width: 100%; padding: 12px; border: 2px solid #e0e0e0; 
+            border-radius: 10px; box-sizing: border-box; font-size: 15px;
+            transition: 0.3s;
         }
-        input[readonly] { background-color: #f9f9f9; cursor: not-allowed; color: #666; }
+        input:focus, select:focus, textarea:focus { border-color: var(--primary); outline: none; }
+        input[readonly] { background-color: #f1f2f6; cursor: not-allowed; color: #555; font-weight: bold; border-color: #ddd; }
         
-        .row { display: flex; gap: 10px; }
-        .row .input-group { flex: 1; }
+        .row { display: flex; gap: 15px; }
+        .row .input-group { flex: 1; margin-bottom: 15px; }
+
+        @media (max-width: 480px) {
+            .row { flex-direction: column; gap: 0; }
+        }
 
         button { 
-            background: #2e7d32; color: white; width: 100%; 
-            padding: 15px; border: none; border-radius: 10px; 
-            font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+            background: #25D366; color: white; width: 100%; 
+            padding: 16px; border: none; border-radius: 12px; 
+            font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-        .back-link { display: block; text-align: center; margin-top: 20px; color: var(--primary); text-decoration: none; font-weight: bold; }
+        button:hover { background: #20bd5a; }
+
+        .back-link { 
+            display: block; text-align: center; margin-top: 25px; 
+            color: var(--primary); text-decoration: none; font-weight: bold; 
+            padding: 10px; border-radius: 10px; background: #f8f9fa;
+        }
     </style>
 </head>
 <body>
 
 <div class="form-container">
+    <div class="header-icon"><i class="fa-solid fa-graduation-cap"></i></div>
     <h2>ഓൺലൈൻ അഡ്മിഷൻ</h2>
-    <div class="sub-text">അൻവാറുൽ ഇസ്ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
+    <div class="sub-text">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
     
     <div class="input-group">
-        <label>മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും (Name & Recog. No.)</label>
-        <input type="text" id="madrasaInfo" value="അൻവാറുൽ ഇസ്ലാം മദ്രസ - 6948" readonly>
+        <label>മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label>
+        <input type="text" id="madrasaInfo" value="അൻവാറുൽ ഇസ്‌ലാം മദ്രസ - 6948" readonly>
     </div>
 
-    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+    <hr style="border: 0; border-top: 2px dashed #eee; margin: 25px 0;">
 
     <div class="input-group">
-        <label>വിദ്യാർത്ഥിയുടെ പേരും ഇനിഷ്യലും (Name of Student with initials)</label>
-        <input type="text" id="studentName" placeholder="പേര് ടൈപ്പ് ചെയ്യുക">
+        <label><i class="fa-solid fa-user"></i> വിദ്യാർത്ഥിയുടെ പേര് (Name of Student) <span class="req">*</span></label>
+        <input type="text" id="studentName" placeholder="കുട്ടിയുടെ പേര് ടൈപ്പ് ചെയ്യുക">
     </div>
 
     <div class="input-group">
-        <label>വീട്ടുപേരും വിലാസവും (House Name & Address)</label>
-        <textarea id="address" rows="2" placeholder="പൂർണ്ണമായ വിലാസം"></textarea>
+        <label><i class="fa-solid fa-house"></i> വീട്ടുപേരും വിലാസവും (Address)</label>
+        <textarea id="address" rows="3" placeholder="പൂർണ്ണമായ വിലാസം"></textarea>
     </div>
 
     <div class="row">
         <div class="input-group">
-            <label>ആധാർ നമ്പർ (Aadhaar No)</label>
-            <input type="number" id="aadhaar" placeholder="Aadhaar Number">
+            <label><i class="fa-regular fa-id-card"></i> ആധാർ നമ്പർ (Aadhaar No)</label>
+            <input type="number" id="aadhaar" placeholder="ആധാർ നമ്പർ">
         </div>
         <div class="input-group">
-            <label>ലിംഗം (Sex)</label>
+            <label><i class="fa-solid fa-venus-mars"></i> ലിംഗം (Sex)</label>
             <select id="sex">
                 <option value="ആൺകുട്ടി">ആൺകുട്ടി (Male)</option>
                 <option value="പെൺകുട്ടി">പെൺകുട്ടി (Female)</option>
@@ -74,44 +93,56 @@
 
     <div class="row">
         <div class="input-group">
-            <label>ജനന തീയതി (Date of Birth)</label>
+            <label><i class="fa-solid fa-calendar-days"></i> ജനന തീയതി (D.O.B) <span class="req">*</span></label>
             <input type="date" id="dob">
         </div>
         <div class="input-group">
-            <label>പിതാവിന്റെ പേര് (Father's Name)</label>
-            <input type="text" id="fatherName" placeholder="പിതാവിന്റെ പേര്">
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-group">
-            <label>രക്ഷാകർത്താവിന്റെ പേര് (Guardian Name)</label>
-            <input type="text" id="guardianName" placeholder="രക്ഷാകർത്താവ്">
-        </div>
-        <div class="input-group">
-            <label>ഫോൺ നമ്പർ (Phone No)</label>
-            <input type="tel" id="phone" placeholder="Phone Number">
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-group">
-            <label>ചേരുന്ന ക്ലാസ്സ് (Std to which admitted)</label>
-            <select id="std">
-                <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-                <option value="7">7</option><option value="8">8</option>
+            <label><i class="fa-solid fa-droplet" style="color:#e74c3c;"></i> രക്ത ഗ്രൂപ്പ് (Blood Group)</label>
+            <select id="bloodGroup">
+                <option value="അറിയില്ല">-- അറിയില്ല --</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="O+">O+</option><option value="O-">O-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
             </select>
         </div>
+    </div>
+
+    <div class="row">
         <div class="input-group">
-            <label>ടി.സി നമ്പർ (T.C. No - if any)</label>
-            <input type="text" id="tcNo" placeholder="ടി.സി നമ്പർ">
+            <label><i class="fa-solid fa-person-breastfeeding"></i> മാതാവിന്റെ പേര് (Mother's Name)</label>
+            <input type="text" id="motherName" placeholder="ഉമ്മയുടെ പേര്">
+        </div>
+        <div class="input-group">
+            <label><i class="fa-solid fa-person"></i> പിതാവിന്റെ പേര് (Father's Name)</label>
+            <input type="text" id="fatherName" placeholder="ഉപ്പയുടെ പേര്">
         </div>
     </div>
 
-    <button onclick="submitAdmission()">അപേക്ഷ സമർപ്പിക്കാം (Submit)</button>
+    <div class="row">
+        <div class="input-group">
+            <label><i class="fa-solid fa-phone"></i> വാട്സാപ്പ് നമ്പർ (Phone) <span class="req">*</span></label>
+            <input type="tel" id="phone" placeholder="Phone Number">
+        </div>
+        <div class="input-group">
+            <label><i class="fa-solid fa-book-open"></i> ചേരുന്ന ക്ലാസ്സ് (Class)</label>
+            <select id="std">
+                <option value="1">ക്ലാസ്സ് 1</option><option value="2">ക്ലാസ്സ് 2</option>
+                <option value="3">ക്ലാസ്സ് 3</option><option value="4">ക്ലാസ്സ് 4</option>
+                <option value="5">ക്ലാസ്സ് 5</option><option value="6">ക്ലാസ്സ് 6</option>
+                <option value="7">ക്ലാസ്സ് 7</option><option value="8">ക്ലാസ്സ് 8</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label><i class="fa-solid fa-file-invoice"></i> ടി.സി നമ്പർ (T.C. No - if any)</label>
+        <input type="text" id="tcNo" placeholder="മറ്റ് മദ്രസയിൽ നിന്ന് വരുന്നവരാണെങ്കിൽ മാത്രം">
+    </div>
+
+    <button onclick="submitAdmission()"><i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക</button>
     
-    <a href="index.html" class="back-link">← തിരികെ ഹോം പേജിലേക്ക്</a>
+    <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക് പോവാം</a>
 </div>
 
 <script>
@@ -122,30 +153,36 @@
         const aadh = document.getElementById('aadhaar').value;
         const sex = document.getElementById('sex').value;
         const dob = document.getElementById('dob').value;
+        const blood = document.getElementById('bloodGroup').value;
+        const mother = document.getElementById('motherName').value;
         const father = document.getElementById('fatherName').value;
-        const guardian = document.getElementById('guardianName').value;
         const phone = document.getElementById('phone').value;
         const std = document.getElementById('std').value;
-        const tc = document.getElementById('tcNo').value || "Nil";
+        const tc = document.getElementById('tcNo').value || "ഇല്ല (Nil)";
 
+        // Required field validation
         if(!sName || !phone || !dob) {
-            alert("ദയവായി പേര്, ജനന തീയതി, ഫോൺ നമ്പർ എന്നിവ പൂരിപ്പിക്കുക.");
+            alert("ദയവായി വിദ്യാർത്ഥിയുടെ പേര്, ജനന തീയതി, വാട്സാപ്പ് നമ്പർ എന്നിവ നിർബന്ധമായും പൂരിപ്പിക്കുക.");
             return;
         }
 
-        const msg = `*പുതിയ മദ്രസ അഡ്മിഷൻ അപേക്ഷ*%0A%0A` +
-                    `*മദ്രസ:* ${mInfo}%0A` +
+        const msg = `🎓 *പുതിയ മദ്രസ അഡ്മിഷൻ അപേക്ഷ* 🎓%0A` +
+                    `-----------------------------------%0A` +
                     `*വിദ്യാർത്ഥി:* ${sName}%0A` +
+                    `*ചേരുന്ന ക്ലാസ്സ്:* ${std}%0A` +
                     `*ലിംഗം:* ${sex}%0A` +
-                    `*വിലാസം:* ${addr}%0A` +
-                    `*ആധാർ:* ${aadh}%0A` +
                     `*ജനന തീയതി:* ${dob}%0A` +
-                    `*പിതാവ്:* ${father}%0A` +
-                    `*രക്ഷാകർത്താവ്:* ${guardian}%0A` +
-                    `*ഫോൺ:* ${phone}%0A` +
-                    `*ക്ലാസ്സ്:* ${std}%0A` +
-                    `*ടി.സി നമ്പർ:* ${tc}`;
+                    `*രക്ത ഗ്രൂപ്പ്:* ${blood}%0A` +
+                    `*ആധാർ:* ${aadh}%0A` +
+                    `*വിലാസം:* ${addr}%0A` +
+                    `*ഉമ്മയുടെ പേര്:* ${mother}%0A` +
+                    `*ഉപ്പയുടെ പേര്:* ${father}%0A` +
+                    `*വാട്സാപ്പ് നമ്പർ:* ${phone}%0A` +
+                    `*ടി.സി നമ്പർ:* ${tc}%0A` +
+                    `-----------------------------------%0A` +
+                    `*മദ്രസ:* ${mInfo}`;
 
+        // നിങ്ങളുട നമ്പർ ഇവിടെ കൃത്യമായി നൽകിയിട്ടുണ്ട്
         window.open(`https://wa.me/919061969505?text=${msg}`, '_blank');
     }
 </script>
