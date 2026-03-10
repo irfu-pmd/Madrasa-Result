@@ -18,11 +18,13 @@
             --btn-shop: #e67e22; 
         }
 
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0; padding: 0;
             background-color: #111;
-            /* Background Image */
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1000&q=80');
             background-size: cover;
             background-position: center;
@@ -31,7 +33,6 @@
             justify-content: center;
         }
 
-        /* Mobile Container Simulation */
         .app-container {
             background-color: var(--bg-color);
             width: 100%;
@@ -91,20 +92,33 @@
         .menu-header h3 { margin: 0; font-size: 16px; }
         .close-menu { font-size: 24px; cursor: pointer; }
 
-        .menu-links { padding: 20px 0; flex: 1; overflow-y: auto; }
+        .menu-links { padding: 0; flex: 1; overflow-y: auto; }
+        
+        /* Menu Categories */
+        .menu-category {
+            background: #f0f4f8;
+            color: var(--header-grad-1);
+            font-size: 12px;
+            font-weight: bold;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e0e0e0;
+            border-top: 1px solid #e0e0e0;
+        }
+
         .menu-links a {
             display: flex;
             align-items: center;
-            padding: 15px 20px;
+            padding: 14px 20px;
             color: #333;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f5f5f5;
             transition: 0.2s;
         }
         .menu-links a:hover { background: #f9f9f9; color: var(--header-grad-1); padding-left: 25px; }
-        .menu-links a i { width: 30px; font-size: 18px; color: var(--gold); text-align: center; margin-right: 10px; }
+        .menu-links a i { width: 25px; font-size: 16px; color: var(--gold); text-align: center; margin-right: 12px; }
 
         /* Overlay Background */
         .menu-overlay {
@@ -187,7 +201,7 @@
         .wide-action-btn:active { transform: scale(0.98); }
 
         /* Teachers Section */
-        .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; }
+        .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; padding-top: 10px; }
         
         .teacher-card {
             background: white; border-radius: 12px; padding: 12px; display: flex;
@@ -246,17 +260,22 @@
             <i class="fa-solid fa-xmark close-menu" onclick="toggleMenu()"></i>
         </div>
         <div class="menu-links">
-            <a href="index.html"><i class="fa-solid fa-house"></i> ഹോം പേജ്</a>
-            <a href="admission.html"><i class="fa-solid fa-graduation-cap"></i> ഓൺലൈൻ അഡ്മിഷൻ</a>
-            <a href="book-order.html"><i class="fa-solid fa-cart-shopping"></i> ബുക്ക് ഷോപ്പ്</a>
-            <a href="result.html"><i class="fa-solid fa-chart-simple"></i> പരീക്ഷാ ഫലം</a>
+            <div class="menu-category">പ്രധാന ലിങ്കുകൾ</div>
+            <a href="index.html"><i class="fa-solid fa-house"></i> ഹോം (Home)</a>
+            <a href="admission.html"><i class="fa-solid fa-file-signature"></i> ഓൺലൈൻ അഡ്മിഷൻ</a>
+            <a href="book-order.html"><i class="fa-solid fa-book"></i> ബുക്ക് സ്റ്റോർ</a>
             <a href="gallery.html"><i class="fa-solid fa-images"></i> ഗാലറി</a>
-            <a href="class-details.html"><i class="fa-solid fa-users"></i> ക്ലാസ് വിവരങ്ങൾ</a>
-            <a href="https://wa.me/919061969505"><i class="fa-brands fa-whatsapp"></i> വാട്സാപ്പിൽ ബന്ധപ്പെടാൻ</a>
+            <a href="result.html"><i class="fa-solid fa-chart-simple"></i> പരീക്ഷാ ഫലം</a>
+
+            <div class="menu-category">വിവരങ്ങൾ</div>
+            <a href="#teachers" onclick="toggleMenu()"><i class="fa-solid fa-users"></i> അധ്യാപകർ (Teachers)</a>
+            <a href="#management" onclick="toggleMenu()"><i class="fa-solid fa-building-columns"></i> കമ്മിറ്റി (Management)</a>
+            <a href="#notice" onclick="toggleMenu()"><i class="fa-solid fa-bullhorn"></i> അറിയിപ്പുകൾ (Notice Board)</a>
+            <a href="#footer" onclick="toggleMenu()"><i class="fa-solid fa-phone-volume"></i> ബന്ധപ്പെടാൻ (Contact Us)</a>
         </div>
     </div>
 
-    <div class="news-ticker">
+    <div class="news-ticker" id="notice">
         <div class="news-badge">NEWS</div>
         <marquee scrollamount="5">പുതിയ അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു! | വാർഷിക പരീക്ഷാ ഫലങ്ങൾ ലഭ്യമാണ്.</marquee>
     </div>
@@ -312,7 +331,7 @@
             <span class="sub-txt">പുസ്തകങ്ങൾ ഓൺലൈനായി ഓർഡർ ചെയ്യാം</span>
         </a>
 
-        <div class="section-title">അധ്യാപകർ</div>
+        <div class="section-title" id="teachers">അധ്യാപകർ (Teachers)</div>
 
         <div class="teacher-card">
             <img src="irfan.jpg" alt="TK Muhammed Irfan" class="teacher-img">
@@ -349,9 +368,11 @@
             </div>
         </div>
 
+        <div id="management"></div>
+
     </div>
 
-    <footer>
+    <footer id="footer">
         <div class="footer-top">
             <div class="footer-left">
                 <h4>അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</h4>
