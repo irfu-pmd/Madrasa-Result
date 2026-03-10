@@ -3,54 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ഓൺലൈൻ ബുക്ക് ഷോപ്പ് - അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
+    <title>ബുക്ക് ഓർഡർ - അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --primary: #065279; --secondary: #27ae60; --accent: #f39c12; --bg: #f4f7f6; --github-green: #1f883d; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); margin: 0; padding-bottom: 80px; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); margin: 0; padding-bottom: 100px; }
         header { background: var(--primary); color: white; padding: 20px; text-align: center; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; }
-        .cart-count-btn { position: absolute; top: 20px; right: 20px; background: var(--accent); color: white; padding: 8px 15px; border-radius: 20px; font-weight: bold; border: none; }
-        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        
         .filter-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
-        select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; margin-bottom: 15px; }
-        .select-all-btn { background: var(--github-green); color: white; border: none; padding: 16px 10px; border-radius: 10px; width: 100%; font-weight: 800; font-size: 16px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .book-card { background: white; border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; justify-content: space-between; }
-        .book-name { font-weight: bold; font-size: 14px; color: #2c3e50; margin-bottom: 5px; }
-        .book-price { color: var(--secondary); font-weight: 800; font-size: 18px; margin-bottom: 10px; }
-        .add-btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .added-btn { background: #bdc3c7; color: white; cursor: default; }
+        select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; margin-bottom: 15px; font-weight: bold; }
+
+        .select-all-btn { background: var(--github-green); color: white; border: none; padding: 16px; border-radius: 10px; width: 100%; font-weight: 800; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        /* ലിസ്റ്റ് സ്റ്റൈൽ */
+        .book-list { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-top: 20px; }
+        .book-row { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #eee; transition: 0.3s; cursor: pointer; }
+        .book-row:last-child { border-bottom: none; }
+        .book-row.selected { background-color: #e8f5e9; }
+        
+        .checkbox-col { margin-right: 15px; }
+        input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--secondary); }
+        
+        .book-info { flex-grow: 1; }
+        .book-name { font-weight: bold; font-size: 15px; color: #2c3e50; }
+        .mandatory-tag { font-size: 10px; color: #d35400; font-weight: bold; display: block; }
+        .book-price { font-weight: 800; color: #444; font-size: 16px; }
+
+        /* Modal Styles */
         #cartModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto; }
         .cart-content { background: white; width: 90%; max-width: 500px; margin: 30px auto; border-radius: 20px; padding: 25px; position: relative; }
         .close-modal { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; }
-        .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
         .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
         
-        /* Payment Styles */
-        .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 10px; font-size: 11px; margin-top: 15px; text-align: center; font-weight: 600; line-height: 1.5; }
+        .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 10px; font-size: 11px; margin-top: 15px; text-align: center; font-weight: 600; }
         .gpay-btn { background: #000; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 12px; text-decoration: none; margin-top: 10px; font-weight: bold; }
-        .copy-id-btn { background: #fff; color: #333; border: 1px solid #ddd; padding: 10px; border-radius: 8px; font-size: 12px; width: 100%; margin-top: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 5px; font-weight: bold; }
+        .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 15px; cursor: pointer; }
         
-        /* റെസീപ്റ്റ് ബട്ടൺ */
-        .receipt-btn { background: #128C7E; color: white; width: 100%; padding: 12px; border-radius: 12px; border: none; font-size: 14px; font-weight: bold; margin-top: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 8px rgba(18, 140, 126, 0.3); }
-
-        .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 10px; cursor: pointer; }
-        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 100; }
+        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 2px solid #eee; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 100; }
+        .footer-total { font-weight: 900; font-size: 22px; color: #222; }
     </style>
 </head>
 <body>
 
 <header>
-    <button class="cart-count-btn" onclick="openCart()">
-        <i class="fa-solid fa-cart-shopping"></i> <span id="cartCount">0</span>
-    </button>
     <h1 style="margin:0; font-size: 18px;">മദ്രസ ഓൺലൈൻ ബുക്ക് ഷോപ്പ്</h1>
 </header>
 
 <div class="container">
     <div class="filter-section">
         <label style="display:block; margin-bottom:10px; font-weight:bold;">ക്ലാസ് തിരഞ്ഞെടുക്കുക:</label>
-        <select id="classSelector" onchange="resetAndRender()">
+        <select id="classSelector" onchange="renderBooks()">
             <option value="1">ക്ലാസ്സ് 1 (I)</option>
             <option value="2">ക്ലാസ്സ് 2 (II)</option>
             <option value="3" selected>ക്ലാസ്സ് 3 (III)</option>
@@ -60,42 +64,39 @@
             <option value="7">ക്ലാസ്സ് 7 (VII)</option>
             <option value="8">ക്ലാസ്സ് 8 (VIII)</option>
         </select>
-        <button class="select-all-btn" onclick="selectAllBooks()">
+        <button class="select-all-btn" onclick="selectAll()">
             <i class="fa-solid fa-circle-check"></i> സെറ്റ് മുഴുവനായി തിരഞ്ഞെടുക്കുക
         </button>
     </div>
-    <div id="bookGrid" class="book-grid"></div>
+
+    <div id="bookList" class="book-list">
+        </div>
 </div>
 
-<div class="sticky-footer" id="stickyFooter" style="display:none;">
-    <div><span style="font-size:11px; color:#777;">ആകെ തുക:</span><br><span id="footerTotal" style="font-weight:900; font-size:18px;">₹ 0</span></div>
-    <button onclick="openCart()" style="background:var(--primary); color:white; padding:10px 20px; border-radius:10px; border:none; font-weight:bold; font-size: 14px;">ഓർഡർ ചെയ്യുക <i class="fa-solid fa-arrow-right"></i></button>
+<div class="sticky-footer">
+    <div>
+        <span style="font-size:12px; color:#777; font-weight:bold;">ആകെ തുക:</span><br>
+        <span class="footer-total" id="footerTotal">₹ 25</span>
+    </div>
+    <button onclick="openCart()" style="background:var(--primary); color:white; padding:15px 25px; border-radius:12px; border:none; font-weight:bold;">ഓർഡർ ചെയ്യുക <i class="fa-solid fa-arrow-right"></i></button>
 </div>
 
 <div id="cartModal">
     <div class="cart-content">
         <span class="close-modal" onclick="closeCart()">&times;</span>
-        <h3 style="color:var(--primary);">ഷോപ്പിംഗ് കാർട്ട്</h3>
-        <div id="cartItemsList"></div>
+        <h3 style="color:var(--primary);">ഓർഡർ സ്ഥിരീകരിക്കുക</h3>
+        <div id="summaryList" style="font-size: 14px; margin-bottom: 20px;"></div>
         
-        <div style="margin-top:20px; background:#f9f9f9; padding:15px; border-radius:12px;">
+        <div style="background:#f9f9f9; padding:15px; border-radius:12px;">
             <input type="text" id="custName" class="form-input" placeholder="വിദ്യാർത്ഥിയുടെ പേര്">
             <input type="tel" id="custPhone" class="form-input" placeholder="ഫോൺ നമ്പർ">
 
             <div class="payment-info-box">
-                ⚠️ പണമടച്ചു കഴിഞ്ഞാൽ താഴെ കാണുന്ന <b>'സ്ക്രീൻഷോട്ട് അയക്കാം'</b> എന്ന ബട്ടൺ വഴി രസീപ്റ്റ് അയച്ചു നൽകേണ്ടതാണ്.
+                ⚠️ പണമടച്ചു കഴിഞ്ഞാൽ സ്ക്രീൻഷോട്ട് 7736480365 എന്ന നമ്പറിലേക്ക് അയക്കാൻ മറക്കരുത്.
             </div>
             
             <a href="#" id="gpayBtn" class="gpay-btn">
                 <i class="fa-brands fa-google-pay" style="font-size:24px;"></i> Google Pay വഴി അടക്കാം
-            </a>
-
-            <button class="copy-id-btn" onclick="copyUPI()">
-                <i class="fa-solid fa-copy"></i> Copy UPI ID
-            </button>
-
-            <a href="#" id="receiptBtn" class="receipt-btn" onclick="sendReceipt()">
-                <i class="fa-brands fa-whatsapp"></i> സ്ക്രീൻഷോട്ട് അയക്കാം
             </a>
 
             <button class="order-btn" onclick="sendWhatsAppOrder()">
@@ -120,54 +121,99 @@
         8: [{name: "ദുറൂസ്-viii", price: 60}, {name: "താരീഖ്-viii", price: 70}, {name: "ഫിഖ്ഹ്-viii", price: 80}, {name: "ലിസാൻ-viii", price: 100}, {name: "ഉപ പാഠ പുസ്തകം-viii", price: 50}]
     };
 
-    let cart = [];
-    function resetAndRender() { cart = []; updateCart(); renderBooks(); }
     function renderBooks() {
         const cls = document.getElementById('classSelector').value;
-        const grid = document.getElementById('bookGrid'); grid.innerHTML = "";
-        grid.appendChild(createBookCard(diaryItem, true));
-        booksData[cls].forEach(book => grid.appendChild(createBookCard(book, false, cart.some(i => i.name === book.name))));
+        const listDiv = document.getElementById('bookList');
+        listDiv.innerHTML = "";
+        
+        // Add Diary (Mandatory)
+        listDiv.appendChild(createRow(diaryItem, true));
+        
+        // Add Class Books
+        booksData[cls].forEach(book => {
+            listDiv.appendChild(createRow(book, false));
+        });
+        updateTotal();
     }
-    function createBookCard(book, isDiary, isAdded) {
-        const card = document.createElement('div'); card.className = 'book-card';
-        card.innerHTML = `<div>${isDiary ? '<span style="font-size:9px;background:#ffeaa7;padding:2px 5px;border-radius:4px;">MANDATORY</span>' : ''}<div class="book-name">${book.name}</div></div><span class="book-price">₹${book.price}</span><button class="add-btn ${isAdded || isDiary ? 'added-btn' : ''}" onclick="${isDiary ? '' : `addToCart('${book.name}', ${book.price})`}">${isDiary ? 'ADDED' : (isAdded ? 'IN CART' : 'ADD TO CART')}</button>`;
-        return card;
+
+    function createRow(book, isMandatory) {
+        const row = document.createElement('div');
+        row.className = 'book-row' + (isMandatory ? ' selected' : '');
+        row.innerHTML = `
+            <div class="checkbox-col">
+                <input type="checkbox" class="book-check" 
+                       data-name="${book.name}" data-price="${book.price}" 
+                       ${isMandatory ? 'checked disabled' : 'onchange="handleCheck(this)"'}>
+            </div>
+            <div class="book-info">
+                ${isMandatory ? '<span class="mandatory-tag">MANDATORY</span>' : ''}
+                <span class="book-name">${book.name}</span>
+            </div>
+            <div class="book-price">₹${book.price}</div>
+        `;
+        if (!isMandatory) {
+            row.onclick = function(e) {
+                if(e.target.type !== 'checkbox') {
+                    const cb = row.querySelector('.book-check');
+                    cb.checked = !cb.checked;
+                    handleCheck(cb);
+                }
+            };
+        }
+        return row;
     }
-    function addToCart(n, p) { if(!cart.some(i => i.name === n)){ cart.push({name:n, price:p}); updateCart(); renderBooks(); }}
-    function selectAllBooks() { const cls = document.getElementById('classSelector').value; cart = [diaryItem]; booksData[cls].forEach(b => cart.push(b)); updateCart(); renderBooks(); openCart(); }
-    function updateCart() {
-        if(cart.length === 0 && document.getElementById('classSelector').value) cart.push(diaryItem);
-        const total = cart.reduce((s, i) => s + i.price, 0);
-        document.getElementById('cartCount').innerText = cart.length;
+
+    function handleCheck(cb) {
+        const row = cb.closest('.book-row');
+        if (cb.checked) row.classList.add('selected');
+        else row.classList.remove('selected');
+        updateTotal();
+    }
+
+    function selectAll() {
+        document.querySelectorAll('.book-check').forEach(cb => {
+            cb.checked = true;
+            cb.closest('.book-row').classList.add('selected');
+        });
+        updateTotal();
+    }
+
+    function updateTotal() {
+        let total = 0;
+        document.querySelectorAll('.book-check:checked').forEach(cb => {
+            total += parseInt(cb.dataset.price);
+        });
         document.getElementById('footerTotal').innerText = '₹ ' + total;
-        document.getElementById('stickyFooter').style.display = cart.length > 0 ? 'flex' : 'none';
         document.getElementById('gpayBtn').href = `upi://pay?pa=${upiID}&pn=Hamzachemmad&cu=INR`;
     }
+
     function openCart() {
-        const list = document.getElementById('cartItemsList'); list.innerHTML = "";
-        cart.forEach((item, index) => { list.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>₹${item.price} ${item.mandatory ? '' : `<i class="fa-solid fa-trash" style="color:#e74c3c;margin-left:10px;cursor:pointer;" onclick="removeFromCart(${index})"></i>`}</span></div>`; });
+        const summary = document.getElementById('summaryList');
+        summary.innerHTML = "<strong>തിരഞ്ഞെടുത്തവ:</strong><br>";
+        document.querySelectorAll('.book-check:checked').forEach(cb => {
+            summary.innerHTML += `• ${cb.dataset.name} (₹${cb.dataset.price})<br>`;
+        });
         document.getElementById('cartModal').style.display = 'block';
     }
-    function removeFromCart(i) { cart.splice(i,1); updateCart(); openCart(); renderBooks(); }
+
     function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
-    function copyUPI() { navigator.clipboard.writeText(upiID); alert("UPI ID കോപ്പി ചെയ്തു!"); }
-    
-    // രസീപ്റ്റ് അയക്കാനുള്ള ഫംഗ്ഷൻ
-    function sendReceipt() {
-        const msg = "ഞാൻ പണമടച്ചിട്ടുണ്ട്. ഇതിന്റെ സ്ക്രീൻഷോട്ട് താഴെ നൽകുന്നു.";
+
+    function sendWhatsAppOrder() {
+        const name = document.getElementById('custName').value;
+        const phone = document.getElementById('custPhone').value;
+        if (!name || !phone) { alert("പേരും നമ്പറും നൽകുക"); return; }
+        
+        let total = 0;
+        let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n\n*പുസ്തകങ്ങൾ:*\n`;
+        document.querySelectorAll('.book-check:checked').forEach((cb, i) => {
+            msg += `${i+1}. ${cb.dataset.name}\n`;
+            total += parseInt(cb.dataset.price);
+        });
+        msg += `\n*ആകെ തുക: ₹${total}*\n----------\n_പണമടച്ച ശേഷം സ്ക്രീൻഷോട്ട് മറക്കാതെ അയക്കുക._`;
         window.open(`https://wa.me/${hamzaNumber}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
-    function sendWhatsAppOrder() {
-        const n = document.getElementById('custName').value;
-        const p = document.getElementById('custPhone').value;
-        if(!n || !p){ alert("പേരും നമ്പറും നൽകുക"); return; }
-        let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${n}\n*ഫോൺ:* ${p}\n\n*പുസ്തകങ്ങൾ:*\n`;
-        cart.forEach((item, i) => msg += `${i+1}. ${item.name}\n`);
-        msg += `\n*ആകെ തുക: ₹${cart.reduce((s,i)=>s+i.price,0)}*\n----------\n_പണമടച്ച ശേഷം സ്ക്രീൻഷോട്ട് മറക്കാതെ അയക്കുക._`;
-        window.open(`https://wa.me/${hamzaNumber}?text=${encodeURIComponent(msg)}`, '_blank');
-    }
-    resetAndRender();
+    renderBooks();
 </script>
 </body>
 </html>
