@@ -9,39 +9,27 @@
         :root { --primary: #065279; --secondary: #27ae60; --accent: #f39c12; --bg: #f4f7f6; --github-green: #1f883d; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); margin: 0; padding-bottom: 100px; }
         header { background: var(--primary); color: white; padding: 20px; text-align: center; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; }
-        
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
-        
         .filter-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
         select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; margin-bottom: 15px; font-weight: bold; }
-
-        .select-all-btn { background: var(--github-green); color: white; border: none; padding: 16px; border-radius: 10px; width: 100%; font-weight: 800; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
-
-        /* ലിസ്റ്റ് സ്റ്റൈൽ */
-        .book-list { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-top: 20px; }
+        .select-all-btn { background: var(--github-green); color: white; border: none; padding: 16px; border-radius: 10px; width: 100%; font-weight: 800; font-size: 16px; cursor: pointer; display: none; align-items: center; justify-content: center; gap: 10px; }
+        .book-list { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-top: 20px; display: none; }
         .book-row { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #eee; transition: 0.3s; cursor: pointer; }
-        .book-row:last-child { border-bottom: none; }
         .book-row.selected { background-color: #e8f5e9; }
-        
         .checkbox-col { margin-right: 15px; }
         input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--secondary); }
-        
         .book-info { flex-grow: 1; }
         .book-name { font-weight: bold; font-size: 15px; color: #2c3e50; }
         .mandatory-tag { font-size: 10px; color: #d35400; font-weight: bold; display: block; }
         .book-price { font-weight: 800; color: #444; font-size: 16px; }
-
-        /* Modal Styles */
         #cartModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto; }
         .cart-content { background: white; width: 90%; max-width: 500px; margin: 30px auto; border-radius: 20px; padding: 25px; position: relative; }
         .close-modal { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; }
         .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
-        
         .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 10px; font-size: 11px; margin-top: 15px; text-align: center; font-weight: 600; }
         .gpay-btn { background: #000; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 12px; text-decoration: none; margin-top: 10px; font-weight: bold; }
         .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 15px; cursor: pointer; }
-        
-        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 2px solid #eee; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 100; }
+        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 2px solid #eee; display: none; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 100; }
         .footer-total { font-weight: 900; font-size: 22px; color: #222; }
     </style>
 </head>
@@ -55,28 +43,28 @@
     <div class="filter-section">
         <label style="display:block; margin-bottom:10px; font-weight:bold;">ക്ലാസ് തിരഞ്ഞെടുക്കുക:</label>
         <select id="classSelector" onchange="renderBooks()">
+            <option value="" selected disabled>-- തിരഞ്ഞെടുക്കുക --</option>
             <option value="1">ക്ലാസ്സ് 1 (I)</option>
             <option value="2">ക്ലാസ്സ് 2 (II)</option>
-            <option value="3" selected>ക്ലാസ്സ് 3 (III)</option>
+            <option value="3">ക്ലാസ്സ് 3 (III)</option>
             <option value="4">ക്ലാസ്സ് 4 (IV)</option>
             <option value="5">ക്ലാസ്സ് 5 (V)</option>
             <option value="6">ക്ലാസ്സ് 6 (VI)</option>
             <option value="7">ക്ലാസ്സ് 7 (VII)</option>
             <option value="8">ക്ലാസ്സ് 8 (VIII)</option>
         </select>
-        <button class="select-all-btn" onclick="selectAll()">
+        <button id="selectAllBtn" class="select-all-btn" onclick="selectAll()">
             <i class="fa-solid fa-circle-check"></i> സെറ്റ് മുഴുവനായി തിരഞ്ഞെടുക്കുക
         </button>
     </div>
 
-    <div id="bookList" class="book-list">
-        </div>
+    <div id="bookList" class="book-list"></div>
 </div>
 
-<div class="sticky-footer">
+<div id="stickyFooter" class="sticky-footer">
     <div>
         <span style="font-size:12px; color:#777; font-weight:bold;">ആകെ തുക:</span><br>
-        <span class="footer-total" id="footerTotal">₹ 25</span>
+        <span class="footer-total" id="footerTotal">₹ 0</span>
     </div>
     <button onclick="openCart()" style="background:var(--primary); color:white; padding:15px 25px; border-radius:12px; border:none; font-weight:bold;">ഓർഡർ ചെയ്യുക <i class="fa-solid fa-arrow-right"></i></button>
 </div>
@@ -86,19 +74,15 @@
         <span class="close-modal" onclick="closeCart()">&times;</span>
         <h3 style="color:var(--primary);">ഓർഡർ സ്ഥിരീകരിക്കുക</h3>
         <div id="summaryList" style="font-size: 14px; margin-bottom: 20px;"></div>
-        
         <div style="background:#f9f9f9; padding:15px; border-radius:12px;">
             <input type="text" id="custName" class="form-input" placeholder="വിദ്യാർത്ഥിയുടെ പേര്">
             <input type="tel" id="custPhone" class="form-input" placeholder="ഫോൺ നമ്പർ">
-
             <div class="payment-info-box">
                 ⚠️ പണമടച്ചു കഴിഞ്ഞാൽ സ്ക്രീൻഷോട്ട് 7736480365 എന്ന നമ്പറിലേക്ക് അയക്കാൻ മറക്കരുത്.
             </div>
-            
             <a href="#" id="gpayBtn" class="gpay-btn">
                 <i class="fa-brands fa-google-pay" style="font-size:24px;"></i> Google Pay വഴി അടക്കാം
             </a>
-
             <button class="order-btn" onclick="sendWhatsAppOrder()">
                 <i class="fa-brands fa-whatsapp"></i> വാട്സാപ്പിൽ ഓർഡർ നൽകാം
             </button>
@@ -123,97 +107,51 @@
 
     function renderBooks() {
         const cls = document.getElementById('classSelector').value;
+        if(!cls) return;
+        
+        document.getElementById('selectAllBtn').style.display = 'flex';
+        document.getElementById('bookList').style.display = 'block';
+        document.getElementById('stickyFooter').style.display = 'flex';
+        
         const listDiv = document.getElementById('bookList');
         listDiv.innerHTML = "";
-        
-        // Add Diary (Mandatory)
         listDiv.appendChild(createRow(diaryItem, true));
-        
-        // Add Class Books
-        booksData[cls].forEach(book => {
-            listDiv.appendChild(createRow(book, false));
-        });
+        booksData[cls].forEach(book => listDiv.appendChild(createRow(book, false)));
         updateTotal();
     }
 
     function createRow(book, isMandatory) {
         const row = document.createElement('div');
         row.className = 'book-row' + (isMandatory ? ' selected' : '');
-        row.innerHTML = `
-            <div class="checkbox-col">
-                <input type="checkbox" class="book-check" 
-                       data-name="${book.name}" data-price="${book.price}" 
-                       ${isMandatory ? 'checked disabled' : 'onchange="handleCheck(this)"'}>
-            </div>
-            <div class="book-info">
-                ${isMandatory ? '<span class="mandatory-tag">MANDATORY</span>' : ''}
-                <span class="book-name">${book.name}</span>
-            </div>
-            <div class="book-price">₹${book.price}</div>
-        `;
-        if (!isMandatory) {
-            row.onclick = function(e) {
-                if(e.target.type !== 'checkbox') {
-                    const cb = row.querySelector('.book-check');
-                    cb.checked = !cb.checked;
-                    handleCheck(cb);
-                }
-            };
-        }
+        row.innerHTML = `<div class="checkbox-col"><input type="checkbox" class="book-check" data-name="${book.name}" data-price="${book.price}" ${isMandatory ? 'checked disabled' : 'onchange="handleCheck(this)"'}></div><div class="book-info">${isMandatory ? '<span class="mandatory-tag">MANDATORY</span>' : ''}<span class="book-name">${book.name}</span></div><div class="book-price">₹${book.price}</div>`;
+        if (!isMandatory) { row.onclick = function(e) { if(e.target.type !== 'checkbox') { const cb = row.querySelector('.book-check'); cb.checked = !cb.checked; handleCheck(cb); } }; }
         return row;
     }
 
-    function handleCheck(cb) {
-        const row = cb.closest('.book-row');
-        if (cb.checked) row.classList.add('selected');
-        else row.classList.remove('selected');
-        updateTotal();
-    }
-
-    function selectAll() {
-        document.querySelectorAll('.book-check').forEach(cb => {
-            cb.checked = true;
-            cb.closest('.book-row').classList.add('selected');
-        });
-        updateTotal();
-    }
-
+    function handleCheck(cb) { cb.closest('.book-row').classList.toggle('selected', cb.checked); updateTotal(); }
+    function selectAll() { document.querySelectorAll('.book-check').forEach(cb => { cb.checked = true; cb.closest('.book-row').classList.add('selected'); }); updateTotal(); }
     function updateTotal() {
         let total = 0;
-        document.querySelectorAll('.book-check:checked').forEach(cb => {
-            total += parseInt(cb.dataset.price);
-        });
+        document.querySelectorAll('.book-check:checked').forEach(cb => total += parseInt(cb.dataset.price));
         document.getElementById('footerTotal').innerText = '₹ ' + total;
         document.getElementById('gpayBtn').href = `upi://pay?pa=${upiID}&pn=Hamzachemmad&cu=INR`;
     }
-
     function openCart() {
         const summary = document.getElementById('summaryList');
         summary.innerHTML = "<strong>തിരഞ്ഞെടുത്തവ:</strong><br>";
-        document.querySelectorAll('.book-check:checked').forEach(cb => {
-            summary.innerHTML += `• ${cb.dataset.name} (₹${cb.dataset.price})<br>`;
-        });
+        document.querySelectorAll('.book-check:checked').forEach(cb => summary.innerHTML += `• ${cb.dataset.name} (₹${cb.dataset.price})<br>`);
         document.getElementById('cartModal').style.display = 'block';
     }
-
     function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
-
     function sendWhatsAppOrder() {
         const name = document.getElementById('custName').value;
         const phone = document.getElementById('custPhone').value;
         if (!name || !phone) { alert("പേരും നമ്പറും നൽകുക"); return; }
-        
-        let total = 0;
-        let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n\n*പുസ്തകങ്ങൾ:*\n`;
-        document.querySelectorAll('.book-check:checked').forEach((cb, i) => {
-            msg += `${i+1}. ${cb.dataset.name}\n`;
-            total += parseInt(cb.dataset.price);
-        });
+        let total = 0, msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n\n*പുസ്തകങ്ങൾ:*\n`;
+        document.querySelectorAll('.book-check:checked').forEach((cb, i) => { msg += `${i+1}. ${cb.dataset.name}\n`; total += parseInt(cb.dataset.price); });
         msg += `\n*ആകെ തുക: ₹${total}*\n----------\n_പണമടച്ച ശേഷം സ്ക്രീൻഷോട്ട് മറക്കാതെ അയക്കുക._`;
         window.open(`https://wa.me/${hamzaNumber}?text=${encodeURIComponent(msg)}`, '_blank');
     }
-
-    renderBooks();
 </script>
 </body>
 </html>
