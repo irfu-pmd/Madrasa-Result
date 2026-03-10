@@ -6,7 +6,7 @@
     <title>ഓൺലൈൻ ബുക്ക് ഷോപ്പ് - അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #065279; --secondary: #27ae60; --accent: #f39c12; --bg: #f4f7f6; --navy: #000080; }
+        :root { --primary: #065279; --secondary: #27ae60; --accent: #f39c12; --bg: #f4f7f6; --github-green: #1f883d; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); margin: 0; padding-bottom: 80px; }
         
         header { background: var(--primary); color: white; padding: 20px; text-align: center; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; }
@@ -17,20 +17,24 @@
         .filter-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
         select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; margin-bottom: 15px; }
 
-        /* വലിയ നേവി ബ്ലൂ ബട്ടൺ */
+        /* പുതിയ പച്ച നിറത്തിലുള്ള വലിയ ബട്ടൺ */
         .select-all-btn { 
-            background: var(--navy); 
+            background: var(--github-green); 
             color: white; 
             border: none; 
-            padding: 18px; 
-            border-radius: 12px; 
+            padding: 16px 10px; 
+            border-radius: 10px; 
             width: 100%; 
             font-weight: 800; 
-            font-size: 18px; 
+            font-size: 16px; 
             cursor: pointer; 
             transition: 0.3s; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(31, 136, 61, 0.2);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .select-all-btn:active { transform: scale(0.97); }
 
@@ -51,34 +55,10 @@
         .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
         .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
         
-        /* GPay Warning Box */
-        .payment-info-box { 
-            background: #fff3cd; 
-            border: 1px solid #ffeeba; 
-            color: #856404; 
-            padding: 12px; 
-            border-radius: 10px; 
-            font-size: 13px; 
-            margin-top: 15px; 
-            text-align: center;
-            font-weight: 600;
-        }
-        .gpay-btn { 
-            background: #000; 
-            color: white; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 10px; 
-            padding: 15px; 
-            border-radius: 12px; 
-            text-decoration: none; 
-            margin-top: 10px; 
-            font-weight: bold;
-        }
+        .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 10px; font-size: 12px; margin-top: 15px; text-align: center; font-weight: 600; }
+        .gpay-btn { background: #000; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 12px; text-decoration: none; margin-top: 10px; font-weight: bold; }
 
         .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 15px; cursor: pointer; }
-
         .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 100; }
     </style>
 </head>
@@ -105,7 +85,7 @@
             <option value="8">ക്ലാസ്സ് 8 (VIII)</option>
         </select>
         <button class="select-all-btn" onclick="selectAllBooks()">
-            <i class="fa-solid fa-check-double"></i> സെറ്റ് മുഴുവനായി തിരഞ്ഞെടുക്കുക
+            <i class="fa-solid fa-circle-check"></i> സെറ്റ് മുഴുവനായി തിരഞ്ഞെടുക്കുക
         </button>
     </div>
 
@@ -113,8 +93,8 @@
 </div>
 
 <div class="sticky-footer" id="stickyFooter" style="display:none;">
-    <div><span style="font-size:12px; color:#777;">ആകെ തുക:</span><br><span id="footerTotal" style="font-weight:900; font-size:20px;">₹ 0</span></div>
-    <button onclick="openCart()" style="background:var(--primary); color:white; padding:12px 25px; border-radius:10px; border:none; font-weight:bold;">ഓർഡർ ചെയ്യുക <i class="fa-solid fa-arrow-right"></i></button>
+    <div><span style="font-size:11px; color:#777;">ആകെ തുക:</span><br><span id="footerTotal" style="font-weight:900; font-size:18px;">₹ 0</span></div>
+    <button onclick="openCart()" style="background:var(--primary); color:white; padding:10px 20px; border-radius:10px; border:none; font-weight:bold; font-size: 14px;">ഓർഡർ ചെയ്യുക <i class="fa-solid fa-arrow-right"></i></button>
 </div>
 
 <div id="cartModal">
@@ -202,7 +182,6 @@
         document.getElementById('footerTotal').innerText = '₹ ' + total;
         document.getElementById('stickyFooter').style.display = cart.length > 0 ? 'flex' : 'none';
 
-        // GPay Link Update (Using your number 9061969505)
         const upiId = "9061969505@okbizaxis"; 
         const gpayLink = `upi://pay?pa=${upiId}&pn=Anwarul%20Islam%20Madrasa&am=${total}&cu=INR`;
         document.getElementById('gpayBtn').href = gpayLink;
@@ -226,7 +205,7 @@
         const cls = document.getElementById('classSelector').value;
         if (!name || !phone) { alert("പേരും നമ്പറും നൽകുക"); return; }
         let total = cart.reduce((sum, item) => sum + item.price, 0);
-        let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n*ക്ലാസ്:* ${cls}\n\n*ബുക്കുകൾ:*\n`;
+        let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n*ക്ലാസ്:* ${cls}\n\n*പുസ്തകങ്ങൾ:*\n`;
         cart.forEach((item, i) => msg += `${i+1}. ${item.name}\n`);
         msg += `\n*ആകെ തുക: ₹${total}*\n----------\n_GPay വഴിയാണ് പണമടച്ചതെങ്കിൽ ദയവായി സ്ക്രീൻഷോട്ട് അയക്കുക._`;
         window.open(`https://wa.me/919061969505?text=${encodeURIComponent(msg)}`, '_blank');
