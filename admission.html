@@ -32,6 +32,7 @@
         input:focus, select:focus, textarea:focus { border-color: var(--primary); outline: none; }
         input[readonly] { background-color: #f1f2f6; cursor: not-allowed; color: #555; font-weight: bold; border-color: #ddd; }
         
+        /* സിംഗിൾ വരിയിൽ കൊടുക്കാൻ */
         .row { display: flex; gap: 15px; }
         .row .input-group { flex: 1; margin-bottom: 15px; }
 
@@ -66,14 +67,14 @@
     <div class="sub-text">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
     
     <div class="input-group">
-        <label><i class="fa-solid fa-school"></i> 1. മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും (Name & Recog. No.)</label>
+        <label><i class="fa-solid fa-school"></i> 1. മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label>
         <input type="text" id="madrasaInfo" value="അൻവാറുൽ ഇസ്‌ലാം മദ്രസ - 6948" readonly>
     </div>
 
     <div class="section-title">വിദ്യാർത്ഥിയുടെ വിവരങ്ങൾ</div>
 
     <div class="input-group">
-        <label><i class="fa-solid fa-user"></i> 2. വിദ്യാർത്ഥിയുടെ പേരും, ഇനിഷ്യലും (Name of Student) <span class="req">*</span></label>
+        <label><i class="fa-solid fa-user"></i> 2. വിദ്യാർത്ഥിയുടെ പേരും, ഇനിഷ്യലും <span class="req">*</span></label>
         <input type="text" id="studentName" placeholder="കുട്ടിയുടെ പൂർണ്ണമായ പേര്">
     </div>
 
@@ -82,10 +83,15 @@
         <textarea id="address" rows="3" placeholder="പൂർണ്ണമായ വിലാസം"></textarea>
     </div>
 
+    <div class="input-group">
+        <label><i class="fa-regular fa-address-card"></i> 4. ആധാർ നമ്പർ (Aadhaar No)</label>
+        <input type="number" id="aadhaar" placeholder="ആധാർ നമ്പർ">
+    </div>
+
     <div class="row">
         <div class="input-group">
-            <label><i class="fa-regular fa-address-card"></i> 4. ആധാർ നമ്പർ (Aadhaar No)</label>
-            <input type="number" id="aadhaar" placeholder="ആധാർ നമ്പർ">
+            <label><i class="fa-solid fa-calendar-days"></i> 5. ജനന തിയ്യതി (DOB) <span class="req">*</span></label>
+            <input type="date" id="dob">
         </div>
         <div class="input-group">
             <label><i class="fa-solid fa-venus-mars"></i> 6. ലിംഗം (Sex) <span class="req">*</span></label>
@@ -93,17 +99,6 @@
                 <option value="ആൺകുട്ടി">ആൺകുട്ടി (Male)</option>
                 <option value="പെൺകുട്ടി">പെൺകുട്ടി (Female)</option>
             </select>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-group">
-            <label><i class="fa-solid fa-calendar-days"></i> 5. ജനന തിയ്യതി (Date of Birth) <span class="req">*</span></label>
-            <input type="date" id="dob">
-        </div>
-        <div class="input-group">
-            <label><i class="fa-solid fa-fingerprint"></i> 11. അടയാളങ്ങൾ (Identification Marks)</label>
-            <input type="text" id="marks" placeholder="ശരീരത്തിലെ അടയാളം (Optional)">
         </div>
     </div>
 
@@ -132,26 +127,25 @@
     </div>
 
     <div class="input-group">
+        <label><i class="fa-solid fa-fingerprint"></i> 11. അടയാളങ്ങൾ (Identification Marks)</label>
+        <input type="text" id="marks" placeholder="ശരീരത്തിലെ അടയാളം (Optional)">
+    </div>
+
+    <div class="input-group">
         <label><i class="fa-solid fa-phone"></i> ഫോൺ നമ്പർ (Phone No) <span class="req">*</span></label>
         <input type="tel" id="phone" placeholder="വാട്സാപ്പ് നമ്പർ">
     </div>
 
     <div class="section-title">അഡ്മിഷൻ വിവരങ്ങൾ</div>
 
-    <div class="row">
-        <div class="input-group">
-            <label><i class="fa-solid fa-book-open"></i> 13. ചേരുന്ന ക്ലാസ് (Std to which admitted) <span class="req">*</span></label>
-            <select id="std">
-                <option value="1">ക്ലാസ്സ് 1</option><option value="2">ക്ലാസ്സ് 2</option>
-                <option value="3">ക്ലാസ്സ് 3</option><option value="4">ക്ലാസ്സ് 4</option>
-                <option value="5">ക്ലാസ്സ് 5</option><option value="6">ക്ലാസ്സ് 6</option>
-                <option value="7">ക്ലാസ്സ് 7</option><option value="8">ക്ലാസ്സ് 8</option>
-            </select>
-        </div>
-        <div class="input-group">
-            <label><i class="fa-solid fa-file-lines"></i> 16. ടി.സി നമ്പർ (T.C. No)</label>
-            <input type="text" id="tcNo" placeholder="ഉണ്ടെങ്കിൽ മാത്രം">
-        </div>
+    <div class="input-group">
+        <label><i class="fa-solid fa-book-open"></i> 13. ചേരുന്ന ക്ലാസ് (Class) <span class="req">*</span></label>
+        <select id="std">
+            <option value="1">ക്ലാസ്സ് 1</option><option value="2">ക്ലാസ്സ് 2</option>
+            <option value="3">ക്ലാസ്സ് 3</option><option value="4">ക്ലാസ്സ് 4</option>
+            <option value="5">ക്ലാസ്സ് 5</option><option value="6">ക്ലാസ്സ് 6</option>
+            <option value="7">ക്ലാസ്സ് 7</option><option value="8">ക്ലാസ്സ് 8</option>
+        </select>
     </div>
 
     <div class="input-group">
@@ -162,6 +156,11 @@
     <div class="input-group">
         <label><i class="fa-solid fa-award"></i> 15. പൊതുപരീക്ഷ സർട്ടിഫിക്കറ്റ് നമ്പറും ക്ലാസ്സും</label>
         <input type="text" id="publicExam" placeholder="പൊതുപരീക്ഷ പാസ്സായിട്ടുണ്ടെങ്കിൽ മാത്രം">
+    </div>
+
+    <div class="input-group">
+        <label><i class="fa-solid fa-file-lines"></i> 16. ടി.സി നമ്പർ (T.C. No)</label>
+        <input type="text" id="tcNo" placeholder="ഉണ്ടെങ്കിൽ മാത്രം">
     </div>
 
     <button onclick="submitAdmission()"><i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക</button>
@@ -196,7 +195,7 @@
             return;
         }
 
-        // WhatsApp Message formatting
+        // WhatsApp Message formatting based on actual form numbers
         const msg = `📝 *മദ്രസ അഡ്മിഷൻ ഫോം* 📝%0A` +
                     `-----------------------------------%0A` +
                     `1. മദ്രസ: അൻവാറുൽ ഇസ്‌ലാം മദ്രസ (6948)%0A` +
