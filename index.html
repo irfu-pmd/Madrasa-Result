@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
+    <title>അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -15,14 +15,14 @@
             --btn-res: #2279bc;
             --btn-gal: #d9a528;
             --btn-wa: #37c55c;
-            --btn-shop: #e67e22; /* ബുക്ക് ഷോപ്പിനായി പുതിയ ഓറഞ്ച് നിറം */
+            --btn-shop: #e67e22; 
         }
 
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0; padding: 0;
             background-color: #111;
-            /* Background Image (Blurred Courtyard) */
+            /* Background Image */
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1000&q=80');
             background-size: cover;
             background-position: center;
@@ -50,6 +50,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .header-left { display: flex; align-items: center; gap: 10px; }
         .logo { width: 50px; height: 50px; background: white; border-radius: 50%; padding: 2px; }
@@ -58,7 +61,61 @@
         .malayalam-title { font-size: 16px; font-weight: bold; margin: 2px 0; }
         .english-title { font-size: 12px; font-weight: bold; letter-spacing: 0.5px; }
         .sub-title { font-size: 8px; color: #ccc; }
-        .menu-icon { font-size: 24px; }
+        
+        .menu-icon { font-size: 24px; cursor: pointer; padding: 5px; }
+
+        /* --- SIDE MENU (Hamburger Menu) --- */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            z-index: 1000;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.2);
+            transition: 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        .side-menu.active { left: 0; }
+
+        .menu-header {
+            background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2));
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-header h3 { margin: 0; font-size: 16px; }
+        .close-menu { font-size: 24px; cursor: pointer; }
+
+        .menu-links { padding: 20px 0; flex: 1; overflow-y: auto; }
+        .menu-links a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            border-bottom: 1px solid #f0f0f0;
+            transition: 0.2s;
+        }
+        .menu-links a:hover { background: #f9f9f9; color: var(--header-grad-1); padding-left: 25px; }
+        .menu-links a i { width: 30px; font-size: 18px; color: var(--gold); text-align: center; margin-right: 10px; }
+
+        /* Overlay Background */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 900;
+        }
+        .menu-overlay.active { display: block; }
+        /* ---------------------------------- */
 
         /* News Ticker */
         .news-ticker {
@@ -86,7 +143,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .welcome-banner::before {
-            content: "\f66f"; /* Mosque icon */
+            content: "\f66f";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
@@ -99,23 +156,11 @@
         .welcome-banner p { margin: 0; font-size: 12px; opacity: 0.9; line-height: 1.4; }
 
         /* 2x2 Action Grid */
-        .action-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .action-card {
-            border-radius: 12px;
-            padding: 15px 10px;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: 0.2s;
+            border-radius: 12px; padding: 15px 10px; color: white; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: 0.2s;
         }
         .action-card:active { transform: scale(0.97); }
         .action-card.adm { background: var(--btn-adm); }
@@ -130,18 +175,12 @@
 
         /* Wide Action Button */
         .wide-action-btn {
-            color: white;
-            text-align: center;
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 12px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: 0.3s;
+            color: white; text-align: center; padding: 15px; border-radius: 12px;
+            text-decoration: none; display: block; margin-bottom: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s;
         }
         .bg-admission { background: linear-gradient(to right, #004d7a, #008793); }
-        .bg-shop { background: linear-gradient(to right, #e67e22, #d35400); } /* ഷോപ്പിനായി പ്രത്യേകം ഗ്രേഡിയന്റ് */
+        .bg-shop { background: linear-gradient(to right, #e67e22, #d35400); } 
 
         .wide-action-btn .main-txt { font-weight: bold; font-size: 16px; display: block; }
         .wide-action-btn .sub-txt { font-size: 11px; opacity: 0.8; }
@@ -151,14 +190,8 @@
         .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; }
         
         .teacher-card {
-            background: white;
-            border-radius: 12px;
-            padding: 12px;
-            display: flex;
-            gap: 15px;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
+            background: white; border-radius: 12px; padding: 12px; display: flex;
+            gap: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;
         }
         .teacher-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; }
         .teacher-info { display: flex; flex-direction: column; justify-content: center; flex: 1; }
@@ -172,12 +205,7 @@
 
         /* Footer */
         footer {
-            background: #022b42;
-            color: white;
-            padding: 20px 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            background: #022b42; color: white; padding: 20px 15px; display: flex; flex-direction: column; gap: 15px;
         }
         .footer-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
         .footer-left h4 { margin: 0 0 5px 0; font-size: 14px; }
@@ -208,8 +236,25 @@
                 <span class="sub-title">UNDER SAMASTHA KERALA ISLAM MATHA VIDYABHYASA BOARD</span>
             </div>
         </div>
-        <i class="fa-solid fa-bars menu-icon"></i>
+        <i class="fa-solid fa-bars menu-icon" onclick="toggleMenu()"></i>
     </header>
+
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h3><i class="fa-solid fa-mosque"></i> അൻവാറുൽ ഇസ്‌ലാം</h3>
+            <i class="fa-solid fa-xmark close-menu" onclick="toggleMenu()"></i>
+        </div>
+        <div class="menu-links">
+            <a href="index.html"><i class="fa-solid fa-house"></i> ഹോം പേജ്</a>
+            <a href="admission.html"><i class="fa-solid fa-graduation-cap"></i> ഓൺലൈൻ അഡ്മിഷൻ</a>
+            <a href="book-order.html"><i class="fa-solid fa-cart-shopping"></i> ബുക്ക് ഷോപ്പ്</a>
+            <a href="result.html"><i class="fa-solid fa-chart-simple"></i> പരീക്ഷാ ഫലം</a>
+            <a href="gallery.html"><i class="fa-solid fa-images"></i> ഗാലറി</a>
+            <a href="class-details.html"><i class="fa-solid fa-users"></i> ക്ലാസ് വിവരങ്ങൾ</a>
+            <a href="https://wa.me/919061969505"><i class="fa-brands fa-whatsapp"></i> വാട്സാപ്പിൽ ബന്ധപ്പെടാൻ</a>
+        </div>
+    </div>
 
     <div class="news-ticker">
         <div class="news-badge">NEWS</div>
@@ -328,6 +373,15 @@
     </footer>
 
 </div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('menuOverlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+</script>
 
 </body>
 </html>
