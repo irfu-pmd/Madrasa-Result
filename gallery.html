@@ -61,10 +61,10 @@
         }
 
         .gallery-item:hover img { transform: scale(1.05); }
-        /* വലുതാക്കാനുള്ള ക്ലാസ് - പൊക്കം കുറച്ച് auto ആക്കി */
-        .wide { grid-column: span 2; height: auto; min-height: 220px; }
+        /* Wide class for full width posters */
+        .wide { grid-column: span 2; height: auto; min-height: 250px; }
 
-        /* Lightbox - ഫോട്ടോ വലുതാക്കാൻ */
+        /* Lightbox */
         #lightbox { 
             display: none; 
             position: fixed; 
@@ -86,10 +86,9 @@
             text-decoration: none; 
             border-radius: 30px; 
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(6, 82, 121, 0.3);
         }
 
-        footer { color: #888; font-size: 12px; margin-top: 20px; }
+        footer { padding: 20px; color: #888; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -128,7 +127,6 @@
     <div class="gallery-grid">
         <div class="gallery-item wide" onclick="showImg('1000041482.jpg')"><img src="1000041482.jpg"></div>
         
-        <div class="gallery-item" onclick="showImg('1000023605.jpg')"><img src="1000023605.jpg"></div>
         <div class="gallery-item" onclick="showImg('1772779993662.png')"><img src="1772779993662.png"></div>
         <div class="gallery-item" onclick="showImg('1772779876024.png')"><img src="1772779876024.png"></div>
     </div>
