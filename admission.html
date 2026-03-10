@@ -21,6 +21,7 @@
         
         .input-group { margin-bottom: 18px; }
         label { display: block; font-weight: bold; margin-bottom: 8px; color: #333; font-size: 13px; }
+        label i { color: var(--primary); margin-right: 5px; width: 16px; text-align: center; }
         .req { color: red; } 
         
         input, select, textarea { 
@@ -65,29 +66,29 @@
     <div class="sub-text">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
     
     <div class="input-group">
-        <label>1. മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും (Name & Recog. No.)</label>
+        <label><i class="fa-solid fa-school"></i> 1. മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും (Name & Recog. No.)</label>
         <input type="text" id="madrasaInfo" value="അൻവാറുൽ ഇസ്‌ലാം മദ്രസ - 6948" readonly>
     </div>
 
     <div class="section-title">വിദ്യാർത്ഥിയുടെ വിവരങ്ങൾ</div>
 
     <div class="input-group">
-        <label>2. വിദ്യാർത്ഥിയുടെ പേരും, ഇനിഷ്യലും (Name of Student) <span class="req">*</span></label>
+        <label><i class="fa-solid fa-user"></i> 2. വിദ്യാർത്ഥിയുടെ പേരും, ഇനിഷ്യലും (Name of Student) <span class="req">*</span></label>
         <input type="text" id="studentName" placeholder="കുട്ടിയുടെ പൂർണ്ണമായ പേര്">
     </div>
 
     <div class="input-group">
-        <label>3. വീട്ടുപേര്, വിലാസം (House Name & Address)</label>
+        <label><i class="fa-solid fa-house-chimney"></i> 3. വീട്ടുപേര്, വിലാസം (House Name & Address)</label>
         <textarea id="address" rows="3" placeholder="പൂർണ്ണമായ വിലാസം"></textarea>
     </div>
 
     <div class="row">
         <div class="input-group">
-            <label>4. ആധാർ നമ്പർ (Aadhaar No)</label>
+            <label><i class="fa-regular fa-address-card"></i> 4. ആധാർ നമ്പർ (Aadhaar No)</label>
             <input type="number" id="aadhaar" placeholder="ആധാർ നമ്പർ">
         </div>
         <div class="input-group">
-            <label>6. ലിംഗം (Sex) <span class="req">*</span></label>
+            <label><i class="fa-solid fa-venus-mars"></i> 6. ലിംഗം (Sex) <span class="req">*</span></label>
             <select id="sex">
                 <option value="ആൺകുട്ടി">ആൺകുട്ടി (Male)</option>
                 <option value="പെൺകുട്ടി">പെൺകുട്ടി (Female)</option>
@@ -97,11 +98,11 @@
 
     <div class="row">
         <div class="input-group">
-            <label>5. ജനന തിയ്യതി (Date of Birth) <span class="req">*</span></label>
+            <label><i class="fa-solid fa-calendar-days"></i> 5. ജനന തിയ്യതി (Date of Birth) <span class="req">*</span></label>
             <input type="date" id="dob">
         </div>
         <div class="input-group">
-            <label>11. തിരിച്ചറിയുന്നതിനുള്ള അടയാളങ്ങൾ (Identification Marks)</label>
+            <label><i class="fa-solid fa-fingerprint"></i> 11. അടയാളങ്ങൾ (Identification Marks)</label>
             <input type="text" id="marks" placeholder="ശരീരത്തിലെ അടയാളം (Optional)">
         </div>
     </div>
@@ -110,28 +111,28 @@
 
     <div class="row">
         <div class="input-group">
-            <label>7. പിതാവിന്റെ പേര് (Name of Father)</label>
+            <label><i class="fa-solid fa-person"></i> 7. പിതാവിന്റെ പേര് (Name of Father)</label>
             <input type="text" id="fatherName" placeholder="ഉപ്പയുടെ പേര്">
         </div>
         <div class="input-group">
-            <label>8. രക്ഷാകർത്താവിന്റെ പേര് (Name of Guardian)</label>
+            <label><i class="fa-solid fa-user-tie"></i> 8. രക്ഷാകർത്താവിന്റെ പേര് (Guardian)</label>
             <input type="text" id="guardianName" placeholder="രക്ഷിതാവിന്റെ പേര്">
         </div>
     </div>
 
     <div class="row">
         <div class="input-group">
-            <label>9. രക്ഷാകർത്താവിനു കുട്ടിയുമായുള്ള ബന്ധം</label>
+            <label><i class="fa-solid fa-people-arrows"></i> 9. കുട്ടിയുമായുള്ള ബന്ധം</label>
             <input type="text" id="relation" placeholder="ഉദാ: പിതാവ്, മാതാവ്, വലിയുപ്പ">
         </div>
         <div class="input-group">
-            <label>10. രക്ഷാകർത്താവിന്റെ പ്രവൃത്തി (Occupation)</label>
+            <label><i class="fa-solid fa-briefcase"></i> 10. പ്രവൃത്തി (Occupation)</label>
             <input type="text" id="occupation" placeholder="ജോലി">
         </div>
     </div>
 
     <div class="input-group">
-        <label>ഫോൺ നമ്പർ (Phone No) <span class="req">*</span></label>
+        <label><i class="fa-solid fa-phone"></i> ഫോൺ നമ്പർ (Phone No) <span class="req">*</span></label>
         <input type="tel" id="phone" placeholder="വാട്സാപ്പ് നമ്പർ">
     </div>
 
@@ -139,7 +140,7 @@
 
     <div class="row">
         <div class="input-group">
-            <label>13. ചേരുന്ന ക്ലാസ് (Std to which admitted) <span class="req">*</span></label>
+            <label><i class="fa-solid fa-book-open"></i> 13. ചേരുന്ന ക്ലാസ് (Std to which admitted) <span class="req">*</span></label>
             <select id="std">
                 <option value="1">ക്ലാസ്സ് 1</option><option value="2">ക്ലാസ്സ് 2</option>
                 <option value="3">ക്ലാസ്സ് 3</option><option value="4">ക്ലാസ്സ് 4</option>
@@ -148,18 +149,18 @@
             </select>
         </div>
         <div class="input-group">
-            <label>16. ടി.സി നമ്പർ (T.C. No)</label>
+            <label><i class="fa-solid fa-file-lines"></i> 16. ടി.സി നമ്പർ (T.C. No)</label>
             <input type="text" id="tcNo" placeholder="ഉണ്ടെങ്കിൽ മാത്രം">
         </div>
     </div>
 
     <div class="input-group">
-        <label>14. മറ്റു മദ്രസയിൽ നിന്നു വരുന്നതെങ്കിൽ മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label>
+        <label><i class="fa-solid fa-clock-rotate-left"></i> 14. മുൻ മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label>
         <textarea id="formerMadrasa" rows="2" placeholder="മറ്റ് മദ്രസയിൽ പഠിച്ചിരുന്നെങ്കിൽ മാത്രം പൂരിപ്പിക്കുക"></textarea>
     </div>
 
     <div class="input-group">
-        <label>15. മദ്രസ പൊതുപരീക്ഷ പാസ്സായ ക്ലാസ്സും സർട്ടിഫിക്കറ്റ് നമ്പറും</label>
+        <label><i class="fa-solid fa-award"></i> 15. പൊതുപരീക്ഷ സർട്ടിഫിക്കറ്റ് നമ്പറും ക്ലാസ്സും</label>
         <input type="text" id="publicExam" placeholder="പൊതുപരീക്ഷ പാസ്സായിട്ടുണ്ടെങ്കിൽ മാത്രം">
     </div>
 
@@ -195,7 +196,7 @@
             return;
         }
 
-        // WhatsApp Message formatting based on actual form numbers
+        // WhatsApp Message formatting
         const msg = `📝 *മദ്രസ അഡ്മിഷൻ ഫോം* 📝%0A` +
                     `-----------------------------------%0A` +
                     `1. മദ്രസ: അൻവാറുൽ ഇസ്‌ലാം മദ്രസ (6948)%0A` +
