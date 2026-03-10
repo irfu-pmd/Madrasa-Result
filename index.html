@@ -13,10 +13,10 @@
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0; padding: 0;
-            color: #ffffff;
-            /* തൊപ്പി ധരിച്ച കുട്ടികൾ മദ്രസയ്ക്ക് മുന്നിലുള്ള കാർട്ടൂൺ ചിത്രം */
+            color: #333;
+            /* പശ്ചാത്തല ചിത്രം */
             background-color: #1a1a1a;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
                               url('https://img.freepik.com/free-vector/happy-muslim-kids-back-school-illustration_1308-54201.jpg');
             background-size: cover;
             background-position: center;
@@ -39,35 +39,33 @@
         .logo { width: 90px; margin-bottom: 15px; background: white; padding: 5px; border-radius: 8px; }
         .reg-badge { background: var(--gold); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: 900; font-size: 13px; margin-bottom: 12px; }
         
-        h1 { margin: 0 0 2px 0; font-size: 26px; font-weight: 800; text-shadow: 2px 2px 5px rgba(0,0,0,1); }
-        .sub-header { font-size: 13px; margin: 0 auto 5px auto; font-weight: 600; text-shadow: 1px 1px 3px rgba(0,0,0,1); }
-        .loc-text { font-size: 15px; margin-top: 5px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,1); }
+        h1 { margin: 0 0 2px 0; font-size: 26px; font-weight: 800; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+        .sub-header { font-size: 13px; margin: 0 auto 5px auto; font-weight: 600; }
+        .loc-text { font-size: 15px; margin-top: 5px; font-weight: bold; }
 
         .news-ticker {
             background: rgba(231, 76, 60, 0.95);
             display: flex;
             align-items: center;
-            border-bottom: 2px solid #c0392b;
         }
         .ticker-label { background: #c0392b; color: white; padding: 12px 15px; font-weight: bold; font-size: 14px; }
         marquee { font-weight: 700; color: #fff; font-size: 15px; padding: 5px 0; }
 
         .container { padding: 30px 20px; max-width: 500px; margin: auto; }
 
-        /* വായിക്കാൻ എളുപ്പത്തിന് ബട്ടണുകൾക്ക് പിന്നിൽ ഗ്ലാസ് ഇഫക്റ്റ് */
-        .glass-panel { 
-            background: rgba(0, 0, 0, 0.7); 
+        /* വെള്ള പശ്ചാത്തലം നൽകിയ ബോക്സുകൾ */
+        .white-panel { 
+            background: rgba(255, 255, 255, 0.95); 
             padding: 25px; 
             border-radius: 20px; 
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
             margin-bottom: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid #ddd;
         }
         
-        .welcome-text h2 { color: var(--gold); margin: 0 0 8px 0; font-size: 26px; }
-        .welcome-text p { color: #f0f0f0; font-size: 16px; font-weight: 500; }
+        .welcome-text h2 { color: var(--primary); margin: 0 0 8px 0; font-size: 26px; }
+        .welcome-text p { color: #555; font-size: 16px; font-weight: 500; }
 
         .action-grid {
             display: grid;
@@ -78,13 +76,13 @@
         .action-card {
             text-decoration: none;
             color: white;
-            padding: 28px 10px;
+            padding: 25px 10px;
             border-radius: 18px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             font-weight: 800;
         }
         .bg-admission { background: linear-gradient(135deg, #2ecc71, #27ae60); }
@@ -92,8 +90,8 @@
 
         .list-container { display: flex; flex-direction: column; gap: 15px; }
         .list-btn {
-            background: rgba(0, 0, 0, 0.65);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
             padding: 18px 20px;
             text-decoration: none;
             border-radius: 15px;
@@ -101,11 +99,10 @@
             align-items: center;
             font-weight: 700;
             font-size: 16px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid #ddd;
         }
-        .icon-box { width: 35px; height: 35px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; }
+        .icon-box { width: 35px; height: 35px; background: #f0f4f8; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; }
 
         footer {
             background: #000;
@@ -136,7 +133,7 @@
 </div>
 
 <div class="container">
-    <div class="glass-panel welcome-text">
+    <div class="white-panel welcome-text">
         <h2>സ്വാഗതം!</h2>
         <p>വിജ്ഞാനവും ധാർമ്മികതയും പകർന്നുനൽകുന്ന സ്നേഹതീരം.</p>
     </div>
@@ -172,12 +169,11 @@
     <p style="font-size: 20px; margin-bottom: 5px;"><b>അൻവാറുൽ ഇസ്ലാം മദ്രസ</b></p>
     <p style="font-size: 15px; opacity: 0.9;">താഴെ പുല്ലുംകുന്ന്</p>
     <div class="social-links">
-        <a href="#" class="social-btn" title="Facebook">f</a>
+        <a href="#" class="social-btn">f</a>
         <a href="https://www.instagram.com/anwarul__islam__madrassa" target="_blank" class="social-btn ig" title="Instagram">Ig</a>
         <a href="https://wa.me/919061969505" class="social-btn wa" title="WhatsApp">W</a>
     </div>
-    <p style="font-size: 13px; opacity: 0.7; margin-top: 25px;">Reg No: 6948 | 📞 9061969505</p>
-    <p style="font-size: 11px; opacity: 0.5;">&copy; 2026 Anwarul Islam Madrasa</p>
+    <p style="font-size: 14px; opacity: 0.7; margin-top: 25px;">Reg No: 6948 | 📞 9061969505</p>
 </footer>
 
 </body>
