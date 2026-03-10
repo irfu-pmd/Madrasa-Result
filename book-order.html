@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ഓൺലൈൻ ബുക്ക് ഷോപ്പ് - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #065279; --secondary: #27ae60; --accent: #f39c12; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); margin: 0; padding-bottom: 80px; }
+        header { background: var(--primary); color: white; padding: 20px; text-align: center; border-radius: 0 0 25px 25px; position: relative; }
+        .cart-count-btn { position: absolute; top: 20px; right: 20px; background: var(--accent); color: white; padding: 8px 15px; border-radius: 20px; border: none; font-weight: bold; }
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        .filter-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; }
+        .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .book-card { background: white; border-radius: 15px; padding: 15px; text-align: center; border: 1px solid #eee; }
+        .book-name { font-weight: bold; font-size: 14px; height: 40px; color: #2c3e50; }
+        .book-price { color: var(--secondary); font-weight: 800; font-size: 18px; display: block; margin: 10px 0; }
+        .add-btn { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; }
+        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
+        #cartModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; }
+        .cart-content { background: white; width: 90%; max-width: 500px; margin: 50px auto; border-radius: 20px; padding: 25px; position: relative; max-height: 80vh; overflow-y: auto; }
+        .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
+        .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<header>
+    <button class="cart-count-btn" onclick="openCart()"><i class="fa-solid fa-cart-shopping"></i> <span id="cartCount">0</span></button>
+    <h1 style="margin:0; font-size: 20px;">മദ്രസ ഓൺലൈൻ ബുക്ക് ഷോപ്പ്</h1>
+</header>
+
+<div class="container">
+    <div class="filter-section">
+        <label style="font-weight:bold; display:block; margin-bottom:10px;">ക്ലാസ് തിരഞ്ഞെടുക്കുക:</label>
+        <select id="classSelector" onchange="renderBooks()">
+            <option value="1">ക്ലാസ്സ് 1 (I)</option>
+            <option value="2">ക്ലാസ്സ് 2 (II)</option>
+            <option value="3" selected>ക്ലാസ്സ് 3 (III)</option>
+            <option value="4">ക്ലാസ്സ് 4 (IV)</option>
+            <option value="5">ക്ലാസ്സ് 5 (V)</option>
+            <option value="6">ക്ലാസ്സ് 6 (VI)</option>
+            <option value="7">ക്ലാസ്സ് 7 (VII)</option>
+            <option value="8">ക്ലാസ്സ് 8 (VIII)</option>
+        </select>
+    </div>
+    <div id="bookGrid" class="book-grid"></div>
+</div>
+
+<div class="sticky-footer" id="stickyFooter" style="display:none;">
+    <div><span style="font-size:12px; color:#777;">ആകെ തുക:</span><br><span id="footerTotal" style="font-weight:900; font-size:20px;">₹ 0</span></div>
+    <button onclick="openCart()" style="background:var(--primary); color:white; padding:12px 20px; border-radius:10px; border:none; font-weight:bold;">ഓർഡർ ചെയ്യുക</button>
+</div>
+
+<div id="cartModal">
+    <div class="cart-content">
+        <span onclick="closeCart()" style="float:right; cursor:pointer; font-size:24px;">&times;</span>
+        <h3>നിങ്ങൾ തിരഞ്ഞെടുത്തവ</h3>
+        <div id="cartItemsList"></div>
+        <div style="margin-top:20px; background:#f9f9f9; padding:15px; border-radius:10px;">
+            <input type="text" id="custName" class="form-input" placeholder="വിദ്യാർത്ഥിയുടെ പേര്">
+            <input type="tel" id="custPhone" class="form-input" placeholder="ഫോൺ നമ്പർ">
+        </div>
+        <button class="order-btn" onclick="sendWhatsAppOrder()">വാട്സാപ്പിൽ ഓർഡർ നൽകുക</button>
+    </div>
+</div>
+
+<script>
+    const booksData = {
+        1: [{name: "തഫ്ഹീം പാർട്ട് 1-i", price: 180}, {name: "തഫ്ഹീം പാർട്ട് 2-i", price: 110}, {name: "ദുറൂസ്-i", price: 70}],
+        2: [{name: "ഫിഖ്ഹ്-ii", price: 90}, {name: "ദുറൂസ്-ii", price: 70}, {name: "ലിസാൻ-ii", price: 80}, {name: "അഖീദ-ii", price: 70}],
+        3: [{name: "തർബിയത്തുത്തിലാവ-iii", price: 90}, {name: "അഖീദ-iii", price: 60}, {name: "ഫിഖ്ഹ്-iii", price: 80}, {name: "ദുറൂസ്-iii", price: 70}, {name: "താരീഖ്-iii", price: 80}, {name: "ലിസാൻ-iii", price: 90}],
+        4: [{name: "ദുറൂസ്-iv", price: 70}, {name: "താരീഖ്-iv", price: 70}, {name: "ഫിഖ്ഹ്-iv", price: 90}, {name: "അഖീദ-iv", price: 60}, {name: "തർബിയത്തുത്തിലാവ-iv", price: 90}, {name: "ലിസാൻ-iv", price: 90}],
+        5: [{name: "ദുറൂസ്-v", price: 60}, {name: "താരീഖ്-v", price: 70}, {name: "ഫിഖ്ഹ്-v", price: 100}, {name: "തജ്‌വീദ്-v", price: 80}, {name: "ലിസാൻ-v", price: 90}],
+        6: [{name: "ദുറൂസ്-vi", price: 70}, {name: "താരീഖ്-vi", price: 70}, {name: "ഫിഖ്ഹ്-vi", price: 90}, {name: "തജ്‌വീദ്-vi", price: 80}, {name: "ലിസാൻ-vi", price: 90}, {name: "ഉപ പാഠ പുസ്തകം-vi", price: 50}],
+        7: [{name: "ദുറൂസ്-vii", price: 60}, {name: "താരീഖ്-vii", price: 60}, {name: "ഫിഖ്ഹ്-vii", price: 80}, {name: "തജ്‌വീദ്-vii", price: 70}, {name: "ലിസാൻ-vii", price: 90}, {name: "ഉപ പാഠ പുസ്തകം-vii", price: 50}],
+        8: [{name: "ദുറൂസ്-viii", price: 60}, {name: "താരീഖ്-viii", price: 70}, {name: "ഫിഖ്ഹ്-viii", price: 80}, {name: "ലിസാൻ-viii", price: 100}, {name: "ഉപ പാഠ പുസ്തകം-viii", price: 50}]
+    };
+
+    let cart = [];
+    function renderBooks() {
+        const cls = document.getElementById('classSelector').value;
+        const grid = document.getElementById('bookGrid');
+        grid.innerHTML = "";
+        booksData[cls].forEach(book => {
+            grid.innerHTML += `<div class="book-card"><span class="book-name">${book.name}</span><br><span class="book-price">₹${book.price}</span><button class="add-btn" onclick="addToCart('${book.name}', ${book.price})">ADD</button></div>`;
+        });
+    }
+    function addToCart(name, price) { cart.push({name, price}); updateCart(); }
+    function updateCart() {
+        document.getElementById('cartCount').innerText = cart.length;
+        const total = cart.reduce((s, i) => s + i.price, 0);
+        document.getElementById('footerTotal').innerText = '₹ ' + total;
+        document.getElementById('stickyFooter').style.display = cart.length > 0 ? 'flex' : 'none';
+    }
+    function openCart() {
+        const list = document.getElementById('cartItemsList');
+        list.innerHTML = "";
+        cart.forEach((item, index) => { list.innerHTML += `<div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;"><span>${item.name}</span><span>₹${item.price}</span></div>`; });
+        document.getElementById('cartModal').style.display = 'block';
+    }
+    function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
+    function sendWhatsAppOrder() {
+        const name = document.getElementById('custName').value;
+        if(!name) { alert("പേര് നൽകുക"); return; }
+        let total = cart.reduce((s, i) => s + i.price, 0);
+        let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\nപേര്: ${name}\n\nപുസ്തകങ്ങൾ:\n`;
+        cart.forEach((item, i) => msg += `${i+1}. ${item.name}\n`);
+        msg += `\n*ആകെ തുക: ₹${total}*`;
+        window.open(`https://wa.me/919061969505?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+    renderBooks();
+</script>
+</body>
+</html>
