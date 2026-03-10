@@ -31,15 +31,7 @@
         .close-modal { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; }
         .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
         
-        .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px; border-radius: 10px; font-size: 12px; margin-top: 15px; text-align: center; font-weight: bold; }
-        
-        /* QR Code Section */
-        .qr-section { background: white; border: 2px dashed var(--primary); border-radius: 12px; padding: 15px; text-align: center; margin-top: 15px; }
-        .qr-section img { width: 160px; height: 160px; border-radius: 10px; margin-bottom: 10px; }
-        .qr-instruction { font-size: 12px; color: #555; margin-bottom: 15px; font-weight: bold; line-height: 1.5; }
-
-        .copy-btn { background: #000; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 15px; border: none; cursor: pointer; width: 100%; }
-        .copy-btn:active { transform: scale(0.98); }
+        .payment-info-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 15px; border-radius: 10px; font-size: 13px; margin-top: 15px; text-align: center; font-weight: bold; line-height: 1.6; }
         
         .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 20px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; }
         
@@ -92,20 +84,9 @@
             <input type="tel" id="custPhone" class="form-input" placeholder="ഫോൺ നമ്പർ">
         </div>
 
-        <div class="qr-section">
-            <h4 style="margin-top:0; color:#333;">പണമടക്കാൻ QR സ്കാൻ ചെയ്യുക</h4>
-            <img src="1000041288.jpg" alt="QR Code">
-            <div class="qr-instruction">
-                മറ്റൊരു ഫോൺ ഉപയോഗിച്ച് സ്കാൻ ചെയ്യുക. അല്ലെങ്കിൽ താഴെയുള്ള ബട്ടൺ വഴി UPI ID കോപ്പി ചെയ്ത് നിങ്ങളുടെ GPay / PhonePe യിൽ പേസ്റ്റ് ചെയ്ത് പണമടക്കാം.
-            </div>
-            
-            <button class="copy-btn" onclick="copyUPI()">
-                <i class="fa-solid fa-copy"></i> UPI ID കോപ്പി ചെയ്യുക
-            </button>
-        </div>
-
         <div class="payment-info-box">
-            ⚠️ പണമടച്ചു കഴിഞ്ഞാൽ സ്ക്രീൻഷോട്ട് 7736480365 എന്ന നമ്പറിലേക്ക് വാട്സാപ്പ് ചെയ്യാൻ മറക്കരുത്.
+            ⚠️ താഴെയുള്ള ബട്ടൺ ക്ലിക്ക് ചെയ്ത് വാട്സാപ്പിലൂടെ ഓർഡർ നൽകുക.<br><br>
+            പണമടച്ച ശേഷം സ്ക്രീൻഷോട്ട് <strong>9061969505</strong> എന്ന നമ്പറിലേക്ക് അയക്കാൻ മറക്കരുത്.
         </div>
 
         <button class="order-btn" onclick="sendWhatsAppOrder()">
@@ -115,8 +96,7 @@
 </div>
 
 <script>
-    const hamzaNumber = "917736480365";
-    const upiID = "hamzachemmadhamzachemmad457@okicici";
+    const whatsappNumber = "919061969505"; // നിങ്ങളുടെ വാട്സാപ്പ് നമ്പർ
     const diaryItem = { name: "മദ്രസ ഡയറി (Mandatory)", price: 25, mandatory: true };
     const booksData = {
         1: [{name: "തഫ്ഹീം പാർട്ട് 1-i", price: 180}, {name: "തഫ്ഹീം പാർട്ട് 2-i", price: 110}, {name: "ദുറൂസ്-i", price: 70}],
@@ -159,11 +139,6 @@
         document.getElementById('footerTotal').innerText = '₹ ' + total;
     }
 
-    function copyUPI() {
-        navigator.clipboard.writeText(upiID);
-        alert("UPI ID കോപ്പി ചെയ്തു! ഇനി നിങ്ങളുടെ Google Pay അല്ലെങ്കിൽ PhonePe ഓപ്പൺ ചെയ്ത് 'Pay to UPI ID' എന്ന ഓപ്ഷനിൽ പേസ്റ്റ് ചെയ്ത് പണമടക്കുക.");
-    }
-
     function openCart() { document.getElementById('cartModal').style.display = 'block'; }
     function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
     
@@ -179,7 +154,7 @@
             total += parseInt(cb.dataset.price); 
         });
         msg += `\n*ആകെ തുക: ₹${total}*\n----------\n_പണമടച്ച ശേഷം സ്ക്രീൻഷോട്ട് ഈ നമ്പറിലേക്ക് തന്നെ അയക്കുക._`;
-        window.open(`https://wa.me/${hamzaNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 </script>
 </body>
