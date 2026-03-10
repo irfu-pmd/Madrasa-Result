@@ -15,6 +15,7 @@
             --btn-res: #2279bc;
             --btn-gal: #d9a528;
             --btn-wa: #37c55c;
+            --btn-shop: #e67e22; /* ബുക്ക് ഷോപ്പിനായി പുതിയ ഓറഞ്ച് നിറം */
         }
 
         body {
@@ -127,20 +128,24 @@
         .action-text .mal { font-weight: bold; font-size: 14px; }
         .action-text .eng { font-size: 10px; opacity: 0.9; }
 
-        /* Wide Action Button (Online Admission) */
+        /* Wide Action Button */
         .wide-action-btn {
-            background: linear-gradient(to right, #004d7a, #008793);
             color: white;
             text-align: center;
             padding: 15px;
             border-radius: 12px;
             text-decoration: none;
             display: block;
-            margin-bottom: 25px; /* Spacing below the button */
+            margin-bottom: 12px; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
         }
+        .bg-admission { background: linear-gradient(to right, #004d7a, #008793); }
+        .bg-shop { background: linear-gradient(to right, #e67e22, #d35400); } /* ഷോപ്പിനായി പ്രത്യേകം ഗ്രേഡിയന്റ് */
+
         .wide-action-btn .main-txt { font-weight: bold; font-size: 16px; display: block; }
         .wide-action-btn .sub-txt { font-size: 11px; opacity: 0.8; }
+        .wide-action-btn:active { transform: scale(0.98); }
 
         /* Teachers Section */
         .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; }
@@ -198,7 +203,7 @@
             <img src="Madrasa-Logo.png" alt="Logo" class="logo">
             <div class="header-text">
                 <span class="arabic-text">مدرسة أنوار الإسلام</span>
-                <span class="malayalam-title">അൻവാറുൽ ഇസ്ലാം മദ്രസ</span>
+                <span class="malayalam-title">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</span>
                 <span class="english-title">ANWARUL ISLAM MADRASA</span>
                 <span class="sub-title">UNDER SAMASTHA KERALA ISLAM MATHA VIDYABHYASA BOARD</span>
             </div>
@@ -252,9 +257,14 @@
             </a>
         </div>
 
-        <a href="admission.html" class="wide-action-btn">
+        <a href="admission.html" class="wide-action-btn bg-admission">
             <span class="main-txt">ONLINE ADMISSION</span>
             <span class="sub-txt">പുതിയ അഡ്മിഷൻ എടുക്കാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക</span>
+        </a>
+
+        <a href="book-order.html" class="wide-action-btn bg-shop">
+            <span class="main-txt"><i class="fa-solid fa-cart-shopping"></i> ONLINE BOOK SHOP</span>
+            <span class="sub-txt">പുസ്തകങ്ങൾ ഓൺലൈനായി ഓർഡർ ചെയ്യാം</span>
         </a>
 
         <div class="section-title">അധ്യാപകർ</div>
@@ -299,7 +309,7 @@
     <footer>
         <div class="footer-top">
             <div class="footer-left">
-                <h4>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h4>
+                <h4>അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</h4>
                 <p>താഴെ പുല്ലുംകുന്ന്</p>
                 <div class="ph"><i class="fa-solid fa-phone"></i> 9061969505</div>
             </div>
