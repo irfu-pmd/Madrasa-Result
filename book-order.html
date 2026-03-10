@@ -3,39 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ഓൺലൈൻ ബുക്ക് ഷോപ്പ് - അൻവാറുൽ ഇസ്ലാം മദ്രസ</title>
+    <title>ഓൺലൈൻ ബുക്ക് ഷോപ്പ് - അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --primary: #065279; --secondary: #27ae60; --accent: #f39c12; --bg: #f4f7f6; }
         body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); margin: 0; padding-bottom: 80px; }
-        header { background: var(--primary); color: white; padding: 20px; text-align: center; border-radius: 0 0 25px 25px; position: relative; }
-        .cart-count-btn { position: absolute; top: 20px; right: 20px; background: var(--accent); color: white; padding: 8px 15px; border-radius: 20px; border: none; font-weight: bold; }
+        
+        header { background: var(--primary); color: white; padding: 20px; text-align: center; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; }
+        .cart-count-btn { position: absolute; top: 20px; right: 20px; background: var(--accent); color: white; padding: 8px 15px; border-radius: 20px; font-weight: bold; border: none; }
+
         .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
-        .filter-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; }
-        .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .book-card { background: white; border-radius: 15px; padding: 15px; text-align: center; border: 1px solid #eee; }
-        .book-name { font-weight: bold; font-size: 14px; height: 40px; color: #2c3e50; }
-        .book-price { color: var(--secondary); font-weight: 800; font-size: 18px; display: block; margin: 10px 0; }
-        .add-btn { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; }
-        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
-        #cartModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; }
-        .cart-content { background: white; width: 90%; max-width: 500px; margin: 50px auto; border-radius: 20px; padding: 25px; position: relative; max-height: 80vh; overflow-y: auto; }
+        
+        .filter-section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        select { width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; margin-bottom: 15px; }
+
+        .select-all-btn { background: #fff; color: var(--primary); border: 2px solid var(--primary); padding: 10px; border-radius: 10px; width: 100%; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .select-all-btn:hover { background: var(--primary); color: white; }
+
+        .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .book-card { background: white; border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; justify-content: space-between; }
+        .book-name { font-weight: bold; font-size: 14px; color: #2c3e50; margin-bottom: 5px; }
+        .book-price { color: var(--secondary); font-weight: 800; font-size: 18px; margin-bottom: 10px; }
+        
+        .add-btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .added-btn { background: #bdc3c7; color: white; cursor: default; }
+        
+        /* Mandatory Badge */
+        .mandatory-tag { font-size: 10px; background: #ffeaa7; color: #d35400; padding: 2px 8px; border-radius: 4px; font-weight: bold; margin-bottom: 5px; }
+
+        #cartModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto; }
+        .cart-content { background: white; width: 90%; max-width: 500px; margin: 30px auto; border-radius: 20px; padding: 25px; position: relative; }
+        .close-modal { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; }
+        
+        .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
         .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
-        .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 10px; cursor: pointer; }
+        .order-btn { background: #25D366; color: white; width: 100%; padding: 15px; border-radius: 12px; border: none; font-size: 16px; font-weight: bold; margin-top: 20px; }
+
+        .sticky-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 15px 20px; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
 <header>
-    <button class="cart-count-btn" onclick="openCart()"><i class="fa-solid fa-cart-shopping"></i> <span id="cartCount">0</span></button>
-    <h1 style="margin:0; font-size: 20px;">മദ്രസ ഓൺലൈൻ ബുക്ക് ഷോപ്പ്</h1>
+    <button class="cart-count-btn" onclick="openCart()">
+        <i class="fa-solid fa-cart-shopping"></i> <span id="cartCount">0</span>
+    </button>
+    <h1 style="margin:0; font-size: 18px;">മദ്രസ ഓൺലൈൻ ബുക്ക് ഷോപ്പ്</h1>
 </header>
 
 <div class="container">
     <div class="filter-section">
-        <label style="font-weight:bold; display:block; margin-bottom:10px;">ക്ലാസ് തിരഞ്ഞെടുക്കുക:</label>
-        <select id="classSelector" onchange="renderBooks()">
+        <label style="display:block; margin-bottom:10px; font-weight:bold;">ക്ലാസ് തിരഞ്ഞെടുക്കുക:</label>
+        <select id="classSelector" onchange="resetAndRender()">
             <option value="1">ക്ലാസ്സ് 1 (I)</option>
             <option value="2">ക്ലാസ്സ് 2 (II)</option>
             <option value="3" selected>ക്ലാസ്സ് 3 (III)</option>
@@ -45,29 +64,37 @@
             <option value="7">ക്ലാസ്സ് 7 (VII)</option>
             <option value="8">ക്ലാസ്സ് 8 (VIII)</option>
         </select>
+        <button class="select-all-btn" onclick="selectAllBooks()">
+            <i class="fa-solid fa-check-double"></i> സെറ്റ് മുഴുവനായി തിരഞ്ഞെടുക്കുക
+        </button>
     </div>
+
     <div id="bookGrid" class="book-grid"></div>
 </div>
 
 <div class="sticky-footer" id="stickyFooter" style="display:none;">
     <div><span style="font-size:12px; color:#777;">ആകെ തുക:</span><br><span id="footerTotal" style="font-weight:900; font-size:20px;">₹ 0</span></div>
-    <button onclick="openCart()" style="background:var(--primary); color:white; padding:12px 20px; border-radius:10px; border:none; font-weight:bold;">ഓർഡർ ചെയ്യുക</button>
+    <button onclick="openCart()" style="background:var(--primary); color:white; padding:12px 25px; border-radius:10px; border:none; font-weight:bold;">ഓർഡർ ചെയ്യുക <i class="fa-solid fa-arrow-right"></i></button>
 </div>
 
 <div id="cartModal">
     <div class="cart-content">
-        <span onclick="closeCart()" style="float:right; cursor:pointer; font-size:24px;">&times;</span>
-        <h3>നിങ്ങൾ തിരഞ്ഞെടുത്തവ</h3>
+        <span class="close-modal" onclick="closeCart()">&times;</span>
+        <h3 style="color:var(--primary);">നിങ്ങളുടെ ഷോപ്പിംഗ് കാർട്ട്</h3>
         <div id="cartItemsList"></div>
-        <div style="margin-top:20px; background:#f9f9f9; padding:15px; border-radius:10px;">
+        <div style="margin-top:20px; background:#f9f9f9; padding:15px; border-radius:12px;">
             <input type="text" id="custName" class="form-input" placeholder="വിദ്യാർത്ഥിയുടെ പേര്">
             <input type="tel" id="custPhone" class="form-input" placeholder="ഫോൺ നമ്പർ">
+            <button class="order-btn" onclick="sendWhatsAppOrder()">
+                <i class="fa-brands fa-whatsapp"></i> വാട്സാപ്പിൽ ഓർഡർ ചെയ്യുക
+            </button>
         </div>
-        <button class="order-btn" onclick="sendWhatsAppOrder()">വാട്സാപ്പിൽ ഓർഡർ നൽകുക</button>
     </div>
 </div>
 
 <script>
+    const diaryItem = { name: "മദ്രസ ഡയറി (Mandatory)", price: 25, mandatory: true };
+    
     const booksData = {
         1: [{name: "തഫ്ഹീം പാർട്ട് 1-i", price: 180}, {name: "തഫ്ഹീം പാർട്ട് 2-i", price: 110}, {name: "ദുറൂസ്-i", price: 70}],
         2: [{name: "ഫിഖ്ഹ്-ii", price: 90}, {name: "ദുറൂസ്-ii", price: 70}, {name: "ലിസാൻ-ii", price: 80}, {name: "അഖീദ-ii", price: 70}],
@@ -80,38 +107,118 @@
     };
 
     let cart = [];
+
+    function resetAndRender() {
+        cart = []; // ക്ലാസ് മാറുമ്പോൾ കാർട്ട് ക്ലിയർ ചെയ്യുക
+        updateCart();
+        renderBooks();
+    }
+
     function renderBooks() {
         const cls = document.getElementById('classSelector').value;
         const grid = document.getElementById('bookGrid');
         grid.innerHTML = "";
+        
+        // 1. മദ്രസ ഡയറി ആദ്യം കാണിക്കുക
+        const diaryCard = createBookCard(diaryItem, true);
+        grid.appendChild(diaryCard);
+
+        // 2. ബാക്കി പുസ്തകങ്ങൾ
         booksData[cls].forEach(book => {
-            grid.innerHTML += `<div class="book-card"><span class="book-name">${book.name}</span><br><span class="book-price">₹${book.price}</span><button class="add-btn" onclick="addToCart('${book.name}', ${book.price})">ADD</button></div>`;
+            const isAdded = cart.some(item => item.name === book.name);
+            const card = createBookCard(book, false, isAdded);
+            grid.appendChild(card);
         });
     }
-    function addToCart(name, price) { cart.push({name, price}); updateCart(); }
+
+    function createBookCard(book, isDiary, isAdded) {
+        const card = document.createElement('div');
+        card.className = 'book-card';
+        card.innerHTML = `
+            ${isDiary ? '<span class="mandatory-tag">MANDATORY</span>' : ''}
+            <div class="book-name">${book.name}</div>
+            <span class="book-price">₹${book.price}</span>
+            <button class="add-btn ${isAdded || isDiary ? 'added-btn' : ''}" 
+                    onclick="${isDiary ? '' : `addToCart('${book.name}', ${book.price})`}">
+                ${isDiary ? 'ADDED' : (isAdded ? 'IN CART' : 'ADD TO CART')}
+            </button>
+        `;
+        return card;
+    }
+
+    function addToCart(name, price) {
+        if (!cart.some(item => item.name === name)) {
+            cart.push({name, price});
+            updateCart();
+            renderBooks();
+        }
+    }
+
+    function selectAllBooks() {
+        const cls = document.getElementById('classSelector').value;
+        cart = []; 
+        // ഡയറി നിർബന്ധമായും ചേർക്കുക
+        cart.push(diaryItem);
+        // ബാക്കി എല്ലാ പുസ്തകങ്ങളും ചേർക്കുക
+        booksData[cls].forEach(book => cart.push(book));
+        
+        updateCart();
+        renderBooks();
+        openCart(); // പെട്ടെന്ന് ഓർഡർ ചെയ്യാൻ കാർട്ട് തുറക്കുക
+    }
+
     function updateCart() {
+        // കാർട്ട് കാലിയാണെങ്കിലും ഡയറി നിർബന്ധമാണെങ്കിൽ അത് എപ്പോഴും ഉണ്ടാകണം (ക്ലാസ് സെലക്ട് ചെയ്തിട്ടുണ്ടെങ്കിൽ)
+        if (cart.length === 0 && document.getElementById('classSelector').value) {
+            cart.push(diaryItem);
+        }
+
         document.getElementById('cartCount').innerText = cart.length;
-        const total = cart.reduce((s, i) => s + i.price, 0);
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
         document.getElementById('footerTotal').innerText = '₹ ' + total;
         document.getElementById('stickyFooter').style.display = cart.length > 0 ? 'flex' : 'none';
     }
+
     function openCart() {
         const list = document.getElementById('cartItemsList');
         list.innerHTML = "";
-        cart.forEach((item, index) => { list.innerHTML += `<div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;"><span>${item.name}</span><span>₹${item.price}</span></div>`; });
+        cart.forEach((item, index) => {
+            list.innerHTML += `
+                <div class="cart-item">
+                    <span>${item.name}</span>
+                    <span style="font-weight:bold;">₹${item.price} ${item.mandatory ? '' : `<i class="fa-solid fa-trash" style="color:#e74c3c; margin-left:10px; cursor:pointer;" onclick="removeFromCart(${index})"></i>`}</span>
+                </div>
+            `;
+        });
         document.getElementById('cartModal').style.display = 'block';
     }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+        openCart();
+        renderBooks();
+    }
+
     function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
+
     function sendWhatsAppOrder() {
         const name = document.getElementById('custName').value;
-        if(!name) { alert("പേര് നൽകുക"); return; }
-        let total = cart.reduce((s, i) => s + i.price, 0);
-        let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\nപേര്: ${name}\n\nപുസ്തകങ്ങൾ:\n`;
+        const phone = document.getElementById('custPhone').value;
+        const cls = document.getElementById('classSelector').value;
+
+        if (!name || !phone) { alert("ദയവായി പേരും നമ്പറും നൽകുക"); return; }
+
+        let total = cart.reduce((sum, item) => sum + item.price, 0);
+        let msg = `*പുതിയ ബുക്ക് ഓർഡർ*\n----------\n*പേര്:* ${name}\n*ഫോൺ:* ${phone}\n*ക്ലാസ്:* ${cls}\n\n*പുസ്തകങ്ങൾ:*\n`;
         cart.forEach((item, i) => msg += `${i+1}. ${item.name}\n`);
-        msg += `\n*ആകെ തുക: ₹${total}*`;
+        msg += `\n*ആകെ തുക: ₹${total}*\n----------`;
+
         window.open(`https://wa.me/919061969505?text=${encodeURIComponent(msg)}`, '_blank');
     }
-    renderBooks();
+
+    resetAndRender();
 </script>
+
 </body>
 </html>
