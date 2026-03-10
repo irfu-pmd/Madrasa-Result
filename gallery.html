@@ -39,7 +39,7 @@
         .gallery-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; 
+            gap: 12px; 
         }
 
         .gallery-item { 
@@ -61,7 +61,8 @@
         }
 
         .gallery-item:hover img { transform: scale(1.05); }
-        /* Wide class for full width posters */
+        
+        /* ഫോട്ടോകൾ വരിക്ക് നീളത്തിൽ വരാൻ */
         .wide { grid-column: span 2; height: auto; min-height: 250px; }
 
         /* Lightbox */
@@ -86,9 +87,10 @@
             text-decoration: none; 
             border-radius: 30px; 
             font-weight: bold;
+            box-shadow: 0 4px 10px rgba(6, 82, 121, 0.3);
         }
 
-        footer { padding: 20px; color: #888; font-size: 12px; }
+        footer { color: #888; font-size: 12px; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -115,7 +117,7 @@
         <div class="gallery-item" onclick="showImg('5.jpg')"><img src="5.jpg"></div>
         <div class="gallery-item" onclick="showImg('7.jpg')"><img src="7.jpg"></div>
         <div class="gallery-item" onclick="showImg('IMG-20260305-WA0265.jpg')"><img src="IMG-20260305-WA0265.jpg"></div>
-        <div class="gallery-item" onclick="showImg('IMG-20260305-WA0267.jpg')"><img src="IMG-20260305-WA0267.jpg"></div>
+        <div class="gallery-item" onclick="showImg('IMG-20260305-WA0267.jpg')"><img src="IMG-20260307-WA0267.jpg"></div>
         <div class="gallery-item wide" onclick="showImg('IMG-20260305-WA0260.jpg')"><img src="IMG-20260305-WA0260.jpg"></div>
         <div class="gallery-item" onclick="showImg('IMG-20260305-WA0125.jpg')"><img src="IMG-20260305-WA0125.jpg"></div>
         <div class="gallery-item" onclick="showImg('IMG-20260305-WA0230.jpg')"><img src="IMG-20260305-WA0230.jpg"></div>
@@ -127,8 +129,9 @@
     <div class="gallery-grid">
         <div class="gallery-item wide" onclick="showImg('1000041482.jpg')"><img src="1000041482.jpg"></div>
         
+        <div class="gallery-item" onclick="showImg('1000023605.jpg')"><img src="1000023605.jpg"></div>
         <div class="gallery-item" onclick="showImg('1772779993662.png')"><img src="1772779993662.png"></div>
-        <div class="gallery-item" onclick="showImg('1772779876024.png')"><img src="1772779876024.png"></div>
+        <div class="gallery-item wide" onclick="showImg('1772779876024.png')"><img src="1772779876024.png"></div>
     </div>
 
 </div>
