@@ -245,6 +245,13 @@
         }
         #managementPage.active { display: block; }
         
+        /* INCREASE NAME SIZE SPECIFICALLY FOR MANAGEMENT MEMBERS (Targeted CSS) */
+        #managementPage .t-sub {
+            font-size: 13px;  /* OLD was 11px, now larger for clarity */
+            color: #333;      /* OLD was #777, now darker */
+            font-weight: 500;  /* Slightly bolder weight */
+        }
+        
         .page-header {
             display: flex;
             align-items: center;
@@ -266,7 +273,7 @@
             color: #333;
         }
         
-        /* New style for the bottom back button */
+        /* Style for the bottom back button */
         .bottom-back-btn {
             background-color: var(--header-grad-1);
             color: white;
