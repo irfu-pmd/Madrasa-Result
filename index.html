@@ -143,35 +143,8 @@
         .wide-action-btn .sub-txt { font-size: 11px; opacity: 0.8; margin-top: 3px; display: block; }
         .wide-action-btn:active { transform: scale(0.98); }
 
-        /* --- NOTICE BOARD --- */
-        .notice-board-card {
-            background: #fffdf5; /* Light cream background */
-            border-left: 5px solid #e67e22;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            border-top: 1px solid #eee;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-        }
-        .notice-board-header {
-            display: flex; align-items: center; gap: 10px;
-            font-size: 16px; font-weight: bold; color: #d35400;
-            margin-bottom: 12px; border-bottom: 1px dashed #e0e0e0; padding-bottom: 10px;
-        }
-        .notice-list { list-style: none; padding: 0; margin: 0; }
-        .notice-item {
-            display: flex; align-items: flex-start; gap: 10px;
-            margin-bottom: 12px; font-size: 13px; color: #444; line-height: 1.5;
-        }
-        .notice-item:last-child { margin-bottom: 0; }
-        .notice-item i { color: var(--header-grad-1); font-size: 12px; margin-top: 4px; }
-        .notice-highlight { font-weight: bold; color: #094752; }
-
-        .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; padding-top: 10px; }
-        
         /* Teachers Cards */
+        .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; padding-top: 10px; }
         .teacher-card {
             background: white; border-radius: 12px; padding: 12px; display: flex;
             gap: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;
@@ -186,13 +159,29 @@
         .ic-wa { background: #25D366; }
         .ic-ph { background: #3498db; }
 
-        /* --- MANAGEMENT VIEW SPECIFIC --- */
-        #managementPage {
+        /* --- SUB PAGES (MANAGEMENT & NOTICE BOARD) --- */
+        #managementPage, #noticePage {
             display: none; position: absolute; top: 80px; left: 0; width: 100%;
             background-color: var(--bg-color); z-index: 50; padding-bottom: 30px;
         }
-        #managementPage.active { display: block; }
+        #managementPage.active, #noticePage.active { display: block; }
         
+        .page-header {
+            display: flex; align-items: center; padding: 10px 15px; background: #fff; 
+            border-bottom: 1px solid #eee; margin-bottom: 15px;
+        }
+        .back-btn-top { font-size: 18px; color: var(--header-grad-1); cursor: pointer; padding: 10px; margin-right: 10px; }
+        .page-title { font-size: 16px; font-weight: bold; color: #333; }
+        
+        .bottom-back-btn {
+            background-color: var(--header-grad-1); color: white; width: 100%;
+            padding: 15px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold;
+            margin-top: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .bottom-back-btn:active { transform: scale(0.98); }
+
+        /* Management Specific */
         .org-card {
             background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2));
             color: white; border: none; justify-content: center; text-align: center;
@@ -213,20 +202,24 @@
         .member-entry:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
         .member-name { display: block; font-size: 15px; font-weight: bold; color: #222; margin-bottom: 6px; }
         
-        .page-header {
-            display: flex; align-items: center; padding: 10px 15px; background: #fff; 
-            border-bottom: 1px solid #eee; margin-bottom: 15px;
+        /* Notice Board Specific */
+        .notice-board-card {
+            background: #fffdf5; border-left: 5px solid #e67e22; border-radius: 12px;
+            padding: 15px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;
         }
-        .back-btn-top { font-size: 18px; color: var(--header-grad-1); cursor: pointer; padding: 10px; margin-right: 10px; }
-        .page-title { font-size: 16px; font-weight: bold; color: #333; }
-        
-        .bottom-back-btn {
-            background-color: var(--header-grad-1); color: white; width: 100%;
-            padding: 15px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold;
-            margin-top: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        .notice-board-header {
+            display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: bold; color: #d35400;
+            margin-bottom: 12px; border-bottom: 1px dashed #e0e0e0; padding-bottom: 10px;
         }
-        .bottom-back-btn:active { transform: scale(0.98); }
+        .notice-list { list-style: none; padding: 0; margin: 0; }
+        .notice-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 12px; font-size: 14px; color: #444; line-height: 1.6;
+        }
+        .notice-item:last-child { margin-bottom: 0; }
+        .notice-item i { color: var(--header-grad-1); font-size: 14px; margin-top: 4px; }
+        .notice-highlight { font-weight: bold; color: #094752; }
 
         /* Footer */
         footer {
@@ -270,7 +263,7 @@
         </div>
         <div class="menu-links">
             <div class="menu-category">പ്രധാന ലിങ്കുകൾ</div>
-            <a href="index.html"><i class="fa-solid fa-house"></i> ഹോം (Home)</a>
+            <a onclick="goHome()"><i class="fa-solid fa-house"></i> ഹോം (Home)</a>
             <a href="admission.html"><i class="fa-solid fa-file-signature"></i> ഓൺലൈൻ അഡ്മിഷൻ</a>
             <a href="book-order.html"><i class="fa-solid fa-book"></i> ബുക്ക് സ്റ്റോർ</a>
             <a href="gallery.html"><i class="fa-solid fa-images"></i> ഗാലറി</a>
@@ -279,7 +272,7 @@
             <div class="menu-category">വിവരങ്ങൾ</div>
             <a href="#teachers" onclick="toggleMenu()"><i class="fa-solid fa-users"></i> അധ്യാപകർ (Teachers)</a>
             <a onclick="showManagement()"><i class="fa-solid fa-building-columns"></i> കമ്മിറ്റി (Management)</a>
-            <a href="#notice-board" onclick="toggleMenu()"><i class="fa-solid fa-bullhorn"></i> അറിയിപ്പുകൾ (Notice Board)</a>
+            <a onclick="showNoticeBoard()"><i class="fa-solid fa-bullhorn"></i> അറിയിപ്പുകൾ (Notice Board)</a>
             <a href="#footer" onclick="toggleMenu()"><i class="fa-solid fa-phone-volume"></i> ബന്ധപ്പെടാൻ (Contact Us)</a>
         </div>
     </div>
@@ -324,34 +317,6 @@
                 <span class="main-txt"><i class="fa-solid fa-cart-shopping"></i> ONLINE BOOK SHOP</span>
                 <span class="sub-txt">പുസ്തകങ്ങൾ ഓൺലൈനായി ഓർഡർ ചെയ്യാം</span>
             </a>
-
-            <div class="notice-board-card" id="notice-board">
-                <div class="notice-board-header">
-                    <i class="fa-solid fa-clipboard-list"></i> പ്രധാന അറിയിപ്പുകൾ
-                </div>
-                <ul class="notice-list">
-                    <li class="notice-item">
-                        <i class="fa-solid fa-circle-check"></i> 
-                        <div>പുതിയ അധ്യയന വർഷത്തേക്കുള്ള <span class="notice-highlight">അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു.</span> രക്ഷിതാക്കൾക്ക് വെബ്സൈറ്റ് വഴി ഓൺലൈനായി എളുപ്പത്തിൽ അഡ്മിഷൻ എടുക്കാവുന്നതാണ്.</div>
-                    </li>
-                    <li class="notice-item">
-                        <i class="fa-solid fa-circle-check"></i> 
-                        <div>ഓൺലൈൻ വഴി അഡ്മിഷൻ എടുത്ത വിദ്യാർത്ഥികൾ പിന്നീട് മദ്രസയിൽ വരുമ്പോൾ <span class="notice-highlight">ആധാർ കാർഡ്, ജനന സർട്ടിഫിക്കറ്റ്</span> എന്നിവയുടെ പകർപ്പുകൾ (Copy) നിർബന്ധമായും ഓഫീസിൽ ഹാജരാക്കേണ്ടതാണ്.</div>
-                    </li>
-                    <li class="notice-item">
-                        <i class="fa-solid fa-circle-check"></i> 
-                        <div>എല്ലാ ക്ലാസ്സുകളിലേക്കും ആവശ്യമായ <span class="notice-highlight">പാഠപുസ്തകങ്ങൾ</span> രക്ഷിതാക്കൾക്ക് വെബ്സൈറ്റിലെ 'ONLINE BOOK SHOP' ഓപ്ഷൻ വഴി ഇപ്പോൾ നേരിട്ട് ഓർഡർ ചെയ്യാവുന്നതാണ്.</div>
-                    </li>
-                    <li class="notice-item">
-                        <i class="fa-solid fa-circle-check"></i> 
-                        <div>ഈദുൽ ഫിത്വർ (ചെറിയ പെരുന്നാൾ) അവധിക്ക് ശേഷം <span class="notice-highlight">മദ്രസ തുറക്കുന്ന തിയ്യതി</span> പിന്നീട് അറിയിക്കുന്നതാണ്.</div>
-                    </li>
-                    <li class="notice-item">
-                        <i class="fa-solid fa-star" style="color:#d35400;"></i> 
-                        <div><b>റമദാൻ സന്ദേശം:</b> പുണ്യമേറിയ റമദാനിലെ അവസാന പത്തിലേക്ക് നാം പ്രവേശിച്ചിരിക്കുകയാണ്. ആയിരം മാസങ്ങളേക്കാൾ ശ്രേഷ്ഠമായ ലൈലത്തുൽ ഖദ്ർ പ്രതീക്ഷിക്കുന്ന ഈ രാവുകളിൽ എല്ലാവരും ഇബാദത്തുകളിലും പ്രാർത്ഥനകളിലും നിരതരാവുക.</div>
-                    </li>
-                </ul>
-            </div>
 
             <div class="section-title" id="teachers">അധ്യാപകർ (Teachers)</div>
 
@@ -414,12 +379,11 @@
         </footer>
     </div> <div id="managementPage">
         <div class="page-header">
-            <i class="fa-solid fa-arrow-left back-btn-top" onclick="hideManagement()"></i>
+            <i class="fa-solid fa-arrow-left back-btn-top" onclick="goHome()"></i>
             <span class="page-title">കമ്മിറ്റി വിവരങ്ങൾ (Management)</span>
         </div>
         
         <div class="content-padding">
-            
             <div class="teacher-card org-card">
                 <div class="action-icon"><i class="fa-solid fa-building-columns"></i></div>
                 <div class="teacher-info">
@@ -484,14 +448,51 @@
                 </div>
             </div>
             
-            <button class="bottom-back-btn" onclick="hideManagement()">
+            <button class="bottom-back-btn" onclick="goHome()">
                 <i class="fa-solid fa-arrow-left"></i> Back to Home
             </button>
             
         </div>
-    </div>
+    </div> <div id="noticePage">
+        <div class="page-header">
+            <i class="fa-solid fa-arrow-left back-btn-top" onclick="goHome()"></i>
+            <span class="page-title">അറിയിപ്പുകൾ (Notice Board)</span>
+        </div>
+        
+        <div class="content-padding">
+            <div class="notice-board-card">
+                <div class="notice-board-header">
+                    <i class="fa-solid fa-clipboard-list"></i> പ്രധാന അറിയിപ്പുകൾ
+                </div>
+                <ul class="notice-list">
+                    <li class="notice-item">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <div>പുതിയ അധ്യയന വർഷത്തേക്കുള്ള <span class="notice-highlight">അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു.</span> രക്ഷിതാക്കൾക്ക് വെബ്സൈറ്റ് വഴി ഓൺലൈനായി എളുപ്പത്തിൽ അഡ്മിഷൻ എടുക്കാവുന്നതാണ്.</div>
+                    </li>
+                    <li class="notice-item">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <div>ഓൺലൈൻ വഴി അഡ്മിഷൻ എടുത്ത വിദ്യാർത്ഥികൾ പിന്നീട് മദ്രസയിൽ വരുമ്പോൾ <span class="notice-highlight">ആധാർ കാർഡ്, ജനന സർട്ടിഫിക്കറ്റ്</span> എന്നിവയുടെ പകർപ്പുകൾ (Copy) നിർബന്ധമായും ഓഫീസിൽ ഹാജരാക്കേണ്ടതാണ്.</div>
+                    </li>
+                    <li class="notice-item">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <div>എല്ലാ ക്ലാസ്സുകളിലേക്കും ആവശ്യമായ <span class="notice-highlight">പാഠപുസ്തകങ്ങൾ</span> രക്ഷിതാക്കൾക്ക് വെബ്സൈറ്റിലെ 'ONLINE BOOK SHOP' ഓപ്ഷൻ വഴി ഇപ്പോൾ നേരിട്ട് ഓർഡർ ചെയ്യാവുന്നതാണ്.</div>
+                    </li>
+                    <li class="notice-item">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <div>ഈദുൽ ഫിത്വർ (ചെറിയ പെരുന്നാൾ) അവധിക്ക് ശേഷം <span class="notice-highlight">മദ്രസ തുറക്കുന്ന തിയ്യതി</span> പിന്നീട് അറിയിക്കുന്നതാണ്.</div>
+                    </li>
+                    <li class="notice-item">
+                        <i class="fa-solid fa-star" style="color:#d35400;"></i> 
+                        <div><b>റമദാൻ സന്ദേശം:</b> പുണ്യമേറിയ റമദാനിലെ അവസാന പത്തിലേക്ക് നാം പ്രവേശിച്ചിരിക്കുകയാണ്. ആയിരം മാസങ്ങളേക്കാൾ ശ്രേഷ്ഠമായ ലൈലത്തുൽ ഖദ്ർ പ്രതീക്ഷിക്കുന്ന ഈ രാവുകളിൽ എല്ലാവരും ഇബാദത്തുകളിലും പ്രാർത്ഥനകളിലും നിരതരാവുക.</div>
+                    </li>
+                </ul>
+            </div>
 
-</div>
+            <button class="bottom-back-btn" onclick="goHome()">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </button>
+        </div>
+    </div> </div>
 
 <script>
     function toggleMenu() {
@@ -501,16 +502,36 @@
         overlay.classList.toggle('active');
     }
 
+    // Function to go back to the main home page from any sub-page
+    function goHome() {
+        // If menu is open, close it
+        document.getElementById('sideMenu').classList.remove('active');
+        document.getElementById('menuOverlay').classList.remove('active');
+        
+        // Hide sub-pages
+        document.getElementById('managementPage').classList.remove('active');
+        document.getElementById('noticePage').classList.remove('active');
+        
+        // Show main home content
+        document.getElementById('mainHomeContent').style.display = 'block';
+        window.scrollTo(0, 0); 
+    }
+
+    // Function to show Management Page
     function showManagement() {
         toggleMenu(); 
         document.getElementById('mainHomeContent').style.display = 'none';
+        document.getElementById('noticePage').classList.remove('active');
         document.getElementById('managementPage').classList.add('active');
         window.scrollTo(0, 0); 
     }
 
-    function hideManagement() {
+    // Function to show Notice Board Page
+    function showNoticeBoard() {
+        toggleMenu(); 
+        document.getElementById('mainHomeContent').style.display = 'none';
         document.getElementById('managementPage').classList.remove('active');
-        document.getElementById('mainHomeContent').style.display = 'block';
+        document.getElementById('noticePage').classList.add('active');
         window.scrollTo(0, 0); 
     }
 </script>
