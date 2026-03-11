@@ -223,7 +223,6 @@
         }
         #managementPage.active { display: block; }
         
-        /* New prominent style for Sangam Name */
         .org-card {
             background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2));
             color: white;
@@ -237,10 +236,10 @@
         .org-card .action-icon { background: rgba(255,255,255,0.2); color: white; }
         .org-card .t-name { font-size: 18px; color: white; font-weight: 900; letter-spacing: 1px; }
 
-        /* THE POSITION BOX (BADGE) - UPDATED TO THEME COLOR & WHITE TEXT */
+        /* THE POSITION BOX (BADGE) - MODIFIED WIDTH */
         .pos-badge {
-            background: var(--header-grad-1); /* Dark Theme Color */
-            color: #ffffff; /* White Text */
+            background: var(--header-grad-1); 
+            color: #ffffff; 
             padding: 5px 12px;
             border-radius: 6px;
             font-size: 11px;
@@ -249,6 +248,7 @@
             margin-bottom: 8px;
             text-transform: uppercase;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            align-self: flex-start; /* This ensures the box only takes the width of its text */
         }
 
         .member-name {
@@ -266,7 +266,6 @@
         .back-btn-top { font-size: 18px; color: var(--header-grad-1); cursor: pointer; padding: 10px; margin-right: 10px; }
         .page-title { font-size: 16px; font-weight: bold; color: #333; }
         
-        /* BOTTOM BACK BUTTON - English Text */
         .bottom-back-btn {
             background-color: var(--header-grad-1); color: white; width: 100%;
             padding: 15px; border: none; border-radius: 12px;
