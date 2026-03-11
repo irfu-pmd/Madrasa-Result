@@ -18,7 +18,6 @@
             --btn-shop: #e67e22; 
         }
 
-        /* Smooth scrolling */
         html { scroll-behavior: smooth; }
 
         body {
@@ -48,14 +47,9 @@
         /* Header */
         header {
             background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2));
-            color: white;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            color: white; padding: 15px;
+            display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
         }
         .header-left { display: flex; align-items: center; gap: 10px; }
         .logo { width: 50px; height: 50px; background: white; border-radius: 50%; padding: 2px; }
@@ -64,7 +58,6 @@
         .malayalam-title { font-size: 16px; font-weight: bold; margin: 2px 0; }
         .english-title { font-size: 12px; font-weight: bold; letter-spacing: 0.5px; }
         .sub-title { font-size: 8px; color: #ccc; }
-        
         .menu-icon { font-size: 24px; cursor: pointer; padding: 5px; }
 
         /* --- SIDE MENU --- */
@@ -74,14 +67,12 @@
             transition: 0.4s ease-in-out; display: flex; flex-direction: column;
         }
         .side-menu.active { left: 0; }
-
         .menu-header {
             background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2));
             padding: 20px; color: white; display: flex; justify-content: space-between; align-items: center;
         }
         .menu-header h3 { margin: 0; font-size: 16px; }
         .close-menu { font-size: 24px; cursor: pointer; }
-
         .menu-links { padding: 0; flex: 1; overflow-y: auto; }
         .menu-category {
             background: #f0f4f8; color: var(--header-grad-1); font-size: 12px; font-weight: bold;
@@ -94,7 +85,6 @@
         }
         .menu-links a:hover { background: #f9f9f9; color: var(--header-grad-1); padding-left: 25px; }
         .menu-links a i { width: 25px; font-size: 16px; color: var(--gold); text-align: center; margin-right: 12px; }
-
         .menu-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5); z-index: 900;
@@ -153,9 +143,35 @@
         .wide-action-btn .sub-txt { font-size: 11px; opacity: 0.8; margin-top: 3px; display: block; }
         .wide-action-btn:active { transform: scale(0.98); }
 
+        /* --- NOTICE BOARD --- */
+        .notice-board-card {
+            background: #fffdf5; /* Light cream background */
+            border-left: 5px solid #e67e22;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-top: 1px solid #eee;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .notice-board-header {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 16px; font-weight: bold; color: #d35400;
+            margin-bottom: 12px; border-bottom: 1px dashed #e0e0e0; padding-bottom: 10px;
+        }
+        .notice-list { list-style: none; padding: 0; margin: 0; }
+        .notice-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 12px; font-size: 13px; color: #444; line-height: 1.5;
+        }
+        .notice-item:last-child { margin-bottom: 0; }
+        .notice-item i { color: var(--header-grad-1); font-size: 12px; margin-top: 4px; }
+        .notice-highlight { font-weight: bold; color: #094752; }
+
         .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; padding-top: 10px; }
         
-        /* Teachers & Management Cards */
+        /* Teachers Cards */
         .teacher-card {
             background: white; border-radius: 12px; padding: 12px; display: flex;
             gap: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;
@@ -185,21 +201,12 @@
         .org-card .action-icon { background: rgba(255,255,255,0.2); color: white; }
         .org-card .t-name { font-size: 18px; color: white; font-weight: 900; letter-spacing: 1px; }
 
-        /* THE POSITION BOX (BADGE) - FIXED UNIFORM WIDTH ADDED HERE */
         .pos-badge {
-            background: var(--header-grad-1); 
-            color: #ffffff; 
-            padding: 5px 10px; 
-            border-radius: 6px; 
-            font-size: 11px; 
-            font-weight: bold;
-            display: block; /* Changed to block */
-            width: 240px; /* Fixed width so all boxes align perfectly */
-            box-sizing: border-box;
-            margin-bottom: 8px; 
-            text-transform: uppercase;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center; /* Center the text within the uniform box */
+            background: var(--header-grad-1); color: #ffffff; 
+            padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: bold;
+            display: block; width: 240px; box-sizing: border-box;
+            margin-bottom: 8px; text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; 
         }
 
         .member-entry { margin-bottom: 12px; border-bottom: 1px dashed #eee; padding-bottom: 8px; }
@@ -272,15 +279,15 @@
             <div class="menu-category">വിവരങ്ങൾ</div>
             <a href="#teachers" onclick="toggleMenu()"><i class="fa-solid fa-users"></i> അധ്യാപകർ (Teachers)</a>
             <a onclick="showManagement()"><i class="fa-solid fa-building-columns"></i> കമ്മിറ്റി (Management)</a>
-            <a href="#notice" onclick="toggleMenu()"><i class="fa-solid fa-bullhorn"></i> അറിയിപ്പുകൾ (Notice Board)</a>
+            <a href="#notice-board" onclick="toggleMenu()"><i class="fa-solid fa-bullhorn"></i> അറിയിപ്പുകൾ (Notice Board)</a>
             <a href="#footer" onclick="toggleMenu()"><i class="fa-solid fa-phone-volume"></i> ബന്ധപ്പെടാൻ (Contact Us)</a>
         </div>
     </div>
 
     <div id="mainHomeContent">
-        <div class="news-ticker" id="notice">
+        <div class="news-ticker">
             <div class="news-badge">NEWS</div>
-            <marquee scrollamount="5">പുതിയ അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു! | വാർഷിക പരീക്ഷാ ഫലങ്ങൾ ലഭ്യമാണ്.</marquee>
+            <marquee scrollamount="5">പുതിയ അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു! ഓൺലൈനായി അപേക്ഷിക്കാം. ◼ പാഠപുസ്തകങ്ങൾ വെബ്സൈറ്റ് വഴി ഓർഡർ ചെയ്യാം.</marquee>
         </div>
 
         <div class="content-padding">
@@ -317,6 +324,34 @@
                 <span class="main-txt"><i class="fa-solid fa-cart-shopping"></i> ONLINE BOOK SHOP</span>
                 <span class="sub-txt">പുസ്തകങ്ങൾ ഓൺലൈനായി ഓർഡർ ചെയ്യാം</span>
             </a>
+
+            <div class="notice-board-card" id="notice-board">
+                <div class="notice-board-header">
+                    <i class="fa-solid fa-clipboard-list"></i> പ്രധാന അറിയിപ്പുകൾ
+                </div>
+                <ul class="notice-list">
+                    <li class="notice-item">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <div>പുതിയ അധ്യയന വർഷത്തേക്കുള്ള <span class="notice-highlight">അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു.</span> രക്ഷിതാക്കൾക്ക് വെബ്സൈറ്റ് വഴി ഓൺലൈനായി എളുപ്പത്തിൽ അഡ്മിഷൻ എടുക്കാവുന്നതാണ്.</div>
+                    </li>
+                    <li class="notice-item">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <div>ഓൺലൈൻ വഴി അഡ്മിഷൻ എടുത്ത വിദ്യാർത്ഥികൾ പിന്നീട് മദ്രസയിൽ വരുമ്പോൾ <span class="notice-highlight">ആധാർ കാർഡ്, ജനന സർട്ടിഫിക്കറ്റ്</span> എന്നിവയുടെ പകർപ്പുകൾ (Copy) നിർബന്ധമായും ഓഫീസിൽ ഹാജരാക്കേണ്ടതാണ്.</div>
+                    </li>
+                    <li class="notice-item">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <div>എല്ലാ ക്ലാസ്സുകളിലേക്കും ആവശ്യമായ <span class="notice-highlight">പാഠപുസ്തകങ്ങൾ</span> രക്ഷിതാക്കൾക്ക് വെബ്സൈറ്റിലെ 'ONLINE BOOK SHOP' ഓപ്ഷൻ വഴി ഇപ്പോൾ നേരിട്ട് ഓർഡർ ചെയ്യാവുന്നതാണ്.</div>
+                    </li>
+                    <li class="notice-item">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <div>ഈദുൽ ഫിത്വർ (ചെറിയ പെരുന്നാൾ) അവധിക്ക് ശേഷം <span class="notice-highlight">മദ്രസ തുറക്കുന്ന തിയ്യതി</span> പിന്നീട് അറിയിക്കുന്നതാണ്.</div>
+                    </li>
+                    <li class="notice-item">
+                        <i class="fa-solid fa-star" style="color:#d35400;"></i> 
+                        <div><b>റമദാൻ സന്ദേശം:</b> പുണ്യമേറിയ റമദാനിലെ അവസാന പത്തിലേക്ക് നാം പ്രവേശിച്ചിരിക്കുകയാണ്. ആയിരം മാസങ്ങളേക്കാൾ ശ്രേഷ്ഠമായ ലൈലത്തുൽ ഖദ്ർ പ്രതീക്ഷിക്കുന്ന ഈ രാവുകളിൽ എല്ലാവരും ഇബാദത്തുകളിലും പ്രാർത്ഥനകളിലും നിരതരാവുക.</div>
+                    </li>
+                </ul>
+            </div>
 
             <div class="section-title" id="teachers">അധ്യാപകർ (Teachers)</div>
 
@@ -454,7 +489,9 @@
             </button>
             
         </div>
-    </div> </div>
+    </div>
+
+</div>
 
 <script>
     function toggleMenu() {
