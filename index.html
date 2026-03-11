@@ -18,6 +18,9 @@
             --btn-shop: #e67e22; 
         }
 
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0; padding: 0;
@@ -250,7 +253,7 @@
             border-bottom: 1px solid #eee;
             margin-bottom: 15px;
         }
-        .back-btn {
+        .back-btn-top {
             font-size: 18px;
             color: var(--header-grad-1);
             cursor: pointer;
@@ -262,6 +265,26 @@
             font-weight: bold;
             color: #333;
         }
+        
+        /* New style for the bottom back button */
+        .bottom-back-btn {
+            background-color: var(--header-grad-1);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .bottom-back-btn:active { transform: scale(0.98); }
         /* -------------------------------------------------- */
 
         /* Footer */
@@ -440,7 +463,7 @@
         </footer>
     </div> <div id="managementPage">
         <div class="page-header">
-            <i class="fa-solid fa-arrow-left back-btn" onclick="hideManagement()"></i>
+            <i class="fa-solid fa-arrow-left back-btn-top" onclick="hideManagement()"></i>
             <span class="page-title">കമ്മിറ്റി വിവരങ്ങൾ</span>
         </div>
         
@@ -457,8 +480,8 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-tie"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">TT ചെറിയ മുഹമ്മദ്</span>
-                    <span class="t-sub">പ്രസിഡന്റ് (President)</span>
+                    <span class="t-name">പ്രസിഡന്റ് (President)</span>
+                    <span class="t-sub">TT ചെറിയ മുഹമ്മദ്</span>
                     <div class="t-social">
                         <a href="https://wa.me/917293452224"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
                         <a href="tel:+917293452224"><i class="fa-solid fa-phone ic-ph"></i></a>
@@ -469,8 +492,8 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">അസീസ് ബാവ</span>
-                    <span class="t-sub">വൈസ് പ്രസിഡന്റ് (Vice President)</span>
+                    <span class="t-name">വൈസ് പ്രസിഡന്റ് (Vice President)</span>
+                    <span class="t-sub">അസീസ് ബാവ</span>
                     <div class="t-social">
                         <a href="https://wa.me/918606291106"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
                         <a href="tel:+918606291106"><i class="fa-solid fa-phone ic-ph"></i></a>
@@ -480,8 +503,8 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">അസീസ് കെ</span>
-                    <span class="t-sub">വൈസ് പ്രസിഡന്റ് (Vice President)</span>
+                    <span class="t-name">വൈസ് പ്രസിഡന്റ് (Vice President)</span>
+                    <span class="t-sub">അസീസ് കെ</span>
                     <div class="t-social">
                         <a href="https://wa.me/919048385422"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
                         <a href="tel:+919048385422"><i class="fa-solid fa-phone ic-ph"></i></a>
@@ -492,8 +515,8 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-id-card"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">ഖാലിദ് കെ.പി</span>
-                    <span class="t-sub">ജനറൽ സെക്രട്ടറി (General Secretary)</span>
+                    <span class="t-name">ജനറൽ സെക്രട്ടറി (General Secretary)</span>
+                    <span class="t-sub">ഖാലിദ് കെ.പി</span>
                     <div class="t-social">
                         <a href="https://wa.me/919633912520"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
                         <a href="tel:+919633912520"><i class="fa-solid fa-phone ic-ph"></i></a>
@@ -504,8 +527,8 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-pen"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">ഫവാസ് വി</span>
-                    <span class="t-sub">ജോയിന്റ് സെക്രട്ടറി (Join Secretary)</span>
+                    <span class="t-name">ജോയിന്റ് സെക്രട്ടറി (Join Secretary)</span>
+                    <span class="t-sub">ഫവാസ് വി</span>
                     <div class="t-social">
                         <a href="https://wa.me/919947413031"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
                         <a href="tel:+919947413031"><i class="fa-solid fa-phone ic-ph"></i></a>
@@ -515,8 +538,8 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-pen"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">റഷീഖുദ്ധീൻ ടി.ടി</span>
-                    <span class="t-sub">ജോയിന്റ് സെക്രട്ടറി (Join Secretary)</span>
+                    <span class="t-name">ജോയിന്റ് സെക്രട്ടറി (Join Secretary)</span>
+                    <span class="t-sub">റഷീഖുദ്ധീൻ ടി.ടി</span>
                     <div class="t-social">
                         <a href="https://wa.me/919961687951"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
                         <a href="tel:+919961687951"><i class="fa-solid fa-phone ic-ph"></i></a>
@@ -527,14 +550,19 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-coins"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">ലിയാക്കത്ത്</span>
-                    <span class="t-sub">ട്രഷറർ (Treasurer)</span>
+                    <span class="t-name">ട്രഷറർ (Treasurer)</span>
+                    <span class="t-sub">ലിയാക്കത്ത്</span>
                     <div class="t-social">
                         <a href="https://wa.me/919526353354"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
                         <a href="tel:+919526353354"><i class="fa-solid fa-phone ic-ph"></i></a>
                     </div>
                 </div>
             </div>
+            
+            <button class="bottom-back-btn" onclick="hideManagement()">
+                <i class="fa-solid fa-arrow-left"></i> ഹോം പേജിലേക്ക് മടങ്ങുക
+            </button>
+            
         </div>
     </div> </div>
 
