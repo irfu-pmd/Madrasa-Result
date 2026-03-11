@@ -67,7 +67,7 @@
         
         .menu-icon { font-size: 24px; cursor: pointer; padding: 5px; }
 
-        /* --- SIDE MENU (Hamburger Menu) --- */
+        /* --- SIDE MENU --- */
         .side-menu {
             position: fixed;
             top: 0;
@@ -95,8 +95,6 @@
         .close-menu { font-size: 24px; cursor: pointer; }
 
         .menu-links { padding: 0; flex: 1; overflow-y: auto; }
-        
-        /* Menu Categories */
         .menu-category {
             background: #f0f4f8;
             color: var(--header-grad-1);
@@ -123,7 +121,6 @@
         .menu-links a:hover { background: #f9f9f9; color: var(--header-grad-1); padding-left: 25px; }
         .menu-links a i { width: 25px; font-size: 16px; color: var(--gold); text-align: center; margin-right: 12px; }
 
-        /* Overlay Background */
         .menu-overlay {
             display: none;
             position: fixed;
@@ -132,9 +129,8 @@
             z-index: 900;
         }
         .menu-overlay.active { display: block; }
-        /* ---------------------------------- */
 
-        /* News Ticker */
+        /* --- CONTENT --- */
         .news-ticker {
             background: #fff;
             display: flex;
@@ -147,7 +143,6 @@
 
         .content-padding { padding: 15px; flex: 1; }
 
-        /* Welcome Banner */
         .welcome-banner {
             background: linear-gradient(to right, #0d3b2e, #145946);
             border-radius: 12px;
@@ -172,7 +167,6 @@
         .welcome-banner h2 { color: var(--gold); margin: 0 0 5px 0; font-size: 24px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
         .welcome-banner p { margin: 0; font-size: 12px; opacity: 0.9; line-height: 1.4; }
 
-        /* 2x2 Action Grid */
         .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .action-card {
             border-radius: 12px; padding: 15px 10px; color: white; text-decoration: none;
@@ -190,7 +184,6 @@
         .action-text .mal { font-weight: bold; font-size: 14px; }
         .action-text .eng { font-size: 10px; opacity: 0.9; }
 
-        /* Wide Action Button */
         .wide-action-btn {
             color: white; text-align: center; padding: 15px; border-radius: 12px;
             text-decoration: none; display: block; margin-bottom: 12px; 
@@ -201,12 +194,9 @@
 
         .wide-action-btn .main-txt { font-weight: bold; font-size: 16px; display: block; }
         .wide-action-btn .sub-txt { font-size: 11px; opacity: 0.8; margin-top: 3px; display: block; }
-        .wide-action-btn:active { transform: scale(0.98); }
 
-        /* Titles */
         .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; padding-top: 10px; }
         
-        /* Teacher & Management Cards */
         .teacher-card {
             background: white; border-radius: 12px; padding: 12px; display: flex;
             gap: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;
@@ -217,11 +207,9 @@
         .t-sub { font-size: 11px; color: #777; margin-bottom: 8px; }
         .t-social { display: flex; gap: 8px; }
         .t-social i { font-size: 14px; color: white; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .ic-fb { background: #3b5998; }
         .ic-wa { background: #25D366; }
         .ic-ph { background: #3498db; }
         
-        /* Organization Header Card */
         .org-card {
             background: linear-gradient(to right, #e8f4f8, #c8e6f0);
             border: 1px solid #a0d0e0;
@@ -229,70 +217,55 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        .org-card .teacher-info { flex: none; }
-        .org-card .t-name { font-size: 16px; color: var(--header-grad-1); }
 
-        /* --- MANAGEMENT PAGE VIEW (Hidden by default) --- */
+        /* --- MANAGEMENT VIEW SPECIFIC --- */
         #managementPage {
-            display: none; /* Initially hidden */
+            display: none;
             position: absolute;
-            top: 80px; /* Below sticky header */
+            top: 80px;
             left: 0;
             width: 100%;
             background-color: var(--bg-color);
-            z-index: 50; /* Above normal content, below side menu */
+            z-index: 50;
             padding-bottom: 30px;
         }
         #managementPage.active { display: block; }
         
-        /* INCREASE NAME SIZE SPECIFICALLY FOR MANAGEMENT MEMBERS (Targeted CSS) */
-        #managementPage .t-sub {
-            font-size: 13px;  /* OLD was 11px, now larger for clarity */
-            color: #333;      /* OLD was #777, now darker */
-            font-weight: 500;  /* Slightly bolder weight */
+        /* THE POSITION BOX (BADGE) */
+        .pos-badge {
+            background: #eef2f3;
+            color: #094752;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 6px;
+            border: 1px solid #d1d8db;
+            text-transform: uppercase;
+        }
+
+        .member-name {
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 8px;
         }
         
         .page-header {
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            background: #fff;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 15px;
+            display: flex; align-items: center; padding: 10px 15px;
+            background: #fff; border-bottom: 1px solid #eee; margin-bottom: 15px;
         }
-        .back-btn-top {
-            font-size: 18px;
-            color: var(--header-grad-1);
-            cursor: pointer;
-            padding: 10px;
-            margin-right: 10px;
-        }
-        .page-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-        }
+        .back-btn-top { font-size: 18px; color: var(--header-grad-1); cursor: pointer; padding: 10px; margin-right: 10px; }
+        .page-title { font-size: 16px; font-weight: bold; color: #333; }
         
-        /* Style for the bottom back button */
         .bottom-back-btn {
-            background-color: var(--header-grad-1);
-            color: white;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: var(--header-grad-1); color: white; width: 100%;
+            padding: 15px; border: none; border-radius: 12px;
+            font-size: 16px; font-weight: bold; margin-top: 20px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-        .bottom-back-btn:active { transform: scale(0.98); }
-        /* -------------------------------------------------- */
 
         /* Footer */
         footer {
@@ -300,15 +273,10 @@
         }
         .footer-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
         .footer-left h4 { margin: 0 0 5px 0; font-size: 14px; }
-        .footer-left p { margin: 0; font-size: 11px; color: #aaa; }
         .footer-left .ph { margin-top: 5px; font-weight: bold; color: #fff; font-size: 12px; }
-        
-        .footer-right { text-align: center; }
-        .footer-right span { font-size: 12px; margin-bottom: 8px; display: block; font-weight: bold; }
         .f-socials { display: flex; gap: 10px; }
         .f-socials i { font-size: 16px; color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
         .ic-yt { background: #FF0000; }
-        
         .copyright { text-align: center; font-size: 10px; color: #777; }
 
     </style>
@@ -359,219 +327,134 @@
         </div>
 
         <div class="content-padding">
-            
             <div class="welcome-banner">
                 <h2>സ്വാഗതം!</h2>
                 <p>വിജ്ഞാനവും ധാർമ്മികതയും<br>പകർന്നുനൽകുന്ന സ്നേഹതീരം.</p>
             </div>
 
             <div class="action-grid">
-                <a href="class-details.html" class="action-card adm">
-                    <div class="action-icon"><i class="fa-solid fa-users"></i></div>
-                    <div class="action-text">
-                        <span class="mal">ക്ലാസ് വിവരങ്ങൾ</span>
-                        <span class="eng">(Class Details)</span>
-                    </div>
-                </a>
-                
-                <a href="result.html" class="action-card res">
-                    <div class="action-icon"><i class="fa-solid fa-chart-simple"></i></div>
-                    <div class="action-text">
-                        <span class="mal">പരീക്ഷാ ഫലം</span>
-                        <span class="eng">(Exam Result)</span>
-                    </div>
-                </a>
-
-                <a href="gallery.html" class="action-card gal">
-                    <div class="action-icon"><i class="fa-solid fa-camera"></i></div>
-                    <div class="action-text">
-                        <span class="mal">ഗാലറി</span>
-                        <span class="eng">(Gallery)</span>
-                    </div>
-                </a>
-
-                <a href="https://wa.me/919061969505" class="action-card wa">
-                    <div class="action-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                    <div class="action-text">
-                        <span class="mal">വാട്സാപ്പ്</span>
-                        <span class="eng">(WhatsApp)</span>
-                    </div>
-                </a>
+                <a href="class-details.html" class="action-card adm"><div class="action-icon"><i class="fa-solid fa-users"></i></div><div class="action-text"><span class="mal">ക്ലാസ് വിവരങ്ങൾ</span><span class="eng">(Class Details)</span></div></a>
+                <a href="result.html" class="action-card res"><div class="action-icon"><i class="fa-solid fa-chart-simple"></i></div><div class="action-text"><span class="mal">പരീക്ഷാ ഫലം</span><span class="eng">(Exam Result)</span></div></a>
+                <a href="gallery.html" class="action-card gal"><div class="action-icon"><i class="fa-solid fa-camera"></i></div><div class="action-text"><span class="mal">ഗാലറി</span><span class="eng">(Gallery)</span></div></a>
+                <a href="https://wa.me/919061969505" class="action-card wa"><div class="action-icon"><i class="fa-brands fa-whatsapp"></i></div><div class="action-text"><span class="mal">വാട്സാപ്പ്</span><span class="eng">(WhatsApp)</span></div></a>
             </div>
 
-            <a href="admission.html" class="wide-action-btn bg-admission">
-                <span class="main-txt"><i class="fa-solid fa-user-plus"></i> ONLINE ADMISSION</span>
-                <span class="sub-txt">പുതിയ അഡ്മിഷൻ എടുക്കാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക</span>
-            </a>
-
-            <a href="book-order.html" class="wide-action-btn bg-shop">
-                <span class="main-txt"><i class="fa-solid fa-cart-shopping"></i> ONLINE BOOK SHOP</span>
-                <span class="sub-txt">പുസ്തകങ്ങൾ ഓൺലൈനായി ഓർഡർ ചെയ്യാം</span>
-            </a>
+            <a href="admission.html" class="wide-action-btn bg-admission"><span class="main-txt"><i class="fa-solid fa-user-plus"></i> ONLINE ADMISSION</span><span class="sub-txt">പുതിയ അഡ്മിഷൻ എടുക്കാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക</span></a>
+            <a href="book-order.html" class="wide-action-btn bg-shop"><span class="main-txt"><i class="fa-solid fa-cart-shopping"></i> ONLINE BOOK SHOP</span><span class="sub-txt">പുസ്തകങ്ങൾ ഓൺലൈനായി ഓർഡർ ചെയ്യാം</span></a>
 
             <div class="section-title" id="teachers">അധ്യാപകർ (Teachers)</div>
-
             <div class="teacher-card">
-                <img src="irfan.jpg" alt="TK Muhammed Irfan" class="teacher-img">
+                <img src="irfan.jpg" class="teacher-img">
                 <div class="teacher-info">
                     <span class="t-name">TK മുഹമ്മദ് ഇർഫാൻ വാഫി (സദർ)</span>
                     <span class="t-sub">ക്ലാസ്സ്: 1, 5, 8 | പടിക്കൽ</span>
-                    <div class="t-social">
-                        <a href="#"><i class="fa-brands fa-facebook-f ic-fb"></i></a>
-                        <a href="https://wa.me/919061969505"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+919061969505"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <div class="t-social"><a href="https://wa.me/919061969505"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919061969505"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
-
             <div class="teacher-card">
-                <img src="hamza.jpg" alt="Hamza Faisy" class="teacher-img">
+                <img src="hamza.jpg" class="teacher-img">
                 <div class="teacher-info">
                     <span class="t-name">ഹംസ ഫൈസി കുന്നത്തേരി</span>
                     <span class="t-sub">ക്ലാസ്സ്: 3, 6, 7 | ചെമ്മാട്</span>
-                    <div class="t-social">
-                        <a href="tel:+917736480365"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <div class="t-social"><a href="tel:+917736480365"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
-
             <div class="teacher-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Irshad Mahiri" class="teacher-img">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="teacher-img">
                 <div class="teacher-info">
                     <span class="t-name">ഇർഷാദ് മാഹിരി P</span>
                     <span class="t-sub">ക്ലാസ്സ്: 2, 4 | കിഴിശ്ശേരി</span>
-                    <div class="t-social">
-                        <a href="tel:+918089483005"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <div class="t-social"><a href="tel:+918089483005"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
-
         </div>
 
         <footer id="footer">
             <div class="footer-top">
-                <div class="footer-left">
-                    <h4>അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</h4>
-                    <p>താഴെ പുല്ലുംകുന്ന്</p>
-                    <div class="ph"><i class="fa-solid fa-phone"></i> 9061969505</div>
-                </div>
-                <div class="footer-right">
-                    <span>Social Media</span>
-                    <div class="f-socials">
-                        <a href="#"><i class="fa-brands fa-facebook-f ic-fb"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube ic-yt"></i></a>
-                        <a href="https://wa.me/919061969505"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                    </div>
-                </div>
+                <div class="footer-left"><h4>അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</h4><p>താഴെ പുല്ലുംകുന്ന്</p><div class="ph"><i class="fa-solid fa-phone"></i> 9061969505</div></div>
+                <div class="footer-right"><span>Social Media</span><div class="f-socials"><a href="#"><i class="fa-brands fa-youtube ic-yt"></i></a><a href="https://wa.me/919061969505"><i class="fa-brands fa-whatsapp ic-wa"></i></a></div></div>
             </div>
-            <div class="copyright">
-                &copy; 2026 Anwarul Islam Madrasa
-            </div>
+            <div class="copyright">&copy; 2026 Anwarul Islam Madrasa</div>
         </footer>
-    </div> <div id="managementPage">
+    </div>
+
+    <div id="managementPage">
         <div class="page-header">
             <i class="fa-solid fa-arrow-left back-btn-top" onclick="hideManagement()"></i>
             <span class="page-title">കമ്മിറ്റി വിവരങ്ങൾ</span>
         </div>
         
         <div class="content-padding">
-            <div class="section-title">മാനേജ്‌മെന്റ് കമ്മിറ്റി (Management)</div>
+            <div class="section-title">മാനേജ്‌മെന്റ് കമ്മിറ്റി</div>
             
-            <div class="teacher-card org-card">
-                <div class="action-icon"><i class="fa-solid fa-building-columns"></i></div>
-                <div class="teacher-info">
-                    <span class="t-name">IRSHADUL ISLAM SANGAM</span>
-                </div>
-            </div>
+            <div class="teacher-card org-card"><div class="teacher-info"><span class="t-name">IRSHADUL ISLAM SANGAM</span></div></div>
 
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-tie"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">പ്രസിഡന്റ് (President)</span>
-                    <span class="t-sub">TT ചെറിയ മുഹമ്മദ്</span>
-                    <div class="t-social">
-                        <a href="https://wa.me/917293452224"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+917293452224"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <span class="pos-badge">President (പ്രസിഡന്റ്)</span>
+                    <span class="member-name">TT ചെറിയ മുഹമ്മദ്</span>
+                    <div class="t-social"><a href="https://wa.me/917293452224"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+917293452224"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
 
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">വൈസ് പ്രസിഡന്റ് (Vice President)</span>
-                    <span class="t-sub">അസീസ് ബാവ</span>
-                    <div class="t-social">
-                        <a href="https://wa.me/918606291106"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+918606291106"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <span class="pos-badge">Vice President (വൈസ് പ്രസിഡന്റ്)</span>
+                    <span class="member-name">അസീസ് ബാവ</span>
+                    <div class="t-social"><a href="https://wa.me/918606291106"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+918606291106"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">വൈസ് പ്രസിഡന്റ് (Vice President)</span>
-                    <span class="t-sub">അസീസ് കെ</span>
-                    <div class="t-social">
-                        <a href="https://wa.me/919048385422"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+919048385422"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <span class="pos-badge">Vice President (വൈസ് പ്രസിഡന്റ്)</span>
+                    <span class="member-name">അസീസ് കെ</span>
+                    <div class="t-social"><a href="https://wa.me/919048385422"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919048385422"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
 
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-id-card"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">ജനറൽ സെക്രട്ടറി (General Secretary)</span>
-                    <span class="t-sub">ഖാലിദ് കെ.പി</span>
-                    <div class="t-social">
-                        <a href="https://wa.me/919633912520"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+919633912520"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <span class="pos-badge">General Secretary (ജനറൽ സെക്രട്ടറി)</span>
+                    <span class="member-name">ഖാലിദ് കെ.പി</span>
+                    <div class="t-social"><a href="https://wa.me/919633912520"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919633912520"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
 
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-pen"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">ജോയിന്റ് സെക്രട്ടറി (Join Secretary)</span>
-                    <span class="t-sub">ഫവാസ് വി</span>
-                    <div class="t-social">
-                        <a href="https://wa.me/919947413031"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+919947413031"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <span class="pos-badge">Join Secretary (ജോയിന്റ് സെക്രട്ടറി)</span>
+                    <span class="member-name">ഫവാസ് വി</span>
+                    <div class="t-social"><a href="https://wa.me/919947413031"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919947413031"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-pen"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">ജോയിന്റ് സെക്രട്ടറി (Join Secretary)</span>
-                    <span class="t-sub">റഷീഖുദ്ധീൻ ടി.ടി</span>
-                    <div class="t-social">
-                        <a href="https://wa.me/919961687951"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+919961687951"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <span class="pos-badge">Join Secretary (ജോയിന്റ് സെക്രട്ടറി)</span>
+                    <span class="member-name">റഷീഖുദ്ധീൻ ടി.ടി</span>
+                    <div class="t-social"><a href="https://wa.me/919961687951"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919961687951"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
 
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-coins"></i></div>
                 <div class="teacher-info">
-                    <span class="t-name">ട്രഷറർ (Treasurer)</span>
-                    <span class="t-sub">ലിയാക്കത്ത്</span>
-                    <div class="t-social">
-                        <a href="https://wa.me/919526353354"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+919526353354"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
+                    <span class="pos-badge">Treasurer (ട്രഷറർ)</span>
+                    <span class="member-name">ലിയാക്കത്ത്</span>
+                    <div class="t-social"><a href="https://wa.me/919526353354"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919526353354"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
             
-            <button class="bottom-back-btn" onclick="hideManagement()">
-                <i class="fa-solid fa-arrow-left"></i> ഹോം പേജിലേക്ക് മടങ്ങുക
-            </button>
-            
+            <button class="bottom-back-btn" onclick="hideManagement()"><i class="fa-solid fa-arrow-left"></i> ഹോം പേജിലേക്ക് മടങ്ങുക</button>
         </div>
-    </div> </div>
+    </div>
+
+</div>
 
 <script>
     function toggleMenu() {
@@ -580,20 +463,16 @@
         menu.classList.toggle('active');
         overlay.classList.toggle('active');
     }
-
-    // Function to show management view and hide home view
     function showManagement() {
-        toggleMenu(); // Close the side menu first
+        toggleMenu();
         document.getElementById('mainHomeContent').style.display = 'none';
         document.getElementById('managementPage').classList.add('active');
-        window.scrollTo(0, 0); // Scroll to top of new view
+        window.scrollTo(0, 0);
     }
-
-    // Function to hide management view and show home view
     function hideManagement() {
         document.getElementById('managementPage').classList.remove('active');
         document.getElementById('mainHomeContent').style.display = 'block';
-        window.scrollTo(0, 0); // Scroll to top of home
+        window.scrollTo(0, 0);
     }
 </script>
 
