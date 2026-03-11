@@ -209,14 +209,6 @@
         .t-social i { font-size: 14px; color: white; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
         .ic-wa { background: #25D366; }
         .ic-ph { background: #3498db; }
-        
-        .org-card {
-            background: linear-gradient(to right, #e8f4f8, #c8e6f0);
-            border: 1px solid #a0d0e0;
-            justify-content: center;
-            text-align: center;
-            margin-bottom: 20px;
-        }
 
         /* --- MANAGEMENT VIEW SPECIFIC --- */
         #managementPage {
@@ -231,18 +223,32 @@
         }
         #managementPage.active { display: block; }
         
-        /* THE POSITION BOX (BADGE) */
+        /* New prominent style for Sangam Name */
+        .org-card {
+            background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2));
+            color: white;
+            border: none;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .org-card .action-icon { background: rgba(255,255,255,0.2); color: white; }
+        .org-card .t-name { font-size: 18px; color: white; font-weight: 900; letter-spacing: 1px; }
+
+        /* THE POSITION BOX (BADGE) - UPDATED TO THEME COLOR & WHITE TEXT */
         .pos-badge {
-            background: #eef2f3;
-            color: #094752;
-            padding: 4px 10px;
+            background: var(--header-grad-1); /* Dark Theme Color */
+            color: #ffffff; /* White Text */
+            padding: 5px 12px;
             border-radius: 6px;
             font-size: 11px;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 6px;
-            border: 1px solid #d1d8db;
+            margin-bottom: 8px;
             text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .member-name {
@@ -260,12 +266,15 @@
         .back-btn-top { font-size: 18px; color: var(--header-grad-1); cursor: pointer; padding: 10px; margin-right: 10px; }
         .page-title { font-size: 16px; font-weight: bold; color: #333; }
         
+        /* BOTTOM BACK BUTTON - English Text */
         .bottom-back-btn {
             background-color: var(--header-grad-1); color: white; width: 100%;
             padding: 15px; border: none; border-radius: 12px;
             font-size: 16px; font-weight: bold; margin-top: 20px;
             cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
+        .bottom-back-btn:active { transform: scale(0.98); }
 
         /* Footer */
         footer {
@@ -381,19 +390,23 @@
     <div id="managementPage">
         <div class="page-header">
             <i class="fa-solid fa-arrow-left back-btn-top" onclick="hideManagement()"></i>
-            <span class="page-title">കമ്മിറ്റി വിവരങ്ങൾ</span>
+            <span class="page-title">കമ്മിറ്റി വിവരങ്ങൾ (Management)</span>
         </div>
         
         <div class="content-padding">
-            <div class="section-title">മാനേജ്‌മെന്റ് കമ്മിറ്റി</div>
             
-            <div class="teacher-card org-card"><div class="teacher-info"><span class="t-name">IRSHADUL ISLAM SANGAM</span></div></div>
+            <div class="teacher-card org-card">
+                <div class="action-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <div class="teacher-info">
+                    <span class="t-name">IRSHADUL ISLAM SANGAM</span>
+                </div>
+            </div>
 
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-tie"></i></div>
                 <div class="teacher-info">
                     <span class="pos-badge">President (പ്രസിഡന്റ്)</span>
-                    <span class="member-name">TT ചെറിയ മുഹമ്മദ്</span>
+                    <span class="member-name">TT Cheriya Muhammed</span>
                     <div class="t-social"><a href="https://wa.me/917293452224"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+917293452224"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
@@ -402,7 +415,7 @@
                 <div class="action-icon org-icon"><i class="fa-solid fa-user"></i></div>
                 <div class="teacher-info">
                     <span class="pos-badge">Vice President (വൈസ് പ്രസിഡന്റ്)</span>
-                    <span class="member-name">അസീസ് ബാവ</span>
+                    <span class="member-name">Asees Bava</span>
                     <div class="t-social"><a href="https://wa.me/918606291106"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+918606291106"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
@@ -410,7 +423,7 @@
                 <div class="action-icon org-icon"><i class="fa-solid fa-user"></i></div>
                 <div class="teacher-info">
                     <span class="pos-badge">Vice President (വൈസ് പ്രസിഡന്റ്)</span>
-                    <span class="member-name">അസീസ് കെ</span>
+                    <span class="member-name">Asees K</span>
                     <div class="t-social"><a href="https://wa.me/919048385422"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919048385422"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
@@ -418,8 +431,8 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-id-card"></i></div>
                 <div class="teacher-info">
-                    <span class="pos-badge">General Secretary (ജനറൽ സെക്രട്ടറി)</span>
-                    <span class="member-name">ഖാലിദ് കെ.പി</span>
+                    <span class="pos-badge">General Secretary (സെക്രട്ടറി)</span>
+                    <span class="member-name">Khalid KP</span>
                     <div class="t-social"><a href="https://wa.me/919633912520"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919633912520"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
@@ -427,16 +440,16 @@
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-pen"></i></div>
                 <div class="teacher-info">
-                    <span class="pos-badge">Join Secretary (ജോയിന്റ് സെക്രട്ടറി)</span>
-                    <span class="member-name">ഫവാസ് വി</span>
+                    <span class="pos-badge">Join Secretary (ജോ.സെക്രട്ടറി)</span>
+                    <span class="member-name">Favas V</span>
                     <div class="t-social"><a href="https://wa.me/919947413031"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919947413031"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
             <div class="teacher-card">
                 <div class="action-icon org-icon"><i class="fa-solid fa-user-pen"></i></div>
                 <div class="teacher-info">
-                    <span class="pos-badge">Join Secretary (ജോയിന്റ് സെക്രട്ടറി)</span>
-                    <span class="member-name">റഷീഖുദ്ധീൻ ടി.ടി</span>
+                    <span class="pos-badge">Join Secretary (ജോ.സെക്രട്ടറി)</span>
+                    <span class="member-name">Rasheequdheen TT</span>
                     <div class="t-social"><a href="https://wa.me/919961687951"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919961687951"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
@@ -445,12 +458,15 @@
                 <div class="action-icon org-icon"><i class="fa-solid fa-coins"></i></div>
                 <div class="teacher-info">
                     <span class="pos-badge">Treasurer (ട്രഷറർ)</span>
-                    <span class="member-name">ലിയാക്കത്ത്</span>
+                    <span class="member-name">Liyakath</span>
                     <div class="t-social"><a href="https://wa.me/919526353354"><i class="fa-brands fa-whatsapp ic-wa"></i></a><a href="tel:+919526353354"><i class="fa-solid fa-phone ic-ph"></i></a></div>
                 </div>
             </div>
             
-            <button class="bottom-back-btn" onclick="hideManagement()"><i class="fa-solid fa-arrow-left"></i> ഹോം പേജിലേക്ക് മടങ്ങുക</button>
+            <button class="bottom-back-btn" onclick="hideManagement()">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </button>
+            
         </div>
     </div>
 
