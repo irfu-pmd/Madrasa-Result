@@ -92,12 +92,21 @@
         .menu-overlay.active { display: block; }
 
         /* --- CONTENT --- */
+        
+        /* News Ticker - Fixed for scrolling */
         .news-ticker {
             background: #fff; display: flex; align-items: center;
             border-bottom: 2px solid #eee; padding-right: 10px;
+            width: 100%; box-sizing: border-box; overflow: hidden;
         }
-        .news-badge { background: #d32f2f; color: white; padding: 6px 12px; font-size: 12px; font-weight: bold; }
-        marquee { font-size: 13px; font-weight: 600; color: #333; margin-left: 10px; }
+        .news-badge { 
+            background: #d32f2f; color: white; padding: 6px 12px; 
+            font-size: 12px; font-weight: bold; white-space: nowrap; flex-shrink: 0; z-index: 2;
+        }
+        marquee { 
+            font-size: 13px; font-weight: 600; color: #333; 
+            margin-left: 10px; flex: 1; width: 100%; 
+        }
 
         .content-padding { padding: 15px; flex: 1; }
 
@@ -280,7 +289,7 @@
     <div id="mainHomeContent">
         <div class="news-ticker">
             <div class="news-badge">NEWS</div>
-            <marquee scrollamount="5" behavior="scroll" direction="left" style="font-size: 13px; font-weight: 600; color: #333; margin-left: 10px;">
+            <marquee scrollamount="5" behavior="scroll" direction="left">
                 പുതിയ അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു! ഓൺലൈനായി അപേക്ഷിക്കാം. ◼ പാഠപുസ്തകങ്ങൾ വെബ്സൈറ്റ് വഴി ഓർഡർ ചെയ്യാം.
             </marquee>
         </div>
