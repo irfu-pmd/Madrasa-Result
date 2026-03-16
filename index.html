@@ -197,22 +197,60 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        /* Management Specific */
+        /* --- MANAGEMENT SPECIFIC --- */
         .org-card {
             background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2));
             color: white; border: none; justify-content: center; text-align: center;
             margin-bottom: 25px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); border-radius: 12px;
         }
-        .pos-badge {
-            background: var(--header-grad-1); color: #ffffff; 
-            padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: bold;
-            display: inline-block; margin-bottom: 8px; text-transform: uppercase;
-        }
-        .member-entry { margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 12px; }
-        .member-entry:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
-        .member-name { display: block; font-size: 16px; font-weight: bold; color: #222; margin-bottom: 5px;}
-        .member-phone { display: inline-block; text-decoration: none; color: #555; font-size: 13px; font-weight: 600; background: #f0f4f8; padding: 4px 10px; border-radius: 20px;}
         
+        .member-group {
+            margin-bottom: 20px; 
+            border-bottom: 2px dashed #eee; 
+            padding-bottom: 15px;
+        }
+        .member-group:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+        
+        .pos-badge {
+            background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2)); 
+            color: #ffffff; 
+            padding: 8px 10px; 
+            border-radius: 6px; 
+            font-size: 13px; 
+            font-weight: bold;
+            display: block; 
+            width: 100%; /* ബോക്സുകൾ ഒരേ നീളത്തിൽ വരാൻ */
+            box-sizing: border-box;
+            margin-bottom: 12px; 
+            text-transform: uppercase;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .member-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .member-name { font-size: 15px; font-weight: bold; color: #222; }
+        
+        .contact-links { display: flex; gap: 10px; }
+        .contact-btn {
+            width: 38px; height: 38px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none; font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: 0.2s;
+        }
+        .contact-btn:active { transform: scale(0.95); }
+        .call-btn { background: #3498db; }
+        .wa-btn { background: #25D366; }
+
         /* Notice Board Specific */
         .notice-board-card {
             background: #fffdf5; border-left: 5px solid #e67e22; border-radius: 12px;
@@ -408,47 +446,75 @@
             <div style="background: white; border-radius: 12px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 20px;">
                 <h3 style="text-align:center; color: var(--header-grad-1); margin-top:0; padding-bottom:10px; border-bottom: 2px solid #eee;">ഇർഷാദുൽ ഇസ്ലാം സംഘം<br><span style="font-size:12px; color:#777;">(IRSHADUL ISLAM SANGAM)</span></h3>
                 
-                <div class="member-entry">
+                <div class="member-group">
                     <span class="pos-badge">പ്രസിഡന്റ്</span>
-                    <span class="member-name">ചെറിയ മുഹമ്മദ് TT</span>
-                    <a href="tel:+917293452224" class="member-phone"><i class="fa-solid fa-phone" style="color:var(--header-grad-1); margin-right:5px;"></i> 7293452224</a>
+                    <div class="member-details">
+                        <span class="member-name">ചെറിയ മുഹമ്മദ് TT</span>
+                        <div class="contact-links">
+                            <a href="tel:+917293452224" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
+                            <a href="https://wa.me/917293452224" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="member-entry">
-                    <span class="pos-badge">വൈസ് പ്രസിഡന്റ് (Vice President)</span>
-                    <span class="member-name">Asees Bava</span>
-                    <a href="tel:+918606291106" class="member-phone"><i class="fa-solid fa-phone" style="color:var(--header-grad-1); margin-right:5px;"></i> 8606291106</a>
-                </div>
-                
-                <div class="member-entry">
-                    <span class="pos-badge">വൈസ് പ്രസിഡന്റ് (Vice President)</span>
-                    <span class="member-name">Asees K</span>
-                    <a href="tel:+919048385422" class="member-phone"><i class="fa-solid fa-phone" style="color:var(--header-grad-1); margin-right:5px;"></i> 9048385422</a>
+                <div class="member-group">
+                    <span class="pos-badge">വൈസ് പ്രസിഡന്റ്</span>
+                    <div class="member-details">
+                        <span class="member-name">Asees Bava</span>
+                        <div class="contact-links">
+                            <a href="tel:+918606291106" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
+                            <a href="https://wa.me/918606291106" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <span class="member-name">Asees K</span>
+                        <div class="contact-links">
+                            <a href="tel:+919048385422" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
+                            <a href="https://wa.me/919048385422" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="member-entry">
+                <div class="member-group">
                     <span class="pos-badge">ജനറൽ സെക്രട്ടറി</span>
-                    <span class="member-name">Khalid KP</span>
-                    <a href="tel:+919633912520" class="member-phone"><i class="fa-solid fa-phone" style="color:var(--header-grad-1); margin-right:5px;"></i> 9633912520</a>
+                    <div class="member-details">
+                        <span class="member-name">Khalid KP</span>
+                        <div class="contact-links">
+                            <a href="tel:+919633912520" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
+                            <a href="https://wa.me/919633912520" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="member-entry">
-                    <span class="pos-badge">ജോയിന്റ് സെക്രട്ടറി (Join Secretary)</span>
-                    <span class="member-name">Favas V</span>
-                    <a href="tel:+919947413031" class="member-phone"><i class="fa-solid fa-phone" style="color:var(--header-grad-1); margin-right:5px;"></i> 9947413031</a>
-                </div>
-                
-                <div class="member-entry">
-                    <span class="pos-badge">ജോയിന്റ് സെക്രട്ടറി (Join Secretary)</span>
-                    <span class="member-name">Rasheequdheen TT</span>
-                    <a href="tel:+919961687951" class="member-phone"><i class="fa-solid fa-phone" style="color:var(--header-grad-1); margin-right:5px;"></i> 9961687951</a>
+                <div class="member-group">
+                    <span class="pos-badge">ജോയിന്റ് സെക്രട്ടറി</span>
+                    <div class="member-details">
+                        <span class="member-name">Favas V</span>
+                        <div class="contact-links">
+                            <a href="tel:+919947413031" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
+                            <a href="https://wa.me/919947413031" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-details">
+                        <span class="member-name">Rasheequdheen TT</span>
+                        <div class="contact-links">
+                            <a href="tel:+919961687951" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
+                            <a href="https://wa.me/919961687951" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="member-entry">
+                <div class="member-group">
                     <span class="pos-badge">ട്രഷറർ</span>
-                    <span class="member-name">Liyakath</span>
-                    <a href="tel:+919526353354" class="member-phone"><i class="fa-solid fa-phone" style="color:var(--header-grad-1); margin-right:5px;"></i> 9526353354</a>
+                    <div class="member-details">
+                        <span class="member-name">Liyakath</span>
+                        <div class="contact-links">
+                            <a href="tel:+919526353354" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
+                            <a href="https://wa.me/919526353354" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <button class="bottom-back-btn" onclick="goHome()">
