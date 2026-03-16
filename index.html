@@ -91,14 +91,31 @@
         }
         .menu-overlay.active { display: block; }
 
-        /* --- CONTENT --- */
+        /* --- CSS SCROLLING NOTICE --- */
         .news-ticker {
             background: #fff; display: flex; align-items: center;
-            border-bottom: 2px solid #eee; padding-right: 10px;
+            border-bottom: 2px solid #eee; width: 100%; box-sizing: border-box; overflow: hidden;
         }
-        .news-badge { background: #d32f2f; color: white; padding: 6px 12px; font-size: 12px; font-weight: bold; }
-        marquee { font-size: 13px; font-weight: 600; color: #333; margin-left: 10px; }
+        .news-badge { 
+            background: #d32f2f; color: white; padding: 10px 15px; 
+            font-size: 12px; font-weight: bold; white-space: nowrap; z-index: 10;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .ticker-wrap {
+            flex: 1; overflow: hidden; white-space: nowrap; position: relative;
+        }
+        .ticker-text {
+            display: inline-block; white-space: nowrap;
+            font-size: 13px; font-weight: 600; color: #333;
+            padding-left: 100%;
+            animation: tickerScroll 15s linear infinite; 
+        }
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
 
+        /* --- CONTENT --- */
         .content-padding { padding: 15px; flex: 1; }
 
         .welcome-banner {
@@ -179,28 +196,21 @@
             margin-top: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
-        .bottom-back-btn:active { transform: scale(0.98); }
 
         /* Management Specific */
         .org-card {
             background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2));
             color: white; border: none; justify-content: center; text-align: center;
-            margin-bottom: 25px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            margin-bottom: 25px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); border-radius: 12px;
         }
-        .org-card .action-icon { background: rgba(255,255,255,0.2); color: white; }
-        .org-card .t-name { font-size: 18px; color: white; font-weight: 900; letter-spacing: 1px; }
-
         .pos-badge {
             background: var(--header-grad-1); color: #ffffff; 
             padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: bold;
-            display: block; width: 240px; box-sizing: border-box;
-            margin-bottom: 8px; text-transform: uppercase;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; 
+            display: inline-block; margin-bottom: 8px; text-transform: uppercase;
         }
-
         .member-entry { margin-bottom: 12px; border-bottom: 1px dashed #eee; padding-bottom: 8px; }
         .member-entry:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
-        .member-name { display: block; font-size: 15px; font-weight: bold; color: #222; margin-bottom: 6px; }
+        .member-name { display: block; font-size: 16px; font-weight: bold; color: #222; }
         
         /* Notice Board Specific */
         .notice-board-card {
@@ -212,14 +222,11 @@
             display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: bold; color: #d35400;
             margin-bottom: 12px; border-bottom: 1px dashed #e0e0e0; padding-bottom: 10px;
         }
-        .notice-list { list-style: none; padding: 0; margin: 0; }
         .notice-item {
             display: flex; align-items: flex-start; gap: 10px;
             margin-bottom: 12px; font-size: 14px; color: #444; line-height: 1.6;
         }
-        .notice-item:last-child { margin-bottom: 0; }
         .notice-item i { color: var(--header-grad-1); font-size: 14px; margin-top: 4px; }
-        .notice-highlight { font-weight: bold; color: #094752; }
 
         /* Footer */
         footer {
@@ -270,19 +277,22 @@
             <a href="result.html"><i class="fa-solid fa-chart-simple"></i> പരീക്ഷാ ഫലം</a>
 
             <div class="menu-category">വിവരങ്ങൾ</div>
-            <a href="#teachers" onclick="toggleMenu()"><i class="fa-solid fa-users"></i> അധ്യാപകർ (Teachers)</a>
+            <a onclick="showTeachers()"><i class="fa-solid fa-users"></i> അധ്യാപകർ (Teachers)</a>
             <a onclick="showManagement()"><i class="fa-solid fa-building-columns"></i> കമ്മിറ്റി (Management)</a>
             <a onclick="showNoticeBoard()"><i class="fa-solid fa-bullhorn"></i> അറിയിപ്പുകൾ (Notice Board)</a>
-            <a href="#footer" onclick="toggleMenu()"><i class="fa-solid fa-phone-volume"></i> ബന്ധപ്പെടാൻ (Contact Us)</a>
+            <a onclick="showContact()"><i class="fa-solid fa-phone-volume"></i> ബന്ധപ്പെടാൻ (Contact Us)</a>
         </div>
     </div>
 
     <div id="mainHomeContent">
+        
         <div class="news-ticker">
             <div class="news-badge">NEWS</div>
-            <marquee scrollamount="5" behavior="scroll" direction="left" style="font-size: 13px; font-weight: 600; color: #333; margin-left: 10px;">
-                പുതിയ അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു! ഓൺലൈനായി അപേക്ഷിക്കാം. ◼ പാഠപുസ്തകങ്ങൾ വെബ്സൈറ്റ് വഴി ഓർഡർ ചെയ്യാം.
-            </marquee>
+            <div class="ticker-wrap">
+                <div class="ticker-text">
+                    പുതിയ അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു! ഓൺലൈനായി അപേക്ഷിക്കാം. ◼ പാഠപുസ്തകങ്ങൾ വെബ്സൈറ്റ് വഴി ഓർഡർ ചെയ്യാം.
+                </div>
+            </div>
         </div>
 
         <div class="content-padding">
@@ -387,6 +397,28 @@
             <span class="page-title">കമ്മിറ്റി വിവരങ്ങൾ</span>
         </div>
         <div class="content-padding">
+            
+            <div class="org-card">
+                <div style="font-size:35px; margin-bottom:10px;"><i class="fa-solid fa-building-columns"></i></div>
+                <div class="t-name">മാനേജ്മെന്റ് കമ്മിറ്റി</div>
+                <div style="font-size:12px; margin-top:5px; opacity:0.8;">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</div>
+            </div>
+
+            <div style="background: white; border-radius: 12px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 20px;">
+                <div class="member-entry">
+                    <span class="pos-badge">പ്രസിഡന്റ്</span>
+                    <span class="member-name">നിങ്ങളുടെ പേര് നൽകുക</span>
+                </div>
+                <div class="member-entry">
+                    <span class="pos-badge">സെക്രട്ടറി</span>
+                    <span class="member-name">നിങ്ങളുടെ പേര് നൽകുക</span>
+                </div>
+                <div class="member-entry">
+                    <span class="pos-badge">ട്രഷറർ</span>
+                    <span class="member-name">നിങ്ങളുടെ പേര് നൽകുക</span>
+                </div>
+            </div>
+
             <button class="bottom-back-btn" onclick="goHome()">
                 <i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക്
             </button>
@@ -399,6 +431,25 @@
             <span class="page-title">അറിയിപ്പുകൾ</span>
         </div>
         <div class="content-padding">
+            
+            <div class="notice-board-card">
+                <div class="notice-board-header">
+                    <i class="fa-solid fa-bullhorn"></i> പുതിയ അറിയിപ്പുകൾ
+                </div>
+                <div class="notice-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>പുതിയ അധ്യയന വർഷത്തേക്കുള്ള <span class="notice-highlight">ഓൺലൈൻ അഡ്മിഷൻ</span> ആരംഭിച്ചിരിക്കുന്നു.</div>
+                </div>
+                <div class="notice-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>വിദ്യാർത്ഥികൾക്കുള്ള പാഠപുസ്തകങ്ങൾ വെബ്സൈറ്റ് വഴി ഓർഡർ ചെയ്യാവുന്നതാണ്.</div>
+                </div>
+                <div class="notice-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>മദ്രസ വാർഷിക പരീക്ഷാ ഫലങ്ങൾ വെബ്സൈറ്റിൽ ലഭ്യമാണ്.</div>
+                </div>
+            </div>
+
             <button class="bottom-back-btn" onclick="goHome()">
                 <i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക്
             </button>
@@ -414,7 +465,7 @@
         document.getElementById("menuOverlay").classList.toggle("active");
     }
 
-    // Navigation Functions
+    // Go Home Function
     function goHome() {
         document.getElementById("mainHomeContent").style.display = "block";
         document.getElementById("managementPage").classList.remove("active");
@@ -425,6 +476,7 @@
         window.scrollTo(0,0);
     }
 
+    // Show Management Page
     function showManagement() {
         document.getElementById("mainHomeContent").style.display = "none";
         document.getElementById("noticePage").classList.remove("active");
@@ -433,12 +485,29 @@
         window.scrollTo(0,0);
     }
 
+    // Show Notice Board Page
     function showNoticeBoard() {
         document.getElementById("mainHomeContent").style.display = "none";
         document.getElementById("managementPage").classList.remove("active");
         document.getElementById("noticePage").classList.add("active");
         toggleMenu();
         window.scrollTo(0,0);
+    }
+
+    // Scroll to Teachers
+    function showTeachers() {
+        goHome();
+        setTimeout(function() {
+            document.getElementById('teachers').scrollIntoView({behavior: 'smooth'});
+        }, 100);
+    }
+
+    // Scroll to Contact Footer
+    function showContact() {
+        goHome();
+        setTimeout(function() {
+            document.getElementById('footer').scrollIntoView({behavior: 'smooth'});
+        }, 100);
     }
 </script>
 
