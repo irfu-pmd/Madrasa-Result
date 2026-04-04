@@ -49,8 +49,10 @@
             padding: 16px; border: none; border-radius: 12px; 
             font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: 0.3s;
         }
         button:hover { background: #20bd5a; }
+        button:disabled { background: #999; cursor: not-allowed; box-shadow: none; }
 
         .back-link { 
             display: block; text-align: center; margin-top: 25px; 
@@ -163,12 +165,15 @@
         <input type="text" id="tcNo" placeholder="ഉണ്ടെങ്കിൽ മാത്രം">
     </div>
 
-    <button onclick="submitAdmission()"><i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക</button>
+    <button id="submitBtn" onclick="submitAdmission()"><i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക</button>
     
     <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക് പോവാം</a>
 </div>
 
 <script>
+    // ഗൂഗിൾ സ്ക്രിപ്റ്റ് ലിങ്ക് ഇവിടെ നൽകിയിട്ടുണ്ട്
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5derGkHoeNuXiZKvXhGTNx_hWN6SRJe9OzzvUBkwec5jyVwaC0ItttDoagvuX3I5bwA/exec";
+
     function submitAdmission() {
         // Collect all data
         const sName = document.getElementById('studentName').value;
@@ -195,28 +200,58 @@
             return;
         }
 
-        // WhatsApp Message formatting based on actual form numbers
-        const msg = `📝 *മദ്രസ അഡ്മിഷൻ ഫോം* 📝%0A` +
-                    `-----------------------------------%0A` +
-                    `1. മദ്രസ: അൻവാറുൽ ഇസ്‌ലാം മദ്രസ (6948)%0A` +
-                    `2. വിദ്യാർത്ഥി: *${sName}*%0A` +
-                    `3. വിലാസം: ${addr}%0A` +
-                    `4. ആധാർ: ${aadh}%0A` +
-                    `5. ജനന തിയ്യതി: ${dob}%0A` +
-                    `6. ലിംഗം: ${sex}%0A` +
-                    `7. പിതാവ്: ${father}%0A` +
-                    `8. രക്ഷാകർത്താവ്: ${guardian}%0A` +
-                    `9. ബന്ധം: ${relation}%0A` +
-                    `10. പ്രവൃത്തി: ${occupation}%0A` +
-                    `*ഫോൺ നമ്പർ:* ${phone}%0A` +
-                    `11. അടയാളം: ${marks}%0A` +
-                    `13. ചേരുന്ന ക്ലാസ്സ്: *${std}*%0A` +
-                    `14. മുൻ മദ്രസ: ${former}%0A` +
-                    `15. പൊതുപരീക്ഷ: ${pExam}%0A` +
-                    `16. ടി.സി: ${tc}%0A` +
-                    `-----------------------------------`;
+        // ബട്ടൺ ലോഡിങ് ആകാൻ
+        const btn = document.getElementById('submitBtn');
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> അപേക്ഷ സമർപ്പിക്കുന്നു...';
+        btn.disabled = true;
 
-        window.open(`https://wa.me/919061969505?text=${msg}`, '_blank');
+        // ഗൂഗിൾ ഷീറ്റിലേക്ക് ഡാറ്റ അയക്കുന്നു
+        let formData = new FormData();
+        formData.append("name", sName);
+        formData.append("cls", std);
+        formData.append("father", father);
+        formData.append("phone", phone);
+
+        fetch(GOOGLE_SCRIPT_URL, { method: "POST", body: formData, mode: "no-cors" })
+        .then(() => {
+            // alert("അഡ്മിഷൻ വിവരങ്ങൾ വിജയകരമായി സമർപ്പിച്ചു!"); // ആവശ്യമെങ്കിൽ ഈ അലേർട്ട് നിലനിർത്താം, അല്ലെങ്കിൽ ഒഴിവാക്കാം.
+            
+            // വാട്സാപ്പ് മെസ്സേജ് ഉണ്ടാക്കുന്നു
+            const msg = `📝 *മദ്രസ അഡ്മിഷൻ ഫോം* 📝%0A` +
+                        `-----------------------------------%0A` +
+                        `1. മദ്രസ: അൻവാറുൽ ഇസ്‌ലാം മദ്രസ (6948)%0A` +
+                        `2. വിദ്യാർത്ഥി: *${sName}*%0A` +
+                        `3. വിലാസം: ${addr}%0A` +
+                        `4. ആധാർ: ${aadh}%0A` +
+                        `5. ജനന തിയ്യതി: ${dob}%0A` +
+                        `6. ലിംഗം: ${sex}%0A` +
+                        `7. പിതാവ്: ${father}%0A` +
+                        `8. രക്ഷാകർത്താവ്: ${guardian}%0A` +
+                        `9. ബന്ധം: ${relation}%0A` +
+                        `10. പ്രവൃത്തി: ${occupation}%0A` +
+                        `*ഫോൺ നമ്പർ:* ${phone}%0A` +
+                        `11. അടയാളം: ${marks}%0A` +
+                        `13. ചേരുന്ന ക്ലാസ്സ്: *${std}*%0A` +
+                        `14. മുൻ മദ്രസ: ${former}%0A` +
+                        `15. പൊതുപരീക്ഷ: ${pExam}%0A` +
+                        `16. ടി.സി: ${tc}%0A` +
+                        `-----------------------------------`;
+
+            window.open(`https://wa.me/919061969505?text=${msg}`, '_blank');
+            
+            // ഫോം ക്ലിയർ ചെയ്യുന്നു
+            document.querySelectorAll('input').forEach(input => { if(!input.readOnly) input.value = ''; });
+            document.querySelectorAll('textarea').forEach(ta => ta.value = '');
+            
+            // ബട്ടൺ പഴയതുപോലെ ആക്കുന്നു
+            btn.innerHTML = '<i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക';
+            btn.disabled = false;
+        })
+        .catch(error => {
+            alert("എന്തോ പ്രശ്നമുണ്ട്. വീണ്ടും ശ്രമിക്കുക!");
+            btn.innerHTML = '<i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക';
+            btn.disabled = false;
+        });
     }
 </script>
 
