@@ -18,19 +18,23 @@
         .teacher-label { color: var(--primary); font-weight: bold; font-size: 14px; display: block; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
         .teacher-name { color: #333; font-size: 18px; font-weight: 800; display: block; }
         
-        .table-container { overflow-x: auto; border-radius: 10px; }
+        .table-container { overflow-x: auto; border-radius: 10px; border: 1px solid #eee; }
         table { width: 100%; border-collapse: collapse; min-width: 700px; background: #fff; }
         th { background: var(--primary); color: white; padding: 14px 12px; text-align: left; font-size: 14px; }
         td { padding: 12px; border-bottom: 1px solid #eee; font-size: 14px; color: #444; text-align: left; }
         tr:nth-child(even) { background: #fafafa; }
         
-        /* പുതിയ അഡ്മിഷൻ കുട്ടികൾക്ക് ഒരു കളർ കൊടുക്കാൻ */
-        .new-adm { background-color: #e8f5e9 !important; font-weight: 600; color: #2e7d32; }
-        .new-badge { background: #4caf50; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-left: 5px; }
+        /* പുതിയ അഡ്മിഷൻ കുട്ടികൾക്കുള്ള പ്രത്യേക ഡിസൈൻ */
+        .new-adm { background-color: #e8f5e9 !important; font-weight: 600; }
+        .new-adm td { color: #2e7d32; }
+        .new-badge { background: #4caf50; color: white; padding: 3px 8px; border-radius: 12px; font-size: 10px; margin-left: 5px; display: inline-block; animation: blink 2s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
-        .back-btn { display: block; margin-top: 30px; padding: 15px; background: var(--primary); color: white; text-decoration: none; border-radius: 15px; text-align: center; font-weight: bold; }
-        .update-note { text-align: center; color: #d35400; font-size: 13px; margin-top: 15px; font-weight: 600; }
-        #loadingMsg { text-align: center; color: var(--primary); font-weight: bold; display: none; margin-bottom: 15px; }
+        .back-btn { display: block; margin-top: 30px; padding: 15px; background: var(--primary); color: white; text-decoration: none; border-radius: 15px; text-align: center; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.2s; }
+        .back-btn:active { transform: scale(0.98); }
+        .update-note { text-align: center; color: #d35400; font-size: 13px; margin-top: 15px; font-weight: 600; padding: 10px; background: #fffdf5; border-radius: 8px; border-left: 4px solid #e67e22; }
+        
+        #loadingMsg { text-align: center; color: var(--primary); font-size: 14px; font-weight: bold; display: none; margin-bottom: 15px; padding: 10px; background: #e3f2fd; border-radius: 8px; }
     </style>
 </head>
 <body>
@@ -49,7 +53,7 @@
         <option value="c7">ക്ലാസ്സ് 7 (VII)</option>
     </select>
 
-    <div id="loadingMsg">പുതിയ ഡാറ്റ ലോഡ് ചെയ്യുന്നു... ⏳</div>
+    <div id="loadingMsg">ഡാറ്റ ലോഡ് ചെയ്യുന്നു... ⏳</div>
 
     <div id="c1" class="info-card">
         <div class="teacher-badge">
@@ -86,6 +90,7 @@
                 </tbody>
             </table>
         </div>
+        <p class="update-note">* പുതിയ അഡ്മിഷനുകൾ ഈ ലിസ്റ്റിന് താഴെ ഓട്ടോമാറ്റിക് ആയി വരുന്നതാണ്.</p>
     </div>
 
     <div id="c3" class="info-card">
@@ -104,6 +109,7 @@
                 </tbody>
             </table>
         </div>
+        <p class="update-note">* പുതിയ അഡ്മിഷനുകൾ ഈ ലിസ്റ്റിന് താഴെ ഓട്ടോമാറ്റിക് ആയി വരുന്നതാണ്.</p>
     </div>
 
     <div id="c4" class="info-card">
@@ -119,6 +125,7 @@
                 </tbody>
             </table>
         </div>
+        <p class="update-note">* പുതിയ അഡ്മിഷനുകൾ ഈ ലിസ്റ്റിന് താഴെ ഓട്ടോമാറ്റിക് ആയി വരുന്നതാണ്.</p>
     </div>
 
     <div id="c5" class="info-card">
@@ -139,6 +146,7 @@
                 </tbody>
             </table>
         </div>
+        <p class="update-note">* പുതിയ അഡ്മിഷനുകൾ ഈ ലിസ്റ്റിന് താഴെ ഓട്ടോമാറ്റിക് ആയി വരുന്നതാണ്.</p>
     </div>
 
     <div id="c6" class="info-card">
@@ -158,6 +166,7 @@
                 </tbody>
             </table>
         </div>
+        <p class="update-note">* പുതിയ അഡ്മിഷനുകൾ ഈ ലിസ്റ്റിന് താഴെ ഓട്ടോമാറ്റിക് ആയി വരുന്നതാണ്.</p>
     </div>
 
     <div id="c7" class="info-card">
@@ -176,16 +185,17 @@
                 </tbody>
             </table>
         </div>
+        <p class="update-note">* പുതിയ അഡ്മിഷനുകൾ ഈ ലിസ്റ്റിന് താഴെ ഓട്ടോമാറ്റിക് ആയി വരുന്നതാണ്.</p>
     </div>
 
-    <a href="index.html" class="back-btn">← തിരികെ ഹോം പേജിലേക്ക്</a>
+    <a href="index.html" class="back-btn">← തിരികെ ഹോം പേജിലേക്ക് പോവാം</a>
 </div>
 
 <script>
     // ഗൂഗിൾ സ്ക്രിപ്റ്റ് ലിങ്ക് 
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5derGkHoeNuXiZKvXhGTNx_hWN6SRJe9OzzvUBkwec5jyVwaC0ItttDoagvuX3I5bwA/exec";
 
-    // പേജ് ലോഡ് ആകുമ്പോൾ ഡാറ്റ വലിച്ചെടുക്കാൻ
+    // ഷീറ്റിൽ നിന്നും ഡാറ്റ വലിച്ചെടുക്കാൻ
     window.onload = function() {
         document.getElementById('loadingMsg').style.display = 'block';
         fetch(GOOGLE_SCRIPT_URL)
@@ -201,9 +211,8 @@
                     if(classDiv && student.name) {
                         const tbody = classDiv.querySelector('tbody');
                         const row = tbody.insertRow();
-                        row.className = "new-adm"; // പുതിയ അഡ്മിഷന് പച്ച കളർ
+                        row.className = "new-adm"; // പുതിയ അഡ്മിഷന് പച്ച കളർ ബാക്ക്ഗ്രൗണ്ട്
                         
-                        // ID യുടെയും അഡ്മിഷൻ നമ്പറിന്റെയും സ്ഥാനത്ത് തൽക്കാലം New എന്ന് കാണിക്കും
                         row.innerHTML = `
                             <td>പുതിയത് <span class="new-badge">NEW</span></td>
                             <td>-</td>
@@ -229,4 +238,4 @@
 </script>
 
 </body>
-</html>    
+</html>
