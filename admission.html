@@ -32,7 +32,6 @@
         input:focus, select:focus, textarea:focus { border-color: var(--primary); outline: none; }
         input[readonly] { background-color: #f1f2f6; cursor: not-allowed; color: #555; font-weight: bold; border-color: #ddd; }
         
-        /* സിംഗിൾ വരിയിൽ കൊടുക്കാൻ */
         .row { display: flex; gap: 15px; }
         .row .input-group { flex: 1; margin-bottom: 15px; }
 
@@ -44,138 +43,191 @@
             background: #e8f4f8; color: var(--primary); padding: 10px; border-radius: 8px; font-weight: bold; margin: 25px 0 15px 0; font-size: 15px; border-left: 4px solid var(--gold);
         }
 
-        button { 
+        .btn-submit { 
             background: #25D366; color: white; width: 100%; 
             padding: 16px; border: none; border-radius: 12px; 
-            font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px;
+            font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); display: flex; align-items: center; justify-content: center; gap: 10px;
-            transition: 0.3s;
         }
-        button:hover { background: #20bd5a; }
-        button:disabled { background: #999; cursor: not-allowed; box-shadow: none; }
-
+        
         .back-link { 
             display: block; text-align: center; margin-top: 25px; 
             color: var(--primary); text-decoration: none; font-weight: bold; 
             padding: 10px; border-radius: 10px; background: #f8f9fa;
         }
+
+        /* --- Success Section Styles --- */
+        #successSection { display: none; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .success-box { background: #e8f5e9; border: 2px solid #4caf50; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 25px; }
+        .success-box i { color: #4caf50; font-size: 50px; margin-bottom: 10px; }
+        .success-box h3 { color: #2e7d32; margin: 0 0 10px 0; }
+        
+        .instruction-box { background: #fffdf5; border-left: 5px solid var(--gold); padding: 20px; border-radius: 12px; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee; margin-bottom: 25px; }
+        .instruction-box h4 { color: #d35400; margin-top: 0; font-size: 15px; border-bottom: 1px dashed #ddd; padding-bottom: 10px; margin-bottom: 15px; line-height: 1.5; }
+        .inst-list { padding-left: 20px; margin: 0; font-size: 14px; color: #444; line-height: 1.7; }
+        .inst-list li { margin-bottom: 12px; }
+        .highlight { font-weight: bold; color: var(--primary); }
+        .highlight-red { font-weight: bold; color: #d32f2f; }
+
+        .btn-samastha {
+            background: linear-gradient(to right, #004d7a, #008793); color: white; width: 100%; 
+            padding: 18px; border: none; border-radius: 12px; text-decoration: none;
+            font-size: 15px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 77, 122, 0.3); transition: 0.3s; margin-top: 10px;
+        }
+        .btn-samastha:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
 
 <div class="form-container">
-    <div class="header-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-    <h2>സമസ്ത കേരള ഇസ്‌ലാം മത വിദ്യാഭ്യാസ ബോർഡ്<br><span style="font-size: 18px; color:#444;">അഡ്മിഷൻ ഫോം</span></h2>
-    <div class="sub-text">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
     
-    <div class="input-group">
-        <label><i class="fa-solid fa-school"></i> 1. മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label>
-        <input type="text" id="madrasaInfo" value="അൻവാറുൽ ഇസ്‌ലാം മദ്രസ - 6948" readonly>
-    </div>
-
-    <div class="section-title">വിദ്യാർത്ഥിയുടെ വിവരങ്ങൾ</div>
-
-    <div class="input-group">
-        <label><i class="fa-solid fa-user"></i> 2. വിദ്യാർത്ഥിയുടെ പേരും, ഇനിഷ്യലും <span class="req">*</span></label>
-        <input type="text" id="studentName" placeholder="കുട്ടിയുടെ പൂർണ്ണമായ പേര്">
-    </div>
-
-    <div class="input-group">
-        <label><i class="fa-solid fa-house-chimney"></i> 3. വീട്ടുപേര്, വിലാസം (House Name & Address)</label>
-        <textarea id="address" rows="3" placeholder="പൂർണ്ണമായ വിലാസം"></textarea>
-    </div>
-
-    <div class="input-group">
-        <label><i class="fa-regular fa-address-card"></i> 4. ആധാർ നമ്പർ (Aadhaar No)</label>
-        <input type="number" id="aadhaar" placeholder="ആധാർ നമ്പർ">
-    </div>
-
-    <div class="row">
+    <div id="formSection">
+        <div class="header-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h2>സമസ്ത കേരള ഇസ്‌ലാം മത വിദ്യാഭ്യാസ ബോർഡ്<br><span style="font-size: 18px; color:#444;">അഡ്മിഷൻ ഫോം</span></h2>
+        <div class="sub-text">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
+        
         <div class="input-group">
-            <label><i class="fa-solid fa-calendar-days"></i> 5. ജനന തിയ്യതി (DOB) <span class="req">*</span></label>
-            <input type="date" id="dob">
+            <label><i class="fa-solid fa-school"></i> 1. മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label>
+            <input type="text" id="madrasaInfo" value="അൻവാറുൽ ഇസ്‌ലാം മദ്രസ - 6948" readonly>
         </div>
+
+        <div class="section-title">വിദ്യാർത്ഥിയുടെ വിവരങ്ങൾ</div>
+
         <div class="input-group">
-            <label><i class="fa-solid fa-venus-mars"></i> 6. ലിംഗം (Sex) <span class="req">*</span></label>
-            <select id="sex">
-                <option value="ആൺകുട്ടി">ആൺകുട്ടി (Male)</option>
-                <option value="പെൺകുട്ടി">പെൺകുട്ടി (Female)</option>
+            <label><i class="fa-solid fa-user"></i> 2. വിദ്യാർത്ഥിയുടെ പേരും, ഇനിഷ്യലും <span class="req">*</span></label>
+            <input type="text" id="studentName" placeholder="കുട്ടിയുടെ പൂർണ്ണമായ പേര്">
+        </div>
+
+        <div class="input-group">
+            <label><i class="fa-solid fa-house-chimney"></i> 3. വീട്ടുപേര്, വിലാസം (House Name & Address)</label>
+            <textarea id="address" rows="3" placeholder="പൂർണ്ണമായ വിലാസം"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label><i class="fa-regular fa-address-card"></i> 4. ആധാർ നമ്പർ (Aadhaar No)</label>
+            <input type="number" id="aadhaar" placeholder="ആധാർ നമ്പർ">
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label><i class="fa-solid fa-calendar-days"></i> 5. ജനന തിയ്യതി (DOB) <span class="req">*</span></label>
+                <input type="date" id="dob">
+            </div>
+            <div class="input-group">
+                <label><i class="fa-solid fa-venus-mars"></i> 6. ലിംഗം (Sex) <span class="req">*</span></label>
+                <select id="sex">
+                    <option value="ആൺകുട്ടി">ആൺകുട്ടി (Male)</option>
+                    <option value="പെൺകുട്ടി">പെൺകുട്ടി (Female)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section-title">രക്ഷിതാവിന്റെ വിവരങ്ങൾ</div>
+
+        <div class="row">
+            <div class="input-group">
+                <label><i class="fa-solid fa-person"></i> 7. പിതാവിന്റെ പേര് (Name of Father)</label>
+                <input type="text" id="fatherName" placeholder="ഉപ്പയുടെ പേര്">
+            </div>
+            <div class="input-group">
+                <label><i class="fa-solid fa-user-tie"></i> 8. രക്ഷാകർത്താവിന്റെ പേര് (Guardian)</label>
+                <input type="text" id="guardianName" placeholder="രക്ഷിതാവിന്റെ പേര്">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label><i class="fa-solid fa-people-arrows"></i> 9. കുട്ടിയുമായുള്ള ബന്ധം</label>
+                <input type="text" id="relation" placeholder="ഉദാ: പിതാവ്, മാതാവ്, വലിയുപ്പ">
+            </div>
+            <div class="input-group">
+                <label><i class="fa-solid fa-briefcase"></i> 10. പ്രവൃത്തി (Occupation)</label>
+                <input type="text" id="occupation" placeholder="ജോലി">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label><i class="fa-solid fa-fingerprint"></i> 11. അടയാളങ്ങൾ (Identification Marks)</label>
+            <input type="text" id="marks" placeholder="ശരീരത്തിലെ അടയാളം (Optional)">
+        </div>
+
+        <div class="input-group">
+            <label><i class="fa-solid fa-phone"></i> 12. ഫോൺ നമ്പർ (Phone No) <span class="req">*</span></label>
+            <input type="tel" id="phone" placeholder="വാട്സാപ്പ് നമ്പർ">
+        </div>
+
+        <div class="section-title">അഡ്മിഷൻ വിവരങ്ങൾ</div>
+
+        <div class="input-group">
+            <label><i class="fa-solid fa-book-open"></i> 13. ചേരുന്ന ക്ലാസ് (Class) <span class="req">*</span></label>
+            <select id="std">
+                <option value="1">ക്ലാസ്സ് 1</option><option value="2">ക്ലാസ്സ് 2</option>
+                <option value="3">ക്ലാസ്സ് 3</option><option value="4">ക്ലാസ്സ് 4</option>
+                <option value="5">ക്ലാസ്സ് 5</option><option value="6">ക്ലാസ്സ് 6</option>
+                <option value="7">ക്ലാസ്സ് 7</option><option value="8">ക്ലാസ്സ് 8</option>
             </select>
         </div>
-    </div>
 
-    <div class="section-title">രക്ഷിതാവിന്റെ വിവരങ്ങൾ</div>
-
-    <div class="row">
         <div class="input-group">
-            <label><i class="fa-solid fa-person"></i> 7. പിതാവിന്റെ പേര് (Name of Father)</label>
-            <input type="text" id="fatherName" placeholder="ഉപ്പയുടെ പേര്">
+            <label><i class="fa-solid fa-clock-rotate-left"></i> 14. മുൻ മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label>
+            <textarea id="formerMadrasa" rows="2" placeholder="മറ്റ് മദ്രസയിൽ പഠിച്ചിരുന്നെങ്കിൽ മാത്രം പൂരിപ്പിക്കുക"></textarea>
         </div>
+
         <div class="input-group">
-            <label><i class="fa-solid fa-user-tie"></i> 8. രക്ഷാകർത്താവിന്റെ പേര് (Guardian)</label>
-            <input type="text" id="guardianName" placeholder="രക്ഷിതാവിന്റെ പേര്">
+            <label><i class="fa-solid fa-award"></i> 15. പൊതുപരീക്ഷ സർട്ടിഫിക്കറ്റ് നമ്പറും ക്ലാസ്സും</label>
+            <input type="text" id="publicExam" placeholder="പൊതുപരീക്ഷ പാസ്സായിട്ടുണ്ടെങ്കിൽ മാത്രം">
         </div>
-    </div>
 
-    <div class="row">
         <div class="input-group">
-            <label><i class="fa-solid fa-people-arrows"></i> 9. കുട്ടിയുമായുള്ള ബന്ധം</label>
-            <input type="text" id="relation" placeholder="ഉദാ: പിതാവ്, മാതാവ്, വലിയുപ്പ">
+            <label><i class="fa-solid fa-file-lines"></i> 16. ടി.സി നമ്പർ (T.C. No)</label>
+            <input type="text" id="tcNo" placeholder="ഉണ്ടെങ്കിൽ മാത്രം">
         </div>
-        <div class="input-group">
-            <label><i class="fa-solid fa-briefcase"></i> 10. പ്രവൃത്തി (Occupation)</label>
-            <input type="text" id="occupation" placeholder="ജോലി">
+
+        <button class="btn-submit" onclick="submitAdmission()"><i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക</button>
+        
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക് പോവാം</a>
+    </div>
+
+    <div id="successSection">
+        <div class="success-box">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>അപേക്ഷ ലഭിച്ചിരിക്കുന്നു!</h3>
+            <p style="margin:0; font-size:14px; color:#555;">അഡ്മിഷൻ നടപടികളുടെ ആദ്യഘട്ടം പൂർത്തിയായി. ഇനി താഴെ പറയുന്ന കാര്യങ്ങൾ ശ്രദ്ധിക്കുക.</p>
         </div>
+
+        <div class="instruction-box">
+            <h4><i class="fa-solid fa-circle-info"></i> കുട്ടികളെ ചേർക്കേണ്ട രക്ഷിതാക്കൾ ചെയ്യേണ്ടത്:</h4>
+            <ul class="inst-list">
+                <li>താഴെ നൽകിയിരിക്കുന്ന ബട്ടണിൽ ക്ലിക്ക് ചെയ്ത് സമസ്തയുടെ സൈറ്റിൽ പ്രവേശിക്കുക.</li>
+                <li>മദ്റസയിൽ കുട്ടിയെ ചേർക്കാൻ നമ്മുടെ മദ്റസ Reg നമ്പർ ആയ <span class="highlight-red">6948</span> എന്ന നമ്പർ അടിച്ച് കൊടുക്കുക. ശേഷം വരുന്ന പേര് നമ്മുടെ മദ്രസയായ അൻവാറുൽ ഇസ്‌ലാം മദ്രസ തന്നെ ആണെന്ന് ഉറപ്പ് വരുത്തുക. ശേഷം <span class="highlight">Proceed to Admission Form</span> ക്ലിക്ക് ചെയ്യുക.</li>
+                <li>നമ്മുടെ മദ്റസയുടെ വിവരങ്ങള്‍, ബന്ധപ്പെടാവുന്ന സദര്‍ മുഅല്ലിമിന്‍റെ പേര്, മൊബൈല്‍ നമ്പറുള്‍പ്പെടെ സൈറ്റില്‍ കാണിക്കും.</li>
+                <li>കുട്ടിയെ അഡ്മിഷന്‍ നല്‍കുന്ന ക്ലാസ് സെലക്ട് ചെയ്യുക. പുതുതായി ചേരുന്ന കുട്ടിയാണെങ്കിൽ അടുത്ത കോളത്തിൽ <span class="highlight">New</span> എന്ന് സെലക്ട് ചെയ്യുക. താഴെ വിവരങ്ങള്‍ പൂരിപ്പിക്കുക.</li>
+                <li>ടി.സി മുഖേന വരുന്ന കുട്ടിയാണെങ്കിൽ <span class="highlight">TC</span> എന്നതും, ഇവ രണ്ടുമല്ലെങ്കിൽ <span class="highlight">Other</span> എന്നും സെലക്ട് ചെയ്യുക.<br><i>(TC ആണ് സെലക്റ്റ് ചെയ്തത് എങ്കില്‍ തുടര്‍ന്ന് വരുന്ന പേജില്‍ SKIMVB ID നമ്പർ, ജനന തിയ്യതി എന്നിവ നൽകി Fetch Student Data ക്ലിക്ക് ചെയ്യുക. ടിസിയിലുള്ള ഡാറ്റ അവിടെ കാണിക്കും. അതില്‍ നിലവില്‍ പൂരിപ്പിക്കാത്ത ഡാറ്റകള്‍ ടൈപ്പ് ചെയ്ത് സബ്മിറ്റ് ചെയ്യുക).</i></li>
+                <li>ശേഷം വരുന്ന കോളങ്ങള്‍ <span class="highlight-red">ഇംഗ്ലീഷ് ഭാഷയിൽ പൂർണമായും പൂരിപ്പിക്കുക</span>. ആധാര്‍ നമ്പര്‍, ഫോണ്‍ നമ്പര്‍ എന്നിവ മാറാതിരിക്കാന്‍ പ്രത്യേകം ശ്രദ്ധിക്കുക.</li>
+                <li>എല്ലാം പൂരിപ്പിച്ചതിന് ശേഷം <span class="highlight">Submit Admission Request</span> ക്ലിക്ക് ചെയ്യുക. ഇതോടെ അപേക്ഷ പൂർത്തിയായി.</li>
+                <li><span class="highlight">Download Application Form</span> എന്നതിൽ ക്ലിക്ക് ചെയ്ത് ഫോറം ഡൗണ്‍ലോഡ് ചെയ്യുക. അത് പ്രിന്റ് എടുത്ത് മദ്റസയില്‍ കുട്ടിയെ അഡ്മിഷന്‍ ചേര്‍ക്കുന്ന സമയത്ത് രക്ഷിതാവ് പേരും ഒപ്പും തിയ്യതിയും വെച്ച് മദ്റസയില്‍ നല്‍കുക.</li>
+                <li>ഡൗണ്‍ലോഡ‍് ചെയ്ത ഫോറം നഷ്ടപ്പെട്ടാല്‍ 'Download Existing Form' ന് താഴെ പിതാവിന്‍റെ മൊബൈല്‍ നമ്പറും കുട്ടിയുടെ ജനന തിയ്യതിയും കൊടുത്ത് ഡൗണ്‍ലോഡ് ചെയ്യാം.</li>
+                <li>ടിസിയുമായി ചേരുന്ന കുട്ടിയാണെങ്കില്‍ ടിസിയുടെ കോപ്പിയും അതിന്‍റെ കൂടെ അഡ്മിഷന്‍ സമയത്ത് നല്‍കണം.</li>
+            </ul>
+        </div>
+
+        <a href="https://online.samastha.info/admission.php" target="_blank" class="btn-samastha">
+            <i class="fa-solid fa-globe"></i> SKIMVB യിൽ രജിസ്റ്റർ ചെയ്യുക
+        </a>
+
+        <a href="index.html" class="back-link" style="margin-top: 15px;"><i class="fa-solid fa-house"></i> തിരികെ ഹോം പേജിലേക്ക്</a>
     </div>
 
-    <div class="input-group">
-        <label><i class="fa-solid fa-fingerprint"></i> 11. അടയാളങ്ങൾ (Identification Marks)</label>
-        <input type="text" id="marks" placeholder="ശരീരത്തിലെ അടയാളം (Optional)">
-    </div>
-
-    <div class="input-group">
-        <label><i class="fa-solid fa-phone"></i> ഫോൺ നമ്പർ (Phone No) <span class="req">*</span></label>
-        <input type="tel" id="phone" placeholder="വാട്സാപ്പ് നമ്പർ">
-    </div>
-
-    <div class="section-title">അഡ്മിഷൻ വിവരങ്ങൾ</div>
-
-    <div class="input-group">
-        <label><i class="fa-solid fa-book-open"></i> 13. ചേരുന്ന ക്ലാസ് (Class) <span class="req">*</span></label>
-        <select id="std">
-            <option value="1">ക്ലാസ്സ് 1</option><option value="2">ക്ലാസ്സ് 2</option>
-            <option value="3">ക്ലാസ്സ് 3</option><option value="4">ക്ലാസ്സ് 4</option>
-            <option value="5">ക്ലാസ്സ് 5</option><option value="6">ക്ലാസ്സ് 6</option>
-            <option value="7">ക്ലാസ്സ് 7</option><option value="8">ക്ലാസ്സ് 8</option>
-        </select>
-    </div>
-
-    <div class="input-group">
-        <label><i class="fa-solid fa-clock-rotate-left"></i> 14. മുൻ മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label>
-        <textarea id="formerMadrasa" rows="2" placeholder="മറ്റ് മദ്രസയിൽ പഠിച്ചിരുന്നെങ്കിൽ മാത്രം പൂരിപ്പിക്കുക"></textarea>
-    </div>
-
-    <div class="input-group">
-        <label><i class="fa-solid fa-award"></i> 15. പൊതുപരീക്ഷ സർട്ടിഫിക്കറ്റ് നമ്പറും ക്ലാസ്സും</label>
-        <input type="text" id="publicExam" placeholder="പൊതുപരീക്ഷ പാസ്സായിട്ടുണ്ടെങ്കിൽ മാത്രം">
-    </div>
-
-    <div class="input-group">
-        <label><i class="fa-solid fa-file-lines"></i> 16. ടി.സി നമ്പർ (T.C. No)</label>
-        <input type="text" id="tcNo" placeholder="ഉണ്ടെങ്കിൽ മാത്രം">
-    </div>
-
-    <button id="submitBtn" onclick="submitAdmission()"><i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക</button>
-    
-    <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക് പോവാം</a>
 </div>
 
 <script>
-    // ഗൂഗിൾ സ്ക്രിപ്റ്റ് ലിങ്ക് ഇവിടെ നൽകിയിട്ടുണ്ട്
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5derGkHoeNuXiZKvXhGTNx_hWN6SRJe9OzzvUBkwec5jyVwaC0ItttDoagvuX3I5bwA/exec";
+    // നിങ്ങളുടെ വെബ് ആപ്പ് ലിങ്ക് 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx5derGkHoeNuXiZKvXhGTNx_hWN6SRJe9OzzvUBkwec5jyVwaC0ItttDoagvuX3I5bwA/exec'; 
 
     function submitAdmission() {
-        // Collect all data
         const sName = document.getElementById('studentName').value;
         const addr = document.getElementById('address').value || "നൽകിയിട്ടില്ല";
         const aadh = document.getElementById('aadhaar').value || "നൽകിയിട്ടില്ല";
@@ -194,64 +246,51 @@
         const former = document.getElementById('formerMadrasa').value || "ബാധകമല്ല";
         const pExam = document.getElementById('publicExam').value || "ബാധകമല്ല";
 
-        // Required field validation
         if(!sName || !phone || !dob) {
             alert("ദയവായി വിദ്യാർത്ഥിയുടെ പേര്, ജനന തിയ്യതി, ഫോൺ നമ്പർ എന്നിവ നിർബന്ധമായും പൂരിപ്പിക്കുക.");
             return;
         }
 
-        // ബട്ടൺ ലോഡിങ് ആകാൻ
-        const btn = document.getElementById('submitBtn');
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> അപേക്ഷ സമർപ്പിക്കുന്നു...';
-        btn.disabled = true;
+        // ഗൂഗിൾ ഷീറ്റിലേക്ക് ഡാറ്റ അയക്കുന്നു 
+        try {
+            const formData = new FormData();
+            formData.append('name', sName);
+            formData.append('cls', std);
+            formData.append('father', father);
+            formData.append('phone', phone);
 
-        // ഗൂഗിൾ ഷീറ്റിലേക്ക് ഡാറ്റ അയക്കുന്നു
-        let formData = new FormData();
-        formData.append("name", sName);
-        formData.append("cls", std);
-        formData.append("father", father);
-        formData.append("phone", phone);
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => console.log('Saved to Google Sheet!'))
+                .catch(error => console.error('Sheet Error!', error.message));
+        } catch (e) { console.log(e); }
 
-        fetch(GOOGLE_SCRIPT_URL, { method: "POST", body: formData, mode: "no-cors" })
-        .then(() => {
-            // alert("അഡ്മിഷൻ വിവരങ്ങൾ വിജയകരമായി സമർപ്പിച്ചു!"); // ആവശ്യമെങ്കിൽ ഈ അലേർട്ട് നിലനിർത്താം, അല്ലെങ്കിൽ ഒഴിവാക്കാം.
-            
-            // വാട്സാപ്പ് മെസ്സേജ് ഉണ്ടാക്കുന്നു
-            const msg = `📝 *മദ്രസ അഡ്മിഷൻ ഫോം* 📝%0A` +
-                        `-----------------------------------%0A` +
-                        `1. മദ്രസ: അൻവാറുൽ ഇസ്‌ലാം മദ്രസ (6948)%0A` +
-                        `2. വിദ്യാർത്ഥി: *${sName}*%0A` +
-                        `3. വിലാസം: ${addr}%0A` +
-                        `4. ആധാർ: ${aadh}%0A` +
-                        `5. ജനന തിയ്യതി: ${dob}%0A` +
-                        `6. ലിംഗം: ${sex}%0A` +
-                        `7. പിതാവ്: ${father}%0A` +
-                        `8. രക്ഷാകർത്താവ്: ${guardian}%0A` +
-                        `9. ബന്ധം: ${relation}%0A` +
-                        `10. പ്രവൃത്തി: ${occupation}%0A` +
-                        `*ഫോൺ നമ്പർ:* ${phone}%0A` +
-                        `11. അടയാളം: ${marks}%0A` +
-                        `13. ചേരുന്ന ക്ലാസ്സ്: *${std}*%0A` +
-                        `14. മുൻ മദ്രസ: ${former}%0A` +
-                        `15. പൊതുപരീക്ഷ: ${pExam}%0A` +
-                        `16. ടി.സി: ${tc}%0A` +
-                        `-----------------------------------`;
+        // WhatsApp മെസ്സേജ്
+        const msg = `📝 *മദ്രസ അഡ്മിഷൻ ഫോം* 📝%0A` +
+                    `-----------------------------------%0A` +
+                    `1. മദ്രസ: അൻവാറുൽ ഇസ്‌ലാം മദ്രസ (6948)%0A` +
+                    `2. വിദ്യാർത്ഥി: *${sName}*%0A` +
+                    `3. വിലാസം: ${addr}%0A` +
+                    `4. ആധാർ: ${aadh}%0A` +
+                    `5. ജനന തിയ്യതി: ${dob}%0A` +
+                    `6. ലിംഗം: ${sex}%0A` +
+                    `7. പിതാവ്: ${father}%0A` +
+                    `8. രക്ഷാകർത്താവ്: ${guardian}%0A` +
+                    `9. ബന്ധം: ${relation}%0A` +
+                    `10. പ്രവൃത്തി: ${occupation}%0A` +
+                    `*ഫോൺ നമ്പർ:* ${phone}%0A` +
+                    `11. അടയാളം: ${marks}%0A` +
+                    `13. ചേരുന്ന ക്ലാസ്സ്: *${std}*%0A` +
+                    `14. മുൻ മദ്രസ: ${former}%0A` +
+                    `15. പൊതുപരീക്ഷ: ${pExam}%0A` +
+                    `16. ടി.സി: ${tc}%0A` +
+                    `-----------------------------------`;
 
-            window.open(`https://wa.me/919061969505?text=${msg}`, '_blank');
-            
-            // ഫോം ക്ലിയർ ചെയ്യുന്നു
-            document.querySelectorAll('input').forEach(input => { if(!input.readOnly) input.value = ''; });
-            document.querySelectorAll('textarea').forEach(ta => ta.value = '');
-            
-            // ബട്ടൺ പഴയതുപോലെ ആക്കുന്നു
-            btn.innerHTML = '<i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക';
-            btn.disabled = false;
-        })
-        .catch(error => {
-            alert("എന്തോ പ്രശ്നമുണ്ട്. വീണ്ടും ശ്രമിക്കുക!");
-            btn.innerHTML = '<i class="fa-brands fa-whatsapp" style="font-size:24px;"></i> അപേക്ഷ വാട്സാപ്പിൽ അയക്കുക';
-            btn.disabled = false;
-        });
+        window.open(`https://wa.me/919061969505?text=${msg}`, '_blank');
+
+        // ഫോം മറച്ച് SKIMVB വിവരങ്ങൾ കാണിക്കുന്നു
+        document.getElementById('formSection').style.display = 'none';
+        document.getElementById('successSection').style.display = 'block';
+        window.scrollTo(0,0);
     }
 </script>
 
