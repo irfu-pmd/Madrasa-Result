@@ -3,615 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
-    
-    <meta name="google-site-verification" content="g6Lsg4ZJ5z895kPNezNmHjNDdHzCGH_fD8ZQw96PeHQ" />
-    
-    <meta name="description" content="അൻവാറുൽ ഇസ്‌ലാം മദ്രസ (താഴെ പുല്ലുംകുന്ന്) ഔദ്യോഗിക വെബ്സൈറ്റ്. Anwarul Islam Madrasa Thazhe Pullumkunnu. ഓൺലൈൻ അഡ്മിഷൻ, പരീക്ഷാ ഫലം, മറ്റ് വിവരങ്ങൾ.">
-    <meta name="keywords" content="Anwarul Islam Madrasa, അൻവാറുൽ ഇസ്‌ലാം മദ്രസ, Thazhe Pullumkunnu Madrasa, Madrasa admission, Samastha madrasa result, SKIMVB">
-    
+    <title>ഓൺലൈൻ അഡ്മിഷൻ - അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --header-grad-1: #094752;
-            --header-grad-2: #0d838d;
-            --gold: #f4b41a;
-            --bg-color: #f4f7f6;
-            --btn-adm: #32a27a;
-            --btn-res: #2279bc;
-            --btn-gal: #d9a528;
-            --btn-wa: #37c55c;
-            --btn-shop: #e67e22; 
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            margin: 0; padding: 0;
-            background-color: #111;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1000&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            justify-content: center;
-        }
-
-        .app-container {
-            background-color: var(--bg-color);
-            width: 100%;
-            max-width: 480px;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            position: relative;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2));
-            color: white; padding: 15px;
-            display: flex; align-items: center; justify-content: space-between;
-            position: sticky; top: 0; z-index: 100;
-        }
-        .header-left { display: flex; align-items: center; gap: 10px; }
-        .logo { width: 50px; height: 50px; background: white; border-radius: 50%; padding: 2px; }
-        .header-text { display: flex; flex-direction: column; }
-        .arabic-text { font-size: 10px; font-family: serif; color: #ddd; }
-        .malayalam-title { font-size: 16px; font-weight: bold; margin: 2px 0; }
-        .english-title { font-size: 12px; font-weight: bold; letter-spacing: 0.5px; }
-        .sub-title { font-size: 8px; color: #ccc; }
-        .menu-icon { font-size: 24px; cursor: pointer; padding: 5px; }
-
-        /* --- SIDE MENU --- */
-        .side-menu {
-            position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
-            background: white; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.2);
-            transition: 0.4s ease-in-out; display: flex; flex-direction: column;
-        }
-        .side-menu.active { left: 0; }
-        .menu-header {
-            background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2));
-            padding: 20px; color: white; display: flex; justify-content: space-between; align-items: center;
-        }
-        .menu-header h3 { margin: 0; font-size: 16px; }
-        .close-menu { font-size: 24px; cursor: pointer; }
-        .menu-links { padding: 0; flex: 1; overflow-y: auto; }
-        .menu-category {
-            background: #f0f4f8; color: var(--header-grad-1); font-size: 12px; font-weight: bold;
-            padding: 10px 20px; text-transform: uppercase; border-bottom: 1px solid #e0e0e0; border-top: 1px solid #e0e0e0;
-        }
-        .menu-links a {
-            display: flex; align-items: center; padding: 14px 20px; color: #333;
-            text-decoration: none; font-size: 14px; font-weight: 600;
-            border-bottom: 1px solid #f5f5f5; transition: 0.2s; cursor: pointer;
-        }
-        .menu-links a:hover { background: #f9f9f9; color: var(--header-grad-1); padding-left: 25px; }
-        .menu-links a i { width: 25px; font-size: 16px; color: var(--gold); text-align: center; margin-right: 12px; }
-        .menu-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 900;
-        }
-        .menu-overlay.active { display: block; }
-
-        /* --- CSS SCROLLING NOTICE --- */
-        .news-ticker {
-            background: #fff; display: flex; align-items: center;
-            border-bottom: 2px solid #eee; width: 100%; box-sizing: border-box; overflow: hidden;
-        }
-        .news-badge { 
-            background: #d32f2f; color: white; padding: 10px 15px; 
-            font-size: 12px; font-weight: bold; white-space: nowrap; z-index: 10;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
-        .ticker-wrap {
-            flex: 1; overflow: hidden; white-space: nowrap; position: relative;
-        }
-        .ticker-text {
-            display: inline-block; white-space: nowrap;
-            font-size: 13px; font-weight: 600; color: #333;
-            padding-left: 100%;
-            animation: tickerScroll 15s linear infinite; 
-        }
-        @keyframes tickerScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* --- CONTENT --- */
-        .content-padding { padding: 15px; flex: 1; }
-
-        .welcome-banner {
-            background: linear-gradient(to right, #0d3b2e, #145946);
-            border-radius: 12px; padding: 20px; text-align: right; color: white;
-            position: relative; overflow: hidden; margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .welcome-banner::before {
-            content: "\f66f"; font-family: "Font Awesome 6 Free"; font-weight: 900;
-            position: absolute; left: -10px; bottom: -20px; font-size: 120px; color: rgba(244, 180, 26, 0.2);
-        }
-        .welcome-banner h2 { color: var(--gold); margin: 0 0 5px 0; font-size: 24px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-        .welcome-banner p { margin: 0; font-size: 12px; opacity: 0.9; line-height: 1.4; }
-
-        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .action-card {
-            border-radius: 12px; padding: 15px 10px; color: white; text-decoration: none;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: 0.2s;
-        }
-        .action-card:active { transform: scale(0.97); }
-        .action-card.adm { background: var(--btn-adm); }
-        .action-card.res { background: var(--btn-res); }
-        .action-card.gal { background: var(--btn-gal); }
-        .action-card.wa { background: var(--btn-wa); }
+        :root { --primary: #065279; --gold: #d4af37; --bg: #f0f4f8; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
+        .form-container { background: white; max-width: 700px; margin: 0 auto; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 8px solid var(--primary); }
+        .header-icon { text-align: center; color: var(--gold); font-size: 40px; margin-bottom: 10px; }
+        h2 { color: var(--primary); text-align: center; margin-bottom: 5px; font-size: 24px; line-height: 1.4; }
+        .sub-text { text-align: center; font-size: 13px; color: #666; margin-bottom: 25px; font-weight: bold; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #333; font-size: 13px; }
+        label i { color: var(--primary); margin-right: 5px; width: 16px; text-align: center; }
+        .req { color: red; } 
+        input, select, textarea { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; box-sizing: border-box; font-size: 14px; transition: 0.3s; }
+        input:focus, select:focus, textarea:focus { border-color: var(--primary); outline: none; }
+        input[readonly] { background-color: #f1f2f6; cursor: not-allowed; color: #555; font-weight: bold; border-color: #ddd; }
+        .row { display: flex; gap: 15px; } .row .input-group { flex: 1; margin-bottom: 15px; }
+        @media (max-width: 600px) { .row { flex-direction: column; gap: 0; } }
+        .section-title { background: #e8f4f8; color: var(--primary); padding: 10px; border-radius: 8px; font-weight: bold; margin: 25px 0 15px 0; font-size: 15px; border-left: 4px solid var(--gold); }
+        .btn-submit { background: #25D366; color: white; width: 100%; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .back-link { display: block; text-align: center; margin-top: 25px; color: var(--primary); text-decoration: none; font-weight: bold; padding: 10px; border-radius: 10px; background: #f8f9fa; }
         
-        .action-icon { font-size: 24px; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 8px; }
-        .action-text { display: flex; flex-direction: column; }
-        .action-text .mal { font-weight: bold; font-size: 14px; }
-        .action-text .eng { font-size: 10px; opacity: 0.9; }
-
-        .wide-action-btn {
-            color: white; text-align: center; padding: 15px; border-radius: 12px;
-            text-decoration: none; display: block; margin-bottom: 12px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s;
-        }
-        .bg-admission { background: linear-gradient(to right, #004d7a, #008793); }
-        .bg-shop { background: linear-gradient(to right, #e67e22, #d35400); } 
-
-        .wide-action-btn .main-txt { font-weight: bold; font-size: 16px; display: block; }
-        .wide-action-btn .sub-txt { font-size: 11px; opacity: 0.8; margin-top: 3px; display: block; }
-        .wide-action-btn:active { transform: scale(0.98); }
-
-        /* Teachers Cards */
-        .section-title { text-align: center; font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333; padding-top: 10px; }
-        .teacher-card {
-            background: white; border-radius: 12px; padding: 12px; display: flex;
-            gap: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee;
-        }
-        .teacher-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; }
-        .teacher-info { display: flex; flex-direction: column; justify-content: center; flex: 1; }
-        .t-name { font-weight: bold; font-size: 14px; color: #222; margin-bottom: 2px; }
-        .t-sub { font-size: 11px; color: #777; margin-bottom: 8px; }
-        .t-social { display: flex; gap: 8px; }
-        .t-social i { font-size: 14px; color: white; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .ic-fb { background: #3b5998; }
-        .ic-wa { background: #25D366; }
-        .ic-ph { background: #3498db; }
-
-        /* --- SUB PAGES (MANAGEMENT & NOTICE BOARD) --- */
-        #managementPage, #noticePage {
-            display: none; position: absolute; top: 80px; left: 0; width: 100%;
-            background-color: var(--bg-color); z-index: 50; padding-bottom: 30px;
-        }
-        #managementPage.active, #noticePage.active { display: block; }
-        
-        .page-header {
-            display: flex; align-items: center; padding: 10px 15px; background: #fff; 
-            border-bottom: 1px solid #eee; margin-bottom: 15px;
-        }
-        .back-btn-top { font-size: 18px; color: var(--header-grad-1); cursor: pointer; padding: 10px; margin-right: 10px; }
-        .page-title { font-size: 16px; font-weight: bold; color: #333; }
-        
-        .bottom-back-btn {
-            background-color: var(--header-grad-1); color: white; width: 100%;
-            padding: 15px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold;
-            margin-top: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        /* --- MANAGEMENT SPECIFIC --- */
-        .org-card {
-            background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2));
-            color: white; border: none; justify-content: center; text-align: center;
-            margin-bottom: 25px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); border-radius: 12px;
-        }
-        
-        .member-group {
-            margin-bottom: 20px; 
-            border-bottom: 2px dashed #eee; 
-            padding-bottom: 15px;
-        }
-        .member-group:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
-        
-        .pos-badge {
-            background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2)); 
-            color: #ffffff; 
-            padding: 8px 10px; 
-            border-radius: 6px; 
-            font-size: 13px; 
-            font-weight: bold;
-            display: block; 
-            width: 100%; 
-            box-sizing: border-box;
-            margin-bottom: 12px; 
-            text-transform: uppercase;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .member-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f9f9f9;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .member-name { font-size: 15px; font-weight: bold; color: #222; }
-        
-        .contact-links { display: flex; gap: 10px; }
-        .contact-btn {
-            width: 38px; height: 38px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; text-decoration: none; font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: 0.2s;
-        }
-        .contact-btn:active { transform: scale(0.95); }
-        .call-btn { background: #3498db; }
-        .wa-btn { background: #25D366; }
-
-        /* Notice Board Specific */
-        .notice-board-card {
-            background: #fffdf5; border-left: 5px solid #e67e22; border-radius: 12px;
-            padding: 15px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;
-        }
-        .notice-board-header {
-            display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: bold; color: #d35400;
-            margin-bottom: 12px; border-bottom: 1px dashed #e0e0e0; padding-bottom: 10px;
-        }
-        .notice-item {
-            display: flex; align-items: flex-start; gap: 10px;
-            margin-bottom: 12px; font-size: 14px; color: #444; line-height: 1.6;
-        }
-        .notice-item i { color: var(--header-grad-1); font-size: 14px; margin-top: 4px; }
-
-        /* Footer */
-        footer {
-            background: #022b42; color: white; padding: 20px 15px; display: flex; flex-direction: column; gap: 15px;
-        }
-        .footer-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
-        .footer-left h4 { margin: 0 0 5px 0; font-size: 14px; }
-        .footer-left p { margin: 0; font-size: 11px; color: #aaa; }
-        .footer-left .ph { margin-top: 5px; font-weight: bold; color: #fff; font-size: 12px; }
-        .footer-right { text-align: center; }
-        .footer-right span { font-size: 12px; margin-bottom: 8px; display: block; font-weight: bold; }
-        .f-socials { display: flex; gap: 10px; }
-        .f-socials i { font-size: 16px; color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .ic-yt { background: #FF0000; }
-        .copyright { text-align: center; font-size: 10px; color: #777; }
-
+        #successSection { display: none; }
+        .success-box { background: #e8f5e9; border: 2px solid #4caf50; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 25px; }
+        .instruction-box { background: #fffdf5; border-left: 5px solid var(--gold); padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 25px; }
+        .inst-list { padding-left: 20px; margin: 0; font-size: 14px; color: #444; line-height: 1.7; }
+        .inst-list li { margin-bottom: 12px; }
+        .highlight { font-weight: bold; color: var(--primary); }
+        .highlight-red { font-weight: bold; color: #d32f2f; }
+        .btn-samastha { background: linear-gradient(to right, #004d7a, #008793); color: white; width: 100%; padding: 18px; border: none; border-radius: 12px; text-decoration: none; font-size: 15px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-<div class="app-container">
-    
-    <header>
-        <div class="header-left">
-            <img src="Madrasa-Logo.png" alt="Logo" class="logo">
-            <div class="header-text">
-                <span class="arabic-text">مدرسة أنوار الإسلام</span>
-                <span class="malayalam-title">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</span>
-                <span class="english-title">ANWARUL ISLAM MADRASA</span>
-                <span class="sub-title">UNDER SAMASTHA KERALA ISLAM MATHA VIDYABHYASA BOARD</span>
-            </div>
-        </div>
-        <i class="fa-solid fa-bars menu-icon" onclick="toggleMenu()"></i>
-    </header>
-
-    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
-    <div class="side-menu" id="sideMenu">
-        <div class="menu-header">
-            <h3><i class="fa-solid fa-mosque"></i> അൻവാറുൽ ഇസ്‌ലാം</h3>
-            <i class="fa-solid fa-xmark close-menu" onclick="toggleMenu()"></i>
-        </div>
-        <div class="menu-links">
-            <div class="menu-category">പ്രധാന ലിങ്കുകൾ</div>
-            <a onclick="goHome()"><i class="fa-solid fa-house"></i> ഹോം (Home)</a>
-            <a href="admission.html"><i class="fa-solid fa-file-signature"></i> ഓൺലൈൻ അഡ്മിഷൻ</a>
-            <a href="book-order.html"><i class="fa-solid fa-book"></i> ബുക്ക് സ്റ്റോർ</a>
-            <a href="gallery.html"><i class="fa-solid fa-images"></i> ഗാലറി</a>
-            <a href="result.html"><i class="fa-solid fa-chart-simple"></i> പരീക്ഷാ ഫലം</a>
-
-            <div class="menu-category">വിവരങ്ങൾ</div>
-            <a onclick="showTeachers()"><i class="fa-solid fa-users"></i> അധ്യാപകർ (Teachers)</a>
-            <a onclick="showManagement()"><i class="fa-solid fa-building-columns"></i> കമ്മിറ്റി (Management)</a>
-            <a onclick="showNoticeBoard()"><i class="fa-solid fa-bullhorn"></i> അറിയിപ്പുകൾ (Notice Board)</a>
-            <a onclick="showContact()"><i class="fa-solid fa-phone-volume"></i> ബന്ധപ്പെടാൻ (Contact Us)</a>
-        </div>
-    </div>
-
-    <div id="mainHomeContent">
+<div class="form-container">
+    <div id="formSection">
+        <div class="header-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h2>സമസ്ത കേരള ഇസ്‌ലാം മത വിദ്യാഭ്യാസ ബോർഡ്<br><span style="font-size: 18px; color:#444;">അഡ്മിഷൻ ഫോം</span></h2>
+        <div class="sub-text">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ, താഴെ പുല്ലുംകുന്ന്</div>
         
-        <div class="news-ticker">
-            <div class="news-badge">NEWS</div>
-            <div class="ticker-wrap">
-                <div class="ticker-text">
-                    പുതിയ അഡ്മിഷൻ ആരംഭിച്ചിരിക്കുന്നു! ഓൺലൈനായി അപേക്ഷിക്കാം. ◼ പാഠപുസ്തകങ്ങൾ വെബ്സൈറ്റ് വഴി ഓർഡർ ചെയ്യാം.
-                </div>
-            </div>
+        <div class="input-group"><label><i class="fa-solid fa-school"></i> 1. മദ്രസയുടെ പേരും അംഗീകാര നമ്പറും</label><input type="text" value="അൻവാറുൽ ഇസ്‌ലാം മദ്രസ - 6948" readonly></div>
+
+        <div class="section-title">വിദ്യാർത്ഥിയുടെ വിവരങ്ങൾ</div>
+        <div class="input-group"><label><i class="fa-solid fa-user"></i> 2. വിദ്യാർത്ഥിയുടെ പേരും, ഇനിഷ്യലും <span class="req">*</span></label><input type="text" id="studentName" placeholder="കുട്ടിയുടെ പൂർണ്ണമായ പേര്"></div>
+        <div class="input-group"><label><i class="fa-solid fa-house-chimney"></i> 3. വീട്ടുപേര്, വിലാസം (House Name & Address)</label><textarea id="address" rows="3" placeholder="പൂർണ്ണമായ വിലാസം"></textarea></div>
+        <div class="input-group"><label><i class="fa-regular fa-address-card"></i> 4. ആധാർ നമ്പർ (Aadhaar No)</label><input type="number" id="aadhaar" placeholder="ആധാർ നമ്പർ"></div>
+        <div class="row">
+            <div class="input-group"><label><i class="fa-solid fa-calendar-days"></i> 5. ജനന തിയ്യതി (DOB) <span class="req">*</span></label><input type="date" id="dob"></div>
+            <div class="input-group"><label><i class="fa-solid fa-venus-mars"></i> 6. ലിംഗം (Sex)</label><select id="sex"><option value="ആൺകുട്ടി">ആൺകുട്ടി (Male)</option><option value="പെൺകുട്ടി">പെൺകുട്ടി (Female)</option></select></div>
         </div>
 
-        <div class="content-padding">
-            
-            <div class="welcome-banner">
-                <h2>സ്വാഗതം!</h2>
-                <p>വിജ്ഞാനവും ധാർമ്മികതയും<br>പകർന്നുനൽകുന്ന സ്നേഹതീരം.</p>
-            </div>
-
-            <div class="action-grid">
-                <a href="class-details.html" class="action-card adm">
-                    <div class="action-icon"><i class="fa-solid fa-users"></i></div>
-                    <div class="action-text"><span class="mal">ക്ലാസ് വിവരങ്ങൾ</span><span class="eng">(Class Details)</span></div>
-                </a>
-                <a href="result.html" class="action-card res">
-                    <div class="action-icon"><i class="fa-solid fa-chart-simple"></i></div>
-                    <div class="action-text"><span class="mal">പരീക്ഷാ ഫലം</span><span class="eng">(Exam Result)</span></div>
-                </a>
-                <a href="gallery.html" class="action-card gal">
-                    <div class="action-icon"><i class="fa-solid fa-camera"></i></div>
-                    <div class="action-text"><span class="mal">ഗാലറി</span><span class="eng">(Gallery)</span></div>
-                </a>
-                <a href="https://wa.me/919061969505" class="action-card wa">
-                    <div class="action-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                    <div class="action-text"><span class="mal">വാട്സാപ്പ്</span><span class="eng">(WhatsApp)</span></div>
-                </a>
-            </div>
-
-            <a href="admission.html" class="wide-action-btn bg-admission">
-                <span class="main-txt"><i class="fa-solid fa-user-plus"></i> ONLINE ADMISSION</span>
-                <span class="sub-txt">പുതിയ അഡ്മിഷൻ എടുക്കാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക</span>
-            </a>
-            <a href="book-order.html" class="wide-action-btn bg-shop">
-                <span class="main-txt"><i class="fa-solid fa-cart-shopping"></i> ONLINE BOOK SHOP</span>
-                <span class="sub-txt">പുസ്തകങ്ങൾ ഓൺലൈനായി ഓർഡർ ചെയ്യാം</span>
-            </a>
-
-            <div class="section-title" id="teachers">അധ്യാപകർ (Teachers)</div>
-
-            <div class="teacher-card">
-                <img src="irfan.jpg" alt="TK Muhammed Irfan" class="teacher-img">
-                <div class="teacher-info">
-                    <span class="t-name">TK മുഹമ്മദ് ഇർഫാൻ വാഫി (സദർ)</span>
-                    <span class="t-sub">ക്ലാസ്സ്: 1, 5, 8 | പടിക്കൽ</span>
-                    <div class="t-social">
-                        <a href="#"><i class="fa-brands fa-facebook-f ic-fb"></i></a>
-                        <a href="https://wa.me/919061969505"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                        <a href="tel:+919061969505"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="teacher-card">
-                <img src="hamza.jpg" alt="Hamza Faisy" class="teacher-img">
-                <div class="teacher-info">
-                    <span class="t-name">ഹംസ ഫൈസി കുന്നത്തേരി</span>
-                    <span class="t-sub">ക്ലാസ്സ്: 3, 6, 7 | ചെമ്മാട്</span>
-                    <div class="t-social">
-                        <a href="tel:+917736480365"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="teacher-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Irshad Mahiri" class="teacher-img">
-                <div class="teacher-info">
-                    <span class="t-name">ഇർഷാദ് മാഹിരി P</span>
-                    <span class="t-sub">ക്ലാസ്സ്: 2, 4 | കിഴിശ്ശേരി</span>
-                    <div class="t-social">
-                        <a href="tel:+918089483005"><i class="fa-solid fa-phone ic-ph"></i></a>
-                    </div>
-                </div>
-            </div>
-
+        <div class="section-title">രക്ഷിതാവിന്റെ വിവരങ്ങൾ</div>
+        <div class="row">
+            <div class="input-group"><label><i class="fa-solid fa-person"></i> 7. പിതാവിന്റെ പേര്</label><input type="text" id="fatherName" placeholder="ഉപ്പയുടെ പേര്"></div>
+            <div class="input-group"><label><i class="fa-solid fa-user-tie"></i> 8. രക്ഷാകർത്താവിന്റെ പേര്</label><input type="text" id="guardianName" placeholder="രക്ഷിതാവിന്റെ പേര്"></div>
         </div>
+        <div class="row">
+            <div class="input-group"><label><i class="fa-solid fa-people-arrows"></i> 9. കുട്ടിയുമായുള്ള ബന്ധം</label><input type="text" id="relation" placeholder="ഉദാ: പിതാവ്, മാതാവ്"></div>
+            <div class="input-group"><label><i class="fa-solid fa-briefcase"></i> 10. പ്രവൃത്തി (Occupation)</label><input type="text" id="occupation" placeholder="ജോലി"></div>
+        </div>
+        <div class="input-group"><label><i class="fa-solid fa-fingerprint"></i> 11. അടയാളങ്ങൾ</label><input type="text" id="marks" placeholder="ശരീരത്തിലെ അടയാളം"></div>
+        <div class="input-group"><label><i class="fa-solid fa-phone"></i> 12. ഫോൺ നമ്പർ (Phone No) <span class="req">*</span></label><input type="tel" id="phone" placeholder="വാട്സാപ്പ് നമ്പർ"></div>
 
-        <footer id="footer">
-            <div class="footer-top">
-                <div class="footer-left">
-                    <h4>അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</h4>
-                    <p>താഴെ പുല്ലുംകുന്ന്</p>
-                    <div class="ph"><i class="fa-solid fa-phone"></i> 9061969505</div>
-                </div>
-                <div class="footer-right">
-                    <span>Social Media</span>
-                    <div class="f-socials">
-                        <a href="#"><i class="fa-brands fa-facebook-f ic-fb"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube ic-yt"></i></a>
-                        <a href="https://wa.me/919061969505"><i class="fa-brands fa-whatsapp ic-wa"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2026 Anwarul Islam Madrasa
-            </div>
-        </footer>
+        <div class="section-title">അഡ്മിഷൻ വിവരങ്ങൾ</div>
+        <div class="input-group"><label><i class="fa-solid fa-book-open"></i> 13. ചേരുന്ന ക്ലാസ് <span class="req">*</span></label><select id="std"><option value="1">ക്ലാസ്സ് 1</option><option value="2">ക്ലാസ്സ് 2</option><option value="3">ക്ലാസ്സ് 3</option><option value="4">ക്ലാസ്സ് 4</option><option value="5">ക്ലാസ്സ് 5</option><option value="6">ക്ലാസ്സ് 6</option><option value="7">ക്ലാസ്സ് 7</option><option value="8">ക്ലാസ്സ് 8</option></select></div>
+        <div class="input-group"><label><i class="fa-solid fa-clock-rotate-left"></i> 14. മുൻ മദ്രസയുടെ പേരും നമ്പറും</label><textarea id="formerMadrasa" rows="2" placeholder="മറ്റ് മദ്രസയിൽ പഠിച്ചിരുന്നെങ്കിൽ മാത്രം"></textarea></div>
+        <div class="input-group"><label><i class="fa-solid fa-award"></i> 15. പൊതുപരീക്ഷ സർട്ടിഫിക്കറ്റ് നമ്പർ</label><input type="text" id="publicExam" placeholder="പാസ്സായിട്ടുണ്ടെങ്കിൽ മാത്രം"></div>
+        <div class="input-group"><label><i class="fa-solid fa-file-lines"></i> 16. ടി.സി നമ്പർ (T.C. No)</label><input type="text" id="tcNo" placeholder="ഉണ്ടെങ്കിൽ മാത്രം"></div>
+
+        <button class="btn-submit" onclick="submitAdmission()"><i class="fa-solid fa-paper-plane"></i> അപേക്ഷ സമർപ്പിക്കുക</button>
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക് പോവാം</a>
     </div>
 
-    <div id="managementPage">
-        <div class="page-header">
-            <i class="fa-solid fa-arrow-left back-btn-top" onclick="goHome()"></i>
-            <span class="page-title">കമ്മിറ്റി വിവരങ്ങൾ</span>
+    <div id="successSection">
+        <div class="success-box"><i class="fa-solid fa-circle-check" style="font-size:50px; color:#4caf50;"></i><h3 style="color:#2e7d32;">അപേക്ഷ ലഭിച്ചിരിക്കുന്നു!</h3><p style="margin:0; font-size:14px; color:#555;">അഡ്മിഷൻ നടപടികളുടെ ആദ്യഘട്ടം പൂർത്തിയായി. ഇനി താഴെ പറയുന്ന കാര്യങ്ങൾ ശ്രദ്ധിക്കുക.</p></div>
+
+        <div class="instruction-box">
+            <h4 style="color:#d35400; border-bottom:1px dashed #ddd; padding-bottom:10px;"><i class="fa-solid fa-circle-info"></i> രക്ഷിതാക്കൾ ചെയ്യേണ്ടത്:</h4>
+            <ul class="inst-list">
+                <li>താഴെ നൽകിയിരിക്കുന്ന ബട്ടണിൽ ക്ലിക്ക് ചെയ്ത് സമസ്തയുടെ സൈറ്റിൽ പ്രവേശിക്കുക.</li>
+                <li>മദ്റസ Reg നമ്പർ ആയ <span class="highlight-red">6948</span> എന്ന നമ്പർ അടിച്ച് കൊടുക്കുക. ശേഷം <span class="highlight">Proceed to Admission Form</span> ക്ലിക്ക് ചെയ്യുക.</li>
+                <li>പുതുതായി ചേരുന്ന കുട്ടിയാണെങ്കിൽ ക്ലാസ്സിന് നേരെ <span class="highlight">New</span> എന്ന് സെലക്ട് ചെയ്യുക.</li>
+                <li>ടി.സി മുഖേന വരുന്ന കുട്ടിയാണെങ്കിൽ <span class="highlight">TC</span> എന്ന് സെലക്ട് ചെയ്യുക. <i>(തുടര്‍ന്ന് SKIMVB ID നമ്പർ, ജനന തിയ്യതി എന്നിവ നൽകി Fetch Student Data ക്ലിക്ക് ചെയ്യുക).</i></li>
+                <li>തുടർന്ന് വരുന്ന കോളങ്ങള്‍ <span class="highlight-red">ഇംഗ്ലീഷ് ഭാഷയിൽ പൂർണമായും പൂരിപ്പിക്കുക</span>.</li>
+                <li>എല്ലാം പൂരിപ്പിച്ചതിന് ശേഷം <span class="highlight">Submit Admission Request</span> ക്ലിക്ക് ചെയ്യുക.</li>
+                <li><span class="highlight">Download Application Form</span> എന്നതിൽ ക്ലിക്ക് ചെയ്ത് ഫോറം പ്രിന്റ് എടുത്ത് മദ്റസയില്‍ നല്‍കുക.</li>
+            </ul>
         </div>
-        <div class="content-padding">
-            
-            <div class="org-card">
-                <div style="font-size:35px; margin-bottom:10px;"><i class="fa-solid fa-building-columns"></i></div>
-                <div class="t-name">മാനേജ്മെന്റ് കമ്മിറ്റി</div>
-                <div style="font-size:12px; margin-top:5px; opacity:0.8;">അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</div>
-            </div>
 
-            <div style="background: white; border-radius: 12px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 20px;">
-                <h3 style="text-align:center; color: var(--header-grad-1); margin-top:0; padding-bottom:10px; border-bottom: 2px solid #eee;">ഇർഷാദുൽ ഇസ്ലാം സംഘം<br><span style="font-size:12px; color:#777;">(IRSHADUL ISLAM SANGAM)</span></h3>
-                
-                <div class="member-group">
-                    <span class="pos-badge">പ്രസിഡന്റ്</span>
-                    <div class="member-details">
-                        <span class="member-name">ചെറിയ മുഹമ്മദ് TT</span>
-                        <div class="contact-links">
-                            <a href="tel:+917293452224" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
-                            <a href="https://wa.me/917293452224" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="member-group">
-                    <span class="pos-badge">വൈസ് പ്രസിഡന്റ്</span>
-                    <div class="member-details">
-                        <span class="member-name">Asees Bava</span>
-                        <div class="contact-links">
-                            <a href="tel:+918606291106" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
-                            <a href="https://wa.me/918606291106" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <div class="member-details">
-                        <span class="member-name">Asees K</span>
-                        <div class="contact-links">
-                            <a href="tel:+919048385422" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
-                            <a href="https://wa.me/919048385422" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="member-group">
-                    <span class="pos-badge">ജനറൽ സെക്രട്ടറി</span>
-                    <div class="member-details">
-                        <span class="member-name">Khalid KP</span>
-                        <div class="contact-links">
-                            <a href="tel:+919633912520" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
-                            <a href="https://wa.me/919633912520" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="member-group">
-                    <span class="pos-badge">ജോയിന്റ് സെക്രട്ടറി</span>
-                    <div class="member-details">
-                        <span class="member-name">Favas V</span>
-                        <div class="contact-links">
-                            <a href="tel:+919947413031" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
-                            <a href="https://wa.me/919947413031" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <div class="member-details">
-                        <span class="member-name">Rasheequdheen TT</span>
-                        <div class="contact-links">
-                            <a href="tel:+919961687951" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
-                            <a href="https://wa.me/919961687951" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="member-group">
-                    <span class="pos-badge">ട്രഷറർ</span>
-                    <div class="member-details">
-                        <span class="member-name">Liyakath</span>
-                        <div class="contact-links">
-                            <a href="tel:+919526353354" class="contact-btn call-btn"><i class="fa-solid fa-phone"></i></a>
-                            <a href="https://wa.me/919526353354" class="contact-btn wa-btn"><i class="fa-brands fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <button class="bottom-back-btn" onclick="goHome()">
-                <i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക്
-            </button>
-        </div>
+        <a href="https://online.samastha.info/admission.php" target="_blank" class="btn-samastha"><i class="fa-solid fa-globe"></i> SKIMVB യിൽ രജിസ്റ്റർ ചെയ്യുക</a>
+        <a href="index.html" class="back-link" style="margin-top: 15px;"><i class="fa-solid fa-house"></i> തിരികെ ഹോം പേജിലേക്ക്</a>
     </div>
-
-    <div id="noticePage">
-        <div class="page-header">
-            <i class="fa-solid fa-arrow-left back-btn-top" onclick="goHome()"></i>
-            <span class="page-title">അറിയിപ്പുകൾ</span>
-        </div>
-        <div class="content-padding">
-            
-            <div class="notice-board-card">
-                <div class="notice-board-header">
-                    <i class="fa-solid fa-bullhorn"></i> പുതിയ അറിയിപ്പുകൾ
-                </div>
-                <div class="notice-item">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>പുതിയ അധ്യയന വർഷത്തേക്കുള്ള <span class="notice-highlight">ഓൺലൈൻ അഡ്മിഷൻ</span> ആരംഭിച്ചിരിക്കുന്നു.</div>
-                </div>
-                <div class="notice-item">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>വിദ്യാർത്ഥികൾക്കുള്ള പാഠപുസ്തകങ്ങൾ വെബ്സൈറ്റ് വഴി ഓർഡർ ചെയ്യാവുന്നതാണ്.</div>
-                </div>
-                <div class="notice-item">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>മദ്രസ വാർഷിക പരീക്ഷാ ഫലങ്ങൾ വെബ്സൈറ്റിൽ ലഭ്യമാണ്.</div>
-                </div>
-            </div>
-
-            <button class="bottom-back-btn" onclick="goHome()">
-                <i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക്
-            </button>
-        </div>
-    </div>
-
 </div>
 
 <script>
-    // Menu Toggle
-    function toggleMenu() {
-        document.getElementById("sideMenu").classList.toggle("active");
-        document.getElementById("menuOverlay").classList.toggle("active");
-    }
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx5derGkHoeNuXiZKvXhGTNx_hWN6SRJe9OzzvUBkwec5jyVwaC0ItttDoagvuX3I5bwA/exec'; 
 
-    // Go Home Function
-    function goHome() {
-        document.getElementById("mainHomeContent").style.display = "block";
-        document.getElementById("managementPage").classList.remove("active");
-        document.getElementById("noticePage").classList.remove("active");
-        if(document.getElementById("sideMenu").classList.contains("active")) {
-            toggleMenu();
+    function submitAdmission() {
+        const sName = document.getElementById('studentName').value;
+        const phone = document.getElementById('phone').value;
+        const dob = document.getElementById('dob').value;
+        const std = document.getElementById('std').value;
+        const father = document.getElementById('fatherName').value || "നൽകിയിട്ടില്ല";
+
+        if(!sName || !phone || !dob) {
+            alert("ദയവായി വിദ്യാർത്ഥിയുടെ പേര്, ജനന തിയ്യതി, ഫോൺ നമ്പർ എന്നിവ നിർബന്ധമായും പൂരിപ്പിക്കുക.");
+            return;
         }
-        window.scrollTo(0,0);
-    }
 
-    // Show Management Page
-    function showManagement() {
-        document.getElementById("mainHomeContent").style.display = "none";
-        document.getElementById("noticePage").classList.remove("active");
-        document.getElementById("managementPage").classList.add("active");
-        toggleMenu();
-        window.scrollTo(0,0);
-    }
+        const formData = new FormData();
+        formData.append('name', sName);
+        formData.append('cls', std);
+        formData.append('father', father);
+        formData.append('phone', phone);
 
-    // Show Notice Board Page
-    function showNoticeBoard() {
-        document.getElementById("mainHomeContent").style.display = "none";
-        document.getElementById("managementPage").classList.remove("active");
-        document.getElementById("noticePage").classList.add("active");
-        toggleMenu();
-        window.scrollTo(0,0);
-    }
+        const btn = document.querySelector('.btn-submit');
+        btn.innerHTML = 'അപേക്ഷ അയക്കുന്നു... ⏳';
+        btn.style.opacity = '0.7';
+        btn.disabled = true;
 
-    // Scroll to Teachers
-    function showTeachers() {
-        goHome();
-        setTimeout(function() {
-            document.getElementById('teachers').scrollIntoView({behavior: 'smooth'});
-        }, 100);
-    }
-
-    // Scroll to Contact Footer
-    function showContact() {
-        goHome();
-        setTimeout(function() {
-            document.getElementById('footer').scrollIntoView({behavior: 'smooth'});
-        }, 100);
+        // mode: 'no-cors' നൽകിയത് വഴി ഗൂഗിൾ ഡാറ്റ ബ്ലോക്ക് ചെയ്യില്ല
+        fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+        .then(() => {
+            document.getElementById('formSection').style.display = 'none';
+            document.getElementById('successSection').style.display = 'block';
+            window.scrollTo(0,0);
+        })
+        .catch(error => {
+            alert("നെറ്റ്‌വർക്ക് തകരാർ! ദയവായി വീണ്ടും ശ്രമിക്കുക.");
+            btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> അപേക്ഷ സമർപ്പിക്കുക';
+            btn.style.opacity = '1';
+            btn.disabled = false;
+        });
     }
 </script>
 
