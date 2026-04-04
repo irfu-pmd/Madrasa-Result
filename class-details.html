@@ -24,8 +24,13 @@
         td { padding: 12px; border-bottom: 1px solid #eee; font-size: 14px; color: #444; text-align: left; }
         tr:nth-child(even) { background: #fafafa; }
         
+        /* പുതിയ അഡ്മിഷൻ കുട്ടികൾക്ക് ഒരു കളർ കൊടുക്കാൻ */
+        .new-adm { background-color: #e8f5e9 !important; font-weight: 600; color: #2e7d32; }
+        .new-badge { background: #4caf50; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; margin-left: 5px; }
+
         .back-btn { display: block; margin-top: 30px; padding: 15px; background: var(--primary); color: white; text-decoration: none; border-radius: 15px; text-align: center; font-weight: bold; }
         .update-note { text-align: center; color: #d35400; font-size: 13px; margin-top: 15px; font-weight: 600; }
+        #loadingMsg { text-align: center; color: var(--primary); font-weight: bold; display: none; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -44,6 +49,8 @@
         <option value="c7">ക്ലാസ്സ് 7 (VII)</option>
     </select>
 
+    <div id="loadingMsg">പുതിയ ഡാറ്റ ലോഡ് ചെയ്യുന്നു... ⏳</div>
+
     <div id="c1" class="info-card">
         <div class="teacher-badge">
             <span class="teacher-label">അധ്യാപകൻ:</span>
@@ -51,13 +58,15 @@
         </div>
         <div class="table-container">
             <table>
-                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
-                <tr><td>E06948007</td><td>121</td><td>THAIMOOR ALAM</td><td>Sarfaraj</td><td>9633763418</td></tr>
-                <tr><td>F06948001</td><td>122</td><td>AYAAN BIN MOHAMMED BASHEER</td><td>MOHAMMED BASHEER</td><td>8592880887</td></tr>
-                <tr><td>F06948005</td><td>126</td><td>FATHIMA SHERIN TT</td><td>MOHAMMED RIYAS TT</td><td>9605882725</td></tr>
+                <thead><tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr></thead>
+                <tbody>
+                    <tr><td>E06948007</td><td>121</td><td>THAIMOOR ALAM</td><td>Sarfaraj</td><td>9633763418</td></tr>
+                    <tr><td>F06948001</td><td>122</td><td>AYAAN BIN MOHAMMED BASHEER</td><td>MOHAMMED BASHEER</td><td>8592880887</td></tr>
+                    <tr><td>F06948005</td><td>126</td><td>FATHIMA SHERIN TT</td><td>MOHAMMED RIYAS TT</td><td>9605882725</td></tr>
+                </tbody>
             </table>
         </div>
-        <p class="update-note">* പുതിയ അഡ്മിഷനുകൾ നടക്കുന്നത് കൊണ്ട് ഈ ലിസ്റ്റ് അപ്ഡേറ്റ് ചെയ്യുന്നതാണ്.</p>
+        <p class="update-note">* പുതിയ അഡ്മിഷനുകൾ ഈ ലിസ്റ്റിന് താഴെ ഓട്ടോമാറ്റിക് ആയി വരുന്നതാണ്.</p>
     </div>
 
     <div id="c2" class="info-card">
@@ -67,12 +76,14 @@
         </div>
         <div class="table-container">
             <table>
-                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
-                <tr><td>F06948002</td><td>123</td><td>MUHAMMED FAIZAN PV</td><td>Thajudheen PV</td><td>9048332883</td></tr>
-                <tr><td>F06948003</td><td>124</td><td>MUHAMMED RIHAN CK</td><td>HARSHAD CK</td><td>9947303660</td></tr>
-                <tr><td>F06948004</td><td>125</td><td>MUHAMMED JALALUDHEEN TT</td><td>MOHAMMED SHAFI</td><td>9048286783</td></tr>
-                <tr><td>F06948006</td><td>127</td><td>FATHIMA IZZA P</td><td>ANAS P</td><td>9562171749</td></tr>
-                <tr><td>F06948007</td><td>130</td><td>FATHIMA HADIYA TT</td><td>SHAHUL HAMEED TT</td><td>8089077764</td></tr>
+                <thead><tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr></thead>
+                <tbody>
+                    <tr><td>F06948002</td><td>123</td><td>MUHAMMED FAIZAN PV</td><td>Thajudheen PV</td><td>9048332883</td></tr>
+                    <tr><td>F06948003</td><td>124</td><td>MUHAMMED RIHAN CK</td><td>HARSHAD CK</td><td>9947303660</td></tr>
+                    <tr><td>F06948004</td><td>125</td><td>MUHAMMED JALALUDHEEN TT</td><td>MOHAMMED SHAFI</td><td>9048286783</td></tr>
+                    <tr><td>F06948006</td><td>127</td><td>FATHIMA IZZA P</td><td>ANAS P</td><td>9562171749</td></tr>
+                    <tr><td>F06948007</td><td>130</td><td>FATHIMA HADIYA TT</td><td>SHAHUL HAMEED TT</td><td>8089077764</td></tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -84,11 +95,13 @@
         </div>
         <div class="table-container">
             <table>
-                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
-                <tr><td>D06948004</td><td>97</td><td>MUHAMMAD SALIH TT</td><td>Abdul Salam TT</td><td>919744455338</td></tr>
-                <tr><td>E06948001</td><td>105</td><td>MUHAMMAD SAIHAN KK</td><td>Abdul Samad KK</td><td>9526331671</td></tr>
-                <tr><td>E06948002</td><td>106</td><td>MUHAMMAD ASHMIL PT</td><td>Jamshad PT</td><td>8129566099</td></tr>
-                <tr><td>E06948005</td><td>109</td><td>FATHIMA SUMAYYA TT</td><td>Ahmed Kabeer TT</td><td>9947112533</td></tr>
+                <thead><tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr></thead>
+                <tbody>
+                    <tr><td>D06948004</td><td>97</td><td>MUHAMMAD SALIH TT</td><td>Abdul Salam TT</td><td>919744455338</td></tr>
+                    <tr><td>E06948001</td><td>105</td><td>MUHAMMAD SAIHAN KK</td><td>Abdul Samad KK</td><td>9526331671</td></tr>
+                    <tr><td>E06948002</td><td>106</td><td>MUHAMMAD ASHMIL PT</td><td>Jamshad PT</td><td>8129566099</td></tr>
+                    <tr><td>E06948005</td><td>109</td><td>FATHIMA SUMAYYA TT</td><td>Ahmed Kabeer TT</td><td>9947112533</td></tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -100,8 +113,10 @@
         </div>
         <div class="table-container">
             <table>
-                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
-                <tr><td>D06948001</td><td>96</td><td>AYISHA ZABRIN K</td><td>Shahul Hameed</td><td>9387117648</td></tr>
+                <thead><tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr></thead>
+                <tbody>
+                    <tr><td>D06948001</td><td>96</td><td>AYISHA ZABRIN K</td><td>Shahul Hameed</td><td>9387117648</td></tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -113,13 +128,15 @@
         </div>
         <div class="table-container">
             <table>
-                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
-                <tr><td>B06948002</td><td>86</td><td>MUHAMMAD HADHI PV</td><td>Thajudheen</td><td>8714125834</td></tr>
-                <tr><td>C06948001</td><td>93</td><td>MUHAMMAD AMAN</td><td>Mujeeb Rahman</td><td>9544480251</td></tr>
-                <tr><td>C06948003</td><td>90</td><td>HAYA FATHIMA PM</td><td>Noushad Pm</td><td>8089966415</td></tr>
-                <tr><td>C06948004</td><td>91</td><td>ANSILA MEHARIN V</td><td>Abdul latheef V</td><td>97467001405</td></tr>
-                <tr><td>C06948005</td><td>95</td><td>MIDHA ABDUL KALAM P</td><td>Abdul kalam p</td><td>7306283813</td></tr>
-                <tr><td>C06948006</td><td>98</td><td>AYISHA NUHA. K</td><td>Faisal. K</td><td>9995632942</td></tr>
+                <thead><tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr></thead>
+                <tbody>
+                    <tr><td>B06948002</td><td>86</td><td>MUHAMMAD HADHI PV</td><td>Thajudheen</td><td>8714125834</td></tr>
+                    <tr><td>C06948001</td><td>93</td><td>MUHAMMAD AMAN</td><td>Mujeeb Rahman</td><td>9544480251</td></tr>
+                    <tr><td>C06948003</td><td>90</td><td>HAYA FATHIMA PM</td><td>Noushad Pm</td><td>8089966415</td></tr>
+                    <tr><td>C06948004</td><td>91</td><td>ANSILA MEHARIN V</td><td>Abdul latheef V</td><td>97467001405</td></tr>
+                    <tr><td>C06948005</td><td>95</td><td>MIDHA ABDUL KALAM P</td><td>Abdul kalam p</td><td>7306283813</td></tr>
+                    <tr><td>C06948006</td><td>98</td><td>AYISHA NUHA. K</td><td>Faisal. K</td><td>9995632942</td></tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -131,12 +148,14 @@
         </div>
         <div class="table-container">
             <table>
-                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
-                <tr><td>A06948005</td><td>79</td><td>LIYANA MEHARIN. M</td><td>Abdurahiman m</td><td>--</td></tr>
-                <tr><td>A06948006</td><td>80</td><td>FATHIMA NIYA KT</td><td>Naseer KT</td><td>919847767132</td></tr>
-                <tr><td>A06948011</td><td>68</td><td>FATHIMA ZABBA. K</td><td>Shahal Hameed K</td><td>919387117648</td></tr>
-                <tr><td>B06948004</td><td>112</td><td>FILZA PE</td><td>Abdul Shukoor PE</td><td>919605405100</td></tr>
-                <tr><td>B06948006</td><td>131</td><td>AYISHA AYANA P.T</td><td>Shafeeque</td><td>7907496007</td></tr>
+                <thead><tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr></thead>
+                <tbody>
+                    <tr><td>A06948005</td><td>79</td><td>LIYANA MEHARIN. M</td><td>Abdurahiman m</td><td>--</td></tr>
+                    <tr><td>A06948006</td><td>80</td><td>FATHIMA NIYA KT</td><td>Naseer KT</td><td>919847767132</td></tr>
+                    <tr><td>A06948011</td><td>68</td><td>FATHIMA ZABBA. K</td><td>Shahal Hameed K</td><td>919387117648</td></tr>
+                    <tr><td>B06948004</td><td>112</td><td>FILZA PE</td><td>Abdul Shukoor PE</td><td>919605405100</td></tr>
+                    <tr><td>B06948006</td><td>131</td><td>AYISHA AYANA P.T</td><td>Shafeeque</td><td>7907496007</td></tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -148,11 +167,13 @@
         </div>
         <div class="table-container">
             <table>
-                <tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr>
-                <tr><td>A06948009</td><td>75</td><td>HANIYYA FATHIMA A</td><td>Jafar A</td><td>9947368085</td></tr>
-                <tr><td>A06948010</td><td>67</td><td>FATHIMA SHAHALA</td><td>Noushad. VT</td><td>9847972084</td></tr>
-                <tr><td>A06948012</td><td>51</td><td>ASYA NAILA P</td><td>Liyakhath. K</td><td>9847125987</td></tr>
-                <tr><td>A06948013</td><td>92</td><td>FATHIMA RAFA TP</td><td>Abdul Hameed TP</td><td>7034903011</td></tr>
+                <thead><tr><th>ID (UID)</th><th>Adm No</th><th>പേര്</th><th>പിതാവ്</th><th>ഫോൺ</th></tr></thead>
+                <tbody>
+                    <tr><td>A06948009</td><td>75</td><td>HANIYYA FATHIMA A</td><td>Jafar A</td><td>9947368085</td></tr>
+                    <tr><td>A06948010</td><td>67</td><td>FATHIMA SHAHALA</td><td>Noushad. VT</td><td>9847972084</td></tr>
+                    <tr><td>A06948012</td><td>51</td><td>ASYA NAILA P</td><td>Liyakhath. K</td><td>9847125987</td></tr>
+                    <tr><td>A06948013</td><td>92</td><td>FATHIMA RAFA TP</td><td>Abdul Hameed TP</td><td>7034903011</td></tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -161,6 +182,44 @@
 </div>
 
 <script>
+    // ഗൂഗിൾ സ്ക്രിപ്റ്റ് ലിങ്ക് 
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5derGkHoeNuXiZKvXhGTNx_hWN6SRJe9OzzvUBkwec5jyVwaC0ItttDoagvuX3I5bwA/exec";
+
+    // പേജ് ലോഡ് ആകുമ്പോൾ ഡാറ്റ വലിച്ചെടുക്കാൻ
+    window.onload = function() {
+        document.getElementById('loadingMsg').style.display = 'block';
+        fetch(GOOGLE_SCRIPT_URL)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('loadingMsg').style.display = 'none';
+                
+                // ഓരോ കുട്ടിയെയും അവരവരുടെ ക്ലാസ്സിലേക്ക് ആഡ് ചെയ്യുന്നു
+                data.forEach(student => {
+                    const classId = "c" + student.cls; // ഉദാഹരണത്തിന് 1 കൊടുത്താൽ 'c1' ആകും
+                    const classDiv = document.getElementById(classId);
+                    
+                    if(classDiv && student.name) {
+                        const tbody = classDiv.querySelector('tbody');
+                        const row = tbody.insertRow();
+                        row.className = "new-adm"; // പുതിയ അഡ്മിഷന് പച്ച കളർ
+                        
+                        // ID യുടെയും അഡ്മിഷൻ നമ്പറിന്റെയും സ്ഥാനത്ത് തൽക്കാലം New എന്ന് കാണിക്കും
+                        row.innerHTML = `
+                            <td>പുതിയത് <span class="new-badge">NEW</span></td>
+                            <td>-</td>
+                            <td>${student.name}</td>
+                            <td>${student.father}</td>
+                            <td>${student.phone}</td>
+                        `;
+                    }
+                });
+            })
+            .catch(err => {
+                console.log("Error loading dynamic data", err);
+                document.getElementById('loadingMsg').style.display = 'none';
+            });
+    }
+
     function updateView() {
         var cards = document.getElementsByClassName('info-card');
         for (var i = 0; i < cards.length; i++) { cards[i].style.display = 'none'; }
@@ -170,4 +229,4 @@
 </script>
 
 </body>
-</html>
+</html>    
