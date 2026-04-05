@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>മാനേജ്മെന്റ് കമ്മിറ്റി - അൻവാറുൽ ഇസ്‌ലാം</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --header-grad-1: #094752; --header-grad-2: #0d838d; --bg-color: #f4f7f6; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background-color: #111; display: flex; justify-content: center; }
+        
+        .app-container { background-color: var(--bg-color); width: 100%; max-width: 480px; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        
+        /* Header */
+        .page-header { background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2)); color: white; padding: 15px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .back-btn-top { font-size: 20px; color: white; cursor: pointer; margin-right: 15px; text-decoration: none; }
+        .page-title { font-size: 18px; font-weight: bold; }
+
+        .content-padding { padding: 15px; flex: 1; }
+
+        /* Main Title Card */
+        .org-card { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: white; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+        .org-card i { font-size: 35px; margin-bottom: 10px; }
+        .org-card .title { font-weight: bold; font-size: 18px; }
+        .org-card .subtitle { font-size: 12px; margin-top: 5px; opacity: 0.9; }
+
+        /* Management Card Design */
+        .mgmt-card { background: #fff; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; gap: 15px; }
+        .mgmt-icon { font-size: 24px; color: var(--header-grad-1); padding-top: 5px; width: 30px; text-align: center; }
+        .mgmt-content { flex: 1; }
+        
+        .mgmt-badge { background: var(--header-grad-1); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold; display: inline-block; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .mgmt-person { margin-bottom: 15px; }
+        .mgmt-person:last-child { margin-bottom: 0; }
+        
+        .mgmt-divider { border-top: 1px dashed #ccc; padding-top: 15px; }
+        
+        .mgmt-name { font-size: 16px; font-weight: bold; color: #222; display: block; margin-bottom: 8px; }
+        
+        .mgmt-contacts { display: flex; gap: 12px; }
+        .mgmt-contacts a { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 16px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: 0.2s; }
+        .mgmt-contacts a:active { transform: scale(0.95); }
+        .mgmt-wa { background: #25D366; }
+        .mgmt-ph { background: #3498db; }
+
+        .bottom-back-btn { background-color: var(--header-grad-1); color: white; width: 100%; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; margin-top: 10px; margin-bottom: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    
+    <div class="page-header">
+        <a href="index.html" class="back-btn-top"><i class="fa-solid fa-arrow-left"></i></a>
+        <span class="page-title">കമ്മിറ്റി വിവരങ്ങൾ</span>
+    </div>
+
+    <div class="content-padding">
+        
+        <div class="org-card">
+            <i class="fa-solid fa-building-columns"></i>
+            <div class="title">മാനേജ്മെന്റ് കമ്മിറ്റി</div>
+            <div class="subtitle">ഇർഷാദുൽ ഇസ്ലാം സംഘം</div>
+        </div>
+
+        <div class="mgmt-card">
+            <div class="mgmt-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="mgmt-content">
+                <span class="mgmt-badge">President (പ്രസിഡന്റ്)</span>
+                <div class="mgmt-person">
+                    <span class="mgmt-name">ചെറിയ മുഹമ്മദ് TT</span>
+                    <div class="mgmt-contacts">
+                        <a href="https://wa.me/917293452224" class="mgmt-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+917293452224" class="mgmt-ph"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mgmt-card">
+            <div class="mgmt-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="mgmt-content">
+                <span class="mgmt-badge">Vice President (വൈസ് പ്രസിഡന്റ്)</span>
+                
+                <div class="mgmt-person">
+                    <span class="mgmt-name">അസീസ് ബാവ</span>
+                    <div class="mgmt-contacts">
+                        <a href="https://wa.me/918606291106" class="mgmt-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+918606291106" class="mgmt-ph"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="mgmt-person mgmt-divider">
+                    <span class="mgmt-name">അസീസ് കെ.</span>
+                    <div class="mgmt-contacts">
+                        <a href="https://wa.me/919048385422" class="mgmt-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+919048385422" class="mgmt-ph"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mgmt-card">
+            <div class="mgmt-icon"><i class="fa-solid fa-id-card"></i></div>
+            <div class="mgmt-content">
+                <span class="mgmt-badge">General Secretary (സെക്രട്ടറി)</span>
+                <div class="mgmt-person">
+                    <span class="mgmt-name">ഖാലിദ് കെ.പി</span>
+                    <div class="mgmt-contacts">
+                        <a href="https://wa.me/919633912520" class="mgmt-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+919633912520" class="mgmt-ph"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mgmt-card">
+            <div class="mgmt-icon"><i class="fa-solid fa-user-pen"></i></div>
+            <div class="mgmt-content">
+                <span class="mgmt-badge">Join Secretary (ജോ.സെക്രട്ടറി)</span>
+                
+                <div class="mgmt-person">
+                    <span class="mgmt-name">ഫവാസ് വി.</span>
+                    <div class="mgmt-contacts">
+                        <a href="https://wa.me/919947413031" class="mgmt-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+919947413031" class="mgmt-ph"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="mgmt-person mgmt-divider">
+                    <span class="mgmt-name">റഷീഖുദ്ദീൻ ടി.ടി</span>
+                    <div class="mgmt-contacts">
+                        <a href="https://wa.me/919961687951" class="mgmt-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+919961687951" class="mgmt-ph"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mgmt-card">
+            <div class="mgmt-icon"><i class="fa-solid fa-coins"></i></div>
+            <div class="mgmt-content">
+                <span class="mgmt-badge">Treasurer (ട്രഷറർ)</span>
+                <div class="mgmt-person">
+                    <span class="mgmt-name">ലിയാക്കത്ത്</span>
+                    <div class="mgmt-contacts">
+                        <a href="https://wa.me/919526353354" class="mgmt-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="tel:+919526353354" class="mgmt-ph"><i class="fa-solid fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="bottom-back-btn">
+            <i class="fa-solid fa-arrow-left"></i> തിരികെ ഹോം പേജിലേക്ക്
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
