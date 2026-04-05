@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>അറിയിപ്പുകൾ - അൻവാറുൽ ഇസ്‌ലാം മദ്രസ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --header-grad-1: #094752; --header-grad-2: #0d838d; --bg-color: #f4f7f6; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background-color: #111; display: flex; justify-content: center; }
+        .app-container { background-color: var(--bg-color); width: 100%; max-width: 480px; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        .page-header { background: linear-gradient(to right, var(--header-grad-1), var(--header-grad-2)); color: white; padding: 15px 20px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .back-btn-top { font-size: 20px; color: white; cursor: pointer; margin-right: 15px; text-decoration: none; }
+        .content-padding { padding: 15px; flex: 1; }
+
+        /* Timetable Card */
+        .time-card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid #d35400; }
+        .time-header { color: #d35400; font-weight: bold; font-size: 18px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px dashed #eee; padding-bottom: 10px; }
+        .time-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f9f9f9; font-size: 15px; }
+        .time-row:last-child { border: none; }
+        .cls-no { font-weight: bold; color: var(--header-grad-1); }
+        .cls-time { color: #555; font-weight: 600; }
+
+        .notice-item { background: #e8f4f8; padding: 15px; border-radius: 10px; margin-bottom: 10px; font-size: 14px; display: flex; gap: 10px; color: #333; }
+        .bottom-back-btn { background-color: var(--header-grad-1); color: white; width: 100%; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <div class="page-header">
+        <a href="index.html" class="back-btn-top"><i class="fa-solid fa-arrow-left"></i></a>
+        <span style="font-weight:bold;">അറിയിപ്പുകൾ & സമയം</span>
+    </div>
+
+    <div class="content-padding">
+        <div class="time-card">
+            <div class="time-header"><i class="fa-solid fa-clock"></i> ക്ലാസ് സമയവിവരങ്ങൾ</div>
+            
+            <div class="time-row">
+                <span class="cls-no">ക്ലാസ്സ് 1, 3</span>
+                <span class="cls-time">7:45 AM - 9:00 AM</span>
+            </div>
+            <div class="time-row">
+                <span class="cls-no">ക്ലാസ്സ് 2</span>
+                <span class="cls-time">7:30 AM - 9:00 AM</span>
+            </div>
+            <div class="time-row">
+                <span class="cls-no">ക്ലാസ്സ് 4, 5</span>
+                <span class="cls-time">7:00 AM - 8:00 AM</span>
+            </div>
+            <div class="time-row">
+                <span class="cls-no">ക്ലാസ്സ് 7</span>
+                <span class="cls-time">6:15 AM - 7:30 AM</span>
+            </div>
+            <div class="time-row">
+                <span class="cls-no">ക്ലാസ്സ് 6, 8</span>
+                <span class="cls-time">6:00 AM - 7:00 AM</span>
+            </div>
+        </div>
+
+        <div class="notice-item">
+            <i class="fa-solid fa-circle-info" style="color:var(--header-grad-1);"></i>
+            <div>പുതിയ അധ്യയന വർഷത്തേക്കുള്ള ഓൺലൈൻ അഡ്മിഷൻ തുടരുന്നു. അഡ്മിഷൻ പേജ് വഴി അപേക്ഷിക്കാം.</div>
+        </div>
+
+        <div class="notice-item">
+            <i class="fa-solid fa-circle-info" style="color:var(--header-grad-1);"></i>
+            <div>പാഠപുസ്തകങ്ങൾ ആവശ്യമുള്ളവർ വെബ്സൈറ്റിലെ ബുക്ക് ഷോപ്പ് വഴി ഓർഡർ ചെയ്യുക.</div>
+        </div>
+
+        <a href="index.html" class="bottom-back-btn">തിരികെ ഹോം പേജിലേക്ക്</a>
+    </div>
+</div>
+</body>
+</html>
