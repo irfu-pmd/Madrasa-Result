@@ -38,6 +38,7 @@
             width: 100%; max-width: 450px; text-align: center; 
             border-top: 8px solid var(--gold);
             animation: fadeInBody 1s ease-in-out;
+            position: relative;
         }
         @keyframes fadeInBody { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -56,14 +57,14 @@
         }
         select:focus, input:focus { border-color: var(--primary); background: #fff; }
 
-        button { 
+        .search-btn { 
             background: linear-gradient(45deg, var(--primary), #1a7fb3); 
             color: white; padding: 15px; border: none; border-radius: 10px; 
             width: 100%; margin-top: 10px; cursor: pointer; 
             font-size: 16px; font-weight: bold; transition: 0.3s;
             box-shadow: 0 5px 15px rgba(6, 82, 121, 0.3);
         }
-        button:hover { background: linear-gradient(45deg, #1a7fb3, var(--primary)); transform: translateY(-2px); }
+        .search-btn:hover { background: linear-gradient(45deg, #1a7fb3, var(--primary)); transform: translateY(-2px); }
 
         /* Report Card Styles */
         #result { margin-top: 25px; display: none; }
@@ -75,6 +76,7 @@
         @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         .student-name { font-size: 18px; color: var(--primary); font-weight: 800; text-align: center; margin-bottom: 15px; border-bottom: 2px dashed #eee; padding-bottom: 10px;}
+        .student-details { font-size: 12px; color: #666; text-align: center; margin-top: -10px; margin-bottom: 15px; font-weight: bold;}
         
         table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
         th, td { padding: 10px; border: 1px solid #eee; text-align: left; font-size: 14px; }
@@ -91,10 +93,17 @@
             background: #25D366; color: white; padding: 12px; 
             text-decoration: none; border-radius: 8px; 
             display: block; text-align: center; font-weight: bold;
-            font-size: 15px;
+            font-size: 15px; margin-bottom: 10px;
         }
         
-        .back-home { display: block; margin-top: 20px; color: white; text-decoration: none; font-weight: bold; font-size: 14px; }
+        /* Fixed Back Button inside container */
+        .back-home-btn { 
+            display: block; background: #f0f4f8; color: var(--primary); 
+            padding: 12px; text-decoration: none; border-radius: 10px; 
+            font-weight: bold; font-size: 15px; text-align: center;
+            transition: 0.3s; margin-top: 15px; border: 1px solid #ddd;
+        }
+        .back-home-btn:hover { background: #e2e8f0; }
     </style>
 </head>
 <body>
@@ -104,7 +113,7 @@
         <img src="Madrasa-Logo.png" alt="Madrasa Logo">
     </div>
     <h2>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h2>
-    <div class="sub-txt"><i class="fa-solid fa-file-lines"></i> പാദവാർഷിക പരീക്ഷാ ഫലം (Quarterly Exam)</div>
+    <div class="sub-txt"><i class="fa-solid fa-file-lines"></i> പാദവാർഷിക പരീക്ഷാ ഫലം</div>
     
     <div class="input-group">
         <label>ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</label>
@@ -121,82 +130,84 @@
         </select>
     </div>
 
+    <!-- മാറിയ ഇൻപുട്ട് ലേബൽ -->
     <div class="input-group">
-        <label>കുട്ടിയുടെ പേര് നൽകുക</label>
-        <input type="text" id="studentName" placeholder="ഉദാ: Faizan / ഫൈസാൻ">
+        <label>പേര് / Adm No / UID നൽകുക</label>
+        <input type="text" id="studentName" placeholder="ഉദാ: Faizan അല്ലെങ്കിൽ 121 അല്ലെങ്കിൽ E06948007">
     </div>
 
-    <button onclick="checkResult()"><i class="fa-solid fa-magnifying-glass"></i> മാർക്ക് ലിസ്റ്റ് കാണുക</button>
+    <button class="search-btn" onclick="checkResult()"><i class="fa-solid fa-magnifying-glass"></i> മാർക്ക് ലിസ്റ്റ് കാണുക</button>
 
     <div id="result"></div>
+
+    <!-- ഹോം പേജിലേക്കുള്ള ബട്ടൺ ഇപ്പോൾ ബോക്സിനുള്ളിലാണ് -->
+    <a href="index.html" class="back-home-btn"><i class="fa-solid fa-arrow-left"></i> ഹോം പേജിലേക്ക് തിരികെ പോവുക</a>
 </div>
 
-<a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> ഹോം പേജിലേക്ക് തിരികെ പോവുക</a>
-
 <script>
-    // പാദവാർഷിക പരീക്ഷയുടെ മാർക്കുകൾ (0 എന്ന് കിടക്കുന്ന സ്ഥാനത്ത് യഥാർത്ഥ മാർക്കുകൾ നൽകുക)
+    // UID നമ്പറും അഡ്മിഷൻ നമ്പറും സഹിതമുള്ള ഡാറ്റ
     const examResults = {
         "1": [
-            { en: "Thaimoor Alam", ml: "തൈമൂർ ആലം", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Sherin TT", ml: "ഫാത്തിമ ഷെറിൻ TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammad Haizam P", ml: "മുഹമ്മദ് ഹൈസം P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammed Ishan CK", ml: "മുഹമ്മദ് ഇഷാൻ CK", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammed Shaeen P", ml: "മുഹമ്മദ് ഷഹീൻ P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammed Raihan ME", ml: "മുഹമ്മദ് റൈഹാൻ ME", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
+            { en: "Thaimoor Alam", ml: "തൈമൂർ ആലം", uid: "E06948007", admNo: "121", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Sherin TT", ml: "ഫാത്തിമ ഷെറിൻ TT", uid: "F06948005", admNo: "126", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Haizam P", ml: "മുഹമ്മദ് ഹൈസാം P", uid: "G06948001", admNo: "132", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Ishan CK", ml: "മുഹമ്മദ് ഇഷാൻ CK", uid: "G06948002", admNo: "133", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Shaeen P", ml: "മുഹമ്മദ് ഷഹീൻ P", uid: "G06948003", admNo: "134", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Raihan ME", ml: "മുഹമ്മദ് റൈഹാൻ ME", uid: "G06948004", admNo: "138", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "2": [
-            { en: "Mishab Roshan PV", ml: "മിസ്അബ് റോഷൻ PV", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Athikka Naaj", ml: "അതിക്ക നാജ്", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Ayaan Bin Mohammed Basheer", ml: "അയാൻ ബിൻ മുഹമ്മദ് ബഷീർ", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammed Faizan PV", ml: "മുഹമ്മദ് ഫൈസാൻ PV", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammed Rihan CK", ml: "മുഹമ്മദ് റിഹാൻ CK", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammed Jalaludheen", ml: "മുഹമ്മദ് ജലാലുദ്ദീൻ TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Izza P", ml: "ഫാത്തിമ ഇസ്സ P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Hadiya TT", ml: "ഫാത്തിമ ഹാദിയ TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
+            { en: "Mishab Roshan PV", ml: "മിഷാബ് റോഷൻ PV", uid: "E06948004", admNo: "108", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Athikka Naaj", ml: "അതിക്ക നാജ്", uid: "E06948008", admNo: "120", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ayaan Bin Mohammed Basheer", ml: "അയാൻ ബിൻ മുഹമ്മദ് ബഷീർ", uid: "F06948001", admNo: "122", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Faizan PV", ml: "മുഹമ്മദ് ഫൈസാൻ PV", uid: "F06948002", admNo: "123", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Rihan CK", ml: "മുഹമ്മദ് റിഹാൻ CK", uid: "F06948003", admNo: "124", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Jalaludheen", ml: "മുഹമ്മദ് ജലാലുദ്ദീൻ TT", uid: "F06948004", admNo: "125", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Izza P", ml: "ഫാത്തിമ ഇസ്സ P", uid: "F06948006", admNo: "127", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Hadiya TT", ml: "ഫാത്തിമ ഹാദിയ TT", uid: "F06948007", admNo: "129", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "3": [
-            { en: "Jishan Ahmed KT", ml: "ജിഷാൻ അഹമ്മദ് KT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Eva N", ml: "ഇവ N", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammad Saihan KK", ml: "മുഹമ്മദ് സൈഹാൻ KK", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Sumayya TT", ml: "ഫാത്തിമ സുമയ്യ TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Kadeeja Liyana PT", ml: "ഖദീജ ലിയാന PT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
+            { en: "Jishan Ahmed KT", ml: "ജിഷാൻ അഹമ്മദ് KT", uid: "D06948002", admNo: "101", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Eva N", ml: "ഇവ N", uid: "D06948003", admNo: "99", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Saihan KK", ml: "മുഹമ്മദ് സൈഹാൻ KK", uid: "E06948001", admNo: "105", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Sumayya TT", ml: "ഫാത്തിമ സുമയ്യ TT", uid: "E06948005", admNo: "109", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Kadeeja Liyana PT", ml: "ഖദീജ ലിയാന PT", uid: "E06948009", admNo: "136", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "4": [
-            { en: "Ayisha Zabrin K", ml: "ആയിഷ സബ്രിൻ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammad Salih TT", ml: "മുഹമ്മദ് സ്വാലിഹ് TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Hazwa Fathima K", ml: "ഹസ്‌വ ഫാത്തിമ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
+            { en: "Ayisha Zabrin K", ml: "ആയിഷ സബ്രിൻ K", uid: "D06948001", admNo: "96", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Salih TT", ml: "മുഹമ്മദ് സ്വാലിഹ് TT", uid: "D06948004", admNo: "97", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Hazwa Fathima K", ml: "ഹസ്‌വ ഫാത്തിമ K", uid: "D06948005", admNo: "139", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "5": [
-            { en: "Mohammed Saif Alam", ml: "മുഹമ്മദ് സെയ്ഫ് ആലം", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammad Hadhi PV", ml: "മുഹമ്മദ് ഹാദി PV", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammad Aman", ml: "മുഹമ്മദ് അമാൻ", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Haya Fathima PM", ml: "ഹയ ഫാത്തിമ PM", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Ansila Meharin V", ml: "അൻസില മെഹ്റിൻ V", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Midha Abdul Kalam P", ml: "മിദ്ഹ അബ്ദുൽ കലാം P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Ayisha Nuha K", ml: "ആയിഷ നുഹ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
+            { en: "Mohammed Saif Alam", ml: "മുഹമ്മദ് സെയ്ഫ് ആലം", uid: "A01772061", admNo: "114", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Hadhi PV", ml: "മുഹമ്മദ് ഹാദി PV", uid: "B06948002", admNo: "86", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Aman", ml: "മുഹമ്മദ് അമാൻ", uid: "C06948001", admNo: "93", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Haya Fathima PM", ml: "ഹയ ഫാത്തിമ PM", uid: "C06948003", admNo: "90", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ansila Meharin V", ml: "അൻസില മെഹ്റിൻ V", uid: "C06948004", admNo: "91", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Midha Abdul Kalam P", ml: "മിദ്ഹ അബ്ദുൽ കലാം P", uid: "C06948005", admNo: "95", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ayisha Nuha K", ml: "ആയിഷ നുഹ K", uid: "C06948006", admNo: "98", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "6": [
-            { en: "Liyana Meharin M", ml: "ലിയാന മെഹ്റിൻ M", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Niya KT", ml: "ഫാത്തിമ നിയ KT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Zabba K", ml: "ഫാത്തിമ സബ്ബ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Muhammed Rahshan ME", ml: "മുഹമ്മദ് റഹ്ഷാൻ ME", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Filza PE", ml: "ഫിൽസ PE", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Ayisha Ayana PT", ml: "ആയിഷ അയാന PT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
+            { en: "Liyana Meharin M", ml: "ലിയാന മെഹ്റിൻ M", uid: "A06948005", admNo: "79", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Niya KT", ml: "ഫാത്തിമ നിയ KT", uid: "A06948006", admNo: "80", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Zabba K", ml: "ഫാത്തിമ സബ്ബ K", uid: "A06948011", admNo: "68", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Rahshan ME", ml: "മുഹമ്മദ് റഹ്ഷാൻ ME", uid: "B04402019", admNo: "135", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Filza PE", ml: "ഫിൽസ PE", uid: "B06948004", admNo: "112", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ayisha Ayana PT", ml: "ആയിഷ അയാന PT", uid: "B06948006", admNo: "131", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "7": [
-            { en: "Fathima Nahla P", ml: "ഫാത്തിമ നഹ്‌ല P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Haniyya Fathima A", ml: "ഹനിയ്യ ഫാത്തിമ A", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Shahala VT", ml: "ഫാത്തിമ ഷഹല VT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Asya Naila P", ml: "ആസിയ നൈല P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Rafa TP", ml: "ഫാത്തിമ റഫ TP", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
+            { en: "Fathima Nahla P", ml: "ഫാത്തിമ നഹ്‌ല P", uid: "A00699078", admNo: "137", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Haniyya Fathima A", ml: "ഹനിയ്യ ഫാത്തിമ A", uid: "A06948009", admNo: "75", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Shahala VT", ml: "ഫാത്തിമ ഷഹല VT", uid: "A06948010", admNo: "67", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Asya Naila P", ml: "ആസിയ നൈല P", uid: "A06948012", admNo: "51", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Rafa TP", ml: "ഫാത്തിമ റഫ TP", uid: "A06948013", admNo: "92", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "8": [
-            { en: "Hafi M", ml: "ഹാഫി M", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Ayisha Hamda P", ml: "ആയിഷ ഹംദ P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Hanan C", ml: "ഫാത്തിമ ഹനാൻ C", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Shahma K", ml: "ഫാത്തിമ ഷഹ്മ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Fathima Zahara K", ml: "ഫാത്തിമ സഹ്റ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
-            { en: "Abiya Minha K", ml: "അബിയ മിൻഹ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
+            { en: "Hafi M", ml: "ഹാഫി M", uid: "", admNo: "46", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ayisha Hamda P", ml: "ആയിഷ ഹംദ P", uid: "", admNo: "57", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Hanan C", ml: "ഫാത്തിമ ഹനാൻ C", uid: "", admNo: "60", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Shahma K", ml: "ഫാത്തിമ ഷഹ്മ K", uid: "", admNo: "66", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Zahara K", ml: "ഫാത്തിമ സഹ്റ K", uid: "", admNo: "70", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Abiya Minha K", ml: "അബിയ മിൻഹ K", uid: "", admNo: "94", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
         ]
     };
 
@@ -206,17 +217,25 @@
         const resultDiv = document.getElementById('result');
 
         if (!classVal || !input) {
-            alert("ദയവായി ക്ലാസ്സും പേരും നൽകുക.");
+            alert("ദയവായി ക്ലാസ്സും പേരോ നമ്പറോ നൽകുക.");
             return;
         }
 
         const classList = examResults[classVal] || [];
-        const student = classList.find(s => s.en.toLowerCase().includes(input) || s.ml.includes(input));
+        
+        // പേര്, Adm No, UID എന്നിവയിൽ ഏത് വെച്ചും സേർച്ച് ചെയ്യാനുള്ള കോഡ്
+        const student = classList.find(s => {
+            const nameMatchEn = s.en.toLowerCase().includes(input);
+            const nameMatchMl = s.ml.includes(input);
+            const admMatch = s.admNo && s.admNo === input;
+            const uidMatch = s.uid && s.uid.toLowerCase() === input;
+            
+            return nameMatchEn || nameMatchMl || admMatch || uidMatch;
+        });
 
         resultDiv.style.display = 'block';
         if (student) {
             
-            // ടേബിളിൽ മാർക്കുകൾ ഉണ്ടാക്കാൻ
             let marksHtml = '';
             for (const [subject, mark] of Object.entries(student.marks)) {
                 marksHtml += `<tr><td>${subject}</td><td>${mark}</td></tr>`;
@@ -224,9 +243,13 @@
 
             const msg = encodeURIComponent(`${student.ml} ന്റെ പാദവാർഷിക പരീക്ഷാ ഫലം:\nആകെ മാർക്ക്: ${student.total}/${student.outOf}\nഗ്രേഡ്: ${student.grade}\nകൂടുതൽ വിവരങ്ങൾക്ക് മദ്രസ വെബ്സൈറ്റ് സന്ദർശിക്കുക.`);
             
+            // UID കൂടി റിസൾട്ട് കാർഡിൽ കാണിക്കാൻ വേണ്ടി
+            const uidDisplay = student.uid ? `UID: ${student.uid.toUpperCase()} | ` : '';
+            
             resultDiv.innerHTML = `
                 <div class="report-card">
                     <div class="student-name"><i class="fa-solid fa-user-graduate"></i> ${student.ml}</div>
+                    <div class="student-details">${uidDisplay}Adm No: ${student.admNo}</div>
                     
                     <table>
                         <thead>
@@ -251,7 +274,7 @@
             resultDiv.innerHTML = `
                 <div class="report-card" style="border-color:#e74c3c; text-align:center;">
                     <span style="font-size: 40px;">🔍</span><br>
-                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ പേര് കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് ശരിയാണോ എന്ന് പരിശോധിക്കുക, അല്ലെങ്കിൽ റിസൾട്ട് അപ്‌ഡേറ്റ് ചെയ്തിട്ടുണ്ടാവില്ല.</p>
+                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ വിവരങ്ങൾ വെച്ച് റിസൾട്ട് കണ്ടെത്താനായില്ല. ടൈപ്പ് ചെയ്തത് ശരിയാണോ എന്ന് പരിശോധിക്കുക.</p>
                 </div>`;
         }
     }
