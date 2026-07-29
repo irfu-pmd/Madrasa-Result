@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - പരീക്ഷാ ഫലം</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #065279;
@@ -25,70 +26,75 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(6, 82, 121, 0.4); /* ബാക്ക്ഗ്രൗണ്ട് തെളിഞ്ഞു കാണാൻ ഒപ്പാസിറ്റി കുറച്ചു */
+            background: rgba(6, 82, 121, 0.6); 
             z-index: -1;
         }
 
         .container { 
             background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(8px);
-            padding: 30px; border-radius: 30px; 
-            box-shadow: 0 25px 70px rgba(0,0,0,0.4); 
+            padding: 30px; border-radius: 20px; 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5); 
             width: 100%; max-width: 450px; text-align: center; 
-            border: 3px solid var(--gold);
-            animation: fadeInBody 1.2s ease-in-out;
+            border-top: 8px solid var(--gold);
+            animation: fadeInBody 1s ease-in-out;
         }
         @keyframes fadeInBody { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .logo-container { width: 100px; margin: 0 auto 10px auto; display: block; animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .logo-container img { width: 100%; height: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)); }
+        .logo-container { width: 80px; margin: 0 auto 10px auto; display: block; }
+        .logo-container img { width: 100%; height: auto; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-        h2 { 
-            color: var(--primary); 
-            font-size: 26px; 
-            margin: 10px 0; 
-            font-weight: 900; 
-            white-space: nowrap; /* പേര് ഒറ്റ വരിയിൽ വരാൻ */
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .sub-txt { color: #d35400; font-weight: bold; margin-bottom: 25px; letter-spacing: 1px; font-size: 15px;}
+        h2 { color: var(--primary); font-size: 24px; margin: 10px 0 5px 0; font-weight: 900; }
+        .sub-txt { color: #d35400; font-weight: bold; margin-bottom: 25px; font-size: 14px; background: #fffdf5; padding: 5px 15px; border-radius: 20px; display: inline-block; border: 1px solid #fdebd0;}
 
-        .input-group { text-align: left; margin-bottom: 20px; }
-        label { font-weight: bold; color: #333; display: block; margin-bottom: 8px; font-size: 15px;}
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { font-weight: bold; color: #333; display: block; margin-bottom: 5px; font-size: 14px;}
         select, input { 
-            width: 100%; padding: 15px; border: 2px solid #ddd; 
-            border-radius: 12px; font-size: 16px; outline: none; transition: 0.3s;
-            background: rgba(255,255,255,0.9);
-            box-sizing: border-box;
+            width: 100%; padding: 12px; border: 2px solid #ddd; 
+            border-radius: 10px; font-size: 15px; outline: none; transition: 0.3s;
+            box-sizing: border-box; background: #f9f9f9;
         }
-        select:focus, input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(6, 82, 121, 0.3); }
+        select:focus, input:focus { border-color: var(--primary); background: #fff; }
 
         button { 
             background: linear-gradient(45deg, var(--primary), #1a7fb3); 
-            color: white; padding: 18px; border: none; border-radius: 15px; 
+            color: white; padding: 15px; border: none; border-radius: 10px; 
             width: 100%; margin-top: 10px; cursor: pointer; 
-            font-size: 18px; font-weight: bold; transition: 0.4s;
-            box-shadow: 0 8px 20px rgba(6, 82, 121, 0.3);
+            font-size: 16px; font-weight: bold; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(6, 82, 121, 0.3);
         }
-        button:hover { background: linear-gradient(45deg, #1a7fb3, var(--primary)); transform: translateY(-3px); }
+        button:hover { background: linear-gradient(45deg, #1a7fb3, var(--primary)); transform: translateY(-2px); }
 
-        #result { margin-top: 30px; display: none; }
-        .result-card { 
-            padding: 30px; border-radius: 20px; border: 3px solid var(--gold);
+        /* Report Card Styles */
+        #result { margin-top: 25px; display: none; }
+        .report-card { 
+            padding: 20px; border-radius: 15px; border: 2px solid var(--primary);
             background: white; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); text-align: left;
         }
-        @keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        .winner-name { font-size: 24px; color: var(--success); font-weight: 800; margin: 15px 0; }
+        .student-name { font-size: 18px; color: var(--primary); font-weight: 800; text-align: center; margin-bottom: 15px; border-bottom: 2px dashed #eee; padding-bottom: 10px;}
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        th, td { padding: 10px; border: 1px solid #eee; text-align: left; font-size: 14px; }
+        th { background-color: #f0f4f8; color: var(--primary); }
+        td:last-child, th:last-child { text-align: center; font-weight: bold; }
+        
+        .total-row { background-color: var(--primary); color: white; font-weight: bold; }
+        .total-row td { border-color: var(--primary); }
+        
+        .grade-box { text-align: center; margin-bottom: 15px; font-size: 15px; font-weight: bold; color: #d35400;}
+        .grade-box span { font-size: 20px; color: var(--success); }
+
         .whatsapp-btn { 
-            background: #25D366; color: white; padding: 12px 25px; 
-            text-decoration: none; border-radius: 50px; 
-            display: inline-block; margin-top: 20px; font-weight: bold;
+            background: #25D366; color: white; padding: 12px; 
+            text-decoration: none; border-radius: 8px; 
+            display: block; text-align: center; font-weight: bold;
             font-size: 15px;
         }
+        
+        .back-home { display: block; margin-top: 20px; color: white; text-decoration: none; font-weight: bold; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -98,7 +104,7 @@
         <img src="Madrasa-Logo.png" alt="Madrasa Logo">
     </div>
     <h2>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h2>
-    <div class="sub-txt">Annual Exam Results 2025-26</div>
+    <div class="sub-txt"><i class="fa-solid fa-file-lines"></i> പാദവാർഷിക പരീക്ഷാ ഫലം (Quarterly Exam)</div>
     
     <div class="input-group">
         <label>ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</label>
@@ -108,59 +114,89 @@
             <option value="2">Class 2</option>
             <option value="3">Class 3</option>
             <option value="4">Class 4</option>
+            <option value="5">Class 5</option>
             <option value="6">Class 6</option>
+            <option value="7">Class 7</option>
             <option value="8">Class 8</option>
         </select>
     </div>
 
     <div class="input-group">
-        <label>പേര് നൽകുക</label>
+        <label>കുട്ടിയുടെ പേര് നൽകുക</label>
         <input type="text" id="studentName" placeholder="ഉദാ: Faizan / ഫൈസാൻ">
     </div>
 
-    <button onclick="checkResult()">RESULT കാണാം</button>
+    <button onclick="checkResult()"><i class="fa-solid fa-magnifying-glass"></i> മാർക്ക് ലിസ്റ്റ് കാണുക</button>
 
     <div id="result"></div>
 </div>
 
+<a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> ഹോം പേജിലേക്ക് തിരികെ പോവുക</a>
+
 <script>
-    const winners = {
+    // പാദവാർഷിക പരീക്ഷയുടെ മാർക്കുകൾ (0 എന്ന് കിടക്കുന്ന സ്ഥാനത്ത് യഥാർത്ഥ മാർക്കുകൾ നൽകുക)
+    const examResults = {
         "1": [
-            {en: "Muhammed Faizan PV", ml: "മുഹമ്മദ് ഫൈസാൻ PV"},
-            {en: "Muhammed Rihan CK", ml: "മുഹമ്മദ് റിഹാൻ CK"},
-            {en: "Muhammed Jalaludheen TT", ml: "മുഹമ്മദ് ജലാലുദ്ദീൻ TT"},
-            {en: "Fathima Izza P", ml: "ഫാത്തിമ ഇസ്സ P"},
-            {en: "Fathima Hadiya TT", ml: "ഫാത്തിമ ഹാദിയ TT"}
+            { en: "Thaimoor Alam", ml: "തൈമൂർ ആലം", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Sherin TT", ml: "ഫാത്തിമ ഷെറിൻ TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Haizam P", ml: "മുഹമ്മദ് ഹൈസം P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Ishan CK", ml: "മുഹമ്മദ് ഇഷാൻ CK", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Shaeen P", ml: "മുഹമ്മദ് ഷഹീൻ P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Raihan ME", ml: "മുഹമ്മദ് റൈഹാൻ ME", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "2": [
-            {en: "Muhammed Saihan K", ml: "മുഹമ്മദ് സൈഹാൻ K"},
-            {en: "Muhammed Ashmil PT", ml: "മുഹമ്മദ് അഷ്മിൽ PT"},
-            {en: "Fathima Sumayya TT", ml: "ഫാത്തിമ സുമയ്യ TT"},
-            {en: "Khadeeja Liyana", ml: "ഖദീജ ലിയാന"}
+            { en: "Mishab Roshan PV", ml: "മിസ്അബ് റോഷൻ PV", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Athikka Naaj", ml: "അതിക്ക നാജ്", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ayaan Bin Mohammed Basheer", ml: "അയാൻ ബിൻ മുഹമ്മദ് ബഷീർ", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Faizan PV", ml: "മുഹമ്മദ് ഫൈസാൻ PV", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Rihan CK", ml: "മുഹമ്മദ് റിഹാൻ CK", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Jalaludheen", ml: "മുഹമ്മദ് ജലാലുദ്ദീൻ TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Izza P", ml: "ഫാത്തിമ ഇസ്സ P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Hadiya TT", ml: "ഫാത്തിമ ഹാദിയ TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "3": [
-            {en: "Hazwa Fathima", ml: "ഹസ്‌വ ഫാത്തിമ"},
-            {en: "Ayisha Sabrin K", ml: "ആയിഷ സബ്രിൻ K"}
+            { en: "Jishan Ahmed KT", ml: "ജിഷാൻ അഹമ്മദ് KT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Eva N", ml: "ഇവ N", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Saihan KK", ml: "മുഹമ്മദ് സൈഹാൻ KK", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Sumayya TT", ml: "ഫാത്തിമ സുമയ്യ TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Kadeeja Liyana PT", ml: "ഖദീജ ലിയാന PT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "4": [
-            {en: "Muhammed Hadi PV", ml: "മുഹമ്മദ് ഹാദി PV"},
-            {en: "Muhammed Aman C", ml: "മുഹമ്മദ് അമാൻ C"},
-            {en: "Haya Fathima PM", ml: "ഹയ ഫാത്തിമ PM"},
-            {en: "Ansila Mehrin V", ml: "അൻസില മെഹ്റിൻ V"},
-            {en: "Midha Abdul Kalam P", ml: "മിദ്ഹ അബ്ദുൽ കലാം P"},
-            {en: "Ayisha Nuha K", ml: "ആയിഷ നുഹ K"}
+            { en: "Ayisha Zabrin K", ml: "ആയിഷ സബ്രിൻ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Salih TT", ml: "മുഹമ്മദ് സ്വാലിഹ് TT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Hazwa Fathima K", ml: "ഹസ്‌വ ഫാത്തിമ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
+        ],
+        "5": [
+            { en: "Mohammed Saif Alam", ml: "മുഹമ്മദ് സെയ്ഫ് ആലം", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Hadhi PV", ml: "മുഹമ്മദ് ഹാദി PV", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammad Aman", ml: "മുഹമ്മദ് അമാൻ", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Haya Fathima PM", ml: "ഹയ ഫാത്തിമ PM", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ansila Meharin V", ml: "അൻസില മെഹ്റിൻ V", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Midha Abdul Kalam P", ml: "മിദ്ഹ അബ്ദുൽ കലാം P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ayisha Nuha K", ml: "ആയിഷ നുഹ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "6": [
-            {en: "Haniya Fathima A", ml: "ഹനിയ ഫാത്തിമ A"},
-            {en: "Fathima Shahala VT", ml: "ഫാത്തിമ ഷഹല VT"},
-            {en: "Asiya Naila P", ml: "ആസിയ നൈല P"},
-            {en: "Fathima Rafa TP", ml: "ഫാത്തിമ റഫ TP"}
+            { en: "Liyana Meharin M", ml: "ലിയാന മെഹ്റിൻ M", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Niya KT", ml: "ഫാത്തിമ നിയ KT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Zabba K", ml: "ഫാത്തിമ സബ്ബ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Muhammed Rahshan ME", ml: "മുഹമ്മദ് റഹ്ഷാൻ ME", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Filza PE", ml: "ഫിൽസ PE", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ayisha Ayana PT", ml: "ആയിഷ അയാന PT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
+        ],
+        "7": [
+            { en: "Fathima Nahla P", ml: "ഫാത്തിമ നഹ്‌ല P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Haniyya Fathima A", ml: "ഹനിയ്യ ഫാത്തിമ A", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Shahala VT", ml: "ഫാത്തിമ ഷഹല VT", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Asya Naila P", ml: "ആസിയ നൈല P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Rafa TP", ml: "ഫാത്തിമ റഫ TP", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, grade: "-" }
         ],
         "8": [
-            {en: "Muhammed Anas PM", ml: "മുഹമ്മദ് അനസ് PM"},
-            {en: "Muhammed Swalih K", ml: "മുഹമ്മദ് സ്വാലിഹ് K"},
-            {en: "Fathima Hilfa PT", ml: "ഫാത്തിമ ഹിൽഫ PT"},
-            {en: "Fathima Rinsha TT", ml: "ഫാത്തിമ റിൻഷ TT"}
+            { en: "Hafi M", ml: "ഹാഫി M", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Ayisha Hamda P", ml: "ആയിഷ ഹംദ P", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Hanan C", ml: "ഫാത്തിമ ഹനാൻ C", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Shahma K", ml: "ഫാത്തിമ ഷഹ്മ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Fathima Zahara K", ml: "ഫാത്തിമ സഹ്റ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
+            { en: "Abiya Minha K", ml: "അബിയ മിൻഹ K", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" }
         ]
     };
 
@@ -174,26 +210,48 @@
             return;
         }
 
-        const classList = winners[classVal] || [];
+        const classList = examResults[classVal] || [];
         const student = classList.find(s => s.en.toLowerCase().includes(input) || s.ml.includes(input));
 
         resultDiv.style.display = 'block';
         if (student) {
-            const msg = encodeURIComponent(`അഭിനന്ദനങ്ങൾ! അൻവാറുൽ ഇസ്ലാം മദ്രസ പരീക്ഷയിൽ ${student.ml} വിജയിച്ചിരിക്കുന്നു! 🎉🏆`);
+            
+            // ടേബിളിൽ മാർക്കുകൾ ഉണ്ടാക്കാൻ
+            let marksHtml = '';
+            for (const [subject, mark] of Object.entries(student.marks)) {
+                marksHtml += `<tr><td>${subject}</td><td>${mark}</td></tr>`;
+            }
+
+            const msg = encodeURIComponent(`${student.ml} ന്റെ പാദവാർഷിക പരീക്ഷാ ഫലം:\nആകെ മാർക്ക്: ${student.total}/${student.outOf}\nഗ്രേഡ്: ${student.grade}\nകൂടുതൽ വിവരങ്ങൾക്ക് മദ്രസ വെബ്സൈറ്റ് സന്ദർശിക്കുക.`);
+            
             resultDiv.innerHTML = `
-                <div class="result-card">
-                    <span style="font-size: 60px;">🏆</span>
-                    <h3>അഭിനന്ദനങ്ങൾ!</h3>
-                    <div class="winner-name">${student.ml}</div>
-                    <p style="color:#555; font-size:16px;">വാർഷിക പരീക്ഷയിൽ മികച്ച വിജയം കൈവരിച്ചിരിക്കുന്നു.</p>
-                    <a class="whatsapp-btn" href="https://wa.me/?text=${msg}" target="_blank">വാട്സാപ്പിൽ പങ്കുവെക്കാം</a>
+                <div class="report-card">
+                    <div class="student-name"><i class="fa-solid fa-user-graduate"></i> ${student.ml}</div>
+                    
+                    <table>
+                        <thead>
+                            <tr><th>വിഷയം (Subject)</th><th>മാർക്ക്</th></tr>
+                        </thead>
+                        <tbody>
+                            ${marksHtml}
+                            <tr class="total-row"><td>ആകെ മാർക്ക് (Total)</td><td>${student.total} / ${student.outOf}</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="grade-box">
+                        നേടിയ ഗ്രേഡ്: <span>${student.grade}</span>
+                    </div>
+
+                    <a class="whatsapp-btn" href="https://wa.me/?text=${msg}" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> ഫലം വാട്സാപ്പിൽ അയക്കുക
+                    </a>
                 </div>
             `;
         } else {
             resultDiv.innerHTML = `
-                <div class="result-card" style="border-color:#e74c3c; box-shadow: 0 10px 25px rgba(231, 76, 60, 0.2);">
-                    <span style="font-size: 45px;">🔍</span><br>
-                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ പേര് വിജയികളുടെ ലിസ്റ്റിൽ കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് പരിശോധിക്കുക.</p>
+                <div class="report-card" style="border-color:#e74c3c; text-align:center;">
+                    <span style="font-size: 40px;">🔍</span><br>
+                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ പേര് കണ്ടെത്താനായില്ല. സ്പെല്ലിംഗ് ശരിയാണോ എന്ന് പരിശോധിക്കുക, അല്ലെങ്കിൽ റിസൾട്ട് അപ്‌ഡേറ്റ് ചെയ്തിട്ടുണ്ടാവില്ല.</p>
                 </div>`;
         }
     }
