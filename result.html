@@ -123,13 +123,13 @@
         .back-home-btn:hover { background: #e2e8f0; }
 
         /* ========================================================
-           CERTIFICATE PDF MODE STYLES
+           CERTIFICATE PDF MODE STYLES (Optimized for One Page)
            ======================================================== */
         .print-header { display: none; }
         .signature-area { display: none; }
 
         .pdf-mode {
-            padding: 50px 40px !important;
+            padding: 30px !important; /* Reduced Padding */
             border: none !important;
             background: #fff !important;
             box-shadow: none !important;
@@ -137,8 +137,9 @@
             margin: 0 !important;
             width: 100% !important;
             outline: 4px double var(--primary) !important;
-            outline-offset: -15px !important;
+            outline-offset: -10px !important;
             position: relative;
+            box-sizing: border-box;
         }
         
         /* Watermark */
@@ -154,32 +155,34 @@
             z-index: 1;
         }
 
-        .pdf-mode .print-header { display: block; text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--gold); padding-bottom: 20px; position: relative; z-index: 2;}
-        .pdf-mode .print-header img { width: 90px; height: auto; margin-bottom: 10px; border-radius: 50%; padding: 5px; border: 2px solid var(--gold);}
-        .pdf-mode .print-header h1 { color: var(--primary); font-size: 28px; margin: 0; font-weight: 900;}
-        .pdf-mode .print-header p { margin: 5px 0 15px 0; font-size: 16px; font-weight: bold; color: #555;}
+        .pdf-mode .print-header { display: block; text-align: center; margin-bottom: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 15px; position: relative; z-index: 2;}
+        .pdf-mode .print-header img { width: 85px; height: auto; margin-bottom: 5px; border-radius: 50%; padding: 3px; border: 2px solid var(--gold);}
+        .pdf-mode .print-header h1 { color: var(--primary); font-size: 26px; margin: 0; font-weight: 900;}
+        .pdf-mode .print-header p { margin: 5px 0 10px 0; font-size: 15px; font-weight: bold; color: #555;}
         
         .pdf-mode .web-icon { display: none; }
-        .pdf-mode .student-name { font-size: 24px; border-bottom: none; margin-bottom: 5px; color: #000; position: relative; z-index: 2;}
-        .pdf-mode .student-details { font-size: 15px; color: #444; position: relative; z-index: 2;}
-        .pdf-mode .status-badge { font-size: 14px; padding: 6px 15px; position: relative; z-index: 2;}
+        .pdf-mode .student-name { font-size: 22px; border-bottom: none; margin-bottom: 5px; color: #000; position: relative; z-index: 2;}
+        .pdf-mode .student-details { font-size: 14px; margin-bottom: 10px; color: #444; position: relative; z-index: 2;}
+        .pdf-mode .status-badge { font-size: 13px; padding: 5px 12px; margin-bottom: 10px; position: relative; z-index: 2;}
         
-        .pdf-mode table { margin-top: 30px; border: 2px solid #ddd; position: relative; z-index: 2;}
-        .pdf-mode th { background-color: #f0f4f8 !important; color: var(--primary) !important; -webkit-print-color-adjust: exact; font-size: 16px; padding: 12px;}
-        .pdf-mode td { font-size: 16px; color: #000; border-color: #ddd; padding: 10px;}
+        .pdf-mode table { margin-top: 15px; margin-bottom: 15px; border: 2px solid #ddd; position: relative; z-index: 2;}
+        .pdf-mode th { background-color: #f0f4f8 !important; color: var(--primary) !important; -webkit-print-color-adjust: exact; font-size: 15px; padding: 10px;}
+        .pdf-mode td { font-size: 15px; color: #000; border-color: #ddd; padding: 8px 10px;}
         .pdf-mode .total-row { background-color: var(--primary) !important; color: white !important; -webkit-print-color-adjust: exact; }
         
-        .pdf-mode .grade-box { border: 2px dashed #bbb; background: #fff; margin-top: 30px; font-size: 16px; padding: 15px; position: relative; z-index: 2;}
+        .pdf-mode .grade-box { border: 2px dashed #bbb; background: #fff; margin-top: 15px; font-size: 15px; padding: 10px; position: relative; z-index: 2;}
         
-        .pdf-mode .signature-area { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 30px; position: relative; z-index: 2;}
-        .pdf-mode .signature-area div { text-align: center; font-size: 15px; font-weight: bold; color: #333; }
-        .pdf-mode .signature-area hr { width: 150px; border: 1px solid #333; margin-bottom: 8px; }
+        /* Adjusted Signature Space to fit one page */
+        .pdf-mode .signature-area { display: flex; justify-content: space-between; margin-top: 60px; padding: 0 30px; position: relative; z-index: 2;}
+        .pdf-mode .signature-area div { text-align: center; font-size: 14px; font-weight: bold; color: #333; }
+        .pdf-mode .signature-area hr { width: 140px; border: 1px solid #333; margin-bottom: 6px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="logo-container">
+        <!-- Logo -->
         <img src="IMG_20260329_173830_154.webp" alt="Madrasa Logo">
     </div>
     <h2>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h2>
@@ -223,7 +226,7 @@
 
 <script>
     // --- TIMER LOGIC ---
-    // Timer is strictly set to July 31, 2026 at 3:30 PM
+    // Timer is set to July 31, 2026 at 3:30 PM
     const publishDate = new Date("July 31, 2026 15:30:00").getTime();
 
     const timerInterval = setInterval(function() {
@@ -369,9 +372,9 @@
         element.classList.add('pdf-mode');
 
         const opt = {
-            margin:       15,
+            margin:       10, // Margin reduced to fit strictly into one page
             filename:     studentName + '_Result_2025.pdf',
-            image:        { type: 'jpeg', quality: 1 },
+            image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2, useCORS: true }, 
             jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
