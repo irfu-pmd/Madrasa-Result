@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>അൻവാറുൽ ഇസ്ലാം മദ്രസ - പരീക്ഷാ ഫലം</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Confetti Animation Script -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    
     <style>
         :root {
             --primary: #065279;
@@ -39,6 +43,7 @@
             border-top: 8px solid var(--gold);
             animation: fadeInBody 1s ease-in-out;
             position: relative;
+            z-index: 10;
         }
         @keyframes fadeInBody { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -130,7 +135,6 @@
         </select>
     </div>
 
-    <!-- മാറിയ ഇൻപുട്ട് ലേബൽ -->
     <div class="input-group">
         <label>പേര് / Adm No / UID നൽകുക</label>
         <input type="text" id="studentName" placeholder="ഉദാ: Faizan അല്ലെങ്കിൽ 121 അല്ലെങ്കിൽ E06948007">
@@ -140,12 +144,10 @@
 
     <div id="result"></div>
 
-    <!-- ഹോം പേജിലേക്കുള്ള ബട്ടൺ ഇപ്പോൾ ബോക്സിനുള്ളിലാണ് -->
     <a href="index.html" class="back-home-btn"><i class="fa-solid fa-arrow-left"></i> ഹോം പേജിലേക്ക് തിരികെ പോവുക</a>
 </div>
 
 <script>
-    // UID നമ്പറും അഡ്മിഷൻ നമ്പറും സഹിതമുള്ള ഡാറ്റ
     const examResults = {
         "1": [
             { en: "Thaimoor Alam", ml: "തൈമൂർ ആലം", uid: "E06948007", admNo: "121", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "താരീഖ്": 0 }, total: 0, outOf: 200, grade: "-" },
@@ -223,7 +225,6 @@
 
         const classList = examResults[classVal] || [];
         
-        // പേര്, Adm No, UID എന്നിവയിൽ ഏത് വെച്ചും സേർച്ച് ചെയ്യാനുള്ള കോഡ്
         const student = classList.find(s => {
             const nameMatchEn = s.en.toLowerCase().includes(input);
             const nameMatchMl = s.ml.includes(input);
@@ -243,7 +244,6 @@
 
             const msg = encodeURIComponent(`${student.ml} ന്റെ പാദവാർഷിക പരീക്ഷാ ഫലം:\nആകെ മാർക്ക്: ${student.total}/${student.outOf}\nഗ്രേഡ്: ${student.grade}\nകൂടുതൽ വിവരങ്ങൾക്ക് മദ്രസ വെബ്സൈറ്റ് സന്ദർശിക്കുക.`);
             
-            // UID കൂടി റിസൾട്ട് കാർഡിൽ കാണിക്കാൻ വേണ്ടി
             const uidDisplay = student.uid ? `UID: ${student.uid.toUpperCase()} | ` : '';
             
             resultDiv.innerHTML = `
@@ -270,6 +270,16 @@
                     </a>
                 </div>
             `;
+
+            // Confetti Animation Trigger! 🎉
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y: 0.6 },
+                colors: ['#065279', '#d4af37', '#27ae60', '#e74c3c', '#f1c40f'],
+                zIndex: 9999
+            });
+
         } else {
             resultDiv.innerHTML = `
                 <div class="report-card" style="border-color:#e74c3c; text-align:center;">
