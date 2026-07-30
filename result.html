@@ -83,8 +83,8 @@
             padding: 20px; border-radius: 15px; border: 2px solid var(--primary);
             background: white; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); text-align: left; position: relative;
+            overflow: hidden;
         }
-        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         .student-name { font-size: 18px; color: var(--primary); font-weight: 800; text-align: center; margin-bottom: 10px; border-bottom: 2px dashed #eee; padding-bottom: 10px;}
         .student-details { font-size: 12px; color: #666; text-align: center; margin-bottom: 15px; font-weight: bold;}
@@ -93,24 +93,26 @@
         .promoted { background-color: var(--success); }
         .needs-improvement { background-color: var(--danger); }
 
-        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; position: relative; z-index: 2;}
         th, td { padding: 8px 10px; border: 1px solid #eee; text-align: left; font-size: 14px; }
-        th { background-color: #f0f4f8; color: var(--primary); }
-        td:last-child, th:last-child { text-align: center; font-weight: bold; }
+        th { background-color: #f0f4f8; color: var(--primary); font-size: 13px;}
         
         .total-row { background-color: var(--primary); color: white; font-weight: bold; }
         .total-row td { border-color: var(--primary); }
         
-        .grade-box { text-align: center; margin-bottom: 15px; font-size: 14px; font-weight: bold; color: #555; background: #f9f9f9; padding: 10px; border-radius: 10px;}
-        .grade-box span { font-size: 18px; color: var(--success); margin: 0 5px;}
+        .grade-box { text-align: center; margin-bottom: 15px; font-size: 14px; font-weight: bold; color: #555; background: #f9f9f9; padding: 10px; border-radius: 10px; position: relative; z-index: 2;}
+        .grade-box span { font-size: 18px; margin: 0 5px;}
+        .grade-pass { color: var(--success); }
+        .grade-fail { color: var(--danger); }
 
         .action-btns { display: flex; gap: 10px; margin-top: 15px;}
         .whatsapp-btn, .pdf-btn { 
             flex: 1; padding: 12px; text-decoration: none; border-radius: 8px; 
-            text-align: center; font-weight: bold; font-size: 14px; cursor: pointer; border: none;
+            text-align: center; font-weight: bold; font-size: 14px; cursor: pointer; border: none; transition: 0.3s;
         }
         .whatsapp-btn { background: #25D366; color: white; }
         .pdf-btn { background: #e74c3c; color: white; }
+        .whatsapp-btn:hover, .pdf-btn:hover { filter: brightness(0.9); transform: translateY(-2px);}
         
         .back-home-btn { 
             display: block; background: #f0f4f8; color: var(--primary); 
@@ -120,45 +122,65 @@
         }
         .back-home-btn:hover { background: #e2e8f0; }
 
-        /* PDF PRINT MODE STYLES */
+        /* ========================================================
+           CERTIFICATE PDF MODE STYLES (Only applies during Print)
+           ======================================================== */
         .print-header { display: none; }
         .signature-area { display: none; }
 
         .pdf-mode {
-            padding: 40px 30px !important;
-            border: 4px double var(--primary) !important;
+            padding: 50px 40px !important;
+            border: none !important;
             background: #fff !important;
             box-shadow: none !important;
             border-radius: 0 !important;
             margin: 0 !important;
             width: 100% !important;
+            outline: 4px double var(--primary) !important;
+            outline-offset: -15px !important;
+            position: relative;
         }
-        .pdf-mode .print-header { display: block; text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--gold); padding-bottom: 15px;}
-        .pdf-mode .print-header img { width: 110px; margin-bottom: 5px; }
-        .pdf-mode .print-header h1 { color: var(--primary); font-size: 26px; margin: 0; font-weight: 900;}
-        .pdf-mode .print-header p { margin: 5px 0 10px 0; font-size: 14px; font-weight: bold; color: #555;}
+        
+        /* Watermark */
+        .pdf-mode::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; height: 400px;
+            background: url('IMG_20260329_173830_154.webp') no-repeat center;
+            background-size: contain;
+            opacity: 0.06;
+            z-index: 1;
+        }
+
+        .pdf-mode .print-header { display: block; text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--gold); padding-bottom: 20px; position: relative; z-index: 2;}
+        .pdf-mode .print-header img { width: 90px; height: auto; margin-bottom: 10px; border-radius: 50%; padding: 5px; border: 2px solid var(--gold);}
+        .pdf-mode .print-header h1 { color: var(--primary); font-size: 28px; margin: 0; font-weight: 900;}
+        .pdf-mode .print-header p { margin: 5px 0 15px 0; font-size: 16px; font-weight: bold; color: #555;}
         
         .pdf-mode .web-icon { display: none; }
-        .pdf-mode .student-name { font-size: 22px; border-bottom: none; margin-bottom: 5px; color: #000; }
-        .pdf-mode .student-details { font-size: 14px; color: #444; }
+        .pdf-mode .student-name { font-size: 24px; border-bottom: none; margin-bottom: 5px; color: #000; position: relative; z-index: 2;}
+        .pdf-mode .student-details { font-size: 15px; color: #444; position: relative; z-index: 2;}
+        .pdf-mode .status-badge { font-size: 14px; padding: 6px 15px; position: relative; z-index: 2;}
         
-        .pdf-mode table { margin-top: 25px; border: 2px solid #ccc; }
-        .pdf-mode th { background-color: #f0f4f8 !important; color: var(--primary) !important; -webkit-print-color-adjust: exact; font-size: 16px;}
-        .pdf-mode td { font-size: 16px; color: #000; border-color: #ccc;}
+        .pdf-mode table { margin-top: 30px; border: 2px solid #ddd; position: relative; z-index: 2;}
+        .pdf-mode th { background-color: #f0f4f8 !important; color: var(--primary) !important; -webkit-print-color-adjust: exact; font-size: 16px; padding: 12px;}
+        .pdf-mode td { font-size: 16px; color: #000; border-color: #ddd; padding: 10px;}
         .pdf-mode .total-row { background-color: var(--primary) !important; color: white !important; -webkit-print-color-adjust: exact; }
         
-        .pdf-mode .grade-box { border: 2px dashed #bbb; background: transparent; margin-top: 25px; font-size: 16px;}
+        .pdf-mode .grade-box { border: 2px dashed #bbb; background: #fff; margin-top: 30px; font-size: 16px; padding: 15px; position: relative; z-index: 2;}
         
-        .pdf-mode .signature-area { display: flex; justify-content: space-between; margin-top: 70px; padding: 0 20px; }
-        .pdf-mode .signature-area div { text-align: center; font-size: 14px; font-weight: bold; color: #333; }
-        .pdf-mode .signature-area hr { width: 130px; border: 1px solid #333; margin-bottom: 8px; }
+        .pdf-mode .signature-area { display: flex; justify-content: space-between; margin-top: 80px; padding: 0 30px; position: relative; z-index: 2;}
+        .pdf-mode .signature-area div { text-align: center; font-size: 15px; font-weight: bold; color: #333; }
+        .pdf-mode .signature-area hr { width: 150px; border: 1px solid #333; margin-bottom: 8px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="logo-container">
-        <img src="1000085715.webp" alt="Madrasa Logo">
+        <img src="IMG_20260329_173830_154.webp" alt="Madrasa Logo">
     </div>
     <h2>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h2>
     <div class="sub-txt"><i class="fa-solid fa-file-lines"></i> പാദവാർഷിക പരീക്ഷാ ഫലം</div>
@@ -169,7 +191,7 @@
         <div id="timer" class="timer-display">--:--:--</div>
     </div>
 
-    <!-- Search Section (Hidden until 3:30 PM tomorrow) -->
+    <!-- Search Section -->
     <div id="search-section" style="display: none;">
         <div class="input-group">
             <label>ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക</label>
@@ -187,11 +209,11 @@
         </div>
 
         <div class="input-group">
-            <label>പേര് / Adm No / UID നൽകുക</label>
-            <input type="text" id="studentName" placeholder="ഉദാ: Faizan അല്ലെങ്കിൽ 121 അല്ലെങ്കിൽ E06948007">
+            <label>Admission No / UID നൽകുക</label>
+            <input type="text" id="studentName" placeholder="ഉദാ: 121 അല്ലെങ്കിൽ e06948007">
         </div>
 
-        <button class="search-btn" onclick="checkResult()"><i class="fa-solid fa-magnifying-glass"></i> മാർക്ക് ലിസ്റ്റ് കാണുക</button>
+        <button class="search-btn" onclick="checkResult()"><i class="fa-solid fa-magnifying-glass"></i> റിസൾട്ട് കാണുക</button>
     </div>
 
     <div id="result"></div>
@@ -200,8 +222,7 @@
 </div>
 
 <script>
-    // --- TIMER LOGIC ---
-    // നാളെ വൈകുന്നേരം 3:30 സെറ്റ് ചെയ്തിരിക്കുന്നു (July 31, 2026, 15:30:00)
+    // --- TIMER LOGIC (Change Date here for testing) ---
     const publishDate = new Date("July 31, 2026 15:30:00").getTime();
 
     const timerInterval = setInterval(function() {
@@ -209,17 +230,14 @@
         const distance = publishDate - now;
 
         if (distance <= 0) {
-            // സമയം ആയി! ടൈമർ ഹൈഡ് ആക്കുക, സേർച്ച് ബോക്സ് കാണിക്കുക
             clearInterval(timerInterval);
             document.getElementById("countdown-section").style.display = "none";
             document.getElementById("search-section").style.display = "block";
         } else {
-            // സമയം ആയില്ല, ടൈമർ കാണിക്കുക
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            // ഫോർമാറ്റ് 00:00:00 ആയി കാണിക്കാൻ
             const h = hours < 10 ? "0" + hours : hours;
             const m = minutes < 10 ? "0" + minutes : minutes;
             const s = seconds < 10 ? "0" + seconds : seconds;
@@ -229,70 +247,7 @@
     }, 1000);
     // ------------------
 
-    const examResults = {
-        "1": [
-            { en: "Thaimoor Alam", ml: "തൈമൂർ ആലം", uid: "E06948007", admNo: "121", marks: { "തഫ്ഹീം റീഡിങ്": 6, "തഫ്ഹീം റൈറ്റിംഗ്": 28 }, total: 34, outOf: 100, percentage: 34.0, grade: "D", status: "NEEDS IMPROVEMENT" },
-            { en: "Fathima Sherin TT", ml: "ഫാത്തിമ ഷെറിൻ TT", uid: "F06948005", admNo: "126", marks: { "തഫ്ഹീം റീഡിങ്": "AB", "തഫ്ഹീം റൈറ്റിംഗ്": "AB" }, total: 0, outOf: 100, percentage: 0, grade: "-", status: "NEEDS IMPROVEMENT" },
-            { en: "Muhammad Haizam P", ml: "മുഹമ്മദ് ഹൈസം P", uid: "G06948001", admNo: "132", marks: { "തഫ്ഹീം റീഡിങ്": 50, "തഫ്ഹീം റൈറ്റിംഗ്": 50 }, total: 100, outOf: 100, percentage: 100.0, grade: "A+", status: "PROMOTED" },
-            { en: "Muhammed Ishan CK", ml: "മുഹമ്മദ് ഇഷാൻ CK", uid: "G06948002", admNo: "133", marks: { "തഫ്ഹീം റീഡിങ്": 38, "തഫ്ഹീം റൈറ്റിംഗ്": 50 }, total: 88, outOf: 100, percentage: 88.0, grade: "A", status: "PROMOTED" },
-            { en: "Muhammed Shaeen P", ml: "മുഹമ്മദ് ഷഹീൻ P", uid: "G06948003", admNo: "134", marks: { "തഫ്ഹീം റീഡിങ്": 49, "തഫ്ഹീം റൈറ്റിംഗ്": 50 }, total: 99, outOf: 100, percentage: 99.0, grade: "A+", status: "PROMOTED" },
-            { en: "Muhammed Raihan ME", ml: "മുഹമ്മദ് റൈഹാൻ ME", uid: "G06948004", admNo: "138", marks: { "തഫ്ഹീം റീഡിങ്": 50, "തഫ്ഹീം റൈറ്റിംഗ്": 50 }, total: 100, outOf: 100, percentage: 100.0, grade: "A+", status: "PROMOTED" }
-        ],
-        "2": [
-            { en: "Mishab Roshan PV", ml: "മിസ്അബ് റോഷൻ PV", uid: "E06948004", admNo: "108", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Athikka Naaj", ml: "അതിക്ക നാജ്", uid: "E06948008", admNo: "120", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Ayaan Bin Mohammed Basheer", ml: "അയാൻ ബിൻ മുഹമ്മദ് ബഷീർ", uid: "F06948001", admNo: "122", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Muhammed Faizan PV", ml: "മുഹമ്മദ് ഫൈസാൻ PV", uid: "F06948002", admNo: "123", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Muhammed Rihan CK", ml: "മുഹമ്മദ് റിഹാൻ CK", uid: "F06948003", admNo: "124", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Muhammed Jalaludheen", ml: "മുഹമ്മദ് ജലാലുദ്ദീൻ TT", uid: "F06948004", admNo: "125", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Fathima Izza P", ml: "ഫാത്തിമ ഇസ്സ P", uid: "F06948006", admNo: "127", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Fathima Hadiya TT", ml: "ഫാത്തിമ ഹാദിയ TT", uid: "F06948007", admNo: "129", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "അഖ്‌ലാഖ്": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" }
-        ],
-        "3": [
-            { en: "Jishan Ahmed KT", ml: "ജിഷാൻ അഹമ്മദ് KT", uid: "D06948002", admNo: "101", marks: { "ഖുർആൻ": 45, "ഹിഫ്ള്": 48, "ഫിഖ്ഹ്": 50, "താരീഖ്": 25, "ലിസാൻ": 31, "അഖീദ": 43, "ദുറൂസ്": 37 }, total: 279, outOf: 350, percentage: 79.7, grade: "B+", status: "PROMOTED" },
-            { en: "Eva N", ml: "ഇവ N", uid: "D06948003", admNo: "99", marks: { "ഖുർആൻ": "AB", "ഹിഫ്ള്": "AB", "ഫിഖ്ഹ്": 22, "താരീഖ്": 12, "ലിസാൻ": 12, "അഖീദ": "AB", "ദുറൂസ്": 35 }, total: 81, outOf: 350, percentage: 23.1, grade: "D", status: "NEEDS IMPROVEMENT" },
-            { en: "Muhammad Saihan KK", ml: "മുഹമ്മദ് സൈഹാൻ KK", uid: "E06948001", admNo: "105", marks: { "ഖുർആൻ": 25, "ഹിഫ്ള്": 16, "ഫിഖ്ഹ്": 6, "താരീഖ്": 14, "ലിസാൻ": 20, "അഖീദ": 10, "ദുറൂസ്": 12 }, total: 103, outOf: 350, percentage: 29.4, grade: "D", status: "NEEDS IMPROVEMENT" },
-            { en: "Fathima Sumayya TT", ml: "ഫാത്തിമ സുമയ്യ TT", uid: "E06948005", admNo: "109", marks: { "ഖുർആൻ": 45, "ഹിഫ്ള്": 50, "ഫിഖ്ഹ്": 48, "താരീഖ്": 38, "ലിസാൻ": 48, "അഖീദ": 50, "ദുറൂസ്": 43 }, total: 322, outOf: 350, percentage: 92.0, grade: "A+", status: "PROMOTED" },
-            { en: "Kadeeja Liyana PT", ml: "ഖദീജ ലിയാന PT", uid: "E06948009", admNo: "136", marks: { "ഖുർആൻ": 42, "ഹിഫ്ള്": 48, "ഫിഖ്ഹ്": 25, "താരീഖ്": 20, "ലിസാൻ": 27, "അഖീദ": 44, "ദുറൂസ്": 27 }, total: 233, outOf: 350, percentage: 66.6, grade: "B", status: "PROMOTED" }
-        ],
-        "4": [
-            { en: "Ayisha Zabrin K", ml: "ആയിഷ സബ്രിൻ K", uid: "D06948001", admNo: "96", marks: { "ഖുർആൻ": 28, "ഹിഫ്ള്": 26, "ഫിഖ്ഹ്": 31, "താരീഖ്": 20, "ലിസാൻ": 34, "അഖീദ": 24, "ദുറൂസ്": 32 }, total: 195, outOf: 350, percentage: 55.7, grade: "C+", status: "PROMOTED" },
-            { en: "Muhammad Salih TT", ml: "മുഹമ്മദ് സ്വാലിഹ് TT", uid: "D06948004", admNo: "97", marks: { "ഖുർആൻ": 36, "ഹിഫ്ള്": 49, "ഫിഖ്ഹ്": 42, "താരീഖ്": 39, "ലിസാൻ": 27, "അഖീദ": 38, "ദുറൂസ്": 41 }, total: 272, outOf: 350, percentage: 77.7, grade: "B+", status: "PROMOTED" },
-            { en: "Hazwa Fathima K", ml: "ഹസ്‌വ ഫാത്തിമ K", uid: "D06948005", admNo: "139", marks: { "ഖുർആൻ": 38, "ഹിഫ്ള്": 48, "ഫിഖ്ഹ്": 27, "താരീഖ്": 26, "ലിസാൻ": 33, "അഖീദ": 23, "ദുറൂസ്": 24 }, total: 219, outOf: 350, percentage: 62.6, grade: "B", status: "PROMOTED" }
-        ],
-        "5": [
-            { en: "Mohammed Saif Alam", ml: "മുഹമ്മദ് സെയ്ഫ് ആലം", uid: "A01772061", admNo: "114", marks: { "ഖുർആൻ": 18, "ഹിഫ്ള്": 14, "ഫിഖ്ഹ്": 3, "താരീഖ്": 6, "ലിസാൻ": 5, "തജ്‌വീദ്": 11, "ദുറൂസ്": 15 }, total: 72, outOf: 350, percentage: 20.6, grade: "D", status: "NEEDS IMPROVEMENT" },
-            { en: "Muhammad Hadhi PV", ml: "മുഹമ്മദ് ഹാദി PV", uid: "B06948002", admNo: "86", marks: { "ഖുർആൻ": 36, "ഹിഫ്ള്": 48, "ഫിഖ്ഹ്": 44, "താരീഖ്": 31, "ലിസാൻ": 35, "തജ്‌വീദ്": 47, "ദുറൂസ്": 49 }, total: 290, outOf: 350, percentage: 82.9, grade: "A", status: "PROMOTED" },
-            { en: "Muhammad Aman", ml: "മുഹമ്മദ് അമാൻ", uid: "C06948001", admNo: "93", marks: { "ഖുർആൻ": 33, "ഹിഫ്ള്": 47, "ഫിഖ്ഹ്": 39, "താരീഖ്": 32, "ലിസാൻ": 36, "തജ്‌വീദ്": 47, "ദുറൂസ്": 46 }, total: 280, outOf: 350, percentage: 80.0, grade: "A", status: "PROMOTED" },
-            { en: "Haya Fathima PM", ml: "ഹയ ഫാത്തിമ PM", uid: "C06948003", admNo: "90", marks: { "ഖുർആൻ": 33, "ഹിഫ്ള്": 45, "ഫിഖ്ഹ്": 35, "താരീഖ്": 44, "ലിസാൻ": 43, "തജ്‌വീദ്": 45, "ദുറൂസ്": 30 }, total: 275, outOf: 350, percentage: 78.6, grade: "B+", status: "PROMOTED" },
-            { en: "Ansila Meharin V", ml: "അൻസില മെഹ്റിൻ V", uid: "C06948004", admNo: "91", marks: { "ഖുർആൻ": 30, "ഹിഫ്ള്": 41, "ഫിഖ്ഹ്": 30, "താരീഖ്": 10, "ലിസാൻ": 14, "തജ്‌വീദ്": 15, "ദുറൂസ്": 28 }, total: 168, outOf: 350, percentage: 48.0, grade: "C", status: "PROMOTED" },
-            { en: "Midha Abdul Kalam P", ml: "മിദ്ഹ അബ്ദുൽ കലാം P", uid: "C06948005", admNo: "95", marks: { "ഖുർആൻ": 48, "ഹിഫ്ള്": 50, "ഫിഖ്ഹ്": 48, "താരീഖ്": 43, "ലിസാൻ": 45, "തജ്‌വീദ്": 45, "ദുറൂസ്": 50 }, total: 329, outOf: 350, percentage: 94.0, grade: "A+", status: "PROMOTED" },
-            { en: "Ayisha Nuha K", ml: "ആയിഷ നുഹ K", uid: "C06948006", admNo: "98", marks: { "ഖുർആൻ": 38, "ഹിഫ്ള്": 48, "ഫിഖ്ഹ്": 42, "താരീഖ്": 30, "ലിസാൻ": 33, "തജ്‌വീദ്": 46, "ദുറൂസ്": 37 }, total: 274, outOf: 350, percentage: 78.3, grade: "B+", status: "PROMOTED" }
-        ],
-        "6": [
-            { en: "Liyana Meharin M", ml: "ലിയാന മെഹ്റിൻ M", uid: "A06948005", admNo: "79", marks: { "ഖുർആൻ": 40, "ഹിഫ്ള്": 39, "ഫിഖ്ഹ്": 43, "താരീഖ്": 48, "ലിസാൻ": 42, "തജ്‌വീദ്": 38, "ദുറൂസ്": 50 }, total: 300, outOf: 350, percentage: 85.7, grade: "A", status: "PROMOTED" },
-            { en: "Fathima Niya KT", ml: "ഫാത്തിമ നിയ KT", uid: "A06948006", admNo: "80", marks: { "ഖുർആൻ": 42, "ഹിഫ്ള്": 44, "ഫിഖ്ഹ്": 47, "താരീഖ്": 50, "ലിസാൻ": 48, "തജ്‌വീദ്": 45, "ദുറൂസ്": 49 }, total: 325, outOf: 350, percentage: 92.9, grade: "A+", status: "PROMOTED" },
-            { en: "Fathima Zabba K", ml: "ഫാത്തിമ സബ്ബ K", uid: "A06948011", admNo: "68", marks: { "ഖുർആൻ": 25, "ഹിഫ്ള്": 25, "ഫിഖ്ഹ്": 23, "താരീഖ്": 5, "ലിസാൻ": 20, "തജ്‌വീദ്": 9, "ദുറൂസ്": 30 }, total: 137, outOf: 350, percentage: 39.1, grade: "D+", status: "PROMOTED" },
-            { en: "Muhammed Rahshan ME", ml: "മുഹമ്മദ് റഹ്ഷാൻ ME", uid: "B04402019", admNo: "135", marks: { "ഖുർആൻ": 40, "ഹിഫ്ള്": 30, "ഫിഖ്ഹ്": 46, "താരീഖ്": 40, "ലിസാൻ": 35, "തജ്‌വീദ്": 30, "ദുറൂസ്": 30 }, total: 251, outOf: 350, percentage: 71.7, grade: "B+", status: "PROMOTED" },
-            { en: "Filza PE", ml: "ഫിൽസ PE", uid: "B06948004", admNo: "112", marks: { "ഖുർആൻ": 40, "ഹിഫ്ള്": 39, "ഫിഖ്ഹ്": 44, "താരീഖ്": 40, "ലിസാൻ": 42, "തജ്‌വീദ്": 35, "ദുറൂസ്": 45 }, total: 285, outOf: 350, percentage: 81.4, grade: "A", status: "PROMOTED" },
-            { en: "Ayisha Ayana PT", ml: "ആയിഷ അയാന PT", uid: "B06948006", admNo: "131", marks: { "ഖുർആൻ": 40, "ഹിഫ്ള്": 35, "ഫിഖ്ഹ്": 45, "താരീഖ്": 40, "ലിസാൻ": 22, "തജ്‌വീദ്": 36, "ദുറൂസ്": 44 }, total: 262, outOf: 350, percentage: 74.9, grade: "B+", status: "PROMOTED" }
-        ],
-        "7": [
-            { en: "Fathima Nahla P", ml: "ഫാത്തിമ നഹ്‌ല P", uid: "A00699078", admNo: "137", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Haniyya Fathima A", ml: "ഹനിയ്യ ഫാത്തിമ A", uid: "A06948009", admNo: "75", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Fathima Shahala VT", ml: "ഫാത്തിമ ഷഹല VT", uid: "A06948010", admNo: "67", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Asya Naila P", ml: "ആസിയ നൈല P", uid: "A06948012", admNo: "51", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" },
-            { en: "Fathima Rafa TP", ml: "ഫാത്തിമ റഫ TP", uid: "A06948013", admNo: "92", marks: { "ഖുർആൻ": 0, "ഫിഖ്ഹ്": 0, "അഖീദ": 0, "ലിസാൻ": 0 }, total: 0, outOf: 200, percentage: 0, grade: "-", status: "-" }
-        ],
-        "8": [
-            { en: "Hafi M", ml: "ഹാഫി M", uid: "", admNo: "46", marks: { "ഖുർആൻ": 30, "ഹിഫ്ള്": 50, "ഫിഖ്ഹ്": 22, "താരീഖ്": 24, "ലിസാൻ": 9, "ദുറൂസ്": 40 }, total: 175, outOf: 300, percentage: 58.3, grade: "C+", status: "PROMOTED" },
-            { en: "Ayisha Hamda P", ml: "ആയിഷ ഹംദ P", uid: "", admNo: "57", marks: { "ഖുർആൻ": 48, "ഹിഫ്ള്": 45, "ഫിഖ്ഹ്": 48, "താരീഖ്": 39, "ലിസാൻ": 38, "ദുറൂസ്": 50 }, total: 268, outOf: 300, percentage: 89.3, grade: "A", status: "PROMOTED" },
-            { en: "Fathima Hanan C", ml: "ഫാത്തിമ ഹനാൻ C", uid: "", admNo: "60", marks: { "ഖുർആൻ": 27, "ഹിഫ്ള്": 32, "ഫിഖ്ഹ്": 50, "താരീഖ്": 31, "ലിസാൻ": 22, "ദുറൂസ്": 43 }, total: 205, outOf: 300, percentage: 68.3, grade: "B", status: "PROMOTED" },
-            { en: "Fathima Shahma K", ml: "ഫാത്തിമ ഷഹ്മ K", uid: "", admNo: "66", marks: { "ഖുർആൻ": 33, "ഹിഫ്ള്": 49, "ഫിഖ്ഹ്": 27, "താരീഖ്": 34, "ലിസാൻ": 28, "ദുറൂസ്": 38 }, total: 209, outOf: 300, percentage: 69.7, grade: "B", status: "PROMOTED" },
-            { en: "Fathima Zahara K", ml: "ഫാത്തിമ സഹ്റ K", uid: "", admNo: "70", marks: { "ഖുർആൻ": 50, "ഹിഫ്ള്": 48, "ഫിഖ്ഹ്": 49, "താരീഖ്": 47, "ലിസാൻ": 44, "ദുറൂസ്": 50 }, total: 288, outOf: 300, percentage: 96.0, grade: "A+", status: "PROMOTED" },
-            { en: "Abiya Minha K", ml: "അബിയ മിൻഹ K", uid: "", admNo: "94", marks: { "ഖുർആൻ": 47, "ഹിഫ്ള്": 50, "ഫിഖ്ഹ്": 30, "താരീഖ്": 44, "ലിസാൻ": 37, "ദുറൂസ്": 48 }, total: 256, outOf: 300, percentage: 85.3, grade: "A", status: "PROMOTED" }
-        ]
-    };
+    const examResults = {"1":[{"en":"Thaimoor Alam","ml":"തൈമൂർ ആലം","uid":"E06948007","admNo":"121","marks":{"തഫ്ഹീം റീഡിങ്":{"mark":6,"grade":"D"},"തഫ്ഹീം റൈറ്റിംഗ്":{"mark":28,"grade":"C+"}},"total":34,"outOf":100,"percentage":34.0,"grade":"D","status":"NEEDS IMPROVEMENT"},{"en":"Fathima Sherin TT","ml":"ഫാത്തിമ ഷെറിൻ TT","uid":"F06948005","admNo":"126","marks":{"തഫ്ഹീം റീഡിങ്":{"mark":"AB","grade":"AB"},"തഫ്ഹീം റൈറ്റിംഗ്":{"mark":"AB","grade":"AB"}},"total":0,"outOf":100,"percentage":0,"grade":"D","status":"NEEDS IMPROVEMENT"},{"en":"Muhammad Haizam P","ml":"മുഹമ്മദ് ഹൈസം P","uid":"G06948001","admNo":"132","marks":{"തഫ്ഹീം റീഡിങ്":{"mark":50,"grade":"A+"},"തഫ്ഹീം റൈറ്റിംഗ്":{"mark":50,"grade":"A+"}},"total":100,"outOf":100,"percentage":100.0,"grade":"A+","status":"PROMOTED"},{"en":"Muhammed Ishan CK","ml":"മുഹമ്മദ് ഇഷാൻ CK","uid":"G06948002","admNo":"133","marks":{"തഫ്ഹീം റീഡിങ്":{"mark":38,"grade":"B+"},"തഫ്ഹീം റൈറ്റിംഗ്":{"mark":50,"grade":"A+"}},"total":88,"outOf":100,"percentage":88.0,"grade":"A","status":"PROMOTED"},{"en":"Muhammed Shaeen P","ml":"മുഹമ്മദ് ഷഹീൻ P","uid":"G06948003","admNo":"134","marks":{"തഫ്ഹീം റീഡിങ്":{"mark":49,"grade":"A+"},"തഫ്ഹീം റൈറ്റിംഗ്":{"mark":50,"grade":"A+"}},"total":99,"outOf":100,"percentage":99.0,"grade":"A+","status":"PROMOTED"},{"en":"Muhammed Raihan ME","ml":"മുഹമ്മദ് റൈഹാൻ ME","uid":"G06948004","admNo":"138","marks":{"തഫ്ഹീം റീഡിങ്":{"mark":50,"grade":"A+"},"തഫ്ഹീം റൈറ്റിംഗ്":{"mark":50,"grade":"A+"}},"total":100,"outOf":100,"percentage":100.0,"grade":"A+","status":"PROMOTED"}],"2":[{"en":"Mishab Roshan PV","ml":"മിസ്അബ് റോഷൻ PV","uid":"E06948004","admNo":"108","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"അഖ്‌ലാഖ്":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Athikka Naaj","ml":"അതിക്ക നാജ്","uid":"E06948008","admNo":"120","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"അഖ്‌ലാഖ്":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Ayaan Bin Mohammed Basheer","ml":"അയാൻ ബിൻ മുഹമ്മദ് ബഷീർ","uid":"F06948001","admNo":"122","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"അഖ്‌ലാഖ്":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Muhammed Faizan PV","ml":"മുഹമ്മദ് ഫൈസാൻ PV","uid":"F06948002","admNo":"123","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"അഖ്‌ലാഖ്":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Muhammed Rihan CK","ml":"മുഹമ്മദ് റിഹാൻ CK","uid":"F06948003","admNo":"124","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"അഖ്‌ലാഖ്":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Muhammed Jalaludheen","ml":"മുഹമ്മദ് ജലാലുദ്ദീൻ TT","uid":"F06948004","admNo":"125","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"അഖ്‌ലാഖ്":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Fathima Izza P","ml":"ഫാത്തിമ ഇസ്സ P","uid":"F06948006","admNo":"127","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"അഖ്‌ലാഖ്":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Fathima Hadiya TT","ml":"ഫാത്തിമ ഹാദിയ TT","uid":"F06948007","admNo":"129","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"അഖ്‌ലാഖ്":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"}],"3":[{"en":"Jishan Ahmed KT","ml":"ജിഷാൻ അഹമ്മദ് KT","uid":"D06948002","admNo":"101","marks":{"ഖുർആൻ":{"mark":45,"grade":"A+"},"ഹിഫ്ള്":{"mark":48,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":50,"grade":"A+"},"താരീഖ്":{"mark":25,"grade":"C+"},"ലിസാൻ":{"mark":31,"grade":"B"},"അഖീദ":{"mark":43,"grade":"A"},"ദുറൂസ്":{"mark":37,"grade":"B+"}},"total":279,"outOf":350,"percentage":79.71,"grade":"B+","status":"PROMOTED"},{"en":"Eva N","ml":"ഇവ N","uid":"D06948003","admNo":"99","marks":{"ഖുർആൻ":{"mark":"AB","grade":"AB"},"ഹിഫ്ള്":{"mark":"AB","grade":"AB"},"ഫിഖ്ഹ്":{"mark":22,"grade":"C"},"താരീഖ്":{"mark":12,"grade":"D"},"ലിസാൻ":{"mark":12,"grade":"D"},"അഖീദ":{"mark":"AB","grade":"AB"},"ദുറൂസ്":{"mark":35,"grade":"B+"}},"total":81,"outOf":350,"percentage":23.14,"grade":"D","status":"NEEDS IMPROVEMENT"},{"en":"Muhammad Saihan KK","ml":"മുഹമ്മദ് സൈഹാൻ KK","uid":"E06948001","admNo":"105","marks":{"ഖുർആൻ":{"mark":25,"grade":"C+"},"ഹിഫ്ള്":{"mark":16,"grade":"D"},"ഫിഖ്ഹ്":{"mark":6,"grade":"D"},"താരീഖ്":{"mark":14,"grade":"D"},"ലിസാൻ":{"mark":20,"grade":"C"},"അഖീദ":{"mark":10,"grade":"D"},"ദുറൂസ്":{"mark":12,"grade":"D"}},"total":103,"outOf":350,"percentage":29.43,"grade":"D","status":"NEEDS IMPROVEMENT"},{"en":"Fathima Sumayya TT","ml":"ഫാത്തിമ സുമയ്യ TT","uid":"E06948005","admNo":"109","marks":{"ഖുർആൻ":{"mark":45,"grade":"A+"},"ഹിഫ്ള്":{"mark":50,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":48,"grade":"A+"},"താരീഖ്":{"mark":38,"grade":"B+"},"ലിസാൻ":{"mark":48,"grade":"A+"},"അഖീദ":{"mark":50,"grade":"A+"},"ദുറൂസ്":{"mark":43,"grade":"A"}},"total":322,"outOf":350,"percentage":92.0,"grade":"A+","status":"PROMOTED"},{"en":"Kadeeja Liyana PT","ml":"ഖദീജ ലിയാന PT","uid":"E06948009","admNo":"136","marks":{"ഖുർആൻ":{"mark":42,"grade":"A"},"ഹിഫ്ള്":{"mark":48,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":25,"grade":"C+"},"താരീഖ്":{"mark":20,"grade":"C"},"ലിസാൻ":{"mark":27,"grade":"C+"},"അഖീദ":{"mark":44,"grade":"A"},"ദുറൂസ്":{"mark":27,"grade":"C+"}},"total":233,"outOf":350,"percentage":66.57,"grade":"B","status":"PROMOTED"}],"4":[{"en":"Ayisha Zabrin K","ml":"ആയിഷ സബ്രിൻ K","uid":"D06948001","admNo":"96","marks":{"ഖുർആൻ":{"mark":28,"grade":"C+"},"ഹിഫ്ള്":{"mark":26,"grade":"C+"},"ഫിഖ്ഹ്":{"mark":31,"grade":"B"},"താരീഖ്":{"mark":20,"grade":"C"},"ലിസാൻ":{"mark":34,"grade":"B"},"അഖീദ":{"mark":24,"grade":"C"},"ദുറൂസ്":{"mark":32,"grade":"B"}},"total":195,"outOf":350,"percentage":55.71,"grade":"C+","status":"PROMOTED"},{"en":"Muhammad Salih TT","ml":"മുഹമ്മദ് സ്വാലിഹ് TT","uid":"D06948004","admNo":"97","marks":{"ഖുർആൻ":{"mark":36,"grade":"B+"},"ഹിഫ്ള്":{"mark":49,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":42,"grade":"A"},"താരീഖ്":{"mark":39,"grade":"B+"},"ലിസാൻ":{"mark":27,"grade":"C+"},"അഖീദ":{"mark":38,"grade":"B+"},"ദുറൂസ്":{"mark":41,"grade":"A"}},"total":272,"outOf":350,"percentage":77.71,"grade":"B+","status":"PROMOTED"},{"en":"Hazwa Fathima K","ml":"ഹസ്‌വ ഫാത്തിമ K","uid":"D06948005","admNo":"139","marks":{"ഖുർആൻ":{"mark":38,"grade":"B+"},"ഹിഫ്ള്":{"mark":48,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":27,"grade":"C+"},"താരീഖ്":{"mark":26,"grade":"C+"},"ലിസാൻ":{"mark":33,"grade":"B"},"അഖീദ":{"mark":23,"grade":"C"},"ദുറൂസ്":{"mark":24,"grade":"C"}},"total":219,"outOf":350,"percentage":62.57,"grade":"B","status":"PROMOTED"}],"5":[{"en":"Mohammed Saif Alam","ml":"മുഹമ്മദ് സെയ്ഫ് ആലം","uid":"A01772061","admNo":"114","marks":{"ഖുർആൻ":{"mark":18,"grade":"C"},"ഹിഫ്ള്":{"mark":14,"grade":"D"},"ഫിഖ്ഹ്":{"mark":3,"grade":"D"},"താരീഖ്":{"mark":6,"grade":"D"},"ലിസാൻ":{"mark":5,"grade":"D"},"തജ്‌വീദ്":{"mark":11,"grade":"D"},"ദുറൂസ്":{"mark":15,"grade":"D"}},"total":72,"outOf":350,"percentage":20.57,"grade":"D","status":"NEEDS IMPROVEMENT"},{"en":"Muhammad Hadhi PV","ml":"മുഹമ്മദ് ഹാദി PV","uid":"B06948002","admNo":"86","marks":{"ഖുർആൻ":{"mark":36,"grade":"B+"},"ഹിഫ്ള്":{"mark":48,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":44,"grade":"A"},"താരീഖ്":{"mark":31,"grade":"B"},"ലിസാൻ":{"mark":35,"grade":"B+"},"തജ്‌വീദ്":{"mark":47,"grade":"A+"},"ദുറൂസ്":{"mark":49,"grade":"A+"}},"total":290,"outOf":350,"percentage":82.86,"grade":"A","status":"PROMOTED"},{"en":"Muhammad Aman","ml":"മുഹമ്മദ് അമാൻ","uid":"C06948001","admNo":"93","marks":{"ഖുർആൻ":{"mark":33,"grade":"B"},"ഹിഫ്ള്":{"mark":47,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":39,"grade":"B+"},"താരീഖ്":{"mark":32,"grade":"B"},"ലിസാൻ":{"mark":36,"grade":"B+"},"തജ്‌വീദ്":{"mark":47,"grade":"A+"},"ദുറൂസ്":{"mark":46,"grade":"A+"}},"total":280,"outOf":350,"percentage":80.0,"grade":"A","status":"PROMOTED"},{"en":"Haya Fathima PM","ml":"ഹയ ഫാത്തിമ PM","uid":"C06948003","admNo":"90","marks":{"ഖുർആൻ":{"mark":33,"grade":"B"},"ഹിഫ്ള്":{"mark":45,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":35,"grade":"B+"},"താരീഖ്":{"mark":44,"grade":"A"},"ലിസാൻ":{"mark":43,"grade":"A"},"തജ്‌വീദ്":{"mark":45,"grade":"A+"},"ദുറൂസ്":{"mark":30,"grade":"B"}},"total":275,"outOf":350,"percentage":78.57,"grade":"B+","status":"PROMOTED"},{"en":"Ansila Meharin V","ml":"അൻസില മെഹ്റിൻ V","uid":"C06948004","admNo":"91","marks":{"ഖുർആൻ":{"mark":30,"grade":"B"},"ഹിഫ്ള്":{"mark":41,"grade":"A"},"ഫിഖ്ഹ്":{"mark":30,"grade":"B"},"താരീഖ്":{"mark":10,"grade":"D"},"ലിസാൻ":{"mark":14,"grade":"D"},"തജ്‌വീദ്":{"mark":15,"grade":"D"},"ദുറൂസ്":{"mark":28,"grade":"C+"}},"total":168,"outOf":350,"percentage":48.0,"grade":"D","status":"NEEDS IMPROVEMENT"},{"en":"Midha Abdul Kalam P","ml":"മിദ്ഹ അബ്ദുൽ കലാം P","uid":"C06948005","admNo":"95","marks":{"ഖുർആൻ":{"mark":48,"grade":"A+"},"ഹിഫ്ള്":{"mark":50,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":48,"grade":"A+"},"താരീഖ്":{"mark":43,"grade":"A"},"ലിസാൻ":{"mark":45,"grade":"A+"},"തജ്‌വീദ്":{"mark":45,"grade":"A+"},"ദുറൂസ്":{"mark":50,"grade":"A+"}},"total":329,"outOf":350,"percentage":94.0,"grade":"A+","status":"PROMOTED"},{"en":"Ayisha Nuha K","ml":"ആയിഷ നുഹ K","uid":"C06948006","admNo":"98","marks":{"ഖുർആൻ":{"mark":38,"grade":"B+"},"ഹിഫ്ള്":{"mark":48,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":42,"grade":"A"},"താരീഖ്":{"mark":30,"grade":"B"},"ലിസാൻ":{"mark":33,"grade":"B"},"തജ്‌വീദ്":{"mark":46,"grade":"A+"},"ദുറൂസ്":{"mark":37,"grade":"B+"}},"total":274,"outOf":350,"percentage":78.29,"grade":"B+","status":"PROMOTED"}],"6":[{"en":"Liyana Meharin M","ml":"ലിയാന മെഹ്റിൻ M","uid":"A06948005","admNo":"79","marks":{"ഖുർആൻ":{"mark":40,"grade":"A"},"ഹിഫ്ള്":{"mark":39,"grade":"B+"},"ഫിഖ്ഹ്":{"mark":43,"grade":"A"},"താരീഖ്":{"mark":48,"grade":"A+"},"ലിസാൻ":{"mark":42,"grade":"A"},"തജ്‌വീദ്":{"mark":38,"grade":"B+"},"ദുറൂസ്":{"mark":50,"grade":"A+"}},"total":300,"outOf":350,"percentage":85.71,"grade":"A","status":"PROMOTED"},{"en":"Fathima Niya KT","ml":"ഫാത്തിമ നിയ KT","uid":"A06948006","admNo":"80","marks":{"ഖുർആൻ":{"mark":42,"grade":"A"},"ഹിഫ്ള്":{"mark":44,"grade":"A"},"ഫിഖ്ഹ്":{"mark":47,"grade":"A+"},"താരീഖ്":{"mark":50,"grade":"A+"},"ലിസാൻ":{"mark":48,"grade":"A+"},"തജ്‌വീദ്":{"mark":45,"grade":"A+"},"ദുറൂസ്":{"mark":49,"grade":"A+"}},"total":325,"outOf":350,"percentage":92.86,"grade":"A+","status":"PROMOTED"},{"en":"Fathima Zabba K","ml":"ഫാത്തിമ സബ്ബ K","uid":"A06948011","admNo":"68","marks":{"ഖുർആൻ":{"mark":25,"grade":"C+"},"ഹിഫ്ള്":{"mark":25,"grade":"C+"},"ഫിഖ്ഹ്":{"mark":23,"grade":"C"},"താരീഖ്":{"mark":5,"grade":"D"},"ലിസാൻ":{"mark":20,"grade":"C"},"തജ്‌വീദ്":{"mark":9,"grade":"D"},"ദുറൂസ്":{"mark":30,"grade":"B"}},"total":137,"outOf":350,"percentage":39.14,"grade":"D","status":"NEEDS IMPROVEMENT"},{"en":"Muhammed Rahshan ME","ml":"മുഹമ്മദ് റഹ്ഷാൻ ME","uid":"B04402019","admNo":"135","marks":{"ഖുർആൻ":{"mark":40,"grade":"A"},"ഹിഫ്ള്":{"mark":30,"grade":"B"},"ഫിഖ്ഹ്":{"mark":46,"grade":"A+"},"താരീഖ്":{"mark":40,"grade":"A"},"ലിസാൻ":{"mark":35,"grade":"B+"},"തജ്‌വീദ്":{"mark":30,"grade":"B"},"ദുറൂസ്":{"mark":30,"grade":"B"}},"total":251,"outOf":350,"percentage":71.71,"grade":"B+","status":"PROMOTED"},{"en":"Filza PE","ml":"ഫിൽസ PE","uid":"B06948004","admNo":"112","marks":{"ഖുർആൻ":{"mark":40,"grade":"A"},"ഹിഫ്ള്":{"mark":39,"grade":"B+"},"ഫിഖ്ഹ്":{"mark":44,"grade":"A"},"താരീഖ്":{"mark":40,"grade":"A"},"ലിസാൻ":{"mark":42,"grade":"A"},"തജ്‌വീദ്":{"mark":35,"grade":"B+"},"ദുറൂസ്":{"mark":45,"grade":"A+"}},"total":285,"outOf":350,"percentage":81.43,"grade":"A","status":"PROMOTED"},{"en":"Ayisha Ayana PT","ml":"ആയിഷ അയാന PT","uid":"B06948006","admNo":"131","marks":{"ഖുർആൻ":{"mark":40,"grade":"A"},"ഹിഫ്ള്":{"mark":35,"grade":"B+"},"ഫിഖ്ഹ്":{"mark":45,"grade":"A+"},"താരീഖ്":{"mark":40,"grade":"A"},"ലിസാൻ":{"mark":22,"grade":"C"},"തജ്‌വീദ്":{"mark":36,"grade":"B+"},"ദുറൂസ്":{"mark":44,"grade":"A"}},"total":262,"outOf":350,"percentage":74.86,"grade":"B+","status":"PROMOTED"}],"7":[{"en":"Fathima Nahla P","ml":"ഫാത്തിമ നഹ്‌ല P","uid":"A00699078","admNo":"137","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"ലിസാൻ":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Haniyya Fathima A","ml":"ഹനിയ്യ ഫാത്തിമ A","uid":"A06948009","admNo":"75","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"ലിസാൻ":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Fathima Shahala VT","ml":"ഫാത്തിമ ഷഹല VT","uid":"A06948010","admNo":"67","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"ലിസാൻ":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Asya Naila P","ml":"ആസിയ നൈല P","uid":"A06948012","admNo":"51","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"ലിസാൻ":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"},{"en":"Fathima Rafa TP","ml":"ഫാത്തിമ റഫ TP","uid":"A06948013","admNo":"92","marks":{"ഖുർആൻ":{"mark":0,"grade":"-"},"ഫിഖ്ഹ്":{"mark":0,"grade":"-"},"അഖീദ":{"mark":0,"grade":"-"},"ലിസാൻ":{"mark":0,"grade":"-"}},"total":0,"outOf":200,"percentage":0,"grade":"-","status":"-"}],"8":[{"en":"Hafi M","ml":"ഹാഫി M","uid":"","admNo":"46","marks":{"ഖുർആൻ":{"mark":30,"grade":"B"},"ഹിഫ്ള്":{"mark":50,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":22,"grade":"C"},"താരീഖ്":{"mark":24,"grade":"C"},"ലിസാൻ":{"mark":9,"grade":"D"},"ദുറൂസ്":{"mark":40,"grade":"A"}},"total":175,"outOf":300,"percentage":58.33,"grade":"D","status":"NEEDS IMPROVEMENT"},{"en":"Ayisha Hamda P","ml":"ആയിഷ ഹംദ P","uid":"","admNo":"57","marks":{"ഖുർആൻ":{"mark":48,"grade":"A+"},"ഹിഫ്ള്":{"mark":45,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":48,"grade":"A+"},"താരീഖ്":{"mark":39,"grade":"B+"},"ലിസാൻ":{"mark":38,"grade":"B+"},"ദുറൂസ്":{"mark":50,"grade":"A+"}},"total":268,"outOf":300,"percentage":89.33,"grade":"A","status":"PROMOTED"},{"en":"Fathima Hanan C","ml":"ഫാത്തിമ ഹനാൻ C","uid":"","admNo":"60","marks":{"ഖുർആൻ":{"mark":27,"grade":"C+"},"ഹിഫ്ള്":{"mark":32,"grade":"B"},"ഫിഖ്ഹ്":{"mark":50,"grade":"A+"},"താരീഖ്":{"mark":31,"grade":"B"},"ലിസാൻ":{"mark":22,"grade":"C"},"ദുറൂസ്":{"mark":43,"grade":"A"}},"total":205,"outOf":300,"percentage":68.33,"grade":"B","status":"PROMOTED"},{"en":"Fathima Shahma K","ml":"ഫാത്തിമ ഷഹ്മ K","uid":"","admNo":"66","marks":{"ഖുർആൻ":{"mark":33,"grade":"B"},"ഹിഫ്ള്":{"mark":49,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":27,"grade":"C+"},"താരീഖ്":{"mark":34,"grade":"B"},"ലിസാൻ":{"mark":28,"grade":"C+"},"ദുറൂസ്":{"mark":38,"grade":"B+"}},"total":209,"outOf":300,"percentage":69.67,"grade":"B","status":"PROMOTED"},{"en":"Fathima Zahara K","ml":"ഫാത്തിമ സഹ്റ K","uid":"","admNo":"70","marks":{"ഖുർആൻ":{"mark":50,"grade":"A+"},"ഹിഫ്ള്":{"mark":48,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":49,"grade":"A+"},"താരീഖ്":{"mark":47,"grade":"A+"},"ലിസാൻ":{"mark":44,"grade":"A"},"ദുറൂസ്":{"mark":50,"grade":"A+"}},"total":288,"outOf":300,"percentage":96.0,"grade":"A+","status":"PROMOTED"},{"en":"Abiya Minha K","ml":"അബിയ മിൻഹ K","uid":"","admNo":"94","marks":{"ഖുർആൻ":{"mark":47,"grade":"A+"},"ഹിഫ്ള്":{"mark":50,"grade":"A+"},"ഫിഖ്ഹ്":{"mark":30,"grade":"B"},"താരീഖ്":{"mark":44,"grade":"A"},"ലിസാൻ":{"mark":37,"grade":"B+"},"ദുറൂസ്":{"mark":48,"grade":"A+"}},"total":256,"outOf":300,"percentage":85.33,"grade":"A","status":"PROMOTED"}]};
 
     function checkResult() {
         const classVal = document.getElementById('class').value;
@@ -300,27 +255,30 @@
         const resultDiv = document.getElementById('result');
 
         if (!classVal || !input) {
-            alert("ദയവായി ക്ലാസ്സും പേരോ നമ്പറോ നൽകുക.");
+            alert("ദയവായി ക്ലാസ്സും Adm No അല്ലെങ്കിൽ UID നൽകുക.");
             return;
         }
 
         const classList = examResults[classVal] || [];
         
+        // Search ONLY by AdmNo or UID
         const student = classList.find(s => {
-            const nameMatchEn = s.en.toLowerCase().includes(input);
-            const nameMatchMl = s.ml.includes(input);
             const admMatch = s.admNo && s.admNo === input;
             const uidMatch = s.uid && s.uid.toLowerCase() === input;
-            
-            return nameMatchEn || nameMatchMl || admMatch || uidMatch;
+            return admMatch || uidMatch;
         });
 
         resultDiv.style.display = 'block';
         if (student) {
             
             let marksHtml = '';
-            for (const [subject, mark] of Object.entries(student.marks)) {
-                marksHtml += `<tr><td>${subject}</td><td>${mark}</td></tr>`;
+            for (const [subject, data] of Object.entries(student.marks)) {
+                let gradeColor = (data.grade === 'D' || data.grade === 'AB') ? 'color: var(--danger);' : 'color: var(--primary);';
+                marksHtml += `<tr>
+                    <td>${subject}</td>
+                    <td style="text-align:center;">${data.mark}</td>
+                    <td style="text-align:center; font-weight:bold; ${gradeColor}">${data.grade}</td>
+                </tr>`;
             }
 
             const msg = encodeURIComponent(`${student.ml} ന്റെ പാദവാർഷിക പരീക്ഷാ ഫലം:\nആകെ മാർക്ക്: ${student.total}/${student.outOf}\nശതമാനം: ${student.percentage}%\nഗ്രേഡ്: ${student.grade}\nസ്റ്റാറ്റസ്: ${student.status}\nകൂടുതൽ വിവരങ്ങൾക്ക് മദ്രസ വെബ്സൈറ്റ് സന്ദർശിക്കുക.`);
@@ -328,14 +286,15 @@
             const uidDisplay = student.uid ? `UID: ${student.uid.toUpperCase()} | ` : '';
             const statusClass = student.status === 'PROMOTED' ? 'promoted' : 'needs-improvement';
             const statusDisplay = student.status !== '-' ? `<div class="status-badge ${statusClass}">${student.status}</div>` : '';
+            const overallGradeColor = (student.grade === 'D' || student.grade === '-') ? 'grade-fail' : 'grade-pass';
             
             resultDiv.innerHTML = `
                 <div id="printable-area" class="report-card">
                     <div class="print-header">
-                        <img src="1000085715.webp" alt="Madrasa Logo">
+                        <img src="IMG_20260329_173830_154.webp" alt="Madrasa Logo">
                         <h1>അൻവാറുൽ ഇസ്ലാം മദ്രസ</h1>
                         <p>താഴെ പുല്ലുംകുന്ന്</p>
-                        <div style="background:var(--primary); color:white; padding:5px 15px; margin: 5px auto; width:max-content; border-radius:20px; font-size:14px; font-weight:bold;">പാദവാർഷിക പരീക്ഷാ ഫലം (2025-26)</div>
+                        <div style="background:var(--primary); color:white; padding:6px 20px; margin: 5px auto; width:max-content; border-radius:20px; font-size:14px; font-weight:bold;">പാദവാർഷിക പരീക്ഷാ ഫലം (2025-26)</div>
                     </div>
 
                     <div class="student-name"><i class="fa-solid fa-user-graduate web-icon"></i> ${student.ml}</div>
@@ -344,16 +303,24 @@
                     
                     <table>
                         <thead>
-                            <tr><th>വിഷയം (Subject)</th><th>മാർക്ക്</th></tr>
+                            <tr>
+                                <th>വിഷയം (Subject)</th>
+                                <th style="text-align:center;">മാർക്ക്</th>
+                                <th style="text-align:center;">ഗ്രേഡ്</th>
+                            </tr>
                         </thead>
                         <tbody>
                             ${marksHtml}
-                            <tr class="total-row"><td>ആകെ മാർക്ക് (Total)</td><td>${student.total} / ${student.outOf}</td></tr>
+                            <tr class="total-row">
+                                <td>ആകെ മാർക്ക് (Total)</td>
+                                <td colspan="2" style="text-align:center;">${student.total} / ${student.outOf}</td>
+                            </tr>
                         </tbody>
                     </table>
 
                     <div class="grade-box">
-                        ശതമാനം: <span style="color:var(--primary);">${student.percentage}%</span> | ഗ്രേഡ്: <span>${student.grade}</span>
+                        ശതമാനം: <span style="color:var(--primary);">${student.percentage}%</span> | 
+                        ഗ്രേഡ്: <span class="${overallGradeColor}">${student.grade}</span>
                     </div>
 
                     <div class="signature-area">
@@ -390,7 +357,7 @@
             resultDiv.innerHTML = `
                 <div class="report-card" style="border-color:#e74c3c; text-align:center;">
                     <span style="font-size: 40px;">🔍</span><br>
-                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ വിവരങ്ങൾ വെച്ച് റിസൾട്ട് കണ്ടെത്താനായില്ല. ടൈപ്പ് ചെയ്തത് ശരിയാണോ എന്ന് പരിശോധിക്കുക.</p>
+                    <p style="color:#c0392b; font-weight:bold; margin-top:10px;">ക്ഷമിക്കണം, ഈ നമ്പറിൽ റിസൾട്ട് കണ്ടെത്താനായില്ല. അടിച്ചത് ശരിയാണോ എന്ന് പരിശോധിക്കുക.</p>
                 </div>`;
         }
     }
@@ -403,7 +370,7 @@
             margin:       15,
             filename:     studentName + '_Result_2025.pdf',
             image:        { type: 'jpeg', quality: 1 },
-            html2canvas:  { scale: 3, useCORS: true }, 
+            html2canvas:  { scale: 2, useCORS: true }, 
             jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
